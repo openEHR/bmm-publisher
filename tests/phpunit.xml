@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="../vendor/autoload.php"
+    executionOrder="depends"
+    colors="true"
+    cacheDirectory="../var/.phpunit.cache"
+>
+    <testsuites>
+        <testsuite name="all">
+            <directory>.</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <ini name="memory_limit" value="-1"/>
+        <ini name="error_reporting" value="-1"/>
+    </php>
+    <source>
+        <include>
+            <directory>../src</directory>
+        </include>
+        <exclude>
+            <directory>../var</directory>
+            <directory>../vendor</directory>
+            <directory>.</directory>
+        </exclude>
+    </source>
+    <coverage includeUncoveredFiles="false" ignoreDeprecatedCodeUnits="true"/>
+</phpunit>

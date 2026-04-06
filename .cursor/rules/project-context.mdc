@@ -1,0 +1,31 @@
+---
+description: Project context and where to find full agent instructions
+alwaysApply: true
+---
+
+# openehr-bmm – Project Context
+
+- **What it is**: PHP CLI tool that reads openEHR BMM schemas and publishes class definitions as AsciiDoc, PlantUML, and YAML for the openEHR specifications website.
+- **Authoritative docs**:
+  - **AGENTS.md** – layout, ownership, standards (PSR-12, PHPStan, PHPUnit), escalation, triage. Primary reference for agents.
+  - **README.md** – setup, Composer scripts, release process.
+  - **CLAUDE.md** – Claude Code entrypoint; defers to AGENTS.md and points at Cursor rules under `.cursor/rules/`.
+  - **`.cursor/rules/commit-messages.mdc`** – commit messages (including AI-generated): conventional `type: imperative` subject per AGENTS.md; hint `conventional commit, <72 chars, feat/refactor/fix`.
+
+## Layout
+
+| Path | Purpose |
+|------|--------|
+| `src/` | Application source; PSR-4 namespace `OpenEHR\BmmPublisher\` from `composer.json`. |
+| `resources/` | Input BMM schemas and output artefacts (`Adoc/`, `BMM-JSON/`, `BMM-YAML/`, `PlantUML/`). |
+| `tests/` | Tests **and** tool config: `phpunit.xml`, `phpstan.neon`, `phpcs.xml`, `rector.php`, optional `phpstan-baseline.neon`. |
+| `docs/` | Project documentation. Place any new docs here. |
+
+## Running commands
+
+- **Composer, PHP, PHPUnit, PHPStan, PHPCS**: run **inside the dev container** only. From repo root: **`make install`**, **`make ci`**, or `docker compose -f .docker/docker-compose.yml run --rm app composer …`. See the [Makefile](../../Makefile).
+- **Do not** rely on host `composer` / `php` being installed; agents should default to **`make …`** or the `docker compose` line above.
+
+- **Commits**: Follow **`commit-messages.mdc`** and **AGENTS.md** for every suggestion (including the commit message UI). Same hint: `conventional commit, <72 chars, feat/refactor/fix`.
+
+When in doubt, follow AGENTS.md for standards and README for commands and setup.

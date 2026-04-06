@@ -1,0 +1,85 @@
+{
+    "name": "openehr/bmm-publisher",
+    "description": "PHP CLI tool that reads openEHR BMM schemas and publishes class definitions as AsciiDoc, PlantUML, and YAML for the openEHR specifications website.",
+    "type": "project",
+    "license": "Apache-2.0",
+    "keywords": [
+        "openEHR",
+        "BMM"
+    ],
+    "require": {
+        "php": "^8.4",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "ext-xdebug": "*",
+        "php-parallel-lint/php-parallel-lint": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.5",
+        "rector/rector": "^2.4",
+        "roave/security-advisories": "dev-latest",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "OpenEHR\\BmmPublisher\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "roave/security-advisories": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "archive": {
+        "exclude": [
+            "/.ai*",
+            "/.claude",
+            "/.cursor",
+            "/.docker",
+            "/.editorconfig",
+            "/.git*",
+            "/.junie",
+            "/tests",
+            "/var"
+        ]
+    },
+    "scripts": {
+        "test": "XDEBUG_MODE=off vendor/bin/phpunit --configuration tests/phpunit.xml --no-coverage --display-deprecations --display-notices --display-warnings",
+        "test:dox": "@test --testdox",
+        "test:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-html var/phpunit/code-coverage --coverage-text=php://stdout",
+        "check:lint": "vendor/bin/parallel-lint . --exclude vendor --exclude var --show-deprecated",
+        "check:phpstan": "XDEBUG_MODE=off vendor/bin/phpstan analyse --configuration tests/phpstan.neon --memory-limit 2G",
+        "check:phpstan-baseline": "@phpstan --generate-baseline tests/phpstan-baseline.neon",
+        "check:cs": "vendor/bin/phpcs --standard=tests/phpcs.xml",
+        "rector": "vendor/bin/rector process --config tests/rector.php",
+        "rector:dry-run": "vendor/bin/rector process --config tests/rector.php --dry-run",
+        "ci": [
+            "@check:lint",
+            "@check:cs",
+            "@check:phpstan",
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Run PHPUnit tests.",
+        "test:dox": "Run PHPUnit tests with testdox output.",
+        "test:coverage": "Run PHPUnit tests with code coverage report.",
+        "check:lint": "Run parallel lint check.",
+        "check:phpstan": "Run PHPStan static analysis.",
+        "check:phpstan-baseline": "Generate PHPStan baseline file for future analysis.",
+        "check:cs": "Run PHPCS (PSR-12) code style checks.",
+        "rector": "Run Rector refactoring (applies changes).",
+        "rector:dry-run": "Run Rector in dry-run (no changes).",
+        "ci": "Run all checks for CI pipeline."
+    }
+}

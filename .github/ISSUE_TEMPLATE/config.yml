@@ -1,0 +1,12 @@
+# Issue template chooser: pick Bug report, Feature request, or Question/other.
+# See: https://docs.github.com/en/community/using-templates/configuring-issue-templates-for-your-repository
+
+blank_issues_enabled: true
+
+contact_links:
+  - name: Documentation
+    url: https://github.com/openEHR/bmm-publisher#readme
+    about: Read the README and CONTRIBUTING guide first
+  - name: Security vulnerability
+    url: https://github.com/openEHR/bmm-publisher/security/policy
+    about: Do not open a public issue; report via the security policy

@@ -1,0 +1,14 @@
+# Run from repo root: docker compose -f .docker/docker-compose.yml <cmd>
+# Or set COMPOSE_FILE=.docker/docker-compose.yml / use Makefile targets.
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+    working_dir: /app
+    volumes:
+      - ..:/app
+      - app-data:/data
+
+volumes:
+  app-data:

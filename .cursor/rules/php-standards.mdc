@@ -1,0 +1,12 @@
+---
+description: PHP 8.4 and code style standards
+globs: "**/*.php"
+alwaysApply: false
+---
+
+# PHP Standards (this project)
+
+- **PHP**: 8.4. Use `declare(strict_types=1);` at the top of every PHP file.
+- **Style**: PSR-12 (enforced by PHPCS; config in `tests/phpcs.xml`). Short array syntax `[]`. PascalCase for class names.
+- **Namespace**: Application code under `OpenEHR\BmmPublisher\*` as in `composer.json`; tests under `Tests\*`.
+- **Execution**: Run `php` / `composer` / PHPUnit **inside the dev container** (`make ci`, `make install`, `make sh`, or `docker compose -f .docker/docker-compose.yml run --rm app composer …`). Do not assume `composer` exists on the host PATH.

@@ -1,0 +1,19 @@
+---
+description: Test and CI script reference
+globs: "tests/**/*.php,tests/*.xml,tests/*.neon,.github/workflows/*.yml,composer.json"
+alwaysApply: false
+---
+
+# Testing and CI
+
+**PHP tools (`composer`, `php`, `vendor/bin/phpunit`, etc.) are only available inside the dev container.** From the repo root, use **`make install`**, **`make ci`**, or:
+
+`docker compose -f .docker/docker-compose.yml run --rm app composer <script>`
+
+Do **not** assume `composer` or `php` exist on the host PATH.
+
+- **Run all checks**: `make ci` (or the `docker compose … composer ci` equivalent). Same scripts as CI: lint, PHPCS, PHPStan, PHPUnit. Rector is not in CI; run `composer rector` or `composer rector:dry-run` **inside the container**.
+- **Individually** (inside container): `composer test`, `composer check:cs`, `composer check:phpstan`, `composer check:lint`, `composer rector`, `composer rector:dry-run`.
+- **Config**: `phpunit.xml`, `phpstan.neon`, `phpcs.xml`, `rector.php` in `tests/`. Do not move these to repo root.
+- **Before PR**: Rebase on `main`, run **`make ci`** (or equivalent Docker command).
+- **Filter PHPUnit** (example): `docker compose -f .docker/docker-compose.yml run --rm app composer test -- --filter CollectionTest`

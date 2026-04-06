@@ -1,0 +1,25 @@
+# Cursor: exclude from indexing and AI context to keep responses fast and relevant.
+# Add project-specific paths as needed.
+
+# Dependencies (large, not project code)
+/vendor/
+
+# Build and cache output
+/var/
+
+# Version control
+/.git/
+
+# IDE and editor (optional: remove if you want Cursor to see project settings)
+/.idea/
+/.vscode/
+
+# Environment and secrets (never send to AI)
+.env
+.env.*
+!.env.dist
+
+# OS and misc
+.DS_Store
+Thumbs.db
+*.log
