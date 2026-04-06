@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace OpenEHR\BmmPublisher\Console\Command;
 
-use OpenEHR\BmmPublisher\CodeGenerator;
-use OpenEHR\BmmPublisher\Reader\BmmJsonReader;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\BmmJsonSplitWriter;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -26,14 +25,13 @@ class SplitJsonCommand extends Command
                 return Command::SUCCESS;
             }
 
-            $reader = new BmmJsonReader();
+            $collection = new BmmSchemaCollection();
             foreach ($latest as $filename) {
-                $reader->read(basename($filename));
+                $collection->load(basename($filename));
             }
-            $reader->read('openehr_am_1.4.0');
-            $generator = new CodeGenerator($reader);
-            $generator->addWriter(new BmmJsonSplitWriter());
-            $generator->generate();
+            $collection->load('openehr_am_1.4.0');
+            $writer = new BmmJsonSplitWriter($collection->schemas);
+            $writer->write();
         } catch (\Throwable $e) {
             $output->writeln((string) $e);
             return Command::FAILURE;
@@ -47,7 +45,7 @@ class SplitJsonCommand extends Command
      */
     private function findLatestSchemas(): array
     {
-        $files = glob(BmmJsonReader::DIR . '*.bmm.json');
+        $files = glob(BmmSchemaCollection::DIR . '*.bmm.json');
         if ($files === false) {
             return [];
         }

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace OpenEHR\BmmPublisher\Console\Command;
 
-use OpenEHR\BmmPublisher\CodeGenerator;
-use OpenEHR\BmmPublisher\Reader\BmmJsonReader;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\BmmAsciidocWriter;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -35,22 +34,20 @@ class AsciidocCommand extends Command
         $legacyFormat = false;
         $toRead = $filename;
         if ($toRead[0] === 'all') {
-            $paths = glob(BmmJsonReader::DIR . '*.bmm.json');
-            $toRead = array_map(static fn(string $f): string => basename($f), $paths !== false ? $paths : []);
+            $toRead = BmmSchemaCollection::availableSchemas();
         }
 
         try {
-            $reader = new BmmJsonReader();
+            $collection = new BmmSchemaCollection();
             foreach ($toRead as $schema) {
                 if ($schema === 'legacy') {
                     $legacyFormat = true;
                     continue;
                 }
-                $reader->read($schema);
+                $collection->load($schema);
             }
-            $generator = new CodeGenerator($reader);
-            $generator->addWriter(new BmmAsciidocWriter($legacyFormat));
-            $generator->generate();
+            $writer = new BmmAsciidocWriter($collection->schemas, $legacyFormat);
+            $writer->write();
         } catch (\UnhandledMatchError $e) {
             $output->writeln((string) $e);
             return Command::FAILURE;

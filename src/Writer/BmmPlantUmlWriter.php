@@ -2,37 +2,30 @@
 
 namespace OpenEHR\BmmPublisher\Writer;
 
+use Cadasto\OpenEHR\BMM\Helper\Collection;
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmPackage;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
 use OpenEHR\BmmPublisher\Writer\Formatter\PlantUml;
 use RuntimeException;
 
-/**
- * Writer class for converting BMM objects to PlantUML format
- */
 class BmmPlantUmlWriter extends AbstractWriter
 {
     public const string DIR = __WRITER_DIR__ . DIRECTORY_SEPARATOR . 'PlantUML' . DIRECTORY_SEPARATOR;
 
     private PlantUml $plantUml;
 
-    public function __construct()
+    public function __construct(Collection $schemas)
     {
+        parent::__construct($schemas);
         $this->plantUml = new PlantUml();
     }
 
-    /**
-     * Write the BMM schema to a PlantUML file
-     *
-     * @return void
-     * @throws RuntimeException If the schema is not set
-     */
     public function write(): void
     {
         $this->assureOutputDir();
         /** @var BmmSchema $schema */
-        foreach ($this->reader->files as $schema) {
+        foreach ($this->schemas as $schema) {
             /** @var BmmPackage $package */
             foreach ($schema->packages as $package) {
                 $this->writePackage($package, $schema, '');

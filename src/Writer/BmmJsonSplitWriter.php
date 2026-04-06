@@ -7,13 +7,6 @@ use Cadasto\OpenEHR\BMM\Model\BmmPackage;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
 use RuntimeException;
 
-/**
- * Writer that exports a BMM schema into per-type BMM JSON files.
- *
- * Output pattern (inside repository root):
- *   code/BMM-JSON-development-types/{COMPONENT}/
- * Each file name is: {org.openehr.<schema>.<full.package.path>}.{type-name-lowercase}.bmm.json
- */
 class BmmJsonSplitWriter extends AbstractWriter
 {
     public const string DIR = __WRITER_DIR__ . DIRECTORY_SEPARATOR . 'BMM-JSON-development-types' . DIRECTORY_SEPARATOR;
@@ -22,7 +15,7 @@ class BmmJsonSplitWriter extends AbstractWriter
     {
         $this->assureOutputDir();
         /** @var BmmSchema $schema */
-        foreach ($this->reader->files as $schema) {
+        foreach ($this->schemas as $schema) {
             // Build prefix e.g. org.openehr.rm
             /** @var BmmPackage $package */
             foreach ($schema->packages as $package) {

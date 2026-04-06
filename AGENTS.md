@@ -52,12 +52,11 @@ Commands accept schema name(s) as arguments (without `.bmm.json` extension), or 
 
 ```
 bin/bmm-publisher  (Symfony Console Application)
-  └── Command  →  CodeGenerator  →  AbstractReader  →  AbstractWriter[]
+  └── Command  →  BmmSchemaCollection  →  AbstractWriter
 
-Readers (populate a Collection of model objects):
-  └── BmmJsonReader   reads .bmm.json → BmmSchema (via cadasto/openehr-bmm)
+BmmSchemaCollection: loads .bmm.json → BmmSchema objects (via cadasto/openehr-bmm)
 
-Writers (iterate reader's Collection, delegate to Formatters):
+Writers (receive schema Collection, delegate to Formatters):
   ├── BmmAsciidocWriter   → AsciidocDefinition, AsciidocEffective, AsciidocTab,
   │                         AsciidocBmmJson, AsciidocPlantUml
   ├── BmmPlantUmlWriter   → PlantUml
@@ -66,10 +65,10 @@ Writers (iterate reader's Collection, delegate to Formatters):
 ```
 
 **Key patterns**:
-- **CodeGenerator** orchestrates: takes a reader, accumulates writers via `addWriter()`, calls `generate()`.
-- **Readers** are stateful: each `read()` call adds to the reader's `Collection $files`.
+- **BmmSchemaCollection** loads BMM JSON files and holds them in a `Collection`. Commands call `load()` per schema, then pass `$collection->schemas` to a writer.
+- **AbstractWriter** receives the schema `Collection` via constructor; concrete writers iterate it in `write()`.
 - **Formatters** are readonly classes that transform BMM model objects into output strings.
-- **ConsoleTrait** provides structured logging (`ClassName: message`) used by all readers/writers.
+- **ConsoleTrait** provides structured logging (`ClassName: message`) used by collection and writers.
 - **`src/constants.php`** defines `__READER_DIR__` and `__WRITER_DIR__` (default to `resources/`).
 
 ## Documentation

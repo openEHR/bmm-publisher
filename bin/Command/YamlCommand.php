@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace OpenEHR\BmmPublisher\Console\Command;
 
-use OpenEHR\BmmPublisher\CodeGenerator;
-use OpenEHR\BmmPublisher\Reader\BmmJsonReader;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\BmmYamlWriter;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -33,18 +32,16 @@ class YamlCommand extends Command
 
         $toRead = $filename;
         if ($toRead[0] === 'all') {
-            $paths = glob(BmmJsonReader::DIR . '*.bmm.json');
-            $toRead = array_map(static fn(string $f): string => basename($f), $paths !== false ? $paths : []);
+            $toRead = BmmSchemaCollection::availableSchemas();
         }
 
         try {
-            $reader = new BmmJsonReader();
+            $collection = new BmmSchemaCollection();
             foreach ($toRead as $schema) {
-                $reader->read($schema);
+                $collection->load($schema);
             }
-            $generator = new CodeGenerator($reader);
-            $generator->addWriter(new BmmYamlWriter());
-            $generator->generate();
+            $writer = new BmmYamlWriter($collection->schemas);
+            $writer->write();
         } catch (\UnhandledMatchError $e) {
             $output->writeln((string) $e);
             return Command::FAILURE;

@@ -1,23 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenEHR\BmmPublisher\Writer;
 
+use Cadasto\OpenEHR\BMM\Helper\Collection;
 use OpenEHR\BmmPublisher\Helper\ConsoleTrait;
-use OpenEHR\BmmPublisher\Reader\AbstractReader;
 use RuntimeException;
 
 abstract class AbstractWriter
 {
-
     use ConsoleTrait;
 
     public const string DIR = __WRITER_DIR__ . DIRECTORY_SEPARATOR;
 
-    protected AbstractReader $reader;
-
-    public function setReader(AbstractReader $reader): void
-    {
-        $this->reader = $reader;
+    public function __construct(
+        protected readonly Collection $schemas,
+    ) {
     }
 
     public function assureOutputDir(string $dir = ''): void
@@ -43,5 +42,4 @@ abstract class AbstractWriter
     }
 
     abstract public function write(): void;
-
 }

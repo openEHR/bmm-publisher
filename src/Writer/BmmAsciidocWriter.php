@@ -2,6 +2,7 @@
 
 namespace OpenEHR\BmmPublisher\Writer;
 
+use Cadasto\OpenEHR\BMM\Helper\Collection;
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmPackage;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
@@ -12,12 +13,8 @@ use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocPlantUml;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocTab;
 use RuntimeException;
 
-/**
- * Writer class for converting BMM objects to AsciiDoc tables
- */
 class BmmAsciidocWriter extends AbstractWriter
 {
-    // Target directory for AsciiDoc outputs
     public const string DIR = __WRITER_DIR__ . DIRECTORY_SEPARATOR . 'Adoc' . DIRECTORY_SEPARATOR;
 
     private AsciidocTab $tab;
@@ -26,8 +23,9 @@ class BmmAsciidocWriter extends AbstractWriter
     private AsciidocBmmJson $bmmJson;
     private AsciidocPlantUml $plantUml;
 
-    public function __construct(private readonly bool $legacyFormat = false)
+    public function __construct(Collection $schemas, private readonly bool $legacyFormat = false)
     {
+        parent::__construct($schemas);
         $this->tab = new AsciidocTab($this->legacyFormat);
         $this->definition = new AsciidocDefinition($this->legacyFormat);
         $this->effective = new AsciidocEffective($this->legacyFormat);
@@ -39,7 +37,7 @@ class BmmAsciidocWriter extends AbstractWriter
     {
         $this->assureOutputDir();
         /** @var BmmSchema $schema */
-        foreach ($this->reader->files as $schema) {
+        foreach ($this->schemas as $schema) {
             // Build prefix e.g. org.openehr.rm
             /** @var BmmPackage $package */
             foreach ($schema->packages as $package) {
