@@ -1,0 +1,10 @@
+[plantuml,MESSAGE_CONTENT,format=svg]
+-----
+@startuml
+
+abstract class MESSAGE_CONTENT {
+}
+
+
+@enduml
+-----

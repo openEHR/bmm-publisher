@@ -1,0 +1,21 @@
+=== ATTESTATION Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/attestation.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/attestation.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/attestation.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/attestation.adoc[]
+
+====

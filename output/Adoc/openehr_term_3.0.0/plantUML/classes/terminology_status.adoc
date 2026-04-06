@@ -1,0 +1,13 @@
+[plantuml,TERMINOLOGY_STATUS,format=svg]
+-----
+@startuml
+
+enum TERMINOLOGY_STATUS {
+  trial 
+  active 
+  retired 
+}
+
+
+@enduml
+-----

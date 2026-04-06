@@ -1,0 +1,9 @@
+@startuml
+
+enum VISIBILITY_TYPE {
+  hide 
+  show 
+}
+
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+
+enum TERMINOLOGY_STATUS {
+  trial 
+  active 
+  retired 
+}
+
+
+@enduml

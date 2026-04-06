@@ -1,0 +1,13 @@
+@startuml
+
+class UUID {
+}
+
+abstract class UID  #whitesmoke;line:gray;line.dotted;text:gray {
+  + value : String [1]
+}
+
+UID <|-- UUID
+
+
+@enduml

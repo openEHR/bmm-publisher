@@ -1,0 +1,9 @@
+@startuml
+
+enum BMM_OPERATOR_POSITION {
+  prefix 
+  infix 
+}
+
+
+@enduml

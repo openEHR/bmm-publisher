@@ -1,0 +1,11 @@
+[plantuml,EXPR_ITEM,format=svg]
+-----
+@startuml
+
+abstract class EXPR_ITEM {
+  + type : String [1]
+}
+
+
+@enduml
+-----

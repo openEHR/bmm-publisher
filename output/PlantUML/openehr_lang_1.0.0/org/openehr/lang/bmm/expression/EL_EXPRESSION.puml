@@ -1,0 +1,9 @@
+@startuml
+
+abstract class EL_EXPRESSION {
+  + {abstract} eval_type() : BMM_TYPE [1]
+  + is_boolean() : Boolean [1]
+}
+
+
+@enduml

@@ -1,0 +1,16 @@
+[plantuml,BMM_STATEMENT_BLOCK,format=svg]
+-----
+@startuml
+
+class BMM_STATEMENT_BLOCK {
+  + items : List<BMM_STATEMENT_ITEM> [*]
+}
+
+abstract class BMM_STATEMENT_ITEM  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+BMM_STATEMENT_ITEM <|-- BMM_STATEMENT_BLOCK
+
+
+@enduml
+-----

@@ -1,0 +1,21 @@
+=== BMM_INDEXED_CONTAINER_VALUE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_indexed_container_value.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_indexed_container_value.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_indexed_container_value.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_indexed_container_value.adoc[]
+
+====

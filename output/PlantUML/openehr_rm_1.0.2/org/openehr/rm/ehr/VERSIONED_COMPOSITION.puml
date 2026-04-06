@@ -1,0 +1,8 @@
+@startuml
+
+class VERSIONED_COMPOSITION {
+  + is_persistent() : Boolean [1]
+}
+
+
+@enduml

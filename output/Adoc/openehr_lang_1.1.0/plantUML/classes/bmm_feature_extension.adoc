@@ -1,0 +1,10 @@
+[plantuml,BMM_FEATURE_EXTENSION,format=svg]
+-----
+@startuml
+
+abstract class BMM_FEATURE_EXTENSION {
+}
+
+
+@enduml
+-----

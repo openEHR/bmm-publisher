@@ -1,0 +1,19 @@
+[plantuml,BMM_CONTAINER_VALUE,format=svg]
+-----
+@startuml
+
+class BMM_CONTAINER_VALUE {
+}
+
+abstract class BMM_LITERAL_VALUE <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+  + value_literal : String [1]
+  + value : Any [0..1]
+  + syntax : String [0..1]
+  + type : T [1]
+}
+
+BMM_LITERAL_VALUE <|-- BMM_CONTAINER_VALUE
+
+
+@enduml
+-----

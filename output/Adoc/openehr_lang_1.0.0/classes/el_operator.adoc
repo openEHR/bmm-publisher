@@ -1,0 +1,21 @@
+=== EL_OPERATOR Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/el_operator.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/el_operator.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/el_operator.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/el_operator.adoc[]
+
+====

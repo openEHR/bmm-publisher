@@ -1,0 +1,21 @@
+=== BMM_INSTANTIABLE_FEATURE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_instantiable_feature.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_instantiable_feature.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_instantiable_feature.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_instantiable_feature.adoc[]
+
+====

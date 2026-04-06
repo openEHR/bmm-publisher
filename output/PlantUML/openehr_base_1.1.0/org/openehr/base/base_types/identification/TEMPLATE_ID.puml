@@ -1,0 +1,13 @@
+@startuml
+
+class TEMPLATE_ID {
+}
+
+abstract class OBJECT_ID  #whitesmoke;line:gray;line.dotted;text:gray {
+  + value : String [1]
+}
+
+OBJECT_ID <|-- TEMPLATE_ID
+
+
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+
+class VERSIONED_EHR_ACCESS {
+}
+
+
+@enduml

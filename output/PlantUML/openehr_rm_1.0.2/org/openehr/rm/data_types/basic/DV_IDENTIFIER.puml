@@ -1,0 +1,16 @@
+@startuml
+
+class DV_IDENTIFIER {
+  + issuer : String [1]
+  + assigner : String [1]
+  + id : String [1]
+  + type : String [1]
+}
+
+abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+DATA_VALUE <|-- DV_IDENTIFIER
+
+
+@enduml

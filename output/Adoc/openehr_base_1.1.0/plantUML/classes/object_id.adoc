@@ -1,0 +1,11 @@
+[plantuml,OBJECT_ID,format=svg]
+-----
+@startuml
+
+abstract class OBJECT_ID {
+  + value : String [1]
+}
+
+
+@enduml
+-----

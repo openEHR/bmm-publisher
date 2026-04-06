@@ -1,0 +1,9 @@
+@startuml
+
+enum VIEW_STATUS {
+  active 
+  inactive 
+}
+
+
+@enduml

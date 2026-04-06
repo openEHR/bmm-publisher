@@ -1,0 +1,8 @@
+@startuml
+
+abstract class RESOURCE_USE {
+  + cost_data : ITEM_STRUCTURE [0..1]
+}
+
+
+@enduml

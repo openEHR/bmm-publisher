@@ -1,0 +1,21 @@
+=== ACTIVITY Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/activity.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/activity.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/activity.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/activity.adoc[]
+
+====

@@ -1,0 +1,13 @@
+[plantuml,BMM_PARAMETER_DIRECTION,format=svg]
+-----
+@startuml
+
+enum BMM_PARAMETER_DIRECTION {
+  in 
+  out 
+  in_out 
+}
+
+
+@enduml
+-----

@@ -1,0 +1,11 @@
+[plantuml,BMM_INCLUDE_SPEC,format=svg]
+-----
+@startuml
+
+class BMM_INCLUDE_SPEC {
+  + id : String [1]
+}
+
+
+@enduml
+-----

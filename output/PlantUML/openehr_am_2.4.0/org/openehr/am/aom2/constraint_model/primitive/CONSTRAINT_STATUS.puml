@@ -1,0 +1,11 @@
+@startuml
+
+enum CONSTRAINT_STATUS {
+  required = 0 
+  extensible = 1 
+  preferred = 2 
+  example = 3 
+}
+
+
+@enduml

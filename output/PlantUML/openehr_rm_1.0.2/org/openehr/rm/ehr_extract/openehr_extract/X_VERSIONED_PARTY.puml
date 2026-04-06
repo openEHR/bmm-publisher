@@ -1,0 +1,7 @@
+@startuml
+
+class X_VERSIONED_PARTY {
+}
+
+
+@enduml

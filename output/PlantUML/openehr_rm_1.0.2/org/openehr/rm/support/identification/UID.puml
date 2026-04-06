@@ -1,0 +1,8 @@
+@startuml
+
+abstract class UID {
+  + value : String [1]
+}
+
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+
+class Terminology_term {
+  + concept : Terminology_code [1]
+  + text : String [1]
+}
+
+
+@enduml

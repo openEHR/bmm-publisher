@@ -1,0 +1,21 @@
+=== BMM_ROUTINE_EXTERNAL Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_routine_external.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_routine_external.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_routine_external.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_routine_external.adoc[]
+
+====

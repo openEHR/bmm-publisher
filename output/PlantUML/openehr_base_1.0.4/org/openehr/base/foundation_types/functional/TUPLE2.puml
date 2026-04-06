@@ -1,0 +1,12 @@
+@startuml
+
+class TUPLE2 <A, B> {
+}
+
+class TUPLE  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+TUPLE <|-- TUPLE2
+
+
+@enduml

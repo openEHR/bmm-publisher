@@ -1,0 +1,9 @@
+@startuml
+
+abstract class DATA_STRUCTURE {
+  + as_hierarchy() : ITEM [1]
+}
+
+LOCATABLE <|-- DATA_STRUCTURE
+
+@enduml

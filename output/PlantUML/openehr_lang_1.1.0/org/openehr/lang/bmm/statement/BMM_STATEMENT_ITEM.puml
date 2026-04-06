@@ -1,0 +1,7 @@
+@startuml
+
+abstract class BMM_STATEMENT_ITEM {
+}
+
+
+@enduml
