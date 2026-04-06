@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace OpenEHR\BmmPublisher\Console\Command;
 
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
-use OpenEHR\BmmPublisher\Writer\BmmJsonSplitWriter;
+use OpenEHR\BmmPublisher\Writer\BmmJsonSplit;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'publish:split-json',
+    name: 'split-json',
     description: 'Split latest BMM JSON of each component into per-type files.',
 )]
 class SplitJsonCommand extends Command
@@ -25,13 +26,12 @@ class SplitJsonCommand extends Command
                 return Command::SUCCESS;
             }
 
-            $collection = new BmmSchemaCollection();
+            $collection = new BmmSchemaCollection(new ConsoleLogger($output));
             foreach ($latest as $filename) {
                 $collection->load(basename($filename));
             }
             $collection->load('openehr_am_1.4.0');
-            $writer = new BmmJsonSplitWriter($collection->schemas);
-            $writer->write();
+            (new BmmJsonSplit($collection))();
         } catch (\Throwable $e) {
             $output->writeln((string) $e);
             return Command::FAILURE;
@@ -45,7 +45,7 @@ class SplitJsonCommand extends Command
      */
     private function findLatestSchemas(): array
     {
-        $files = glob(BmmSchemaCollection::DIR . '*.bmm.json');
+        $files = glob(BmmSchemaCollection::inputDir() . '*.bmm.json');
         if ($files === false) {
             return [];
         }

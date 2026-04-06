@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace OpenEHR\BmmPublisher\Console\Command;
 
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
-use OpenEHR\BmmPublisher\Writer\BmmYamlWriter;
+use OpenEHR\BmmPublisher\Writer\BmmYaml;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'publish:yaml',
+    name: 'yaml',
     description: 'Convert BMM JSON schemas to YAML format.',
 )]
 class YamlCommand extends Command
@@ -36,12 +37,11 @@ class YamlCommand extends Command
         }
 
         try {
-            $collection = new BmmSchemaCollection();
+            $collection = new BmmSchemaCollection(new ConsoleLogger($output));
             foreach ($toRead as $schema) {
                 $collection->load($schema);
             }
-            $writer = new BmmYamlWriter($collection->schemas);
-            $writer->write();
+            (new BmmYaml($collection))();
         } catch (\UnhandledMatchError $e) {
             $output->writeln((string) $e);
             return Command::FAILURE;

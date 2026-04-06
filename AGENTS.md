@@ -18,11 +18,12 @@ Use this file as the **primary reference** for agents, automation, and contribut
 | `bin/bmm-publisher` | CLI entry point (Symfony Console Application) |
 | `bin/Command/` | Console commands; PSR-4 namespace `OpenEHR\BmmPublisher\Console\` |
 | `src/` | Application source; PSR-4 namespace `OpenEHR\BmmPublisher\` |
-| `resources/BMM-JSON/` | **Input**: openEHR BMM schemas in P_BMM JSON format |
-| `resources/Adoc/` | **Output**: AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks, PlantUML blocks) |
-| `resources/PlantUML/` | **Output**: PlantUML `.puml` diagram files |
-| `resources/BMM-YAML/` | **Output**: YAML serialisations of BMM schemas |
-| `resources/BMM-JSON-development-types/` | **Output**: per-type split JSON files grouped by component (AM, RM, BASE, LANG, TERM) |
+| `resources/` | **Input**: openEHR BMM schemas in P_BMM JSON format (`.bmm.json` files) |
+| `output/` | **Generated** (gitignored): all writer output |
+| `output/Adoc/` | AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks, PlantUML blocks) |
+| `output/PlantUML/` | PlantUML `.puml` diagram files |
+| `output/BMM-YAML/` | YAML serialisations of BMM schemas |
+| `output/BMM-JSON-development-types/` | Per-type split JSON files grouped by component (AM, RM, BASE, LANG, TERM) |
 | `tests/` | Unit/integration tests **and** tool config: `phpunit.xml`, `phpstan.neon`, `phpcs.xml`, `rector.php`, optional `phpstan-baseline.neon` |
 | `docs/` | Project documentation (guides, architecture). **Place new docs here**, not at the repo root except README/CONTRIBUTING/CODE_OF_CONDUCT/SECURITY. |
 | `.claude/` | Claude Code project instructions (`CLAUDE.md`). |
@@ -41,10 +42,10 @@ The entry point `bin/bmm-publisher` provides these Symfony Console commands:
 
 | Command | Aliases | Description |
 |---------|---------|-------------|
-| `publish:asciidoc` | `publish:adoc` | Convert BMM JSON schemas to AsciiDoc tables |
-| `publish:plantuml` | `publish:uml`, `publish:puml` | Convert BMM JSON schemas to PlantUML diagrams |
-| `publish:yaml` | | Convert BMM JSON schemas to YAML format |
-| `publish:split-json` | | Split latest BMM JSON of each component into per-type files |
+| `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables |
+| `plantuml` | `uml`, `puml` | Convert BMM JSON schemas to PlantUML diagrams |
+| `yaml` | | Convert BMM JSON schemas to YAML format |
+| `split-json` | | Split latest BMM JSON of each component into per-type files |
 
 Commands accept schema name(s) as arguments (without `.bmm.json` extension), or `all` to process every schema in `resources/BMM-JSON/`.
 
@@ -52,24 +53,27 @@ Commands accept schema name(s) as arguments (without `.bmm.json` extension), or 
 
 ```
 bin/bmm-publisher  (Symfony Console Application)
-  └── Command  →  BmmSchemaCollection  →  AbstractWriter
+  └── Command  →  BmmSchemaCollection  →  Writer
 
 BmmSchemaCollection: loads .bmm.json → BmmSchema objects (via cadasto/openehr-bmm)
+                     provides cross-schema class/package lookups
 
-Writers (receive schema Collection, delegate to Formatters):
-  ├── BmmAsciidocWriter   → AsciidocDefinition, AsciidocEffective, AsciidocTab,
-  │                         AsciidocBmmJson, AsciidocPlantUml
-  ├── BmmPlantUmlWriter   → PlantUml
-  ├── BmmYamlWriter       (uses Symfony Yaml component)
-  └── BmmJsonSplitWriter  (per-type JSON with openEHR spec URLs)
+Writers (callable classes, receive BmmSchemaCollection, delegate to Formatters):
+  ├── Asciidoc      → AsciidocDefinition, AsciidocEffective, AsciidocTab,
+  │                   AsciidocBmmJson, AsciidocPlantUml
+  ├── PlantUml      → Formatter\PlantUml
+  ├── BmmYaml       (uses Symfony Yaml component)
+  └── BmmJsonSplit  (per-type JSON with openEHR spec URLs)
 ```
 
 **Key patterns**:
-- **BmmSchemaCollection** loads BMM JSON files and holds them in a `Collection`. Commands call `load()` per schema, then pass `$collection->schemas` to a writer.
-- **AbstractWriter** receives the schema `Collection` via constructor; concrete writers iterate it in `write()`.
+- **BmmSchemaCollection** loads BMM JSON files, provides iteration over schemas, and cross-schema lookups (`getClass()`, `getClassPackageQName()`).
+- **Writers** are standalone callable classes (`__invoke()`), each receiving `BmmSchemaCollection` via constructor.
+- **Filesystem** helper provides `assureDir()` and `writeFile()` used by all writers.
 - **Formatters** are readonly classes that transform BMM model objects into output strings.
-- **ConsoleTrait** provides structured logging (`ClassName: message`) used by collection and writers.
-- **`src/constants.php`** defines `__READER_DIR__` and `__WRITER_DIR__` (default to `resources/`).
+- **Logging**: PSR-3 via Symfony `ConsoleLogger`. Created in commands, injected into `BmmSchemaCollection`, accessed by writers via `$schemas->logger`. Progress at `notice` level (shown with `-v`), detail at `info` (`-vv`).
+- **`ResourcesDir`** resolves the input schemas path (hardcoded to `{cwd}/resources`).
+- **`OutputDir`** resolves the output path: override via `BMM_OUTPUT_DIR` env var (for Docker), defaults to `{cwd}/output`.
 
 ## Documentation
 

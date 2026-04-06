@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace OpenEHR\BmmPublisher\Console\Command;
 
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
-use OpenEHR\BmmPublisher\Writer\BmmPlantUmlWriter;
+use OpenEHR\BmmPublisher\Writer\PlantUml;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'publish:plantuml',
+    name: 'plantuml',
     description: 'Convert BMM JSON schemas to PlantUML diagrams.',
-    aliases: ['publish:uml', 'publish:puml'],
+    aliases: ['uml', 'puml'],
 )]
 class PlantUmlCommand extends Command
 {
@@ -37,12 +38,11 @@ class PlantUmlCommand extends Command
         }
 
         try {
-            $collection = new BmmSchemaCollection();
+            $collection = new BmmSchemaCollection(new ConsoleLogger($output));
             foreach ($toRead as $schema) {
                 $collection->load($schema);
             }
-            $writer = new BmmPlantUmlWriter($collection->schemas);
-            $writer->write();
+            (new PlantUml($collection))();
         } catch (\UnhandledMatchError $e) {
             $output->writeln((string) $e);
             return Command::FAILURE;

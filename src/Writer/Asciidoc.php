@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenEHR\BmmPublisher\Writer;
 
-use Cadasto\OpenEHR\BMM\Helper\Collection;
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmPackage;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
+use OpenEHR\BmmPublisher\Helper\Filesystem;
+use OpenEHR\BmmPublisher\Helper\OutputDir;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocBmmJson;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocDefinition;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocEffective;
@@ -13,39 +17,42 @@ use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocPlantUml;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocTab;
 use RuntimeException;
 
-class BmmAsciidocWriter extends AbstractWriter
+class Asciidoc
 {
-    public const string DIR = __WRITER_DIR__ . DIRECTORY_SEPARATOR . 'Adoc' . DIRECTORY_SEPARATOR;
-
     private AsciidocTab $tab;
     private AsciidocDefinition $definition;
     private AsciidocEffective $effective;
     private AsciidocBmmJson $bmmJson;
     private AsciidocPlantUml $plantUml;
 
-    public function __construct(Collection $schemas, private readonly bool $legacyFormat = false)
-    {
-        parent::__construct($schemas);
+    public function __construct(
+        private readonly BmmSchemaCollection $schemas,
+        private readonly bool $legacyFormat = false,
+    ) {
         $this->tab = new AsciidocTab($this->legacyFormat);
-        $this->definition = new AsciidocDefinition($this->legacyFormat);
-        $this->effective = new AsciidocEffective($this->legacyFormat);
+        $this->definition = new AsciidocDefinition($schemas, $this->legacyFormat);
+        $this->effective = new AsciidocEffective($schemas, $this->legacyFormat);
         $this->bmmJson = new AsciidocBmmJson();
-        $this->plantUml = new AsciidocPlantUml();
+        $this->plantUml = new AsciidocPlantUml($schemas);
     }
 
-    public function write(): void
+    public static function outputDir(): string
     {
-        $this->assureOutputDir();
+        return OutputDir::path() . DIRECTORY_SEPARATOR . 'Adoc' . DIRECTORY_SEPARATOR;
+    }
+
+    public function __invoke(): void
+    {
+        $logger = $this->schemas->logger;
+        Filesystem::assureDir(self::outputDir());
         /** @var BmmSchema $schema */
         foreach ($this->schemas as $schema) {
-            // Build prefix e.g. org.openehr.rm
             /** @var BmmPackage $package */
             foreach ($schema->packages as $package) {
                 $this->writePackage($package, $schema, '');
                 /** @var BmmPackage $subPackage */
                 foreach ($package->packages as $subPackage) {
                     $this->writePackage($subPackage, $schema, $package->name . '.');
-                    // one level deeper for sub-packages (consistent with other writers)
                     /** @var BmmPackage $subSubPackage */
                     foreach ($subPackage->packages as $subSubPackage) {
                         $this->writePackage($subSubPackage, $schema, $package->name . '.' . $subPackage->name . '.');
@@ -57,8 +64,9 @@ class BmmAsciidocWriter extends AbstractWriter
 
     private function writePackage(BmmPackage $package, BmmSchema $schema, string $namePrefix): void
     {
-        if (!count($package->classes)) {
-            self::log('WARN: Empty package %s.', $package->name);
+        $logger = $this->schemas->logger;
+        if (!\count($package->classes)) {
+            $logger->warning('Empty package {package}.', ['package' => $package->name]);
             return;
         }
         $prefix = 'org.openehr.' . strtolower($schema->schemaName) . '.';
@@ -69,35 +77,35 @@ class BmmAsciidocWriter extends AbstractWriter
         } else {
             $pkg = '';
         }
-        $definitionsDir = self::DIR . $schema->getSchemaId() . '/definitions/';
-        $this->assureOutputDir($definitionsDir);
-        $effectiveDir = self::DIR . $schema->getSchemaId() . '/effective/';
-        $this->assureOutputDir($effectiveDir);
-        $tabsDir = self::DIR . $schema->getSchemaId() . '/classes/';
-        $this->assureOutputDir($tabsDir);
-        $bmmJsonDir = self::DIR . $schema->getSchemaId() . '/BMMs/';
-        $this->assureOutputDir($bmmJsonDir);
-        $plantUmlClassesDir = self::DIR . $schema->getSchemaId() . '/plantUML/classes/';
-        $this->assureOutputDir($plantUmlClassesDir);
-        $plantUmlPackagesDir = self::DIR . $schema->getSchemaId() . '/plantUML/packages/';
-        $this->assureOutputDir($plantUmlPackagesDir);
+        $definitionsDir = self::outputDir() . $schema->getSchemaId() . '/definitions/';
+        Filesystem::assureDir($definitionsDir);
+        $effectiveDir = self::outputDir() . $schema->getSchemaId() . '/effective/';
+        Filesystem::assureDir($effectiveDir);
+        $tabsDir = self::outputDir() . $schema->getSchemaId() . '/classes/';
+        Filesystem::assureDir($tabsDir);
+        $bmmJsonDir = self::outputDir() . $schema->getSchemaId() . '/BMMs/';
+        Filesystem::assureDir($bmmJsonDir);
+        $plantUmlClassesDir = self::outputDir() . $schema->getSchemaId() . '/plantUML/classes/';
+        Filesystem::assureDir($plantUmlClassesDir);
+        $plantUmlPackagesDir = self::outputDir() . $schema->getSchemaId() . '/plantUML/packages/';
+        Filesystem::assureDir($plantUmlPackagesDir);
         foreach ($package->classes as $className) {
             /** @var AbstractBmmClass $class */
             $class = $schema->classDefinitions->get($className) ?? $schema->primitiveTypes->get($className);
             if (!$class) {
-                throw new RuntimeException(sprintf('WARN: Class %s not found in schema', $className));
+                throw new RuntimeException(\sprintf('WARN: Class %s not found in schema', $className));
             }
             if ($this->legacyFormat) {
                 $filename = $prefix . '.' . strtolower($className) . '.adoc';
             } else {
                 $filename = $pkg . strtolower($className) . '.adoc';
             }
-            self::log('Writing %s class ...', $filename);
-            $this->writeFile($definitionsDir . $filename, $this->definition->format($class, $prefix, $schema));
-            $this->writeFile($effectiveDir . $filename, $this->effective->format($class, $prefix, $schema));
-            $this->writeFile($tabsDir . $filename, $this->tab->format($class, $filename));
-            $this->writeFile($bmmJsonDir . $filename, $this->bmmJson->format($class));
-            $this->writeFile($plantUmlClassesDir . $filename, $this->plantUml->format($class, $prefix, $schema));
+            $logger->notice('Writing {file} class ...', ['file' => $filename]);
+            Filesystem::writeFile($definitionsDir . $filename, $this->definition->format($class, $prefix, $schema), $logger);
+            Filesystem::writeFile($effectiveDir . $filename, $this->effective->format($class, $prefix, $schema), $logger);
+            Filesystem::writeFile($tabsDir . $filename, $this->tab->format($class, $filename), $logger);
+            Filesystem::writeFile($bmmJsonDir . $filename, $this->bmmJson->format($class), $logger);
+            Filesystem::writeFile($plantUmlClassesDir . $filename, $this->plantUml->format($class, $prefix, $schema), $logger);
         }
         $prefix = 'org.openehr.' . strtolower($schema->schemaName) . '.';
         $namePrefix = $prefix . str_replace($prefix, '', $namePrefix);
@@ -106,7 +114,7 @@ class BmmAsciidocWriter extends AbstractWriter
         } else {
             $packageName = strtoupper($schema->schemaName) . '-' . $pkg . rtrim(str_replace($namePrefix, '', $package->name), '.');
         }
-        self::log('Writing %s package ...', $packageName);
-        $this->writeFile($plantUmlPackagesDir . $packageName . '.adoc', $this->plantUml->format($package, $packageName, $schema));
+        $logger->notice('Writing {package} package ...', ['package' => $packageName]);
+        Filesystem::writeFile($plantUmlPackagesDir . $packageName . '.adoc', $this->plantUml->format($package, $packageName, $schema), $logger);
     }
 }

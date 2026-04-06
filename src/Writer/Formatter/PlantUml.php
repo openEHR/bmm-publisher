@@ -22,13 +22,22 @@ use Cadasto\OpenEHR\BMM\Model\BmmSingleFunctionParameter;
 use Cadasto\OpenEHR\BMM\Model\BmmSingleFunctionParameterOpen;
 use Cadasto\OpenEHR\BMM\Model\BmmSingleProperty;
 use Cadasto\OpenEHR\BMM\Model\BmmSinglePropertyOpen;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
 
 readonly class PlantUml
 {
+    public function __construct(
+        private BmmSchemaCollection $allSchemas,
+    ) {
+    }
+
     private function resolveClass(BmmSchema $schema, string $name): ?AbstractBmmClass
     {
         $item = $schema->classDefinitions->get($name) ?? $schema->primitiveTypes->get($name);
-        return $item instanceof AbstractBmmClass ? $item : null;
+        if ($item instanceof AbstractBmmClass) {
+            return $item;
+        }
+        return $this->allSchemas->getClass($name);
     }
 
     public function format(AbstractBmmClass|BmmPackage $bmmItem, string $prefix, BmmSchema $schema): string
@@ -225,7 +234,12 @@ EOD;
     {
         if (!empty($type->genericParameters)) {
             $genericParameters = implode(',', array_map(
-                fn(string $t): string => $t,
+                function (string|BmmGenericType $t): string {
+                    if ($t instanceof BmmGenericType) {
+                        return $this->formatGenericParameterType($t);
+                    }
+                    return $t;
+                },
                 $type->genericParameters,
             ));
         } elseif (!empty($type->genericParameterDefs)) {

@@ -24,6 +24,7 @@ use Cadasto\OpenEHR\BMM\Model\BmmSingleFunctionParameter;
 use Cadasto\OpenEHR\BMM\Model\BmmSingleFunctionParameterOpen;
 use Cadasto\OpenEHR\BMM\Model\BmmSingleProperty;
 use Cadasto\OpenEHR\BMM\Model\BmmSinglePropertyOpen;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
 
 readonly class AsciidocDefinition
 {
@@ -37,14 +38,19 @@ readonly class AsciidocDefinition
         " {" => " \{",
     ];
 
-    public function __construct(protected bool $legacyFormat = false)
-    {
+    public function __construct(
+        protected BmmSchemaCollection $allSchemas,
+        protected bool $legacyFormat = false,
+    ) {
     }
 
     protected function resolveClass(BmmSchema $schema, string $name): ?AbstractBmmClass
     {
         $item = $schema->classDefinitions->get($name) ?? $schema->primitiveTypes->get($name);
-        return $item instanceof AbstractBmmClass ? $item : null;
+        if ($item instanceof AbstractBmmClass) {
+            return $item;
+        }
+        return $this->allSchemas->getClass($name);
     }
 
     public function format(AbstractBmmClass $class, string $prefix, BmmSchema $schema): string
@@ -399,7 +405,12 @@ readonly class AsciidocDefinition
     {
         if (!empty($type->genericParameters)) {
             $genericParameters = implode(',', array_map(
-                fn(string $t): string => $this->formatType($t, $prefix, $schema),
+                function (string|BmmGenericType $t) use ($prefix, $schema): string {
+                    if ($t instanceof BmmGenericType) {
+                        return $this->formatGenericType($t, $prefix, $schema);
+                    }
+                    return $this->formatType($t, $prefix, $schema);
+                },
                 $type->genericParameters,
             ));
         } elseif (!empty($type->genericParameterDefs)) {
@@ -441,10 +452,9 @@ readonly class AsciidocDefinition
         if (strlen($type) === 1 || in_array(strtolower($type), ['operation', 'void', 'null', 'false', 'true'])) {
             return $type;
         }
-        $packageQname = $schema->getClassPackageQName($type) ?? '';
+        $packageQname = $schema->getClassPackageQName($type) ?? $this->allSchemas->getClassPackageQName($type) ?? '';
         $m = [];
         $xref = $this->formatXref($packageQname, $m);
-        //echo "XX $xref [$type] prefix $prefix\n";
         if ($xref) {
             $class = $this->resolveClass($schema, $type);
             if ($class instanceof BmmInterface) {

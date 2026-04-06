@@ -1,29 +1,41 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenEHR\BmmPublisher\Writer;
 
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmPackage;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
+use OpenEHR\BmmPublisher\Helper\Filesystem;
+use OpenEHR\BmmPublisher\Helper\OutputDir;
 use RuntimeException;
 
-class BmmJsonSplitWriter extends AbstractWriter
+class BmmJsonSplit
 {
-    public const string DIR = __WRITER_DIR__ . DIRECTORY_SEPARATOR . 'BMM-JSON-development-types' . DIRECTORY_SEPARATOR;
+    public function __construct(
+        private readonly BmmSchemaCollection $schemas,
+    ) {
+    }
 
-    public function write(): void
+    public static function outputDir(): string
     {
-        $this->assureOutputDir();
+        return OutputDir::path() . DIRECTORY_SEPARATOR . 'BMM-JSON-development-types' . DIRECTORY_SEPARATOR;
+    }
+
+    public function __invoke(): void
+    {
+        $logger = $this->schemas->logger;
+        Filesystem::assureDir(self::outputDir());
         /** @var BmmSchema $schema */
         foreach ($this->schemas as $schema) {
-            // Build prefix e.g. org.openehr.rm
             /** @var BmmPackage $package */
             foreach ($schema->packages as $package) {
                 $this->writePackage($package, $schema, '');
                 /** @var BmmPackage $subPackage */
                 foreach ($package->packages as $subPackage) {
                     $this->writePackage($subPackage, $schema, $package->name . '.');
-                    // one level deeper for sub-packages (consistent with other writers)
                     /** @var BmmPackage $subSubPackage */
                     foreach ($subPackage->packages as $subSubPackage) {
                         $this->writePackage($subSubPackage, $schema, $package->name . '.' . $subPackage->name . '.');
@@ -35,26 +47,27 @@ class BmmJsonSplitWriter extends AbstractWriter
 
     private function writePackage(BmmPackage $package, BmmSchema $schema, string $namePrefix): void
     {
-        if (!count($package->classes)) {
-            self::log('WARN: Empty package [%s] found.', $package->name);
+        $logger = $this->schemas->logger;
+        if (!\count($package->classes)) {
+            $logger->warning('Empty package {package}.', ['package' => $package->name]);
             return;
         }
         $packagePrefixName = 'org.openehr.' . strtolower($schema->schemaName) . '.';
         $packageName = $packagePrefixName . str_replace($packagePrefixName, '', $namePrefix . $package->name);
-        if (($schema->schemaName === 'am')) {
-            $outputDir = self::DIR . 'AM' . (str_starts_with($schema->rmRelease, '2') ? '2' : '') . '/';
+        if ($schema->schemaName === 'am') {
+            $outputDir = self::outputDir() . 'AM' . (str_starts_with($schema->rmRelease, '2') ? '2' : '') . '/';
         } else {
-            $outputDir = self::DIR . strtoupper($schema->schemaName) . '/';
+            $outputDir = self::outputDir() . strtoupper($schema->schemaName) . '/';
         }
-        $this->assureOutputDir($outputDir);
+        Filesystem::assureDir($outputDir);
         foreach ($package->classes as $className) {
             /** @var AbstractBmmClass $class */
             $class = $schema->classDefinitions->get($className) ?? $schema->primitiveTypes->get($className);
             if (!$class) {
-                throw new RuntimeException(sprintf('WARN: Class %s not found in schema', $className));
+                throw new RuntimeException(\sprintf('WARN: Class %s not found in schema', $className));
             }
             $filename = strtoupper($className) . '.bmm.json';
-            self::log('Preparing %s class ...', $filename);
+            $logger->info('Preparing {file} class ...', ['file' => $filename]);
             $data = $class->jsonSerialize();
             $data['package'] = $packageName;
             $parts = array_reverse(explode('.', str_replace($packagePrefixName, '', $packageName)));
@@ -71,11 +84,11 @@ class BmmJsonSplitWriter extends AbstractWriter
                     'aom2' => 'AOM2.html',
                     default => $page . '.html',
                 };
-                $data['specUrl'] = sprintf('https://specifications.openehr.org/releases/%s/development/%s#%s', strtoupper($schema->schemaName), $page, $fragment);
+                $data['specUrl'] = \sprintf('https://specifications.openehr.org/releases/%s/development/%s#%s', strtoupper($schema->schemaName), $page, $fragment);
             }
-            self::log('Writing %s class ...', $filename);
+            $logger->notice('Writing {file} class ...', ['file' => $filename]);
             $content = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
-            $this->writeFile($outputDir . $filename, $content);
+            Filesystem::writeFile($outputDir . $filename, $content, $logger);
         }
     }
 }

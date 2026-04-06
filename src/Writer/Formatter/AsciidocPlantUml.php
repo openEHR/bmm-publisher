@@ -5,14 +5,15 @@ namespace OpenEHR\BmmPublisher\Writer\Formatter;
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmPackage;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
+use OpenEHR\BmmPublisher\BmmSchemaCollection;
 
 readonly class AsciidocPlantUml
 {
     private PlantUml $plantUml;
 
-    public function __construct()
+    public function __construct(BmmSchemaCollection $allSchemas)
     {
-        $this->plantUml = new PlantUml();
+        $this->plantUml = new PlantUml($allSchemas);
     }
 
     public function format(AbstractBmmClass|BmmPackage $bmmItem, string $prefix, BmmSchema $schema): string

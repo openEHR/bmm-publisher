@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace OpenEHR\BmmPublisher\Console\Command;
 
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
-use OpenEHR\BmmPublisher\Writer\BmmAsciidocWriter;
+use OpenEHR\BmmPublisher\Writer\Asciidoc;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'publish:asciidoc',
+    name: 'asciidoc',
     description: 'Convert BMM JSON schemas to AsciiDoc tables.',
-    aliases: ['publish:adoc'],
+    aliases: ['adoc'],
 )]
 class AsciidocCommand extends Command
 {
@@ -38,7 +39,7 @@ class AsciidocCommand extends Command
         }
 
         try {
-            $collection = new BmmSchemaCollection();
+            $collection = new BmmSchemaCollection(new ConsoleLogger($output));
             foreach ($toRead as $schema) {
                 if ($schema === 'legacy') {
                     $legacyFormat = true;
@@ -46,8 +47,7 @@ class AsciidocCommand extends Command
                 }
                 $collection->load($schema);
             }
-            $writer = new BmmAsciidocWriter($collection->schemas, $legacyFormat);
-            $writer->write();
+            (new Asciidoc($collection, $legacyFormat))();
         } catch (\UnhandledMatchError $e) {
             $output->writeln((string) $e);
             return Command::FAILURE;

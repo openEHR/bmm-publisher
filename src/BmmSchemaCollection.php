@@ -5,21 +5,30 @@ declare(strict_types=1);
 namespace OpenEHR\BmmPublisher;
 
 use Cadasto\OpenEHR\BMM\Helper\Collection;
+use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
-use OpenEHR\BmmPublisher\Helper\ConsoleTrait;
+use OpenEHR\BmmPublisher\Helper\ResourcesDir;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use RuntimeException;
 
-class BmmSchemaCollection
+/**
+ * @implements \IteratorAggregate<int, BmmSchema>
+ */
+class BmmSchemaCollection implements \IteratorAggregate
 {
-    use ConsoleTrait;
+    private readonly Collection $schemas;
+    public readonly LoggerInterface $logger;
 
-    public const string DIR = __READER_DIR__ . DIRECTORY_SEPARATOR . 'BMM-JSON' . DIRECTORY_SEPARATOR;
-
-    public readonly Collection $schemas;
-
-    public function __construct()
+    public function __construct(?LoggerInterface $logger = null)
     {
         $this->schemas = new Collection();
+        $this->logger = $logger ?? new NullLogger();
+    }
+
+    public static function inputDir(): string
+    {
+        return ResourcesDir::path() . DIRECTORY_SEPARATOR;
     }
 
     public function load(string $filename): void
@@ -27,21 +36,64 @@ class BmmSchemaCollection
         if (!str_ends_with($filename, '.bmm.json')) {
             $filename .= '.bmm.json';
         }
-        $path = self::DIR . $filename;
+        $path = self::inputDir() . $filename;
         if (!is_readable($path) || !is_file($path)) {
             throw new RuntimeException("File missing or not readable: $path.");
         }
-        self::log('Reading [%s] filename...', $path);
+        $this->logger->notice('Reading {file}...', ['file' => $path]);
         $jsonContent = file_get_contents($path);
         if ($jsonContent === false) {
             throw new RuntimeException("Failed to read file: $path");
         }
         $data = json_decode($jsonContent, true, 512, JSON_THROW_ON_ERROR);
 
-        self::log("Deserializing to BMM objects...");
+        $this->logger->info('Deserializing to BMM objects...');
         $schema = BmmSchema::fromArray($data);
-        self::log("  Read %d BMM Classes from %s.", $schema->classDefinitions->count(), $schema->getSchemaId());
+        $this->logger->notice('  Read {count} BMM Classes from {schema}.', [
+            'count' => $schema->classDefinitions->count(),
+            'schema' => $schema->getSchemaId(),
+        ]);
         $this->schemas->add($schema);
+    }
+
+    public function count(): int
+    {
+        return $this->schemas->count();
+    }
+
+    public function getIterator(): \ArrayIterator
+    {
+        return $this->schemas->getIterator();
+    }
+
+    /**
+     * Resolve a class by name across all loaded schemas.
+     */
+    public function getClass(string $className): ?AbstractBmmClass
+    {
+        /** @var BmmSchema $schema */
+        foreach ($this->schemas as $schema) {
+            $class = $schema->classDefinitions->get($className) ?? $schema->primitiveTypes->get($className);
+            if ($class instanceof AbstractBmmClass) {
+                return $class;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Resolve the package-qualified name of a class across all loaded schemas.
+     */
+    public function getClassPackageQName(string $className): ?string
+    {
+        /** @var BmmSchema $schema */
+        foreach ($this->schemas as $schema) {
+            $qname = $schema->getClassPackageQName($className);
+            if (!empty($qname)) {
+                return $qname;
+            }
+        }
+        return null;
     }
 
     /**
@@ -49,7 +101,7 @@ class BmmSchemaCollection
      */
     public static function availableSchemas(): array
     {
-        $paths = glob(self::DIR . '*.bmm.json');
+        $paths = glob(self::inputDir() . '*.bmm.json');
 
         return array_map(static fn(string $f): string => basename($f), $paths !== false ? $paths : []);
     }
