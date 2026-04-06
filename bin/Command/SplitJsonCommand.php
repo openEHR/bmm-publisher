@@ -1,0 +1,74 @@
+<?php
+
+declare(strict_types=1);
+
+namespace OpenEHR\BmmPublisher\Console\Command;
+
+use OpenEHR\BmmPublisher\CodeGenerator;
+use OpenEHR\BmmPublisher\Reader\BmmJsonReader;
+use OpenEHR\BmmPublisher\Writer\BmmJsonSplitWriter;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Output\OutputInterface;
+
+#[AsCommand(
+    name: 'publish:split-json',
+    description: 'Split latest BMM JSON of each component into per-type files.',
+)]
+class SplitJsonCommand extends Command
+{
+    public function __invoke(OutputInterface $output): int
+    {
+        try {
+            $latest = $this->findLatestSchemas();
+            if (empty($latest)) {
+                $output->writeln('<comment>No BMM JSON files found.</comment>');
+                return Command::SUCCESS;
+            }
+
+            $reader = new BmmJsonReader();
+            foreach ($latest as $filename) {
+                $reader->read(basename($filename));
+            }
+            $reader->read('openehr_am_1.4.0');
+            $generator = new CodeGenerator($reader);
+            $generator->addWriter(new BmmJsonSplitWriter());
+            $generator->generate();
+        } catch (\Throwable $e) {
+            $output->writeln((string) $e);
+            return Command::FAILURE;
+        }
+
+        return Command::SUCCESS;
+    }
+
+    /**
+     * @return array<int, string> full paths to latest schema files by component
+     */
+    private function findLatestSchemas(): array
+    {
+        $files = glob(BmmJsonReader::DIR . '*.bmm.json');
+        if ($files === false) {
+            return [];
+        }
+        $byComponent = [];
+        foreach ($files as $path) {
+            $base = basename($path, '.bmm.json');
+            $parts = explode('_', $base);
+            if (\count($parts) < 2) {
+                $component = $base;
+                $version = '0.0.0';
+            } else {
+                $version = array_pop($parts);
+                $component = implode('_', $parts);
+            }
+            $current = $byComponent[$component] ?? null;
+            if (!$current) {
+                $byComponent[$component] = [$version, $path];
+            } elseif (version_compare($version, $current[0]) > 0) {
+                $byComponent[$component] = [$version, $path];
+            }
+        }
+        return array_map(fn($tuple) => $tuple[1], array_values($byComponent));
+    }
+}

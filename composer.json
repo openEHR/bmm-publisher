@@ -9,7 +9,10 @@
     ],
     "require": {
         "php": "^8.4",
-        "ext-json": "*"
+        "ext-json": "*",
+        "cadasto/openehr-bmm": "^0.2.1",
+        "symfony/console": "^8.0",
+        "symfony/yaml": "^8.0"
     },
     "require-dev": {
         "ext-xdebug": "*",
@@ -22,9 +25,11 @@
     },
     "autoload": {
         "psr-4": {
-            "OpenEHR\\BmmPublisher\\": "src/"
+            "OpenEHR\\BmmPublisher\\": "src/",
+            "OpenEHR\\BmmPublisher\\Console\\": "bin/"
         }
     },
+    "bin": ["bin/bmm-publisher"],
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
