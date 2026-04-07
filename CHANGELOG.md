@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-04-07
+
+### Changed
+
+- **Error handling**: commands catch `\Throwable` (was `\UnhandledMatchError`); error message shown at normal verbosity, full trace with `-v`. `Filesystem::writeFile()` throws on write failure.
+- **Formatters**: added `declare(strict_types=1)` to all formatter files; extracted shared `formatParameterDocRows()` to reduce duplication between `AsciidocDefinition` and `AsciidocEffective`.
+- **`BmmConstant::value`** cast to string before formatting (was failing on integer constants).
+
+### Added
+
+- `BmmSchemaCollection::forEachPackage()` — shared recursive package traversal, replacing duplicated triple-nested loops in 3 writers.
+- Caching in `BmmSchemaCollection::getClass()` and `getClassPackageQName()` for faster cross-schema lookups.
+- Path traversal protection: `basename()` sanitisation in `BmmSchemaCollection::load()`.
+- Integration and unit tests for all 4 writers and both formatters (`AsciidocDefinition`, `PlantUml`). Test count: 26 → 55, assertions: 73 → 159.
+
 ## [0.1.0] - 2026-04-06
 
 First release: a small command-line tool that turns openEHR BMM JSON into AsciiDoc, PlantUML, YAML, and extra JSON files for the specs site.
@@ -21,5 +36,6 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/openehr/bmm-publisher/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/openehr/bmm-publisher/releases/tag/0.1.0
