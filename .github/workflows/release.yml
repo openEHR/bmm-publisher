@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
       - name: Check tag points to main
         run: |
-          git branch --contains "${{ github.sha }}" | grep -qE '(^|\s)main$' \
+          git branch -a --contains "${{ github.sha }}" | grep -qE '(^|\s)(main|remotes/origin/main)$' \
             || { echo "::error::Tag must be on main branch"; exit 1; }
 
   validate:
