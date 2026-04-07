@@ -42,8 +42,9 @@ class YamlCommand extends Command
                 $collection->load($schema);
             }
             (new BmmYaml($collection))();
-        } catch (\UnhandledMatchError $e) {
-            $output->writeln((string) $e);
+        } catch (\Throwable $e) {
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $output->writeln((string) $e, OutputInterface::VERBOSITY_VERBOSE);
             return Command::FAILURE;
         }
 

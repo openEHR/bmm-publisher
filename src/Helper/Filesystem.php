@@ -28,6 +28,9 @@ final class Filesystem
     public static function writeFile(string $filename, string $content, ?LoggerInterface $logger = null): void
     {
         $bytes = file_put_contents($filename, $content);
-        ($logger ?? new NullLogger())->info('  Wrote {bytes} bytes to {file} file.', ['bytes' => $bytes, 'file' => $filename]);
+        if ($bytes === false) {
+            throw new RuntimeException(\sprintf('Failed to write file: %s', $filename));
+        }
+        ($logger ?? new NullLogger())->info('  Wrote {bytes} bytes to {file}.', ['bytes' => $bytes, 'file' => $filename]);
     }
 }

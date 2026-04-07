@@ -33,7 +33,8 @@ class SplitJsonCommand extends Command
             $collection->load('openehr_am_1.4.0');
             (new BmmJsonSplit($collection))();
         } catch (\Throwable $e) {
-            $output->writeln((string) $e);
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $output->writeln((string) $e, OutputInterface::VERBOSITY_VERBOSE);
             return Command::FAILURE;
         }
 
