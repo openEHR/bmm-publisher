@@ -6,6 +6,7 @@ namespace OpenEHR\BmmPublisher;
 
 use Cadasto\OpenEHR\BMM\Helper\Collection;
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
+use Cadasto\OpenEHR\BMM\Model\BmmPackage;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
 use OpenEHR\BmmPublisher\Helper\ResourcesDir;
 use Psr\Log\LoggerInterface;
@@ -61,6 +62,30 @@ class BmmSchemaCollection implements \IteratorAggregate
             'schema' => $schema->getSchemaId(),
         ]);
         $this->schemas->add($schema);
+    }
+
+    /**
+     * Walk all packages (up to 3 levels deep) across all loaded schemas.
+     *
+     * @param callable(BmmPackage, BmmSchema, string): void $callback receives (package, schema, namePrefix)
+     */
+    public function forEachPackage(callable $callback): void
+    {
+        /** @var BmmSchema $schema */
+        foreach ($this->schemas as $schema) {
+            /** @var BmmPackage $package */
+            foreach ($schema->packages as $package) {
+                $callback($package, $schema, '');
+                /** @var BmmPackage $subPackage */
+                foreach ($package->packages as $subPackage) {
+                    $callback($subPackage, $schema, $package->name . '.');
+                    /** @var BmmPackage $subSubPackage */
+                    foreach ($subPackage->packages as $subSubPackage) {
+                        $callback($subSubPackage, $schema, $package->name . '.' . $subPackage->name . '.');
+                    }
+                }
+            }
+        }
     }
 
     public function count(): int

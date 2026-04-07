@@ -43,23 +43,8 @@ class Asciidoc
 
     public function __invoke(): void
     {
-        $logger = $this->schemas->logger;
         Filesystem::assureDir(self::outputDir());
-        /** @var BmmSchema $schema */
-        foreach ($this->schemas as $schema) {
-            /** @var BmmPackage $package */
-            foreach ($schema->packages as $package) {
-                $this->writePackage($package, $schema, '');
-                /** @var BmmPackage $subPackage */
-                foreach ($package->packages as $subPackage) {
-                    $this->writePackage($subPackage, $schema, $package->name . '.');
-                    /** @var BmmPackage $subSubPackage */
-                    foreach ($subPackage->packages as $subSubPackage) {
-                        $this->writePackage($subSubPackage, $schema, $package->name . '.' . $subPackage->name . '.');
-                    }
-                }
-            }
-        }
+        $this->schemas->forEachPackage($this->writePackage(...));
     }
 
     private function writePackage(BmmPackage $package, BmmSchema $schema, string $namePrefix): void
