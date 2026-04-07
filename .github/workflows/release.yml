@@ -15,8 +15,21 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  guard:
+    name: Verify tag is on main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Check tag points to main
+        run: |
+          git branch --contains "${{ github.sha }}" | grep -qE '(^|\s)main$' \
+            || { echo "::error::Tag must be on main branch"; exit 1; }
+
   validate:
     name: Validate
+    needs: guard
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -71,7 +84,7 @@ jobs:
 
       - name: Extract metadata (tags, labels)
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
