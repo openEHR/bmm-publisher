@@ -356,9 +356,11 @@ readonly class AsciidocDefinition
         }
         $args = implode(", +\n", array_map(function ($parameter) use ($prefix, $schema) {
             if ($parameter instanceof BmmContainerFunctionParameter) {
-                return $parameter->name . ': `' . $this->formatContainerType($parameter->typeDef, $prefix, $schema) . ($parameter->isNullable ? '' : '[1]') . '`';
+                $type = $this->formatContainerType($parameter->typeDef, $prefix, $schema);
+                return $parameter->name . ': `' . $type . ($parameter->isNullable ? '' : '[1]') . '`';
             } elseif ($parameter instanceof BmmGenericFunctionParameter) {
-                return $parameter->name . ': `' . $this->formatGenericType($parameter->typeDef, $prefix, $schema) . ($parameter->isNullable ? '' : '[1]') . '`';
+                $type = $this->formatGenericType($parameter->typeDef, $prefix, $schema);
+                return $parameter->name . ': `' . $type . ($parameter->isNullable ? '' : '[1]') . '`';
             } elseif ($parameter instanceof BmmSingleFunctionParameter || $parameter instanceof BmmSingleFunctionParameterOpen) {
                 return $parameter->name . ': `' . $this->formatType($parameter->type, $prefix, $schema) . ($parameter->isNullable ? '' : '[1]') . '`';
             }
@@ -404,6 +406,8 @@ readonly class AsciidocDefinition
     protected function formatGenericType(BmmGenericType $type, string $prefix, BmmSchema $schema): string
     {
         if (!empty($type->genericParameters)) {
+            /** @var array<string|BmmGenericType> $params — library types string[] but nested generics produce BmmGenericType */
+            $params = $type->genericParameters;
             $genericParameters = implode(',', array_map(
                 function (string|BmmGenericType $t) use ($prefix, $schema): string {
                     if ($t instanceof BmmGenericType) {
@@ -411,7 +415,7 @@ readonly class AsciidocDefinition
                     }
                     return $this->formatType($t, $prefix, $schema);
                 },
-                $type->genericParameters,
+                $params,
             ));
         } elseif (!empty($type->genericParameterDefs)) {
             $genericParameters = implode(',', array_map(function ($t) use ($prefix, $schema) {
@@ -471,15 +475,19 @@ readonly class AsciidocDefinition
                     // type is on the same spec page, an example format is '<<_boolean_class,Boolean>>'
                     return '<<_' . strtolower($type) . '_' . $classType . ',' . $type . '>>';
                 }
-                // an example format is 'link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]'
-                return 'link:/releases/' . $m[0] . '/{' . strtolower($m[0]) . '_release}/' . $m[1] . '.html#_' . strtolower($type) . '_' . $classType . '[' . $type . '^]';
+                // format: 'link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]'
+                $rel = strtolower($m[0]) . '_release';
+                $anchor = strtolower($type) . '_' . $classType;
+                return "link:/releases/{$m[0]}/{{$rel}}/{$m[1]}.html#_{$anchor}[{$type}^]";
             }
 
-            // an example format is 'xref:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]'
+            // format: 'xref:BASE:foundation_types:overview.adoc#_boolean_class[Boolean]'
             $xref = match ($xref) {
                 'BASE:foundation_types' => 'BASE:foundation_types:overview',
                 'BASE:foundation_types:time' => 'BASE:foundation_types:time_types',
-                'BASE:foundation_types:structures', 'BASE:foundation_types:structure', 'BASE:foundation_types:structure_package' => 'BASE:foundation_types:structure_types',
+                'BASE:foundation_types:structures',
+                'BASE:foundation_types:structure',
+                'BASE:foundation_types:structure_package' => 'BASE:foundation_types:structure_types',
                 'BASE:foundation_types:interval' => 'BASE:foundation_types:interval',
                 'BASE:foundation_types:primitive_types' => 'BASE:foundation_types:primitive_types',
                 'BASE:foundation_types:functional' => 'BASE:foundation_types:functional',

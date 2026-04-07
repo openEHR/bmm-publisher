@@ -13,7 +13,6 @@ use RuntimeException;
 
 final class BmmSchemaCollectionTest extends TestCase
 {
-
     #[Test]
     public function inputDirPointsToResourcesDirectory(): void
     {

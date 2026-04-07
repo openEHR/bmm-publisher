@@ -233,6 +233,8 @@ EOD;
     private function formatGenericParameterType(BmmGenericType $type): string
     {
         if (!empty($type->genericParameters)) {
+            /** @var array<string|BmmGenericType> $params — library types string[] but nested generics produce BmmGenericType */
+            $params = $type->genericParameters;
             $genericParameters = implode(',', array_map(
                 function (string|BmmGenericType $t): string {
                     if ($t instanceof BmmGenericType) {
@@ -240,7 +242,7 @@ EOD;
                     }
                     return $t;
                 },
-                $type->genericParameters,
+                $params,
             ));
         } elseif (!empty($type->genericParameterDefs)) {
             $genericParameters = implode(',', array_map(function ($t) {

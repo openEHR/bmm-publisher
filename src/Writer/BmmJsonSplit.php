@@ -84,7 +84,8 @@ class BmmJsonSplit
                     'aom2' => 'AOM2.html',
                     default => $page . '.html',
                 };
-                $data['specUrl'] = \sprintf('https://specifications.openehr.org/releases/%s/development/%s#%s', strtoupper($schema->schemaName), $page, $fragment);
+                $component = strtoupper($schema->schemaName);
+                $data['specUrl'] = "https://specifications.openehr.org/releases/{$component}/development/{$page}#{$fragment}";
             }
             $logger->notice('Writing {file} class ...', ['file' => $filename]);
             $content = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);

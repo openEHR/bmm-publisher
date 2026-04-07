@@ -13,7 +13,7 @@ use Psr\Log\NullLogger;
 use RuntimeException;
 
 /**
- * @implements \IteratorAggregate<int, BmmSchema>
+ * @implements \IteratorAggregate<string, BmmSchema>
  */
 class BmmSchemaCollection implements \IteratorAggregate
 {
@@ -61,8 +61,10 @@ class BmmSchemaCollection implements \IteratorAggregate
         return $this->schemas->count();
     }
 
+    /** @return \ArrayIterator<string, BmmSchema> */
     public function getIterator(): \ArrayIterator
     {
+        /** @var \ArrayIterator<string, BmmSchema> */
         return $this->schemas->getIterator();
     }
 

@@ -10,4 +10,11 @@
     <exclude-pattern>*/var/*</exclude-pattern>
 
     <rule ref="PSR12"/>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="160"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
 </ruleset>
