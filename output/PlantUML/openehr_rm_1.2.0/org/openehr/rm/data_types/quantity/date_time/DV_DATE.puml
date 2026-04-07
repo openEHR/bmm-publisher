@@ -51,7 +51,10 @@ abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
 DATA_VALUE <|-- DV_ORDERED
 
 abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
-  + {abstract} infix <( other : Ordered [1] ) : Boolean [1]
+  + {abstract} less_than( other : Ordered [1] ) : Boolean [1]
+  + less_than_or_equal( other : Ordered [1] ) : Boolean [1]
+  + greater_than( other : Ordered [1] ) : Boolean [1]
+  + greater_than_or_equal( other : Ordered [1] ) : Boolean [1]
 }
 
 Ordered <|-- DV_ORDERED
@@ -65,13 +68,20 @@ DV_ABSOLUTE_QUANTITY <|-- DV_TEMPORAL
 DV_TEMPORAL <|-- DV_DATE
 
 class Iso8601_date  #whitesmoke;line:gray;line.dotted;text:gray {
+  + year() : Integer [1]
+  + month() : Integer [1]
+  + day() : Integer [1]
+  + timezone() : Iso8601_timezone [1]
   + month_unknown() : Boolean [1]
   + day_unknown() : Boolean [1]
-  + valid_iso8601_date() : Boolean [1]
   + is_partial() : Boolean [1]
   + is_extended() : Boolean [1]
   + as_string() : String [1]
-  + as_date() : Date [1]
+  + add( a_diff : Iso8601_duration [1] ) : Iso8601_date [1]
+  + subtract( a_diff : Iso8601_duration [1] ) : Iso8601_date [1]
+  + diff( a_date : Iso8601_date [1] ) : Iso8601_duration [1]
+  + add_nominal( a_diff : Iso8601_duration [1] ) : Iso8601_date [1]
+  + subtract_nominal( a_diff : Iso8601_duration [1] ) : Iso8601_date [1]
 }
 
 abstract class Iso8601_type  #whitesmoke;line:gray;line.dotted;text:gray {
@@ -80,30 +90,19 @@ abstract class Iso8601_type  #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} is_extended() : Boolean [1]
 }
 
-abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
-  + {abstract} infix <( other : Ordered [1] ) : Boolean [1]
-}
-
-Ordered <|-- Iso8601_type
-
-Iso8601_type <|-- Iso8601_date
-
-abstract class IDate  #whitesmoke;line:gray;line.dotted;text:gray {
-  + year() : Integer [1]
-  + month() : Integer [1]
-  + day() : Integer [1]
-  + timezone() : ITimezone [1]
-  + as_string() : String [1]
-}
-
 abstract class Temporal  #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
-  + {abstract} infix <( other : Ordered [1] ) : Boolean [1]
+  + {abstract} less_than( other : Ordered [1] ) : Boolean [1]
+  + less_than_or_equal( other : Ordered [1] ) : Boolean [1]
+  + greater_than( other : Ordered [1] ) : Boolean [1]
+  + greater_than_or_equal( other : Ordered [1] ) : Boolean [1]
 }
 
 Ordered <|-- Temporal
+
+Temporal <|-- Iso8601_type
 
 class Time_Definitions  #whitesmoke;line:gray;line.dotted;text:gray {
   + valid_year( y : Integer [1] ) : Boolean [1]
@@ -113,13 +112,15 @@ class Time_Definitions  #whitesmoke;line:gray;line.dotted;text:gray {
   + valid_minute( m : Integer [1] ) : Boolean [1]
   + valid_second( s : Integer [1] ) : Boolean [1]
   + valid_fractional_second( fs : Double [1] ) : Boolean [1]
+  + valid_iso8601_date( s : String [1] ) : Boolean [1]
+  + valid_iso8601_time( s : String [1] ) : Boolean [1]
+  + valid_iso8601_date_time( s : String [1] ) : Boolean [1]
+  + valid_iso8601_duration( s : String [1] ) : Boolean [1]
 }
 
-Time_Definitions <|-- Temporal
+Time_Definitions <|-- Iso8601_type
 
-Temporal <|-- IDate
-
-IDate <|-- Iso8601_date
+Iso8601_type <|-- Iso8601_date
 
 Iso8601_date <|-- DV_DATE
 

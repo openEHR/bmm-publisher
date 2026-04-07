@@ -61,34 +61,6 @@ DV_ABSOLUTE_QUANTITY <|-- DV_TEMPORAL
 DV_TEMPORAL <|-- DV_DATE_TIME
 
 class Iso8601_date_time  #whitesmoke;line:gray;line.dotted;text:gray {
-  + month_unknown() : Boolean [1]
-  + day_unknown() : Boolean [1]
-  + minute_unknown() : Boolean [1]
-  + second_unknown() : Boolean [1]
-  + is_decimal_sign_comma() : Boolean [1]
-  + valid_iso8601_date_time( s : String [1] ) : Boolean [1]
-  + is_partial() : Boolean [1]
-  + is_extended() : Boolean [1]
-  + as_string() : String [1]
-  + has_fractional_second() : Boolean [1]
-  + as_date_time() : Date_time [1]
-}
-
-abstract class Iso8601_type  #whitesmoke;line:gray;line.dotted;text:gray {
-  + value : String [1]
-  + {abstract} is_partial() : Boolean [1]
-  + {abstract} is_extended() : Boolean [1]
-}
-
-abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
-  + {abstract} infix <( other : Ordered [1] ) : Boolean [1]
-}
-
-Ordered <|-- Iso8601_type
-
-Iso8601_type <|-- Iso8601_date_time
-
-abstract class IDate_time  #whitesmoke;line:gray;line.dotted;text:gray {
   + year() : Integer [1]
   + month() : Integer [1]
   + day() : Integer [1]
@@ -96,7 +68,22 @@ abstract class IDate_time  #whitesmoke;line:gray;line.dotted;text:gray {
   + minute() : Integer [1]
   + second() : Integer [1]
   + fractional_second() : Real [1]
-  + timezone() : ITimezone [1]
+  + timezone() : Iso8601_timezone [1]
+  + month_unknown() : Boolean [1]
+  + day_unknown() : Boolean [1]
+  + minute_unknown() : Boolean [1]
+  + second_unknown() : Boolean [1]
+  + is_decimal_sign_comma() : Boolean [1]
+  + is_partial() : Boolean [1]
+  + is_extended() : Boolean [1]
+  + has_fractional_second() : Boolean [1]
+  + as_string() : String [1]
+}
+
+abstract class Iso8601_type  #whitesmoke;line:gray;line.dotted;text:gray {
+  + value : String [1]
+  + {abstract} is_partial() : Boolean [1]
+  + {abstract} is_extended() : Boolean [1]
 }
 
 abstract class Temporal  #whitesmoke;line:gray;line.dotted;text:gray {
@@ -108,6 +95,8 @@ abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
 
 Ordered <|-- Temporal
 
+Temporal <|-- Iso8601_type
+
 class Time_Definitions  #whitesmoke;line:gray;line.dotted;text:gray {
   + valid_year( y : Integer [1] ) : Boolean [1]
   + valid_month( m : Integer [1] ) : Boolean [1]
@@ -116,13 +105,15 @@ class Time_Definitions  #whitesmoke;line:gray;line.dotted;text:gray {
   + valid_minute( m : Integer [1] ) : Boolean [1]
   + valid_second( s : Integer [1] ) : Boolean [1]
   + valid_fractional_second( fs : Double [1] ) : Boolean [1]
+  + valid_iso8601_date( s : String [1] ) : Boolean [1]
+  + valid_iso8601_time( s : String [1] ) : Boolean [1]
+  + valid_iso8601_date_time( s : String [1] ) : Boolean [1]
+  + valid_iso8601_duration( s : String [1] ) : Boolean [1]
 }
 
-Time_Definitions <|-- Temporal
+Time_Definitions <|-- Iso8601_type
 
-Temporal <|-- IDate_time
-
-IDate_time <|-- Iso8601_date_time
+Iso8601_type <|-- Iso8601_date_time
 
 Iso8601_date_time <|-- DV_DATE_TIME
 
