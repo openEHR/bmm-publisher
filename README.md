@@ -1,6 +1,6 @@
 # bmm-publisher
 
-PHP CLI tool that reads openEHR BMM schemas and publishes class definitions as AsciiDoc, PlantUML, and YAML for the [openEHR specifications website](https://specifications.openehr.org/).
+Command-line tool: openEHR BMM schemas in, AsciiDoc, PlantUML, and YAML out — for the [openEHR specifications site](https://specifications.openehr.org/).
 
 ## Quick start (Docker)
 
