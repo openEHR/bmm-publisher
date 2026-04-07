@@ -1,6 +1,6 @@
 <?php
 
-/** @noinspection DuplicatedCode */
+declare(strict_types=1);
 
 namespace OpenEHR\BmmPublisher\Writer\Formatter;
 
@@ -218,14 +218,7 @@ readonly class AsciidocDefinition
                 $rows[] = 'h|*' . $card . $override . '*';
                 $rows[] = '|' . $signature;
                 $rows[] = 'a|' . $this->formatText($function->documentation ?? '');
-                if ($parameterDocs) {
-                    $rows[] = '';
-                    $rows[] = '.Parameters +';
-                    $rows[] = '[horizontal]';
-                    foreach ($parameterDocs as $parameterName => $doc) {
-                        $rows[] = '`_' . $parameterName . '_`:: ' . $this->formatText($doc);
-                    }
-                }
+                array_push($rows, ...$this->formatParameterDocRows($parameterDocs));
             }
         }
 
@@ -304,7 +297,7 @@ readonly class AsciidocDefinition
         $maxOccurs = 1;
         $type = $this->formatType($constant->type, $prefix, $schema);
         $card = $minOccurs . '..' . $maxOccurs;
-        $value = $constant->value !== null ? $this->formatText($constant->value) : '';
+        $value = $constant->value !== null ? $this->formatText((string) $constant->value) : '';
         $signature = '*' . $constant->name . '*: `' . $type . '{nbsp}={nbsp}' . $value . '`';
         return [$card, $signature];
     }
@@ -520,6 +513,27 @@ readonly class AsciidocDefinition
         $replaced = preg_replace('/(\{[\w.]*})/', '\\\$1', $text, -1, $count);
         $text = $replaced ?? '';
         return str_replace(array_keys(self::TEXT_REPLACEMENT), array_values(self::TEXT_REPLACEMENT), trim($text));
+    }
+
+    /**
+     * Render function parameter documentation rows.
+     *
+     * @param array<int|string, mixed> $parameterDocs
+     * @return list<string>
+     */
+    protected function formatParameterDocRows(array $parameterDocs): array
+    {
+        if (empty($parameterDocs)) {
+            return [];
+        }
+        $rows = [];
+        $rows[] = '';
+        $rows[] = '.Parameters +';
+        $rows[] = '[horizontal]';
+        foreach ($parameterDocs as $parameterName => $doc) {
+            $rows[] = '`_' . $parameterName . '_`:: ' . $this->formatText($doc);
+        }
+        return $rows;
     }
 
     public function formatPropertyOverride(BmmClass $class, AbstractBmmProperty $property, BmmSchema $schema): string

@@ -1,6 +1,6 @@
 <?php
 
-/** @noinspection DuplicatedCode */
+declare(strict_types=1);
 
 namespace OpenEHR\BmmPublisher\Writer\Formatter;
 
@@ -160,14 +160,7 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 $ancestor = $this->formatAncestorName($ancestorName, $prefix, $class, $schema);
                 $rows[] = '|' . $abstract . $ancestor . $signature . ' [' . $card . ']';
                 $rows[] = 'a|' . $this->formatText($function->documentation ?? '');
-                if ($parameterDocs) {
-                    $rows[] = '';
-                    $rows[] = '.Parameters +';
-                    $rows[] = '[horizontal]';
-                    foreach ($parameterDocs as $parameterName => $doc) {
-                        $rows[] = '`_' . $parameterName . '_`:: ' . $this->formatText($doc);
-                    }
-                }
+                array_push($rows, ...$this->formatParameterDocRows($parameterDocs));
             }
         }
 

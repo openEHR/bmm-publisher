@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenEHR\BmmPublisher\Writer\Formatter;
 
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
