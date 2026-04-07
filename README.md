@@ -5,7 +5,30 @@
 [![License](https://img.shields.io/github/license/openEHR/bmm-publisher)](LICENSE)
 [![Docker](https://img.shields.io/badge/ghcr.io-openehr%2Fbmm--publisher-2496ED?logo=docker&logoColor=white)](https://ghcr.io/openehr/bmm-publisher)
 
-Command-line tool: openEHR BMM schemas in, AsciiDoc, PlantUML, and YAML out — for the [openEHR specifications site](https://specifications.openehr.org/).
+CLI tool that reads [openEHR](https://openehr.org/) **BMM** (Basic Meta-Model) schemas and generates class documentation for the [openEHR specifications website](https://specifications.openehr.org/).
+
+The [BMM](https://specifications.openehr.org/releases/LANG/latest/bmm.html) is a formal model used to define the type systems behind the openEHR Reference Model, Archetype Model, and related components. Each component's classes, properties, functions, and type relationships are expressed as [P_BMM](https://specifications.openehr.org/releases/LANG/latest/bmm_persistence.html) JSON schema files.
+
+This tool processes those schemas and produces:
+
+- **AsciiDoc** tables — class definitions, effective (flattened) views, and cross-referenced type links, embedded directly into the published specification pages
+- **PlantUML** diagrams — class and package diagrams rendered as SVG in the specifications
+- **YAML** — machine-readable serialisation of each schema
+- **Per-type JSON** — individual class files with links back to the relevant specification page
+
+### Extend it for your own use
+
+Because BMM formally describes the complete openEHR type system — classes, inheritance, properties, generics, functions, constraints — it can serve as the source of truth for many downstream artefacts beyond documentation. If you need something this tool doesn't produce out of the box, fork the repo and add your own writer. Each writer is a single callable class that receives the loaded schemas and writes output. Examples of what you could generate:
+
+- **Code skeletons** — PHP, Java, C#, Python, or TypeScript class stubs with typed properties and method signatures derived from the BMM definitions
+- **JSON Schema / OpenAPI** — formal validation schemas for REST APIs that exchange openEHR data structures
+- **GraphQL types** — type definitions for GraphQL APIs backed by the Reference Model
+- **Database schemas** — DDL for relational or document stores, mapping BMM classes to tables or collections
+- **Alternative documentation formats** — Markdown, HTML, Docusaurus pages, Confluence wiki markup, or any other publishing format
+- **Diff reports** — compare two BMM versions and produce a changelog of added, removed, or changed classes and properties
+- **Conformance test data** — generate test fixtures or validation datasets based on the type constraints
+
+The architecture is intentionally simple: `BmmSchemaCollection` loads and indexes all schemas, your writer iterates them and produces files.
 
 ## Quick start (Docker)
 
