@@ -54,6 +54,20 @@ Commands below are run **via** `make …` or `docker compose … app composer �
 - **Tests**: PHPUnit 12 (config in `tests/phpunit.xml`).
 - **Refactoring**: Rector (config in `tests/rector.php`; run locally; not in CI by default).
 
+## Docker images
+
+The Dockerfile (`.docker/Dockerfile`) is multistage:
+
+| Target | Purpose | Includes |
+|--------|---------|----------|
+| `development` | Local dev, CI composer scripts | xdebug, Composer, git, `php.ini-development` |
+| `production` | Release image pushed to GHCR | No xdebug, no Composer, `php.ini-production`, `ENTRYPOINT ["php", "bin/bmm-publisher"]` |
+
+```bash
+make build          # Build development image (docker-compose default)
+make build-prod     # Build production image locally
+```
+
 ## Directory layout
 
 - **Input**: BMM schemas in `resources/` (`.bmm.json` files)

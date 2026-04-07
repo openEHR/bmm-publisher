@@ -29,7 +29,7 @@ Use this file as the **primary reference** for agents, automation, and contribut
 | `.claude/` | Claude Code project instructions (`CLAUDE.md`). |
 | `.cursor/rules/` | Cursor rules (`project-context.mdc`, `commit-messages.mdc`, PHP/testing rules). |
 | `.github/` | CI workflow, release workflow (GitHub Release + Docker image to GHCR), Dependabot, issue/PR templates, Copilot instructions. |
-| `.docker/` | Dockerfile (PHP 8.5-cli Alpine) and docker-compose; used for dev **and** as the release image pushed to `ghcr.io/openehr/bmm-publisher`. |
+| `.docker/` | Multistage Dockerfile (PHP 8.5-cli Alpine): `production` target (CI/release, no xdebug) and `development` target (xdebug, Composer). Docker-compose targets `development`. |
 | `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md` | Root-level process and team docs |
 
 Coding standards and quality checks are defined by config files in `tests/` and the Composer scripts in `composer.json`.

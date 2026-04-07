@@ -58,9 +58,10 @@ jobs:
       - name: Unit tests
         run: composer test
 
-      - name: Build Docker image
+      - name: Build production Docker image
         uses: docker/build-push-action@v7
         with:
           context: .
           file: .docker/Dockerfile
+          target: production
           push: false

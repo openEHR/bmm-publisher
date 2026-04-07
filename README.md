@@ -2,29 +2,34 @@
 
 PHP CLI tool that reads openEHR BMM schemas and publishes class definitions as AsciiDoc, PlantUML, and YAML for the [openEHR specifications website](https://specifications.openehr.org/).
 
-## Requirements
+## Quick start (Docker)
 
-- Docker (for development and running)
-- Alternatively: PHP 8.4+ with Composer
-
-## Quick start
+The production image ships with all openEHR BMM schemas and runs `bmm-publisher` as its entrypoint — just pass the command and arguments:
 
 ```bash
-make install        # Install PHP dependencies
-make ci             # Run full CI checks
+# Using bundled schemas, output to a local directory
+docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher asciidoc all
+
+# Single schema
+docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher plantuml openehr_rm_1.2.0
+
+# With your own BMM schemas
+docker run --rm \
+  -v ./my-schemas:/app/resources \
+  -v ./my-output:/app/output \
+  ghcr.io/openehr/bmm-publisher yaml all
+
+# List available commands
+docker run --rm ghcr.io/openehr/bmm-publisher list
 ```
 
-## Usage
+Use `-v` for progress output, `-vv` for detailed file-write logging:
 
 ```bash
-# Inside the container (make sh) or via Docker:
-./bin/bmm-publisher asciidoc openehr_rm_1.2.0 openehr_base_1.3.0
-./bin/bmm-publisher plantuml all
-./bin/bmm-publisher yaml openehr_base_1.3.0
-./bin/bmm-publisher split-json
+docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher asciidoc -v all
 ```
 
-### Commands
+## Commands
 
 | Command | Aliases | Description |
 |---------|---------|-------------|
@@ -33,18 +38,42 @@ make ci             # Run full CI checks
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
 
-Pass schema name(s) without `.bmm.json` extension, or `all` to process every schema in `resources/`.
+Pass schema name(s) without `.bmm.json` extension, or `all` to process every schema in the input directory.
 
-Use `-v` for progress output, `-vv` for detailed logging.
+## Input / Output
 
-### Input / Output
+- **Input**: BMM schemas in `resources/` (`.bmm.json` files, shipped with the image)
+- **Output**: Generated artefacts in `output/` — mount a volume to retrieve them
 
-- **Input**: BMM schemas in `resources/` (`.bmm.json` files, shipped with the repo)
-- **Output**: Generated artefacts in `output/` (gitignored), configurable via `BMM_OUTPUT_DIR` env var
+Override paths via environment variables:
+
+```bash
+docker run --rm \
+  -e BMM_OUTPUT_DIR=/data/out \
+  -v ./results:/data/out \
+  ghcr.io/openehr/bmm-publisher asciidoc all
+```
 
 ## Development
 
-See [docs/development.md](docs/development.md) for Composer scripts, tooling, and Docker workflow.
+Requires Docker. The development image includes xdebug and Composer.
+
+```bash
+make install        # Install PHP dependencies
+make ci             # Run full CI checks (lint, PHPCS, PHPStan, tests)
+make sh             # Interactive shell in dev container
+make build-prod     # Build production image locally
+```
+
+Inside the dev container:
+
+```bash
+./bin/bmm-publisher asciidoc openehr_rm_1.2.0 openehr_base_1.3.0
+composer test
+composer check:phpstan
+```
+
+See [docs/development.md](docs/development.md) for full Composer scripts and tooling reference.
 
 See [AGENTS.md](AGENTS.md) for project structure, standards, and architecture.
 

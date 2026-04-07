@@ -1,4 +1,4 @@
-.PHONY: help up down clean logs ps build install sh
+.PHONY: help up down clean logs ps build build-prod install ci sh adoc
 
 # Default target
 .DEFAULT_GOAL := help
@@ -24,7 +24,7 @@ help: ## Display this help message
 up: ## Start dev containers in background
 	$(DOCKER_COMPOSE) up -d --force-recreate
 
-down: ## Stop all services (dev/prod) and keep data
+down: ## Stop all services and keep data
 	$(DOCKER_COMPOSE) down
 
 clean: ## Stop and remove containers, networks, and volumes
@@ -38,8 +38,11 @@ ps: ## List running containers for this project
 
 ##@ Build images
 
-build: ## Build image
+build: ## Build development image (with xdebug, Composer)
 	$(DOCKER_COMPOSE) build
+
+build-prod: ## Build production image (no xdebug, no Composer)
+	docker build -f .docker/Dockerfile --target production -t bmm-publisher .
 
 ##@ Development Workflow
 
@@ -52,3 +55,37 @@ ci: ## Run full CI checks (lint, CS, PHPStan, tests) in dev container
 sh: ## Open an interactive shell in dev container
 	-$(DOCKER_COMPOSE) exec app sh || $(DOCKER_COMPOSE) run --rm -it app sh
 
+##@ Publishing
+#
+# Each schema is loaded with its dependencies so cross-schema type
+# references resolve correctly (e.g. RM needs BASE, AM needs BASE+LANG).
+#
+PUBLISH_RUNS = \
+	./bin/bmm-publisher $(1) openehr_am_2.3.0 openehr_lang_1.0.0 openehr_base_1.2.0 \
+	&& ./bin/bmm-publisher $(1) openehr_am_2.4.0 openehr_lang_1.1.0 openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_rm_1.0.4 openehr_base_1.1.0 \
+	&& ./bin/bmm-publisher $(1) openehr_rm_1.1.0 openehr_base_1.2.0 \
+	&& ./bin/bmm-publisher $(1) openehr_rm_1.2.0 openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_am_1.4.0 openehr_base_1.1.0 \
+	&& ./bin/bmm-publisher $(1) openehr_am_2.2.0 openehr_base_1.1.0 \
+	&& ./bin/bmm-publisher $(1) openehr_lang_1.1.0 openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_lang_1.0.0 \
+	&& ./bin/bmm-publisher $(1) openehr_base_1.1.0 \
+	&& ./bin/bmm-publisher $(1) openehr_base_1.2.0 \
+	&& ./bin/bmm-publisher $(1) openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_term_3.0.0 \
+	&& ./bin/bmm-publisher $(1) openehr_term_3.1.0
+
+adoc: ## Generate AsciiDoc for all schema combinations
+	$(DOCKER_COMPOSE) run --rm app sh -c '$(call PUBLISH_RUNS,adoc)'
+
+puml: ## Generate PlantUML for all schema combinations
+	$(DOCKER_COMPOSE) run --rm app sh -c '$(call PUBLISH_RUNS,puml)'
+
+yaml: ## Generate YAML for all schemas
+	$(DOCKER_COMPOSE) run --rm app ./bin/bmm-publisher yaml all
+
+split-json: ## Generate per-type split JSON
+	$(DOCKER_COMPOSE) run --rm app ./bin/bmm-publisher split-json
+
+publish-all: adoc puml yaml split-json ## Run all publishers

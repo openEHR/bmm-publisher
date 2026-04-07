@@ -2,9 +2,11 @@
 # Or set COMPOSE_FILE=.docker/docker-compose.yml / use Makefile targets.
 services:
   app:
+    image: bmm-publisher-dev:latest
     build:
       context: ..
       dockerfile: .docker/Dockerfile
+      target: development
     working_dir: /app
     volumes:
       - ..:/app

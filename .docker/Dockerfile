@@ -1,37 +1,71 @@
 ARG PHP_VERSION=8.5
 
-FROM php:${PHP_VERSION}-cli-alpine
+#
+# Base stage — shared by production and development
+#
+FROM php:${PHP_VERSION}-cli-alpine AS base
 
-# Create an app user
-ARG user=app
-ARG group=app
+RUN set -eux \
+    && apk update && apk upgrade --no-cache \
+    && apk add --no-cache ca-certificates \
+    && update-ca-certificates \
+    && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+WORKDIR /app
+
+#
+# Vendor builder — install production dependencies and generate optimized autoloader
+#
+FROM base AS vendor-builder
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY composer.json composer.lock ./
+COPY bin ./bin
+COPY src ./src
+RUN composer install --no-interaction --no-progress --no-ansi --no-scripts --no-dev --classmap-authoritative --optimize-autoloader
+
+#
+# Production image (default target)
+#
+FROM base AS production
+
+COPY --from=vendor-builder /app/vendor ./vendor
+COPY --from=vendor-builder /app/bin ./bin
+COPY --from=vendor-builder /app/src ./src
+COPY resources ./resources
+
+RUN adduser -S -u 1000 -G root app \
+    && mkdir -p /app/output \
+    && chown app:root /app/output
+USER app
+
+ENTRYPOINT ["php", "bin/bmm-publisher"]
+
+#
+# Development image
+#
+FROM base AS development
+
+# Xdebug and Composer
+COPY --chmod=0755 --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN set -eux \
+    && mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
+    && apk add --no-cache git \
+    && install-php-extensions xdebug @composer
+
+COPY .docker/php/zz-development.ini /usr/local/etc/php/conf.d/
+
+# App user with XDG dirs for Composer cache
 ARG uid=1000
 ARG gid=1000
 ENV XDG_CONFIG_HOME=/data/.config
 ENV XDG_CACHE_HOME=/data/.cache
-RUN addgroup -g ${gid} -S ${group} \
-    && adduser -u ${uid} -G ${group} -S ${user} \
-    && mkdir -m 0755 -p "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" \
-    && chown -R ${gid}:${group} "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME"
+RUN addgroup -g ${gid} -S app \
+    && adduser -u ${uid} -G app -S app \
+    && mkdir -m 0775 -p "$XDG_CONFIG_HOME/composer" "$XDG_CACHE_HOME/composer" \
+    && chown -R app:app "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME"
 
-# Install dependencies
-RUN apk add --no-cache \
-      git \
-      ca-certificates \
-      curl \
-    && update-ca-certificates
-
-# Install composer
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=0 \
     PATH=/app/bin:/app/vendor/bin:$PATH
 
-# Install PHP modules and configure it for development
-ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-RUN install-php-extensions \
-        xdebug \
-    && cp -f "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
-    && php -m
-
-WORKDIR /app
 USER app
