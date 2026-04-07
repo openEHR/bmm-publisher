@@ -20,6 +20,12 @@ class BmmSchemaCollection implements \IteratorAggregate
     private readonly Collection $schemas;
     public readonly LoggerInterface $logger;
 
+    /** @var array<string, AbstractBmmClass|null> */
+    private array $classCache = [];
+
+    /** @var array<string, string|null> */
+    private array $qnameCache = [];
+
     public function __construct(?LoggerInterface $logger = null)
     {
         $this->schemas = new Collection();
@@ -36,6 +42,7 @@ class BmmSchemaCollection implements \IteratorAggregate
         if (!str_ends_with($filename, '.bmm.json')) {
             $filename .= '.bmm.json';
         }
+        $filename = basename($filename);
         $path = self::inputDir() . $filename;
         if (!is_readable($path) || !is_file($path)) {
             throw new RuntimeException("File missing or not readable: $path.");
@@ -69,33 +76,41 @@ class BmmSchemaCollection implements \IteratorAggregate
     }
 
     /**
-     * Resolve a class by name across all loaded schemas.
+     * Resolve a class by name across all loaded schemas (cached).
      */
     public function getClass(string $className): ?AbstractBmmClass
     {
+        if (\array_key_exists($className, $this->classCache)) {
+            return $this->classCache[$className];
+        }
+
         /** @var BmmSchema $schema */
         foreach ($this->schemas as $schema) {
             $class = $schema->classDefinitions->get($className) ?? $schema->primitiveTypes->get($className);
             if ($class instanceof AbstractBmmClass) {
-                return $class;
+                return $this->classCache[$className] = $class;
             }
         }
-        return null;
+        return $this->classCache[$className] = null;
     }
 
     /**
-     * Resolve the package-qualified name of a class across all loaded schemas.
+     * Resolve the package-qualified name of a class across all loaded schemas (cached).
      */
     public function getClassPackageQName(string $className): ?string
     {
+        if (\array_key_exists($className, $this->qnameCache)) {
+            return $this->qnameCache[$className];
+        }
+
         /** @var BmmSchema $schema */
         foreach ($this->schemas as $schema) {
             $qname = $schema->getClassPackageQName($className);
             if (!empty($qname)) {
-                return $qname;
+                return $this->qnameCache[$className] = $qname;
             }
         }
-        return null;
+        return $this->qnameCache[$className] = null;
     }
 
     /**
