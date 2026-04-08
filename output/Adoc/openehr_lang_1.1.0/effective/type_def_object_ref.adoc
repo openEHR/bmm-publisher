@@ -12,6 +12,7 @@
 `{default{nbsp}={nbsp}"Object_ref"}`
 a|
 
-|xref:LANG:beom:types_package.adoc#_expr_type_def_class[EXPR_TYPE_DEF].*type_anchor*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
-a|Attribute of the openEHR primitive type (or Any) corresponding to this type definition meta-type.
+|*type_anchor*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Attribute of the openEHR primitive type (or Any) corresponding to this type definition meta-type. +
+_Inherited from xref:LANG:beom:types_package.adoc#_expr_type_def_class[EXPR_TYPE_DEF]_
 |===

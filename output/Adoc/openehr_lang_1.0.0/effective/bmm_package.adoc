@@ -10,10 +10,11 @@ The `_name_` may be qualified if it is a top-level package.
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*name*: `link:/classes/String[String] ` [1..1]
-a|Name of this model element.
+|*name*: `link:/classes/String[String] ` [1..1]
+a|Name of this model element. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+|*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
 a|Optional documentation of this element, as a keyed list.
 
 It is strongly recommended to use the following key /type combinations for the relevant purposes:
@@ -24,41 +25,49 @@ It is strongly recommended to use the following key /type combinations for the r
 * `"misuse": String`
 * `"references": String`
 
-Other keys and value types may be freely added.
+Other keys and value types may be freely added. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER].*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]` [1..1]
-a|Model element within which a referenceable element is known.
+|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]` [1..1]
+a|Model element within which a referenceable element is known. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
-a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
+|*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER].*packages*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,xref:LANG:bmm:core_package.adoc#_bmm_package_class[BMM_PACKAGE]>` [0..1]
-a|Child packages; keys all in upper case for guaranteed matching.
+|*packages*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,xref:LANG:bmm:core_package.adoc#_bmm_package_class[BMM_PACKAGE]>` [0..1]
+a|Child packages; keys all in upper case for guaranteed matching. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]_
 
 |*classes*: `link:/classes/List[List] <link:/classes/BMM_CLASS[BMM_CLASS] >` [0..1]
 a|Classes listed as being in this package.
 
 2+h|*Functions*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
+|*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post_result__: `Result = (scope = self)` [1..1]
-a|True if this declaration entity is the root of the declaration hierarchy.
+a|True if this declaration entity is the root of the declaration hierarchy. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER].*package_at_path* ( +
+|*package_at_path* ( +
 a_path: `link:/classes/String[String] [1]` +
 ): `xref:LANG:bmm:core_package.adoc#_bmm_package_class[BMM_PACKAGE]` [0..1]
-a|Package at the path `_a_path_`.
+a|Package at the path `_a_path_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER].*do_recursive_packages* ( +
+|*do_recursive_packages* ( +
 action: `xref:LANG:bmm:expression_package.adoc#_el_procedure_agent_class[EL_PROCEDURE_AGENT][1]` +
 ): `void` [1..1]
-a|Recursively execute `_action_`, which is a procedure taking a `BMM_PACKAGE` argument, on all members of packages.
+a|Recursively execute `_action_`, which is a procedure taking a `BMM_PACKAGE` argument, on all members of packages. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER].*has_package_path* ( +
+|*has_package_path* ( +
 a_path: `link:/classes/String[String] [1]` +
 ): `link:/classes/Boolean[Boolean] ` [1..1]
-a|True if there is a package at the path `_a_path_`; paths are delimited with delimiter `\{BMM_DEFINITIONS}_Package_name_delimiter_`.
+a|True if there is a package at the path `_a_path_`; paths are delimited with delimiter `\{BMM_DEFINITIONS}_Package_name_delimiter_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]_
 
 |*root_classes* (): `link:/classes/List[List] <link:/classes/BMM_CLASS[BMM_CLASS] >` [0..1]
 a|Obtain the set of top-level classes in this package, either from this package itself or by recursing into the structure until classes are obtained from child packages. Recurse into each child only far enough to find the first level of classes.

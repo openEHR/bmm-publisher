@@ -8,11 +8,13 @@
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MODEL_METADATA].*rm_publisher*: `link:/classes/String[String] ` [1..1]
-a|Publisher of model expressed in the schema.
+|*rm_publisher*: `link:/classes/String[String] ` [1..1]
+a|Publisher of model expressed in the schema. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MODEL_METADATA]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MODEL_METADATA].*rm_release*: `link:/classes/String[String] ` [1..1]
-a|Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" .
+|*rm_release*: `link:/classes/String[String] ` [1..1]
+a|Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" . +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MODEL_METADATA]_
 
 |*bmm_version*: `link:/classes/String[String] ` [1..1]
 a|Version of BMM model, enabling schema evolution reasoning. Persisted attribute.

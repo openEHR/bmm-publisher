@@ -15,21 +15,24 @@ If no member of `_items_` has a True-returning `_condition_`, the evaluation res
 |*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:expression_package.adoc#_el_case_class[EL_CASE]<T>>` [1..1]
 a|Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
 
-|xref:LANG:bmm:expression_package.adoc#_el_decision_table_class[EL_DECISION_TABLE].*else*: `T` [1..1]
-a|Result expression of conditional, if its `_condition_` evaluates to True.
+|*else*: `T` [1..1]
+a|Result expression of conditional, if its `_condition_` evaluates to True. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_decision_table_class[EL_DECISION_TABLE]_
 
 |*test_value*: `xref:LANG:bmm:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]` [1..1]
 a|Expressing generating the input value for the case table.
 
 2+h|*Functions*
 
-|_(abstract)_ xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION].*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|_(abstract)_ *eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
 a|Meta-type of expression entity used in type-checking and evaluation. 
 
-Effected in descendants.
+Effected in descendants. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION].*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
-a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`).
+a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 |===

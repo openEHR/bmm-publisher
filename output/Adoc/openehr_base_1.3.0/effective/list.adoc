@@ -8,69 +8,81 @@
 
 2+h|*Functions*
 
-|_(abstract)_ xref:BASE:foundation_types:overview.adoc#_any_class[Any].*is_equal* ( +
+|_(abstract)_ *is_equal* ( +
 other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value.
+a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
 
 .Parameters +
 [horizontal]
 `_other_`:: Other object for comparison.
 
-|xref:BASE:foundation_types:overview.adoc#_any_class[Any].*equal* __alias__ "=", "==" ( +
+|*equal* __alias__ "=", "==" ( +
 other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|Reference equality for reference types, value equality for value types.
+a|Reference equality for reference types, value equality for value types. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
 
 .Parameters +
 [horizontal]
 `_other_`:: Other object for comparison.
 
-|xref:BASE:foundation_types:overview.adoc#_any_class[Any].*instance_of* ( +
+|*instance_of* ( +
 a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
 ): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
-a|Create new instance of a type.
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
 
-|xref:BASE:foundation_types:overview.adoc#_any_class[Any].*type_of* ( +
+|*type_of* ( +
 an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
-a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`.
+a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
 
-|xref:BASE:foundation_types:overview.adoc#_any_class[Any].*not_equal* __alias__ "!=", "≠" ( +
+|*not_equal* __alias__ "!=", "≠" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|True if current object not equal to `_other_`. Returns not `_equal_()`.
+a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
 
-|_(abstract)_ xref:BASE:foundation_types:structure_types.adoc#_container_class[Container].*has* ( +
+|_(abstract)_ *has* ( +
 v: `T[1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|Test for membership of a value.
+a|Test for membership of a value. +
+_Inherited from xref:BASE:foundation_types:structure_types.adoc#_container_class[Container]_
 
-|_(abstract)_ xref:BASE:foundation_types:structure_types.adoc#_container_class[Container].*count* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
-a|Number of items in container.
+|_(abstract)_ *count* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Number of items in container. +
+_Inherited from xref:BASE:foundation_types:structure_types.adoc#_container_class[Container]_
 
-|_(abstract)_ xref:BASE:foundation_types:structure_types.adoc#_container_class[Container].*is_empty* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|True if container is empty.
+|_(abstract)_ *is_empty* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if container is empty. +
+_Inherited from xref:BASE:foundation_types:structure_types.adoc#_container_class[Container]_
 
-|xref:BASE:foundation_types:structure_types.adoc#_container_class[Container].*there_exists* __alias__ "there exists", "∃" ( +
+|*there_exists* __alias__ "there exists", "∃" ( +
 test: `Operation[1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|Existential quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.
+a|Existential quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`. +
+_Inherited from xref:BASE:foundation_types:structure_types.adoc#_container_class[Container]_
 
-|xref:BASE:foundation_types:structure_types.adoc#_container_class[Container].*for_all* __alias__ "for all", "∀" ( +
+|*for_all* __alias__ "for all", "∀" ( +
 test: `Operation[1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|Universal quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.
+a|Universal quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`. +
+_Inherited from xref:BASE:foundation_types:structure_types.adoc#_container_class[Container]_
 
-|xref:BASE:foundation_types:structure_types.adoc#_container_class[Container].*matching* ( +
+|*matching* ( +
 test: `Operation[1]` +
 ): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<T>` [0..1]
-a|Return a List all items matching the predicate function `_test_` which has signature `(v:T): Boolean`. If no matches, an empty List is returned.
+a|Return a List all items matching the predicate function `_test_` which has signature `(v:T): Boolean`. If no matches, an empty List is returned. +
+_Inherited from xref:BASE:foundation_types:structure_types.adoc#_container_class[Container]_
 
-|xref:BASE:foundation_types:structure_types.adoc#_container_class[Container].*select* ( +
+|*select* ( +
 test: `Operation[1]` +
 ): `T` [0..1]
-a|Return first item matching the predicate function `_test_` which has signature `(v:T): Boolean`, or Void if no match.
+a|Return first item matching the predicate function `_test_` which has signature `(v:T): Boolean`, or Void if no match. +
+_Inherited from xref:BASE:foundation_types:structure_types.adoc#_container_class[Container]_
 
 |*first* (): `T` [1..1]
 a|Return first element.

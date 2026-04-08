@@ -18,10 +18,11 @@ a|Type, directly from the name of the reference, e.g. `\{SOME_TYPE}`.
 |*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
 a|Return `_type_`.
 
-|xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION].*is_boolean* (): `link:/classes/Boolean[Boolean] ` +
+|*is_boolean* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
-a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`).
+a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 
 2+h|*Invariants*
 

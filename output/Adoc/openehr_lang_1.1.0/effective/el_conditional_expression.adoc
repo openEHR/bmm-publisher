@@ -8,8 +8,9 @@
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH].*result*: `T` [1..1]
-a|Result expression of conditional, if its `_condition_` evaluates to True.
+|*result*: `T` [1..1]
+a|Result expression of conditional, if its `_condition_` evaluates to True. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH]_
 
 |*condition*: `xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]` [1..1]
 a|Boolean expression defining the condition of this decision branch.

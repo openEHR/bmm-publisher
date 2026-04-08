@@ -8,10 +8,11 @@
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*name*: `link:/classes/String[String] ` [1..1]
-a|Name of this model element.
+|*name*: `link:/classes/String[String] ` [1..1]
+a|Name of this model element. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+|*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
 a|Optional documentation of this element, as a keyed list.
 
 It is strongly recommended to use the following key /type combinations for the relevant purposes:
@@ -22,13 +23,16 @@ It is strongly recommended to use the following key /type combinations for the r
 * `"misuse": String`
 * `"references": String`
 
-Other keys and value types may be freely added.
+Other keys and value types may be freely added. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]` [1..1]
-a|Model element within which an element is declared.
+|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]` [1..1]
+a|Model element within which an element is declared. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
-a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
+|*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
 |*is_synthesised_generic*: `link:/classes/Boolean[Boolean] ` [0..1] +
 `{default{nbsp}={nbsp}false}`
@@ -36,10 +40,11 @@ a|True if this feature was synthesised due to generic substitution in an inherit
 
 2+h|*Functions*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
+|*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post_result__: `Result = (scope = self)` [1..1]
-a|True if this declaration entity is the root of the declaration hierarchy.
+a|True if this declaration entity is the root of the declaration hierarchy. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
 |_(abstract)_ *signature* (): `link:/classes/BMM_SIGNATURE[BMM_SIGNATURE] ` [1..1]
 a|Formal signature of this element, in the form:

@@ -22,6 +22,7 @@ Not yet standardised.
 
 2+h|*Functions*
 
-|_(abstract)_ xref:LANG:beom:core_package.adoc#_expr_value_class[EXPR_VALUE].*value* (): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
-a|The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values.
+|_(abstract)_ *value* (): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values. +
+_Inherited from xref:LANG:beom:core_package.adoc#_expr_value_class[EXPR_VALUE]_
 |===

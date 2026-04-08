@@ -12,8 +12,9 @@ If no member of `_items_` has a True-returning `_condition_`, the evaluation res
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:expression_package.adoc#_el_decision_table_class[EL_DECISION_TABLE].*else*: `xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]` [1..1]
-a|Result expression of the chain if no member of `_items_` succeeds in evaluation.
+|*else*: `xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]` [1..1]
+a|Result expression of the chain if no member of `_items_` succeeds in evaluation. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_decision_table_class[EL_DECISION_TABLE]_
 
 |*items*: `link:/classes/List[List] <xref:LANG:bmm:expression_package.adoc#_el_case_class[EL_CASE]>` [1..1]
 a|Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
@@ -23,13 +24,15 @@ a|Input value that is compared against each `_items_[i]._value_range_` to determ
 
 2+h|*Functions*
 
-|_(abstract)_ xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION].*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|_(abstract)_ *eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
 a|Meta-type of expression entity used in type-checking and evaluation. 
 
-Effected in descendants.
+Effected in descendants. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION].*is_boolean* (): `link:/classes/Boolean[Boolean] ` +
+|*is_boolean* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
-a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`).
+a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 |===

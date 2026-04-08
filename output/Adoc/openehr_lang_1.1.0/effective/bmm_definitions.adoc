@@ -8,23 +8,29 @@
 
 2+h|*Constants*
 
-|xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
-a|Carriage return character.
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
-a|Line feed character.
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*Any_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Any"` [1..1]
-a|
+|*Any_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Any"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
-a|
+|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*Default_encoding*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"UTF-8"` [1..1]
-a|
+|*Default_encoding*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"UTF-8"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*None_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"None"` [1..1]
-a|
+|*None_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"None"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
 |*Bmm_internal_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
 a|Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model.

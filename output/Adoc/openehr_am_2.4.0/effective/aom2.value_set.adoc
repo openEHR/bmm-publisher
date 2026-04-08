@@ -8,9 +8,11 @@
 
 2+h|*Attributes*
 
-|xref:AM:AOM2:terminology_package.adoc#_terminology_relation_class[TERMINOLOGY_RELATION].*id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
-a|Code of source term of this relation.
+|*id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Code of source term of this relation. +
+_Inherited from xref:AM:AOM2:terminology_package.adoc#_terminology_relation_class[TERMINOLOGY_RELATION]_
 
-|xref:AM:AOM2:terminology_package.adoc#_terminology_relation_class[TERMINOLOGY_RELATION].*members*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
-a|List of target terms in this relation.
+|*members*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|List of target terms in this relation. +
+_Inherited from xref:AM:AOM2:terminology_package.adoc#_terminology_relation_class[TERMINOLOGY_RELATION]_
 |===

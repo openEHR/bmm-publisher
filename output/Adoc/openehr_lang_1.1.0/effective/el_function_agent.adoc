@@ -8,21 +8,26 @@
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT].*is_writable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1] +
+|*is_writable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1] +
 `{default{nbsp}={nbsp}false}`
-a|
+a| +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT].*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
-a|Name of the routine being called.
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of the routine being called. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_feature_ref_class[EL_FEATURE_REF].*scoper*: `xref:LANG:bmm:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]` [0..1]
-a|Scoping expression, which must be a `EL_VALUE_GENERATOR`.
+|*scoper*: `xref:LANG:bmm:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]` [0..1]
+a|Scoping expression, which must be a `EL_VALUE_GENERATOR`. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_feature_ref_class[EL_FEATURE_REF]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT].*closed_args*: `xref:LANG:bmm:expression_package.adoc#_el_tuple_class[EL_TUPLE]` [0..1]
-a|Closed arguments of a routine call as a tuple of objects.
+|*closed_args*: `xref:LANG:bmm:expression_package.adoc#_el_tuple_class[EL_TUPLE]` [0..1]
+a|Closed arguments of a routine call as a tuple of objects. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT].*open_args*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
-a|Optional list of names of open arguments of the call. If not provided, and the `_name_` refers to a routine with more arguments than supplied in `_closed_args_`, the missing arguments are inferred from the `_definition_`.
+|*open_args*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Optional list of names of open arguments of the call. If not provided, and the `_name_` refers to a routine with more arguments than supplied in `_closed_args_`, the missing arguments are inferred from the `_definition_`. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT]_
 
 |*definition*: `xref:LANG:bmm:core_package.adoc#_bmm_function_class[BMM_FUNCTION]` [0..1]
 a|Reference to definition of a routine for which this is a direct call instance, if one exists.
@@ -34,16 +39,19 @@ a|Reference to definition of a routine for which this is a direct call instance,
 __Post_result__: `Result = definition.signature` [1..1]
 a|Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.
 
-|xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION].*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
-a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`).
+a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT].*reference* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
-a|Generated full reference name, including scoping elements.
+|*reference* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Generated full reference name, including scoping elements. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT]_
 
-|xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT].*is_callable* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_callable* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_result_validity__: `Result = open_arguments = Void` [1..1]
-a|True if there are no open arguments.
+a|True if there are no open arguments. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT]_
 |===

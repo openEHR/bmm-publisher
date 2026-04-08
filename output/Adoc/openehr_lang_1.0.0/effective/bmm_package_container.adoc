@@ -8,10 +8,11 @@
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*name*: `link:/classes/String[String] ` [1..1]
-a|Name of this model element.
+|*name*: `link:/classes/String[String] ` [1..1]
+a|Name of this model element. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+|*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
 a|Optional documentation of this element, as a keyed list.
 
 It is strongly recommended to use the following key /type combinations for the relevant purposes:
@@ -22,23 +23,26 @@ It is strongly recommended to use the following key /type combinations for the r
 * `"misuse": String`
 * `"references": String`
 
-Other keys and value types may be freely added.
+Other keys and value types may be freely added. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
 |*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]` [1..1]
 a|Model element within which a referenceable element is known.
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
-a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
+|*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
 |*packages*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,xref:LANG:bmm:core_package.adoc#_bmm_package_class[BMM_PACKAGE]>` [0..1]
 a|Child packages; keys all in upper case for guaranteed matching.
 
 2+h|*Functions*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
+|*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post_result__: `Result = (scope = self)` [1..1]
-a|True if this declaration entity is the root of the declaration hierarchy.
+a|True if this declaration entity is the root of the declaration hierarchy. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
 |*package_at_path* ( +
 a_path: `link:/classes/String[String] [1]` +

@@ -19,8 +19,9 @@ a|
 |*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Name of the routine being called.
 
-|xref:LANG:bmm:expression_package.adoc#_el_feature_ref_class[EL_FEATURE_REF].*scoper*: `xref:LANG:bmm:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]` [0..1]
-a|Scoping expression, which must be a `EL_VALUE_GENERATOR`.
+|*scoper*: `xref:LANG:bmm:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]` [0..1]
+a|Scoping expression, which must be a `EL_VALUE_GENERATOR`. +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_feature_ref_class[EL_FEATURE_REF]_
 
 |*closed_args*: `xref:LANG:bmm:expression_package.adoc#_el_tuple_class[EL_TUPLE]` [0..1]
 a|Closed arguments of a routine call as a tuple of objects.
@@ -38,10 +39,11 @@ a|Reference to definition of a routine for which this is an agent, if one exists
 __Post_result__: `Result = definition.signature` [1..1]
 a|Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.
 
-|xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION].*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
-a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`).
+a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 
 |*reference* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Generated full reference name, including scoping elements.

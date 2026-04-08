@@ -8,17 +8,20 @@
 
 2+h|*Attributes*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED].*type*: `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
-a|Declared or inferred static type of the entity.
+|*type*: `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+a|Declared or inferred static type of the entity. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_typed_feature_class[BMM_TYPED_FEATURE].*is_nullable*: `link:/classes/Boolean[Boolean] ` [0..1] +
+|*is_nullable*: `link:/classes/Boolean[Boolean] ` [0..1] +
 `{default{nbsp}={nbsp}false}`
-a|True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+a|True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes.. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_typed_feature_class[BMM_TYPED_FEATURE]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*name*: `link:/classes/String[String] ` [1..1]
-a|Name of this model element.
+|*name*: `link:/classes/String[String] ` [1..1]
+a|Name of this model element. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+|*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
 a|Optional documentation of this element, as a keyed list.
 
 It is strongly recommended to use the following key /type combinations for the relevant purposes:
@@ -29,33 +32,40 @@ It is strongly recommended to use the following key /type combinations for the r
 * `"misuse": String`
 * `"references": String`
 
-Other keys and value types may be freely added.
+Other keys and value types may be freely added. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_variable_class[BMM_VARIABLE].*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_routine_class[BMM_ROUTINE]` [1..1]
-a|Routine within which variable is defined.
+|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_routine_class[BMM_ROUTINE]` [1..1]
+a|Routine within which variable is defined. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_variable_class[BMM_VARIABLE]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
-a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
+|*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_class_entity_class[BMM_CLASS_ENTITY].*is_synthesised_generic*: `link:/classes/Boolean[Boolean] ` [0..1] +
+|*is_synthesised_generic*: `link:/classes/Boolean[Boolean] ` [0..1] +
 `{default{nbsp}={nbsp}false}`
-a|True if this feature was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.
+a|True if this feature was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_class_entity_class[BMM_CLASS_ENTITY]_
 
 |*direction*: `xref:LANG:bmm:core_package.adoc#_bmm_parameter_direction_enumeration[BMM_PARAMETER_DIRECTION]` [0..1]
 a|Optional read/write direction of the parameter. If none-supplied, the parameter is treated as `in`, i.e. readable.
 
 2+h|*Functions*
 
-|xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED].*is_boolean* (): `link:/classes/Boolean[Boolean] ` +
+|*is_boolean* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post_result__: `Result = type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
-a|True if `_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `'Boolean'`).
+a|True if `_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `'Boolean'`). +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION].*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
+|*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post_result__: `Result = (scope = self)` [1..1]
-a|True if this declaration entity is the root of the declaration hierarchy.
+a|True if this declaration entity is the root of the declaration hierarchy. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|xref:LANG:bmm:core_package.adoc#_bmm_variable_class[BMM_VARIABLE].*signature* (): `link:/classes/[] ` [1..1]
-a|Formal signature of this element, in the form `'name [arg1_name: T_arg1, ...][:T_value]'`.
+|*signature* (): `link:/classes/[] ` [1..1]
+a|Formal signature of this element, in the form `'name [arg1_name: T_arg1, ...][:T_value]'`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_variable_class[BMM_VARIABLE]_
 |===

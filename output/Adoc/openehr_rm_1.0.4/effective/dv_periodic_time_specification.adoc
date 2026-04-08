@@ -10,16 +10,19 @@ Used in therapeutic prescriptions, expressed as `INSTRUCTIONs` in the openEHR mo
 
 2+h|*Constants*
 
-|xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
-a|Carriage return character.
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS].*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
-a|Line feed character.
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
 2+h|*Attributes*
 
-|xref:RM:data_types:time_specification_package.adoc#_dv_time_specification_class[DV_TIME_SPECIFICATION].*value*: `xref:RM:data_types:encapsulated_package.adoc#_dv_parsable_class[DV_PARSABLE]` [1..1]
-a|The specification, in the HL7v3 syntax for `PIVL` or `EIVL` types.
+|*value*: `xref:RM:data_types:encapsulated_package.adoc#_dv_parsable_class[DV_PARSABLE]` [1..1]
+a|The specification, in the HL7v3 syntax for `PIVL` or `EIVL` types. +
+_Inherited from xref:RM:data_types:time_specification_package.adoc#_dv_time_specification_class[DV_TIME_SPECIFICATION]_
 
 2+h|*Functions*
 

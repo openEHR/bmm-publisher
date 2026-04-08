@@ -13,6 +13,7 @@ a|The procedure agent being called.
 
 2+h|*Invariants*
 
-2+a|xref:LANG:bmm:expression_package.adoc#_el_agent_call_class[EL_AGENT_CALL].__Inv_valid_call__: `agent.is_callable()`
+2+a|__Inv_valid_call__: `agent.is_callable()` +
+_Inherited from xref:LANG:bmm:expression_package.adoc#_el_agent_call_class[EL_AGENT_CALL]_
 
 |===
