@@ -1,0 +1,10 @@
+[plantuml,BMM_DEFINITIONS,format=svg]
+-----
+@startuml
+
+class BMM_DEFINITIONS {
+}
+
+
+@enduml
+-----

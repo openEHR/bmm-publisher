@@ -1,0 +1,10 @@
+[plantuml,STATEMENT,format=svg]
+-----
+@startuml
+
+abstract class STATEMENT {
+}
+
+
+@enduml
+-----
