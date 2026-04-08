@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-04-08
+
+### Changed
+
+- **Effective AsciiDoc formatter**: inherited members no longer show an ancestor prefix in the signature column (left). Instead, the documentation column (right) shows `_Inherited from {AncestorType}_` as an italic note with a cross-reference link.
+- **README**: expanded introduction — explains what BMM and P_BMM are, links to the specs, describes each output format's role in the specifications site. Added "Extend it for your own use" section with examples of downstream artefacts. Added CI, PHP, license, and Docker badges.
+
 ## [0.2.0] - 2026-04-07
 
 ### Changed
@@ -36,6 +43,7 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/openehr/bmm-publisher/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/openehr/bmm-publisher/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/openehr/bmm-publisher/releases/tag/0.1.0
