@@ -68,9 +68,9 @@ readonly class AsciidocEffective extends AsciidocDefinition
             foreach ($functions as [$function, $ancestorName]) {
                 $rows[] = '';
                 [$card, $signature, $parameterDocs] = $this->formatFunctionSignature($function, $prefix, $schema);
-                $ancestor = $this->formatAncestorName($ancestorName, $prefix, $enum, $schema);
-                $rows[] = '|' . $ancestor . $signature . ' [' . $card . ']';
-                $rows[] = 'a|' . $this->formatText($function->documentation ?? '');
+                $inherited = $this->formatInheritedNote($ancestorName, $prefix, $enum, $schema);
+                $rows[] = '|' . $signature . ' [' . $card . ']';
+                $rows[] = 'a|' . $this->formatText($function->documentation ?? '') . $inherited;
             }
         }
 
@@ -122,11 +122,11 @@ readonly class AsciidocEffective extends AsciidocDefinition
             /** @var BmmConstant $constant */
             foreach ($constants as [$constant, $ancestorName]) {
                 [$card, $signature] = $this->formatConstantSignature($constant, $prefix, $schema);
-                $ancestor = $this->formatAncestorName($ancestorName, $prefix, $class, $schema);
+                $inherited = $this->formatInheritedNote($ancestorName, $prefix, $class, $schema);
                 $rows[] = '';
-                $rows[] = '|' . $ancestor . $signature . ' [' . $card . ']';
+                $rows[] = '|' . $signature . ' [' . $card . ']';
                 $doc = property_exists($constant, 'documentation') ? $this->formatText($constant->documentation ?? '') : '';
-                $rows[] = 'a|' . $doc;
+                $rows[] = 'a|' . $doc . $inherited;
             }
         }
 
@@ -137,11 +137,11 @@ readonly class AsciidocEffective extends AsciidocDefinition
             /** @var AbstractBmmProperty $property */
             foreach ($properties as [$property, $ancestorName]) {
                 [$card, $signature, $default] = $this->formatPropertySignature($property, $prefix, $schema);
-                $ancestor = $this->formatAncestorName($ancestorName, $prefix, $class, $schema);
+                $inherited = $this->formatInheritedNote($ancestorName, $prefix, $class, $schema);
                 $rows[] = '';
-                $rows[] = '|' . $ancestor . $signature . ' [' . $card . ']' . $default;
+                $rows[] = '|' . $signature . ' [' . $card . ']' . $default;
                 $doc = property_exists($property, 'documentation') ? $this->formatText($property->documentation ?? '') : '';
-                $rows[] = 'a|' . $doc;
+                $rows[] = 'a|' . $doc . $inherited;
             }
         }
 
@@ -153,13 +153,11 @@ readonly class AsciidocEffective extends AsciidocDefinition
             foreach ($functions as [$function, $ancestorName]) {
                 $rows[] = '';
                 [$card, $signature, $parameterDocs] = $this->formatFunctionSignature($function, $prefix, $schema);
-                $abstract = '';
-                if ($function->isAbstract) {
-                    $abstract = '_(abstract)_ ';
-                }
-                $ancestor = $this->formatAncestorName($ancestorName, $prefix, $class, $schema);
-                $rows[] = '|' . $abstract . $ancestor . $signature . ' [' . $card . ']';
-                $rows[] = 'a|' . $this->formatText($function->documentation ?? '');
+                $abstract = $function->isAbstract ? '_(abstract)_ ' : '';
+                $inherited = $this->formatInheritedNote($ancestorName, $prefix, $class, $schema);
+                $rows[] = '|' . $abstract . $signature . ' [' . $card . ']';
+                $doc = $this->formatText($function->documentation ?? '') . $inherited;
+                $rows[] = 'a|' . $doc;
                 array_push($rows, ...$this->formatParameterDocRows($parameterDocs));
             }
         }
@@ -175,8 +173,8 @@ readonly class AsciidocEffective extends AsciidocDefinition
             $rows[] = '2+h|*Invariants*';
             foreach ($invariants as $name => [$expr, $ancestorName]) {
                 $rows[] = '';
-                $ancestor = $this->formatAncestorName($ancestorName, $prefix, $class, $schema);
-                $rows[] = '2+a|' . $ancestor . '__' . $name . '__: `' . $this->formatText($expr) . '`';
+                $inherited = $this->formatInheritedNote($ancestorName, $prefix, $class, $schema);
+                $rows[] = '2+a|__' . $name . '__: `' . $this->formatText($expr) . '`' . $inherited;
             }
             $rows[] = '';
         }
@@ -209,9 +207,9 @@ readonly class AsciidocEffective extends AsciidocDefinition
             foreach ($functions as [$function, $ancestorName]) {
                 $rows[] = '';
                 [$card, $signature, $parameterDocs] = $this->formatFunctionSignature($function, $prefix, $schema);
-                $ancestor = $this->formatAncestorName($ancestorName, $prefix, $class, $schema);
-                $rows[] = '|' . $ancestor . $signature . ' [' . $card . ']';
-                $rows[] = 'a|' . $this->formatText($function->documentation ?? '');
+                $inherited = $this->formatInheritedNote($ancestorName, $prefix, $class, $schema);
+                $rows[] = '|' . $signature . ' [' . $card . ']';
+                $rows[] = 'a|' . $this->formatText($function->documentation ?? '') . $inherited;
             }
         }
 
@@ -250,8 +248,15 @@ readonly class AsciidocEffective extends AsciidocDefinition
         }
     }
 
-    public function formatAncestorName(string $ancestorName, string $prefix, AbstractBmmClass $currentClass, BmmSchema $schema): string
+    /**
+     * Format an "inherited from" note for the documentation column.
+     * Returns empty string if the member belongs to the current class.
+     */
+    public function formatInheritedNote(string $ancestorName, string $prefix, AbstractBmmClass $currentClass, BmmSchema $schema): string
     {
-        return $currentClass->getName() !== $ancestorName ? ($this->formatType($ancestorName, $prefix, $schema) . '.') : '';
+        if ($currentClass->getName() === $ancestorName) {
+            return '';
+        }
+        return " +\n_Inherited from " . $this->formatType($ancestorName, $prefix, $schema) . '_';
     }
 }
