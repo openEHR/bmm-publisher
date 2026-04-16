@@ -82,6 +82,10 @@ class BmmSchemaCollection implements \IteratorAggregate
                     /** @var BmmPackage $subSubPackage */
                     foreach ($subPackage->packages as $subSubPackage) {
                         $callback($subSubPackage, $schema, $package->name . '.' . $subPackage->name . '.');
+                        /** @var BmmPackage $subSubSubPackage */
+                        foreach ($subSubPackage->packages as $subSubSubPackage) {
+                            $callback($subSubSubPackage, $schema, $package->name . '.' . $subPackage->name . '.' . $subSubPackage->name . '.');
+                        }
                     }
                 }
             }
