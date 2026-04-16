@@ -1,0 +1,18 @@
+[source,json]
+--------
+{
+    "name": "BMM_FUNCTION_TYPE",
+    "documentation": "Meta-type for function object signatures.",
+    "ancestors": [
+        "BMM_ROUTINE_TYPE"
+    ],
+    "constants": {
+        "base_name": {
+            "name": "base_name",
+            "documentation": "Base name (built-in).",
+            "type": "String",
+            "value": "\"Function\""
+        }
+    }
+}
+--------

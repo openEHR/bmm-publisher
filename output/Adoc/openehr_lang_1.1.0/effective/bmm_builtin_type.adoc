@@ -1,0 +1,45 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__BMM_BUILTIN_TYPE (abstract)__*
+
+2+a|Parent of built-in types, which are treated as being primitive and non-abstract.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]
+
+2+h|*Constants*
+
+|*base_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+a|Base name (built-in typename).
+
+2+h|*Functions*
+
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return `_base_name_`.
+
+|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Defaults to the value of `_type_name()_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Return False.
+
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Return True.
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]_
+
+|*effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]_
+
+|_(abstract)_ *flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|Completely flattened list of type names, flattening out all generic parameters. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return `_base_name_`.
+|===

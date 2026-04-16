@@ -1,0 +1,10 @@
+[plantuml,X_VERSIONED_COMPOSITION,format=svg]
+-----
+@startuml
+
+class X_VERSIONED_COMPOSITION {
+}
+
+
+@enduml
+-----

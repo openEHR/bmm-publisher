@@ -6,7 +6,7 @@
 
 2+h|*Attributes*
 
-|*type*: `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
 a|Declared or inferred static type of the entity.
 
 2+h|*Functions*

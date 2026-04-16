@@ -1,0 +1,29 @@
+[plantuml,range_constrained,format=svg]
+-----
+@startuml
+
+class BMM_VALUE_SET_SPEC {
+  + resource_id : String [1]
+  + value_set_id : String [1]
+}
+
+class BMM_ENUMERATION {
+  + item_names : List<String> [*]
+  + item_values : List<BMM_PRIMITIVE_VALUE> [*]
+  + name_map() : Hash<String,String> [1]
+}
+
+class BMM_ENUMERATION_INTEGER {
+  + item_values : List<BMM_INTEGER_VALUE> [*]
+}
+
+class BMM_ENUMERATION_STRING {
+  + item_values : List<BMM_STRING_VALUE> [*]
+}
+
+BMM_SIMPLE_CLASS <|-- BMM_ENUMERATION
+BMM_ENUMERATION <|-- BMM_ENUMERATION_INTEGER
+BMM_ENUMERATION <|-- BMM_ENUMERATION_STRING
+
+@enduml
+-----

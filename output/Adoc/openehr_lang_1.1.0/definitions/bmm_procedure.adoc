@@ -15,7 +15,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*type*: `link:/classes/BMM_STATUS_TYPE[BMM_STATUS_TYPE] `
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_status_type_class[BMM_STATUS_TYPE]`
 a|Declared or inferred static type of the entity.
 
 h|*Functions*
@@ -24,7 +24,7 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*signature* (): `link:/classes/BMM_PROCEDURE_TYPE[BMM_PROCEDURE_TYPE] `
+|*signature* (): `xref:LANG:bmm:core_package.adoc#_bmm_procedure_type_class[BMM_PROCEDURE_TYPE]`
 a|Formal signature of this element, in the form:
 
 `name [arg1_name: T_arg1, ...][:T_value]`

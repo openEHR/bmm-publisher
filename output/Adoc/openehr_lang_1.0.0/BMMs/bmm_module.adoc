@@ -1,0 +1,20 @@
+[source,json]
+--------
+{
+    "name": "BMM_MODULE",
+    "documentation": "Meta-type defining a generalised module concept. Descendants define actual structure and contents.",
+    "is_abstract": true,
+    "ancestors": [
+        "BMM_DECLARATION"
+    ],
+    "properties": {
+        "scope": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "scope",
+            "documentation": "Model within which module is defined.",
+            "is_mandatory": true,
+            "type": "BMM_MODEL"
+        }
+    }
+}
+--------

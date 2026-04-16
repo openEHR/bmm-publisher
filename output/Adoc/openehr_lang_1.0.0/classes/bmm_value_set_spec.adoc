@@ -1,0 +1,21 @@
+=== BMM_VALUE_SET_SPEC Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_value_set_spec.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_value_set_spec.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_value_set_spec.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_value_set_spec.adoc[]
+
+====

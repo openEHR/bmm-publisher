@@ -1,0 +1,81 @@
+[source,json]
+--------
+{
+    "name": "BMM_SIGNATURE",
+    "documentation": "Non-entity meta-type that expresses the type structure of any referenceable element of a model. Consists of potential `_arguments_` and `_result_`, with constraints in descendants determining the exact form.",
+    "ancestors": [
+        "BMM_EFFECTIVE_TYPE"
+    ],
+    "constants": {
+        "base_name": {
+            "name": "base_name",
+            "documentation": "Base name (built-in).",
+            "type": "String",
+            "value": "\"Signature\""
+        }
+    },
+    "properties": {
+        "argument_types": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "argument_types",
+            "documentation": "Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).",
+            "type": "BMM_TUPLE_TYPE"
+        },
+        "result_type": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "result_type",
+            "documentation": "Result type of signature, if any.",
+            "type": "BMM_TYPE"
+        }
+    },
+    "functions": {
+        "type_base_name": {
+            "name": "type_base_name",
+            "documentation": "Return `_base_name_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "is_abstract": {
+            "name": "is_abstract",
+            "documentation": "Result = `False`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_primitive": {
+            "name": "is_primitive",
+            "documentation": "Result = `True`.",
+            "post_conditions": {
+                "Post_validity": "Result = base_class.is_primitive"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "type_name": {
+            "name": "type_name",
+            "documentation": "Return `_base_name_`",
+            "post_conditions": {
+                "Post_result": "Result.is_equal (base_name())"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "flattened_type_list": {
+            "name": "flattened_type_list",
+            "documentation": "Return the logical set (i.e. unique items) consisting of `_argument_types.flattened_type_list_()` and `_result_type.flattened_type_list_()`.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        }
+    }
+}
+--------

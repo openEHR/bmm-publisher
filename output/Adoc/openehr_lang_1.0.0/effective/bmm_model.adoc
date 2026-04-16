@@ -46,7 +46,7 @@ _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MO
 a|Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" . +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MODEL_METADATA]_
 
-|*class_definitions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/BMM_CLASS[BMM_CLASS] >` [0..1]
+|*class_definitions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]>` [0..1]
 a|All classes in this model, keyed by type name.
 
 |*used_models*: `link:/classes/List[List] <xref:LANG:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL]>` [0..1]
@@ -87,10 +87,10 @@ E.g. `"openehr_ehr_1.0.4"`.
 
 |*class_definition* ( +
 a_name: `link:/classes/String[String] [1]` +
-): `link:/classes/BMM_CLASS[BMM_CLASS] ` [1..1]
+): `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]` [1..1]
 a|Retrieve the class definition corresponding to `_a_type_name_` (which may contain a generic part).
 
-|*type_definition* (): `link:/classes/BMM_CLASS[BMM_CLASS] ` [1..1]
+|*type_definition* (): `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]` [1..1]
 a|Retrieve the class definition corresponding to `_a_type_name_`. If it contains a generic part, this will be removed if it is a fully open generic name, otherwise it will remain intact, i.e. if it is an effective generic name that identifies a `BMM_GENERIC_CLASS_EFFECTIVE`.
 
 |*has_class_definition* ( +
@@ -105,7 +105,7 @@ a|True if `_a_type_name_` is already concretely known in the system, including i
 
 |*enumeration_definition* ( +
 a_name: `link:/classes/String[String] [1]` +
-): `link:/classes/BMM_ENUMERATION[BMM_ENUMERATION] ` [1..1]
+): `xref:LANG:bmm:core_package.adoc#_bmm_enumeration_class[BMM_ENUMERATION]` [1..1]
 a|Retrieve the enumeration definition corresponding to `_a_type_name_`.
 
 |*primitive_types* (): `link:/classes/List[List] <link:/classes/String[String] >` [0..1]
@@ -130,7 +130,7 @@ a|Retrieve the property definition for `_a_property_path_` in flattened class co
 |*class_definition_at_path* ( +
 a_type_name: `link:/classes/String[String] [1]`, +
 a_prop_path: `link:/classes/String[String] [1]` +
-): `link:/classes/BMM_CLASS[BMM_CLASS] ` [1..1]
+): `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]` [1..1]
 a|Retrieve the class definition for the class that owns the terminal attribute in `a_prop_path` in flattened class corresponding to `a_type_name`.
 
 |*all_ancestor_classes* ( +
@@ -165,13 +165,13 @@ a|Generate type substitutions for the supplied type, which may be simple, generi
 [horizontal]
 `_a_type_`:: Name of a type.
 
-|*any_class_definition* (): `link:/classes/BMM_SIMPLE_CLASS[BMM_SIMPLE_CLASS] ` [1..1]
+|*any_class_definition* (): `xref:LANG:bmm:core_package.adoc#_bmm_simple_class_class[BMM_SIMPLE_CLASS]` [1..1]
 a|`BMM_SIMPLE_CLASS` instance for the `Any` class. This may be defined in the BMM schema, but if not, use `BMM_DEFINITIONS._any_class_`.
 
-|*any_type_definition* (): `link:/classes/BMM_SIMPLE_TYPE[BMM_SIMPLE_TYPE] ` [1..1]
+|*any_type_definition* (): `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]` [1..1]
 a|`BMM_SIMPLE_TYPE` instance for the `Any` type.
 
-|*boolean_type_definition* (): `link:/classes/BMM_SIMPLE_TYPE[BMM_SIMPLE_TYPE] ` [1..1]
+|*boolean_type_definition* (): `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]` [1..1]
 a|`BMM_SIMPLE_TYPE` instance for the `Boolean` type.
 
 2+h|*Invariants*

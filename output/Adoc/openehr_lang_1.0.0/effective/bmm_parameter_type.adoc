@@ -1,0 +1,53 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_PARAMETER_TYPE*
+
+2+a|Definition of a generic parameter in a class definition of a generic type.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]
+
+2+h|*Attributes*
+
+|*name*: `link:/classes/String[String] ` [1..1]
+a|Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and upper-case.
+
+|*type_constraint*: `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [0..1]
+a|Optional conformance constraint that must be the name of a defined type.
+
+|*inheritance_precursor*: `xref:LANG:bmm:core_package.adoc#_bmm_parameter_type_class[BMM_PARAMETER_TYPE]` [0..1]
+a|If set, is the corresponding generic parameter definition in an ancestor class.
+
+2+h|*Functions*
+
+|*type_name* (): `link:/classes/String[String] ` [1..1]
+a|Return `_name_`.
+
+|*type_signature* (): `link:/classes/String[String] ` [1..1]
+a|Signature form of the open type, including constrainer type if there is one, e.g. `T:Ordered`.
+
+|*is_abstract* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|Result = `False` - generic parameters are understood by definition to be non-abstract.
+
+|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post_validity__: `Result = base_class.is_primitive` [1..1]
+a|Result = `False` - generic parameters are understood by definition to be non-primitive.
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]_
+
+|*effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Generate ultimate conformance type, which is either `_flattened_conforms_to_type_` or if not set, `'Any'`.
+
+|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` [1..1]
+a|Result is either `_flattened_conforms_to_type.flattened_type_list_` or the `Any` type.
+
+|*flattened_conforms_to_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Result is either `_conforms_to_type_` or `_inheritance_precursor.flattened_conforms_to_type_`.
+
+2+h|*Invariants*
+
+2+a|__Inv_generic_name__: `name.count = 1 and name.is_upper`
+
+|===

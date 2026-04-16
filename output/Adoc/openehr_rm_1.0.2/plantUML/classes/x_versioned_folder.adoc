@@ -1,0 +1,10 @@
+[plantuml,X_VERSIONED_FOLDER,format=svg]
+-----
+@startuml
+
+class X_VERSIONED_FOLDER {
+}
+
+
+@enduml
+-----

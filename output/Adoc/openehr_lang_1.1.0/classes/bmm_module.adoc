@@ -1,0 +1,21 @@
+=== BMM_MODULE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_module.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_module.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_module.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_module.adoc[]
+
+====

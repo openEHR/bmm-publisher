@@ -1,0 +1,56 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_SIGNATURE*
+
+2+a|Non-entity meta-type that expresses the type structure of any referenceable element of a model. Consists of potential `_arguments_` and `_result_`, with constraints in descendants determining the exact form.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]
+
+2+h|*Constants*
+
+|*base_name*: `link:/classes/String[String] {nbsp}={nbsp}"Signature"` [1..1]
+a|Base name (built-in).
+
+2+h|*Attributes*
+
+|*argument_types*: `xref:LANG:bmm:core_package.adoc#_bmm_tuple_type_class[BMM_TUPLE_TYPE]` [0..1]
+a|Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).
+
+|*result_type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [0..1]
+a|Result type of signature, if any.
+
+2+h|*Functions*
+
+|*type_name* (): `link:/classes/String[String] ` +
+ +
+__Post_result__: `Result.is_equal (base_name())` [1..1]
+a|Return `_base_name_`
+
+|*type_signature* (): `link:/classes/String[String] ` [1..1]
+a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Defaults to the value of `_type_name()_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*is_abstract* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|Result = `False`.
+
+|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post_validity__: `Result = base_class.is_primitive` [1..1]
+a|Result = `True`.
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]_
+
+|*effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]_
+
+|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` [1..1]
+a|Return the logical set (i.e. unique items) consisting of `_argument_types.flattened_type_list_()` and `_result_type.flattened_type_list_()`.
+
+|*type_base_name* (): `link:/classes/String[String] ` [1..1]
+a|Return `_base_name_`.
+|===

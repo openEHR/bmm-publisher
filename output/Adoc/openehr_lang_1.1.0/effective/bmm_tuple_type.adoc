@@ -1,0 +1,55 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_TUPLE_TYPE*
+
+2+a|Built-in meta-type representing the type of a tuple, i.e. an array of any number of other types. This includes both container and unitary types, since tuple instances represent concrete objects.
+
+Note that both open and closed generic parameters are allowed, as with any generic type, but open generic parameters are only valid within the scope of a generic class.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]
+
+2+h|*Constants*
+
+|*base_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Tuple"` [1..1]
+a|Base name (built-in).
+
+2+h|*Attributes*
+
+|*item_types*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]>` [1..1]
+a|List of types of the items of the tuple, keyed by purpose in the tuple.
+
+2+h|*Functions*
+
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return `_base_name_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+
+|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Defaults to the value of `_type_name()_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Return False. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Return True. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]_
+
+|*effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]_
+
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|Return the logical set (i.e. unique types) from the merge of `_flattened_type_list_()` called on each member of `_item_types_`.
+
+|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return `_base_name_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+|===

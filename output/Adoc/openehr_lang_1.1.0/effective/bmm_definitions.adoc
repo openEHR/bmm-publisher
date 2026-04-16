@@ -103,10 +103,10 @@ a|Path of schema file.
 
 2+h|*Functions*
 
-|*Any_class* (): `link:/classes/BMM_SIMPLE_CLASS[BMM_SIMPLE_CLASS] ` [1..1]
+|*Any_class* (): `xref:LANG:bmm:core_package.adoc#_bmm_simple_class_class[BMM_SIMPLE_CLASS]` [1..1]
 a|built-in class definition corresponding to the top `Any' class.
 
-|*Any_type* (): `link:/classes/BMM_SIMPLE_TYPE[BMM_SIMPLE_TYPE] ` [1..1]
+|*Any_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]` [1..1]
 a|Built-in type definition corresponding to the top `Any' type.
 
 |*create_schema_id* ( +

@@ -1,0 +1,52 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__BMM_MODEL_TYPE (abstract)__*
+
+2+a|A type that is defined by a class (or classes) in the model.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]
+
+2+h|*Attributes*
+
+|*value_constraint*: `xref:LANG:bmm:core_package.adoc#_bmm_value_set_spec_class[BMM_VALUE_SET_SPEC]` [0..1]
+a|
+
+|*base_class*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]` [1..1]
+a|Base class of this type.
+
+2+h|*Functions*
+
+|_(abstract)_ *type_name* (): `link:/classes/String[String] ` [1..1]
+a|Formal string form of the type as per UML. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*type_signature* (): `link:/classes/String[String] ` [1..1]
+a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Defaults to the value of `_type_name()_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|_(abstract)_ *is_abstract* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|If true, indicates an abstract class in a BMM model, or a type based on an abstract class, i.e. a type that cannot be directly instantiated. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post_validity__: `Result = base_class.is_primitive` [1..1]
+a|Result = `_base_class.is_primitive_`.
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]_
+
+|*effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]_
+
+|_(abstract)_ *flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` [1..1]
+a|Completely flattened list of type names, flattening out all generic parameters. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*type_base_name* (): `link:/classes/String[String] ` [1..1]
+a|Result = `_base_class.name_`.
+|===

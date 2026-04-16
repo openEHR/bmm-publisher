@@ -1,0 +1,10 @@
+[plantuml,X_VERSIONED_EHR_ACCESS,format=svg]
+-----
+@startuml
+
+class X_VERSIONED_EHR_ACCESS {
+}
+
+
+@enduml
+-----

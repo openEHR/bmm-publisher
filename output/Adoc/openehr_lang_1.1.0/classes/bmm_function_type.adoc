@@ -1,0 +1,21 @@
+=== BMM_FUNCTION_TYPE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_function_type.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_function_type.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_function_type.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_function_type.adoc[]
+
+====

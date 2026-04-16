@@ -1,0 +1,18 @@
+[source,json]
+--------
+{
+    "name": "BMM_STATUS_TYPE",
+    "documentation": "Built-in meta-type representing action status, e.g. result of a call invocation.",
+    "ancestors": [
+        "BMM_BUILTIN_TYPE"
+    ],
+    "constants": {
+        "base_name": {
+            "name": "base_name",
+            "documentation": "Base name (built-in).",
+            "type": "String",
+            "value": "\"Status\""
+        }
+    }
+}
+--------

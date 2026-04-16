@@ -46,7 +46,7 @@ __Post_result__: `Result = (scope = self)` [1..1]
 a|True if this declaration entity is the root of the declaration hierarchy. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|_(abstract)_ *signature* (): `link:/classes/BMM_SIGNATURE[BMM_SIGNATURE] ` [1..1]
+|_(abstract)_ *signature* (): `xref:LANG:bmm:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]` [1..1]
 a|Formal signature of this element, in the form:
 
 `name [arg1_name: T_arg1, ...][:T_value]`

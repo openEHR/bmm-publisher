@@ -17,7 +17,7 @@ a|Definition of the constant, property or variable, inferred by inspection of th
 
 2+h|*Functions*
 
-|*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
 a|Type definition (i.e. BMM meta-type definition object) of the constant, property or variable, inferred by inspection of the current scoping instance. Return `_definition.type_`.
 
 |*is_boolean* (): `link:/classes/Boolean[Boolean] ` +

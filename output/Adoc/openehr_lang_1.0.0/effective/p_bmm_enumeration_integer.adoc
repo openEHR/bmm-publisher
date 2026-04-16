@@ -40,7 +40,7 @@ _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_
 a|Reference to original source schema defining this class. Set during `BMM_SCHEMA` materialise. Useful for GUI tools to enable user to edit the schema file containing a given class (i.e. taking into account that a class may be in any of the schemas in a schema inclusion hierarchy). +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]_
 
-|*bmm_class*: `link:/classes/BMM_ENUMERATION_INTEGER[BMM_ENUMERATION_INTEGER] ` [0..1]
+|*bmm_class*: `xref:LANG:bmm:core_package.adoc#_bmm_enumeration_integer_class[BMM_ENUMERATION_INTEGER]` [0..1]
 a|`BMM_CLASS` object build by `_create_bmm_class_definition_` and `_populate_bmm_class_definition_`.
 
 |*uid*: `link:/classes/Integer[Integer] ` [1..1]

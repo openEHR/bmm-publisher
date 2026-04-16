@@ -19,6 +19,6 @@ a|Name of type - must be a simple class name.
 
 h|*0..1 +
 (redefined)*
-|*bmm_type*: `link:/classes/BMM_SIMPLE_TYPE[BMM_SIMPLE_TYPE] `
+|*bmm_type*: `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]`
 a|Result of `_create_bmm_type()_` call.
 |===

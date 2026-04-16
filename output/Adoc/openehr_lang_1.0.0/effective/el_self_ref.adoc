@@ -8,12 +8,12 @@
 
 2+h|*Attributes*
 
-|*type*: `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
 a|Type of the current scoping instance, inferred from expression context.
 
 2+h|*Functions*
 
-|*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
 a|Return `_type_`.
 
 |*is_boolean* (): `link:/classes/Boolean[Boolean] ` +

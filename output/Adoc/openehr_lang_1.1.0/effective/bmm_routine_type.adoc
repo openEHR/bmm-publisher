@@ -1,0 +1,58 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_ROUTINE_TYPE*
+
+2+a|Meta-type for routine objects.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]
+
+2+h|*Constants*
+
+|*base_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Routine"` [1..1]
+a|Base name (built-in).
+
+2+h|*Attributes*
+
+|*result_type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
+a|Result type of signature. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]_
+
+|*argument_types*: `xref:LANG:bmm:core_package.adoc#_bmm_tuple_type_class[BMM_TUPLE_TYPE]` [0..1]
+a|Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).
+
+2+h|*Functions*
+
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return `_base_name_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+
+|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Defaults to the value of `_type_name()_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Return False. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Return True. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]_
+
+|*effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]_
+
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|Return the logical set (i.e. unique items) consisting of `_argument_types.flattened_type_list_()` and `_result_type.flattened_type_list_()`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]_
+
+|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return `_base_name_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_builtin_type_class[BMM_BUILTIN_TYPE]_
+|===

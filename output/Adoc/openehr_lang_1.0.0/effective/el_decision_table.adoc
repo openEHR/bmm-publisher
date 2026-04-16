@@ -16,7 +16,7 @@ a|Members of the chain, equivalent to branches in an if/then/else chain and case
 
 2+h|*Functions*
 
-|_(abstract)_ *eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|_(abstract)_ *eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
 a|Meta-type of expression entity used in type-checking and evaluation. 
 
 Effected in descendants. +

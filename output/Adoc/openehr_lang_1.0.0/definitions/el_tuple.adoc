@@ -18,7 +18,7 @@ h|*0..1*
 a|Items in the tuple, potentially with names. Typical use is to represent an argument list to routine call.
 
 h|*1..1*
-|*type*: `link:/classes/BMM_TUPLE_TYPE[BMM_TUPLE_TYPE] `
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_tuple_type_class[BMM_TUPLE_TYPE]`
 a|Static type inferred from literal value.
 
 h|*Functions*
@@ -27,6 +27,6 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] `
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
 a|Return `_type_`.
 |===

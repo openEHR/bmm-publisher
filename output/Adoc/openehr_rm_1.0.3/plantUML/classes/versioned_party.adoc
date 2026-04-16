@@ -1,0 +1,10 @@
+[plantuml,VERSIONED_PARTY,format=svg]
+-----
+@startuml
+
+class VERSIONED_PARTY {
+}
+
+
+@enduml
+-----

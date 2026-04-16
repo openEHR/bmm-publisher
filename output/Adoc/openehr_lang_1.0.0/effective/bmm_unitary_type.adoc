@@ -1,0 +1,39 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__BMM_UNITARY_TYPE (abstract)__*
+
+2+a|Parent of meta-types that may be used as the type of any instantiated object that is not a container object.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]
+
+2+h|*Functions*
+
+|_(abstract)_ *type_name* (): `link:/classes/String[String] ` [1..1]
+a|Formal string form of the type as per UML. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*type_signature* (): `link:/classes/String[String] ` [1..1]
+a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Defaults to the value of `_type_name()_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|_(abstract)_ *is_abstract* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|If true, indicates an abstract class in a BMM model, or a type based on an abstract class, i.e. a type that cannot be directly instantiated. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|_(abstract)_ *is_primitive* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|If True, indicates that the entity in a BMM model is considered to relate to a primitive type set, i.e. be a primitive type, or be a definer of one. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self.
+
+|_(abstract)_ *effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Type with any container abstracted away, and any formal parameter replaced by its effective constraint type. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|_(abstract)_ *flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` [1..1]
+a|Completely flattened list of type names, flattening out all generic parameters. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+|===

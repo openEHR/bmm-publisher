@@ -18,7 +18,7 @@ _Inherited from xref:LANG:bmm:expression_package.adoc#_el_value_generator_class[
 a|Name used to represent the reference or other entity. +
 _Inherited from xref:LANG:bmm:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]_
 
-|*type*: `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
 a|Type, directly from the name of the reference, e.g. `\{SOME_TYPE}`.
 
 |*is_mutable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1] +
@@ -27,7 +27,7 @@ a|
 
 2+h|*Functions*
 
-|*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] ` [1..1]
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
 a|Return `_type_`.
 
 |*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +

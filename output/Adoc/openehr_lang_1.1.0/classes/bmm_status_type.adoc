@@ -1,0 +1,21 @@
+=== BMM_STATUS_TYPE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_status_type.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_status_type.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_status_type.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_status_type.adoc[]
+
+====

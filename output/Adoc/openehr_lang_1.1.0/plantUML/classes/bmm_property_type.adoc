@@ -1,0 +1,51 @@
+[plantuml,BMM_PROPERTY_TYPE,format=svg]
+-----
+@startuml
+
+class BMM_PROPERTY_TYPE {
+}
+
+class BMM_SIGNATURE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + result_type : BMM_TYPE [1]
+  + flattened_type_list() : List<String> [1..*]
+}
+
+abstract class BMM_BUILTIN_TYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + is_abstract() : Boolean [1]
+  + is_primitive() : Boolean [1]
+  + type_base_name() : String [1]
+  + type_name() : String [1]
+}
+
+abstract class BMM_EFFECTIVE_TYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + effective_type() : BMM_EFFECTIVE_TYPE [1]
+  + {abstract} type_base_name() : String [1]
+}
+
+abstract class BMM_UNITARY_TYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + unitary_type() : BMM_UNITARY_TYPE [1]
+}
+
+abstract class BMM_TYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + {abstract} type_name() : String [1]
+  + type_signature() : String [1]
+  + {abstract} is_abstract() : Boolean [1]
+  + {abstract} is_primitive() : Boolean [1]
+  + {abstract} unitary_type() : BMM_UNITARY_TYPE [1]
+  + {abstract} effective_type() : BMM_EFFECTIVE_TYPE [1]
+  + {abstract} flattened_type_list() : List<String> [1..*]
+}
+
+BMM_TYPE <|-- BMM_UNITARY_TYPE
+
+BMM_UNITARY_TYPE <|-- BMM_EFFECTIVE_TYPE
+
+BMM_EFFECTIVE_TYPE <|-- BMM_BUILTIN_TYPE
+
+BMM_BUILTIN_TYPE <|-- BMM_SIGNATURE
+
+BMM_SIGNATURE <|-- BMM_PROPERTY_TYPE
+
+
+@enduml
+-----

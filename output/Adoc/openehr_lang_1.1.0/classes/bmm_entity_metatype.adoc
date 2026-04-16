@@ -1,0 +1,21 @@
+=== BMM_ENTITY_METATYPE Enumeration
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_entity_metatype.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_entity_metatype.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_entity_metatype.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_entity_metatype.adoc[]
+
+====

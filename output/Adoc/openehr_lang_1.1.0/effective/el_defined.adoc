@@ -16,7 +16,7 @@ _Inherited from xref:LANG:bmm:expression_package.adoc#_el_predicate_class[EL_PRE
 
 2+h|*Functions*
 
-|*eval_type* (): `link:/classes/BMM_SIMPLE_TYPE[BMM_SIMPLE_TYPE] ` [1..1]
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]` [1..1]
 a|Return `\{BMM_MODEL}._boolean_type_definition_()`. +
 _Inherited from xref:LANG:bmm:expression_package.adoc#_el_predicate_class[EL_PREDICATE]_
 

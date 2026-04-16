@@ -1,0 +1,10 @@
+[plantuml,X_VERSIONED_EHR_STATUS,format=svg]
+-----
+@startuml
+
+class X_VERSIONED_EHR_STATUS {
+}
+
+
+@enduml
+-----

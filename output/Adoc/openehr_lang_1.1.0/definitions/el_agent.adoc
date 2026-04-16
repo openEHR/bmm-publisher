@@ -46,7 +46,7 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `link:/classes/BMM_ROUTINE_TYPE[BMM_ROUTINE_TYPE] ` +
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_routine_type_class[BMM_ROUTINE_TYPE]` +
  +
 __Post_result__: `Result = definition.signature`
 a|Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.

@@ -1,0 +1,21 @@
+=== BMM_PROPERTY_TYPE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_property_type.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_property_type.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_property_type.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_property_type.adoc[]
+
+====

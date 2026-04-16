@@ -1,0 +1,21 @@
+=== BMM_SIGNATURE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_signature.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_signature.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_signature.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/bmm_signature.adoc[]
+
+====

@@ -1,0 +1,43 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__BMM_MODULE (abstract)__*
+
+2+a|Meta-type defining a generalised module concept. Descendants define actual structure and contents.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]
+
+2+h|*Attributes*
+
+|*name*: `link:/classes/String[String] ` [1..1]
+a|Name of this model element. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
+
+|*documentation*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+a|Optional documentation of this element, as a keyed list.
+
+It is strongly recommended to use the following key /type combinations for the relevant purposes:
+
+* `"purpose": String`
+* `"keywords": List<String>`
+* `"use": String`
+* `"misuse": String`
+* `"references": String`
+
+Other keys and value types may be freely added. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
+
+|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL]` [1..1]
+a|Model within which module is defined.
+
+|*extensions*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/Any[Any] >` [0..1]
+a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
+
+2+h|*Functions*
+
+|*is_root_scope* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post_result__: `Result = (scope = self)` [1..1]
+a|True if this declaration entity is the root of the declaration hierarchy. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
+|===

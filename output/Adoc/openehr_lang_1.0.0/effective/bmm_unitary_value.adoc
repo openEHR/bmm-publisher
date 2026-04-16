@@ -8,7 +8,7 @@
 
 2+h|*Attributes*
 
-|*type*: `link:/classes/BMM_UNITARY_TYPE[BMM_UNITARY_TYPE] ` [1..1]
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
 a|Declared or inferred static type of the entity.
 
 |*value_literal*: `link:/classes/String[String] ` [1..1]

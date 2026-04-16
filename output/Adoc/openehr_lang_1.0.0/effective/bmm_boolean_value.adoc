@@ -8,7 +8,7 @@
 
 2+h|*Attributes*
 
-|*type*: `link:/classes/BMM_SIMPLE_TYPE[BMM_SIMPLE_TYPE] ` [1..1]
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]` [1..1]
 a|Declared or inferred static type of the entity. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_primitive_value_class[BMM_PRIMITIVE_VALUE]_
 

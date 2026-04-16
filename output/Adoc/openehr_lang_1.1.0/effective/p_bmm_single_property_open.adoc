@@ -49,7 +49,7 @@ a|Type definition of this property, if a simple String type reference. Really we
 
 |*create_bmm_property* ( +
 a_bmm_schema: `xref:LANG:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]`, +
-a_class_def: `link:/classes/BMM_CLASS[BMM_CLASS] [1]` +
+a_class_def: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
 ): `void` [1..1]
 a|Create `_bmm_property_definition_` from `P_BMM_XX` parts. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_

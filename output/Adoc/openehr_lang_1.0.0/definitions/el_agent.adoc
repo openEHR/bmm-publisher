@@ -37,7 +37,7 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `link:/classes/BMM_SIGNATURE[BMM_SIGNATURE] ` +
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]` +
  +
 __Post_result__: `Result = definition.signature`
 a|Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.

@@ -8,7 +8,7 @@
 
 2+h|*Attributes*
 
-|*type*: `link:/classes/BMM_CONTAINER_TYPE[BMM_CONTAINER_TYPE] ` [1..1]
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]` [1..1]
 a|Declared or inferred static type of the entity.
 
 |*is_nullable*: `link:/classes/Boolean[Boolean] ` [0..1] +
@@ -34,7 +34,7 @@ It is strongly recommended to use the following key /type combinations for the r
 Other keys and value types may be freely added. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|*scope*: `link:/classes/BMM_CLASS[BMM_CLASS] ` [1..1]
+|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]` [1..1]
 a|Class within which a referenceable element is known. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_class_feature_class[BMM_CLASS_FEATURE]_
 
@@ -91,7 +91,7 @@ __Post_result__: `Result = (scope = self)` [1..1]
 a|True if this declaration entity is the root of the declaration hierarchy. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_declaration_class[BMM_DECLARATION]_
 
-|_(abstract)_ *signature* (): `link:/classes/BMM_SIGNATURE[BMM_SIGNATURE] ` [1..1]
+|_(abstract)_ *signature* (): `xref:LANG:bmm:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]` [1..1]
 a|Formal signature of this element, in the form:
 
 `name [arg1_name: T_arg1, ...][:T_value]`

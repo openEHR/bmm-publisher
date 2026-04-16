@@ -1,0 +1,76 @@
+[plantuml,BMM_ENUMERATION_INTEGER,format=svg]
+-----
+@startuml
+
+class BMM_ENUMERATION_INTEGER {
+  + item_values : List<BMM_INTEGER_VALUE> [*]
+}
+
+class BMM_ENUMERATION  #whitesmoke;line:gray;line.dotted;text:gray {
+  + item_names : List<String> [*]
+  + item_values : List<BMM_PRIMITIVE_VALUE> [*]
+  + name_map() : Hash<String,String> [1]
+}
+
+class BMM_SIMPLE_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
+  + type() : BMM_SIMPLE_TYPE [1]
+}
+
+abstract class BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
+  + ancestors : List<String> [*]
+  + package : BMM_PACKAGE [1]
+  + properties : List<String> [*]
+  + source_schema_id : String [1]
+  + immediate_descendants : List<BMM_CLASS> [*]
+  + is_override : Boolean [1]
+  + static_properties : List<String> [*]
+  + functions : List<String> [*]
+  + procedures : List<String> [*]
+  + is_primitive : Boolean [0..1]
+  + is_abstract : Boolean [0..1]
+  + invariants : List<BMM_ASSERTION> [*]
+  + creators : List<String> [*]
+  + converters : List<String> [*]
+  + features : List<BMM_FEATURE> [*]
+  + {abstract} type() : BMM_MODEL_TYPE [1]
+  + all_ancestors() : List<String> [*]
+  + all_descendants() : List<String> [*]
+  + suppliers() : List<String> [*]
+  + suppliers_non_primitive() : List<String> [*]
+  + supplier_closure() : List<String> [*]
+  + package_path() : String [1]
+  + class_path() : String [1]
+  + is_primitive() : Boolean [1]
+  + is_abstract() : Boolean [1]
+  + features() : List<Any> [*]
+  + flat_features() : List<Any> [*]
+  + flat_properties() : List<BMM_PROPERTY> [*]
+}
+
+abstract class BMM_MODULE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + scope : BMM_MODEL [1]
+  + feature_groups : List<BMM_FEATURE_GROUP> [*]
+  + features : List<BMM_FORMAL_ELEMENT> [*]
+}
+
+abstract class BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+  + name : String [1]
+  + documentation : Hash<String,Any> [0..1]
+  + scope : BMM_MODEL_ELEMENT [1]
+  + extensions : Hash<String,Any> [0..1]
+  + is_root_scope() : Boolean [1]
+}
+
+BMM_MODEL_ELEMENT <|-- BMM_MODULE
+
+BMM_MODULE <|-- BMM_CLASS
+
+BMM_CLASS <|-- BMM_SIMPLE_CLASS
+
+BMM_SIMPLE_CLASS <|-- BMM_ENUMERATION
+
+BMM_ENUMERATION <|-- BMM_ENUMERATION_INTEGER
+
+
+@enduml
+-----

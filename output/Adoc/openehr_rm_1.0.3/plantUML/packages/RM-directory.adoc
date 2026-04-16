@@ -1,0 +1,16 @@
+[plantuml,directory,format=svg]
+-----
+@startuml
+
+class VERSIONED_FOLDER {
+}
+
+class FOLDER {
+  + items : List<OBJECT_REF> [*]
+  + folders : List<FOLDER> [*]
+}
+
+LOCATABLE <|-- FOLDER
+
+@enduml
+-----

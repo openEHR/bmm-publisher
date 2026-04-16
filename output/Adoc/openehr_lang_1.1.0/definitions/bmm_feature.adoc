@@ -28,6 +28,6 @@ a|Group containing this feature.
 
 h|*1..1 +
 (redefined)*
-|*scope*: `link:/classes/BMM_CLASS[BMM_CLASS] `
+|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
 a|Model element within which an element is declared.
 |===

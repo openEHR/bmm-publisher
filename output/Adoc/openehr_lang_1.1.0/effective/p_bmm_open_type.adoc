@@ -22,7 +22,7 @@ a|Simple type parameter as a single letter like 'T', 'G' etc.
 
 |_(abstract)_ *create_bmm_type* ( +
 a_schema: `xref:LANG:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]`, +
-a_class_def: `link:/classes/BMM_CLASS[BMM_CLASS] [1]` +
+a_class_def: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
 ): `void` [1..1]
 a|Create appropriate `BMM_XXX` object; effected in descendants. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]_

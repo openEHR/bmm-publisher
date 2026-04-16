@@ -1,0 +1,26 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_ENTITY_METATYPE*
+
+2+|Inherits: link:/classes/String[String] 
+
+2+h|*Constants*
+
+|Entity_metatype_simple
+a|
+
+|Entity_metatype_generic
+a|
+
+|Entity_metatype_generic_parameter
+a|
+
+|Entity_metatype_range_constrained
+a|
+
+|Entity_metatype_enumeration
+a|
+
+|Entity_metatype_container
+a|
+|===

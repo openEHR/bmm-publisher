@@ -22,6 +22,6 @@ h|*1..1*
 a|
 
 h|*1..1*
-|*type*: `link:/classes/BMM_TYPE[BMM_TYPE] `
+|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
 a|The declared type of the variable.
 |===

@@ -34,7 +34,7 @@ a|Reference to definition of a routine for which this is an agent, if one exists
 
 2+h|*Functions*
 
-|*eval_type* (): `link:/classes/BMM_ROUTINE_TYPE[BMM_ROUTINE_TYPE] ` +
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_routine_type_class[BMM_ROUTINE_TYPE]` +
  +
 __Post_result__: `Result = definition.signature` [1..1]
 a|Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.

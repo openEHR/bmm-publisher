@@ -1,0 +1,10 @@
+[source,json]
+--------
+{
+    "name": "BMM_PROPERTY_TYPE",
+    "documentation": "Meta-type for property and variable signatures.",
+    "ancestors": [
+        "BMM_SIGNATURE"
+    ]
+}
+--------

@@ -23,7 +23,7 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `link:/classes/BMM_TYPE[BMM_TYPE] `
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
 a|Return `_value.type_`.
 
 h|*Invariants*

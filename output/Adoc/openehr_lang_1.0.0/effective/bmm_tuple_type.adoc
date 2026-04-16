@@ -1,0 +1,53 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_TUPLE_TYPE*
+
+2+a|Special type representing the type of a tuple, i.e. an array of any number of other types. This includes both container and unitary types, since tuple instances represent concrete objects.
+
+Note that both open and closed generic parameters are allowed, as with any generic type, but open generic parameters are only valid within the scope of a generic class.
+
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE], xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]
+
+2+h|*Constants*
+
+|*base_name*: `link:/classes/String[String] {nbsp}={nbsp}"Tuple"` [1..1]
+a|Base name (built-in).
+
+2+h|*Attributes*
+
+|*item_types*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]>` [1..1]
+a|List of types of the items of the tuple, keyed by purpose in the tuple.
+
+2+h|*Functions*
+
+|*type_name* (): `link:/classes/String[String] ` [1..1]
+a|Return `_base_name_`.
+
+|*type_signature* (): `link:/classes/String[String] ` [1..1]
+a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Defaults to the value of `_type_name()_`. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
+
+|*is_abstract* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|Result = `False`.
+
+|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post_validity__: `Result = base_class.is_primitive` [1..1]
+a|Result = `True`.
+
+|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]_
+
+|*effective_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]` [1..1]
+a|Result = self. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]_
+
+|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` [1..1]
+a|Return the logical set (i.e. unique types) from the merge of `_flattened_type_list_()` called on each member of `_item_types_`.
+
+|*type_base_name* (): `link:/classes/String[String] ` [1..1]
+a|Return `_base_name_`.
+|===

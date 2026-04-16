@@ -34,7 +34,7 @@ a|Reference to definition of a routine for which this is a direct call instance,
 
 2+h|*Functions*
 
-|*eval_type* (): `link:/classes/BMM_FUNCTION_TYPE[BMM_FUNCTION_TYPE] ` +
+|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_function_type_class[BMM_FUNCTION_TYPE]` +
  +
 __Post_result__: `Result = definition.signature` [1..1]
 a|Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.

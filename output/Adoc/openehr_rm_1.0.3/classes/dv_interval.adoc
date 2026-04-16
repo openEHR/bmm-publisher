@@ -1,0 +1,21 @@
+=== DV_INTERVAL Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/dv_interval.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/dv_interval.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/dv_interval.adoc[]
+
+UML::
++
+include::ROOT:partial$plantUML/classes/dv_interval.adoc[]
+
+====

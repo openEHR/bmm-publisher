@@ -8,7 +8,7 @@
 
 2+h|*Attributes*
 
-|*bmm_type*: `link:/classes/BMM_CONTAINER_TYPE[BMM_CONTAINER_TYPE] ` [0..1]
+|*bmm_type*: `xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]` [0..1]
 a|Result of `_create_bmm_type()_` call.
 
 |*container_type*: `link:/classes/String[String] ` [1..1]
@@ -24,7 +24,7 @@ a|The target type; this converts to the first parameter in `_generic_parameters_
 
 |_(abstract)_ *create_bmm_type* ( +
 a_schema: `xref:LANG:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]`, +
-a_class_def: `link:/classes/BMM_CLASS[BMM_CLASS] [1]` +
+a_class_def: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
 ): `void` [1..1]
 a|Create appropriate `BMM_XXX` object; effected in descendants. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]_
