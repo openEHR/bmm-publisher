@@ -16,7 +16,7 @@ use OpenEHR\BmmPublisher\Console\Command\YamlCommand;
 use Symfony\Component\Console\Application;
 
 try {
-    $console = new Application('bmm-publisher', '0.1.0');
+    $console = new Application('bmm-publisher', '0.4.0');
     $console->addCommand(new AsciidocCommand());
     $console->addCommand(new PlantUmlCommand());
     $console->addCommand(new YamlCommand());

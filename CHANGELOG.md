@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-04-16
+
+### Changed
+
+- **Package traversal**: `BmmSchemaCollection::forEachPackage()` supports one additional nesting level (4 deep), enabling schemas with deeper package hierarchies.
+
+### Added
+
+- **`openehr_lang_1.0.0` schema**: added `entity` package with `BMM_CLASS`, `BMM_CONTAINER_TYPE`, `BMM_EFFECTIVE_TYPE`, `BMM_MODEL_TYPE`, `BMM_GENERIC_CLASS`, `BMM_GENERIC_TYPE`, `BMM_PARAMETER_TYPE`, `BMM_TUPLE_TYPE`, `BMM_TYPE`, `BMM_SIMPLE_CLASS`, `BMM_SIMPLE_TYPE`, `BMM_UNITARY_TYPE`, `BMM_INDEXED_CONTAINER_TYPE`, `BMM_SIGNATURE`, `BMM_MODULE`, `BMM_ENTITY_METATYPE`, and nested `range_constrained` sub-package (`BMM_VALUE_SET_SPEC`, `BMM_ENUMERATION`, `BMM_ENUMERATION_INTEGER`, `BMM_ENUMERATION_STRING`).
+- Re-rendered all output files for the updated schema.
+
 ## [0.3.0] - 2026-04-08
 
 ### Changed
@@ -43,7 +54,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/openehr/bmm-publisher/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/openehr/bmm-publisher/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/openehr/bmm-publisher/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/openehr/bmm-publisher/releases/tag/0.1.0
