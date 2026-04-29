@@ -19,7 +19,7 @@ Use this file as the **primary reference** for agents, automation, and contribut
 | `bin/Command/` | Console commands; PSR-4 namespace `OpenEHR\BmmPublisher\Console\` |
 | `src/` | Application source; PSR-4 namespace `OpenEHR\BmmPublisher\` |
 | `resources/` | **Input**: openEHR BMM schemas in P_BMM JSON format (`.bmm.json` files) |
-| `output/` | **Generated** (gitignored): all writer output |
+| `output/` | **Generated** writer output (committed; CI's `verify-output` job re-runs `make publish-all` and fails on `git diff -- output/`) |
 | `output/Adoc/` | AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks); `plantUML/{classes,packages}/` holds the `.puml` source plus a passthrough-block `.adoc` partial with the rendered SVG embedded inline |
 | `output/PlantUML/` | PlantUML `.puml` diagram files |
 | `output/BMM-YAML/` | YAML serialisations of BMM schemas |

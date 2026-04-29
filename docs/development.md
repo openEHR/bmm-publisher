@@ -60,8 +60,9 @@ The Dockerfile (`.docker/Dockerfile`) is multistage:
 
 | Target | Purpose | Includes |
 |--------|---------|----------|
-| `development` | Local dev, CI composer scripts | xdebug, Composer, git, `php.ini-development` |
-| `production` | Release image pushed to GHCR | No xdebug, no Composer, `php.ini-production`, `ENTRYPOINT ["php", "bin/bmm-publisher"]` |
+| `base` (shared) | Foundation for both targets | PHP 8.5-cli Alpine, Alpine `plantuml` (transitively pulls in OpenJDK + Graphviz + DejaVu fonts — used by the atomic `asciidoc` pipeline) |
+| `development` | Local dev, CI composer scripts | base + xdebug, Composer, git, `php.ini-development` |
+| `production` | Release image pushed to GHCR | base + bundled BMM resources, no xdebug, no Composer, `php.ini-production`, `ENTRYPOINT ["php", "bin/bmm-publisher"]` |
 
 ```bash
 make build          # Build development image (docker-compose default)
