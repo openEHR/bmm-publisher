@@ -76,11 +76,24 @@ final class WriterTest extends TestCase
         self::assertDirectoryExists($schemaDir . DIRECTORY_SEPARATOR . 'effective');
         self::assertDirectoryExists($schemaDir . DIRECTORY_SEPARATOR . 'classes');
         self::assertDirectoryExists($schemaDir . DIRECTORY_SEPARATOR . 'BMMs');
-        self::assertDirectoryExists($schemaDir . DIRECTORY_SEPARATOR . 'plantUML');
+        self::assertDirectoryExists($schemaDir . DIRECTORY_SEPARATOR . 'plantUML' . DIRECTORY_SEPARATOR . 'classes');
+        self::assertDirectoryExists($schemaDir . DIRECTORY_SEPARATOR . 'plantUML' . DIRECTORY_SEPARATOR . 'packages');
 
-        // Should contain .adoc files
-        $adocFiles = self::findFiles($schemaDir . '/definitions/*.adoc');
-        self::assertNotEmpty($adocFiles);
+        // Definitions still produce .adoc
+        self::assertNotEmpty(self::findFiles($schemaDir . '/definitions/*.adoc'));
+
+        // plantUML subdirs now contain .puml files (not .adoc — that's the inline-svg step's job)
+        self::assertNotEmpty(self::findFiles($schemaDir . '/plantUML/classes/*.puml'));
+        self::assertNotEmpty(self::findFiles($schemaDir . '/plantUML/packages/*.puml'));
+        self::assertEmpty(self::findFiles($schemaDir . '/plantUML/classes/*.adoc'));
+        self::assertEmpty(self::findFiles($schemaDir . '/plantUML/packages/*.adoc'));
+
+        // .puml content is raw PlantUML source, not an Asciidoctor [plantuml,…] block
+        $pumlFiles = self::findFiles($schemaDir . '/plantUML/classes/*.puml');
+        $content = (string) file_get_contents($pumlFiles[0]);
+        self::assertStringContainsString('@startuml', $content);
+        self::assertStringContainsString('@enduml', $content);
+        self::assertStringNotContainsString('[plantuml,', $content);
     }
 
     #[Test]

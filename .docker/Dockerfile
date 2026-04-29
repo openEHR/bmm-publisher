@@ -7,7 +7,7 @@ FROM php:${PHP_VERSION}-cli-alpine AS base
 
 RUN set -eux \
     && apk update && apk upgrade --no-cache \
-    && apk add --no-cache ca-certificates \
+    && apk add --no-cache ca-certificates plantuml \
     && update-ca-certificates \
     && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 

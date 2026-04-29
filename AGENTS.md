@@ -20,7 +20,7 @@ Use this file as the **primary reference** for agents, automation, and contribut
 | `src/` | Application source; PSR-4 namespace `OpenEHR\BmmPublisher\` |
 | `resources/` | **Input**: openEHR BMM schemas in P_BMM JSON format (`.bmm.json` files) |
 | `output/` | **Generated** (gitignored): all writer output |
-| `output/Adoc/` | AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks, PlantUML blocks) |
+| `output/Adoc/` | AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks); `plantUML/{classes,packages}/` holds the `.puml` source plus a passthrough-block `.adoc` partial with the rendered SVG embedded inline |
 | `output/PlantUML/` | PlantUML `.puml` diagram files |
 | `output/BMM-YAML/` | YAML serialisations of BMM schemas |
 | `output/BMM-JSON-development-types/` | Per-type split JSON files grouped by component (AM, RM, BASE, LANG, TERM) |
@@ -29,7 +29,7 @@ Use this file as the **primary reference** for agents, automation, and contribut
 | `.claude/` | Claude Code project instructions (`CLAUDE.md`). |
 | `.cursor/rules/` | Cursor rules (`project-context.mdc`, `commit-messages.mdc`, PHP/testing rules). |
 | `.github/` | CI workflow, release workflow (GitHub Release + Docker image to GHCR), Dependabot, issue/PR templates, Copilot instructions. |
-| `.docker/` | Multistage Dockerfile (PHP 8.5-cli Alpine): `production` target (CI/release, no xdebug) and `development` target (xdebug, Composer). Docker-compose targets `development`. |
+| `.docker/` | Multistage Dockerfile (PHP 8.5-cli Alpine + Alpine `plantuml` package, which transitively pulls in OpenJDK + Graphviz + DejaVu fonts): `production` target (CI/release, no xdebug) and `development` target (xdebug, Composer, git). Docker-compose targets `development`. |
 | `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md` | Root-level process and team docs |
 
 Coding standards and quality checks are defined by config files in `tests/` and the Composer scripts in `composer.json`.
@@ -42,8 +42,9 @@ The entry point `bin/bmm-publisher` provides these Symfony Console commands:
 
 | Command | Aliases | Description |
 |---------|---------|-------------|
-| `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables |
-| `plantuml` | `uml`, `puml` | Convert BMM JSON schemas to PlantUML diagrams |
+| `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables. Atomic: the writer emits `.puml`, the in-image `plantuml` CLI renders `.svg`, and `InlineSvg` embeds the SVG as a passthrough block in the `.adoc` partial. |
+| `plantuml` | `uml`, `puml` | Convert BMM JSON schemas to PlantUML diagrams (standalone tree under `output/PlantUML/`) |
+| `inline-svg` | | Re-run only the SVG-inline step against existing `.svg` files (debugging / surgical re-runs). |
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
 
@@ -60,10 +61,18 @@ BmmSchemaCollection: loads .bmm.json → BmmSchema objects (via cadasto/openehr-
 
 Writers (callable classes, receive BmmSchemaCollection, delegate to Formatters):
   ├── Asciidoc      → AsciidocDefinition, AsciidocEffective, AsciidocTab,
-  │                   AsciidocBmmJson, AsciidocPlantUml
+  │                   AsciidocBmmJson, Formatter\PlantUml (raw .puml output)
+  ├── InlineSvg     → SvgPassthrough  (post-render: .svg → .adoc passthrough; .svg removed)
   ├── PlantUml      → Formatter\PlantUml
   ├── BmmYaml       (uses Symfony Yaml component)
   └── BmmJsonSplit  (per-type JSON with openEHR spec URLs)
+
+The `asciidoc` command is a self-contained pipeline (one PHP run, one container start):
+  1. The `Asciidoc` writer emits raw `.puml` files under `output/Adoc/<schema>/plantUML/{classes,packages}/`.
+  2. `AsciidocCommand` shells out via Symfony Process to the bundled `plantuml -tsvg -nometadata` CLI; one batch invocation per call (single warm JVM).
+  3. The `InlineSvg` writer reads each `.svg`, sanitises it (strips XML PI/DOCTYPE/MD5 stamp, fails on `Syntax Error?`), wraps it in an Asciidoctor passthrough block, writes the `.adoc` partial, and unlinks the `.svg`.
+
+End state on disk: `<name>.puml` (committed source) + `<name>.adoc` (committed passthrough partial with SVG inline). No `.svg` left behind.
 ```
 
 **Key patterns**:

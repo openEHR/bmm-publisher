@@ -1,4 +1,4 @@
-.PHONY: help up down clean logs ps build build-prod install ci sh adoc
+.PHONY: help up down clean logs ps build build-prod install ci sh adoc puml yaml split-json publish-all
 
 # Default target
 .DEFAULT_GOAL := help
@@ -76,10 +76,10 @@ PUBLISH_RUNS = \
 	&& ./bin/bmm-publisher $(1) openehr_term_3.0.0 \
 	&& ./bin/bmm-publisher $(1) openehr_term_3.1.0
 
-adoc: ## Generate AsciiDoc for all schema combinations
+adoc: ## Generate AsciiDoc for all schema combinations (writer + PlantUML render + SVG inline, atomic per call)
 	$(DOCKER_COMPOSE) run --rm app sh -c '$(call PUBLISH_RUNS,adoc)'
 
-puml: ## Generate PlantUML for all schema combinations
+puml: ## Generate standalone PlantUML tree (output/PlantUML/<schema>/...) for all schema combinations
 	$(DOCKER_COMPOSE) run --rm app sh -c '$(call PUBLISH_RUNS,puml)'
 
 yaml: ## Generate YAML for all schemas

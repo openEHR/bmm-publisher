@@ -13,6 +13,7 @@
         "cadasto/openehr-bmm": "^0.2.1",
         "psr/log": "^3.0",
         "symfony/console": "^8.0",
+        "symfony/process": "^8.0",
         "symfony/yaml": "^8.0"
     },
     "require-dev": {
