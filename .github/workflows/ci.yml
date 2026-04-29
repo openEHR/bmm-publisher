@@ -79,6 +79,9 @@ jobs:
       - name: Build dev image
         run: make build
 
+      - name: Install PHP dependencies
+        run: make install
+
       - name: Regenerate output
         run: make publish-all
 
