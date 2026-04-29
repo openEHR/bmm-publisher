@@ -1,0 +1,9 @@
+@startuml
+
+class BMM_VALUE_SET_SPEC {
+  + resource_id : String [1]
+  + value_set_id : String [1]
+}
+
+
+@enduml
