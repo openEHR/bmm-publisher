@@ -1,11 +1,7 @@
-[plantuml,OPERATOR_DEF_EXTERNAL,format=svg]
------
-@startuml
+////
+Auto-generated from operator_def_external.puml — do not edit.
+////
+++++
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="85px" preserveAspectRatio="none" style="width:336px;height:85px;background:#FFFFFF;" version="1.1" viewBox="0 0 336 85" width="336px" zoomAndPan="magnify"><defs/><g><!--class OPERATOR_DEF_EXTERNAL--><g class="entity" data-entity="OPERATOR_DEF_EXTERNAL" data-source-line="2" data-uid="ent0002" id="entity_OPERATOR_DEF_EXTERNAL"><rect fill="#F1F1F1" height="64.7999" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="315.2948" x="7" y="7"/><ellipse cx="70.6858" cy="23" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M65.2014,28.5 L67.2327,28.5 L71.2795,17.1563 L70.3733,17.1563 L74.2014,28.5 L76.342,28.5 L72.0139,16.1719 L69.7952,16.1719 L65.2014,28.5 Z M67.5295,25 L73.967,25 L73.967,23.25 L67.5295,23.25 L67.5295,25 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="179.4232" x="91.1858" y="28.362">OPERATOR_DEF_EXTERNAL</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="321.2948" y1="39" y2="39"/><ellipse cx="18" cy="52.9" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="289.2948" x="27" y="56.7619">evaluation_agent : FUNCTION&lt;TUPLE,Any&gt; [1]</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="321.2948" y1="63.7999" y2="63.7999"/></g></g></svg>
 
-abstract class OPERATOR_DEF_EXTERNAL {
-  + evaluation_agent : FUNCTION<TUPLE,Any> [1]
-}
-
-
-@enduml
------
+++++

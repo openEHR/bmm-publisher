@@ -1,0 +1,12 @@
+@startuml
+
+enum VERSION_STATUS {
+  alpha 
+  beta 
+  release_candidate 
+  released 
+  build 
+}
+
+
+@enduml

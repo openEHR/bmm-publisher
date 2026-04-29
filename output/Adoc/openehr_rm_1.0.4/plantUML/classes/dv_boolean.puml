@@ -1,0 +1,13 @@
+@startuml
+
+class DV_BOOLEAN {
+  + value : Boolean [1]
+}
+
+abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+DATA_VALUE <|-- DV_BOOLEAN
+
+
+@enduml

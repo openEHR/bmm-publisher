@@ -1,18 +1,7 @@
-[plantuml,BMM_TYPED_FEATURE,format=svg]
------
-@startuml
+////
+Auto-generated from bmm_typed_feature.puml — do not edit.
+////
+++++
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="220px" preserveAspectRatio="none" style="width:202px;height:220px;background:#FFFFFF;" version="1.1" viewBox="0 0 202 220" width="202px" zoomAndPan="magnify"><defs/><g><!--class BMM_TYPED_FEATURE--><g class="entity" data-entity="BMM_TYPED_FEATURE" data-source-line="2" data-uid="ent0002" id="entity_BMM_TYPED_FEATURE"><rect fill="#F1F1F1" height="64.7999" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="188.3013" x="7" y="148.6"/><ellipse cx="25.6" cy="164.6" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M20.1156,170.1 L22.1468,170.1 L26.1937,158.7563 L25.2875,158.7563 L29.1156,170.1 L31.2562,170.1 L26.9281,157.7719 L24.7093,157.7719 L20.1156,170.1 Z M22.4437,166.6 L28.8812,166.6 L28.8812,164.85 L22.4437,164.85 L22.4437,166.6 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="148.3014" x="40.4" y="169.962">BMM_TYPED_FEATURE</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="194.3013" y1="180.6" y2="180.6"/><ellipse cx="18" cy="194.5" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162.3013" x="27" y="198.3619">is_nullable : Boolean [0..1]</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="194.3013" y1="205.3999" y2="205.3999"/></g><!--class BMM_TYPED--><g class="entity" data-entity="BMM_TYPED" data-source-line="6" data-uid="ent0003" id="entity_BMM_TYPED"><rect fill="#F5F5F5" height="81.5999" rx="2.5" ry="2.5" style="stroke:#808080;stroke-width:1;stroke-dasharray:1,3;" width="181.2454" x="10.53" y="7"/><ellipse cx="55.7499" cy="23" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M50.2655,28.5 L52.2967,28.5 L56.3436,17.1563 L55.4374,17.1563 L59.2655,28.5 L61.4061,28.5 L57.078,16.1719 L54.8592,16.1719 L50.2655,28.5 Z M52.5936,25 L59.0311,25 L59.0311,23.25 L52.5936,23.25 L52.5936,25 Z " fill="#000000"/><text fill="#808080" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="82.3057" x="76.2499" y="28.362">BMM_TYPED</text><line style="stroke:#808080;stroke-width:1;stroke-dasharray:1,3;" x1="11.53" x2="190.7754" y1="39" y2="39"/><ellipse cx="21.53" cy="52.9" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#808080" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128.0575" x="30.53" y="56.7619">type : BMM_TYPE [1]</text><line style="stroke:#808080;stroke-width:1;stroke-dasharray:1,3;" x1="11.53" x2="190.7754" y1="63.7999" y2="63.7999"/><ellipse cx="21.53" cy="77.6999" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#808080" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155.2454" x="30.53" y="81.5619">is_boolean() : Boolean [1]</text></g><!--reverse link BMM_TYPED to BMM_TYPED_FEATURE--><g class="link" data-entity-1="BMM_TYPED" data-entity-2="BMM_TYPED_FEATURE" data-source-line="11" data-uid="lnk4" id="link_BMM_TYPED_BMM_TYPED_FEATURE"><path codeLine="11" d="M101.15,106.88 C101.15,126.02 101.15,130.59 101.15,148.49" fill="none" id="BMM_TYPED-backto-BMM_TYPED_FEATURE" style="stroke:#181818;stroke-width:1;"/><polygon fill="none" points="101.15,88.88,95.15,106.88,107.15,106.88,101.15,88.88" style="stroke:#181818;stroke-width:1;"/></g></g></svg>
 
-abstract class BMM_TYPED_FEATURE {
-  + is_nullable : Boolean [0..1]
-}
-
-abstract class BMM_TYPED  #whitesmoke;line:gray;line.dotted;text:gray {
-  + type : BMM_TYPE [1]
-  + is_boolean() : Boolean [1]
-}
-
-BMM_TYPED <|-- BMM_TYPED_FEATURE
-
-
-@enduml
------
+++++

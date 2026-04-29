@@ -1,0 +1,7 @@
+@startuml
+
+class P_C_DATE {
+}
+
+
+@enduml

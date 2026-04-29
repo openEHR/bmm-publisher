@@ -1,13 +1,7 @@
-[plantuml,BMM_OPERATOR,format=svg]
------
-@startuml
+////
+Auto-generated from bmm_operator.puml — do not edit.
+////
+++++
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="119px" preserveAspectRatio="none" style="width:307px;height:119px;background:#FFFFFF;" version="1.1" viewBox="0 0 307 119" width="307px" zoomAndPan="magnify"><defs/><g><!--class BMM_OPERATOR--><g class="entity" data-entity="BMM_OPERATOR" data-source-line="2" data-uid="ent0002" id="entity_BMM_OPERATOR"><rect fill="#F1F1F1" height="98.3998" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="286.6089" x="7" y="7"/><ellipse cx="90.2367" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M90.2367,29.4219 C91.4086,29.4219 92.643,29.1563 94.018,28.5469 L93.5336,27.0313 C92.4398,27.4531 91.4242,27.6406 90.5648,27.6406 C87.8461,27.6406 86.1273,25.7969 86.1273,22.8906 C86.1273,20.1406 87.6898,18.5469 90.4242,18.5469 C91.3461,18.5469 92.3617,18.7344 93.5023,19.1563 L94.0805,17.6406 C92.9867,17.0625 91.6898,16.7656 90.5023,16.7656 C86.7367,16.7656 84.1586,19.4063 84.1586,23.2188 C84.1586,26.8906 86.643,29.4219 90.2367,29.4219 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111.6355" x="110.7367" y="28.362">BMM_OPERATOR</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="292.6089" y1="39" y2="39"/><ellipse cx="18" cy="52.9" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="260.6089" x="27" y="56.7619">position : BMM_OPERATOR_POSITION [1]</text><ellipse cx="18" cy="69.6999" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169.9593" x="27" y="73.5619">symbols : List&lt;String&gt; [1..*]</text><ellipse cx="18" cy="86.4998" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100.8836" x="27" y="90.3618">name : String [1]</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="292.6089" y1="97.3998" y2="97.3998"/></g></g></svg>
 
-class BMM_OPERATOR {
-  + position : BMM_OPERATOR_POSITION [1]
-  + symbols : List<String> [1..*]
-  + name : String [1]
-}
-
-
-@enduml
------
+++++

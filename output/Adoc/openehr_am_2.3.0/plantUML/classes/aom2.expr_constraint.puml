@@ -1,0 +1,10 @@
+@startuml
+
+class EXPR_CONSTRAINT {
+  + item : C_PRIMITIVE_OBJECT [1]
+}
+
+EXPR_LEAF <|-- EXPR_CONSTRAINT
+
+
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+
+class ARCHETYPE_ID_CONSTRAINT {
+  + constraint : C_STRING [1]
+}
+
+
+@enduml

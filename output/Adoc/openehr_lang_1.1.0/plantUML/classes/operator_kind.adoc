@@ -1,30 +1,7 @@
-[plantuml,OPERATOR_KIND,format=svg]
------
-@startuml
+////
+Auto-generated from operator_kind.puml — do not edit.
+////
+++++
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="404px" preserveAspectRatio="none" style="width:164px;height:404px;background:#FFFFFF;" version="1.1" viewBox="0 0 164 404" width="164px" zoomAndPan="magnify"><defs/><g><!--class OPERATOR_KIND--><g class="entity" data-entity="OPERATOR_KIND" data-source-line="2" data-uid="ent0002" id="entity_OPERATOR_KIND"><rect fill="#F1F1F1" height="383.9985" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="143.4675" x="7" y="7"/><ellipse cx="22" cy="23" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M17.5625,29.5 L25.5,29.5 L25.5,27.75 L19.5,27.75 L19.5,24.0156 L25.0469,24.0156 L25.0469,22.25 L19.5,22.25 L19.5,18.9219 L25.5,18.9219 L25.5,17.1719 L17.5625,17.1719 L17.5625,29.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111.4675" x="36" y="28.362">OPERATOR_KIND</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="149.4675" y1="39" y2="39"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15.3719" x="13" y="56.7619">eq</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15.3299" x="13" y="73.5619">ne</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="8.946" x="13" y="90.3618">lt</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="11.284" x="13" y="107.1617">le</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="13.034" x="13" y="123.9616">gt</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15.3719" x="13" y="140.7616">ge</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52.9898" x="13" y="157.5615">matches</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="20.9299" x="13" y="174.3614">not</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="23.0859" x="13" y="191.1614">and</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="13.216" x="13" y="207.9613">or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="19.7819" x="13" y="224.7612">xor</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="45.0658" x="13" y="241.5611">implies</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39.9278" x="13" y="258.3611">for_all</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35.4479" x="13" y="275.161">exists</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26.1939" x="13" y="291.9609">plus</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38.0938" x="13" y="308.7608">minus</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51.2118" x="13" y="325.5608">multiply</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36.9598" x="13" y="342.3607">divide</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47.9638" x="13" y="359.1606">modulo</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58.2118" x="13" y="375.9605">exponent</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="149.4675" y1="382.9985" y2="382.9985"/></g></g></svg>
 
-enum OPERATOR_KIND {
-  eq 
-  ne 
-  lt 
-  le 
-  gt 
-  ge 
-  matches 
-  not 
-  and 
-  or 
-  xor 
-  implies 
-  for_all 
-  exists 
-  plus 
-  minus 
-  multiply 
-  divide 
-  modulo 
-  exponent 
-}
-
-
-@enduml
------
+++++

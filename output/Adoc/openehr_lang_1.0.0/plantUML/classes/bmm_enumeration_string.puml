@@ -1,0 +1,71 @@
+@startuml
+
+class BMM_ENUMERATION_STRING {
+  + item_values : List<BMM_STRING_VALUE> [*]
+}
+
+class BMM_ENUMERATION  #whitesmoke;line:gray;line.dotted;text:gray {
+  + item_names : List<String> [*]
+  + item_values : List<BMM_PRIMITIVE_VALUE> [*]
+  + name_map() : Hash<String,String> [1]
+}
+
+class BMM_SIMPLE_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
+  + type() : BMM_SIMPLE_TYPE [1]
+}
+
+abstract class BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
+  + ancestors : List<String> [*]
+  + package : BMM_PACKAGE [1]
+  + properties : Hash<String,BMM_PROPERTY> [0..1]
+  + source_schema_id : String [1]
+  + immediate_descendants : List<BMM_CLASS> [*]
+  + is_override : Boolean [1]
+  + constants : Hash<String,BMM_CONSTANT> [0..1]
+  + functions : Hash<String,BMM_FUNCTION> [0..1]
+  + procedures : Hash<String,BMM_PROCEDURE> [0..1]
+  + is_primitive : Boolean [0..1]
+  + is_abstract : Boolean [0..1]
+  + invariants : List<BMM_ASSERTION> [*]
+  + creators : List<String> [*]
+  + converters : List<String> [*]
+  + feature_groups : List<BMM_FEATURE_GROUP> [*]
+  + {abstract} type() : BMM_MODEL_TYPE [1]
+  + all_ancestors() : List<String> [*]
+  + all_descendants() : List<String> [*]
+  + suppliers() : List<String> [*]
+  + suppliers_non_primitive() : List<String> [*]
+  + supplier_closure() : List<String> [*]
+  + package_path() : String [1]
+  + class_path() : String [1]
+  + is_primitive() : Boolean [1]
+  + is_abstract() : Boolean [1]
+  + features() : List<BMM_CLASS_FEATURE> [*]
+  + flat_features() : List<BMM_CLASS_FEATURE> [*]
+  + flat_properties() : List<BMM_PROPERTY> [*]
+}
+
+abstract class BMM_MODULE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + scope : BMM_MODEL [1]
+}
+
+abstract class BMM_DECLARATION  #whitesmoke;line:gray;line.dotted;text:gray {
+  + name : String [1]
+  + documentation : Hash<String,Any> [0..1]
+  + scope : BMM_DECLARATION [1]
+  + extensions : Hash<String,Any> [0..1]
+  + is_root_scope() : Boolean [1]
+}
+
+BMM_DECLARATION <|-- BMM_MODULE
+
+BMM_MODULE <|-- BMM_CLASS
+
+BMM_CLASS <|-- BMM_SIMPLE_CLASS
+
+BMM_SIMPLE_CLASS <|-- BMM_ENUMERATION
+
+BMM_ENUMERATION <|-- BMM_ENUMERATION_STRING
+
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+
+class BMM_ACTION_TABLE {
+  + decision_table : BMM_ACTION_DECISION_TABLE [1]
+}
+
+abstract class BMM_STATEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+abstract class BMM_STATEMENT_ITEM  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+BMM_STATEMENT_ITEM <|-- BMM_STATEMENT
+
+BMM_STATEMENT <|-- BMM_ACTION_TABLE
+
+
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+
+abstract class DATA_VALUE {
+}
+
+
+@enduml

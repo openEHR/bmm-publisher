@@ -1,0 +1,9 @@
+@startuml
+
+abstract class EXPR_TYPE_DEF {
+  + type_name : String [1]
+  + type_anchor : Any [1]
+}
+
+
+@enduml

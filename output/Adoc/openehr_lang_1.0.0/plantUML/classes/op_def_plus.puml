@@ -1,0 +1,9 @@
+@startuml
+
+class OP_DEF_PLUS {
+  + name : String [1]
+  + symbols : List<String> [*]
+}
+
+
+@enduml

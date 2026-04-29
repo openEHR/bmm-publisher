@@ -1,0 +1,9 @@
+@startuml
+
+class SECTION {
+  + items : List<CONTENT_ITEM> [*]
+}
+
+CONTENT_ITEM <|-- SECTION
+
+@enduml

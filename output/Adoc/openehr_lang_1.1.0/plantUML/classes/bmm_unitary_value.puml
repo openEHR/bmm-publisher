@@ -1,0 +1,16 @@
+@startuml
+
+abstract class BMM_UNITARY_VALUE <T> {
+}
+
+abstract class BMM_LITERAL_VALUE <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+  + value_literal : String [1]
+  + value : Any [0..1]
+  + syntax : String [0..1]
+  + type : T [1]
+}
+
+BMM_LITERAL_VALUE <|-- BMM_UNITARY_VALUE
+
+
+@enduml

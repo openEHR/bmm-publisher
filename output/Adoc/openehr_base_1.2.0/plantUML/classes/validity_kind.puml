@@ -1,0 +1,10 @@
+@startuml
+
+enum VALIDITY_KIND {
+  mandatory 
+  optional 
+  prohibited 
+}
+
+
+@enduml

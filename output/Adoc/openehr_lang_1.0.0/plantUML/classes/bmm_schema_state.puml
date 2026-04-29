@@ -1,0 +1,11 @@
+@startuml
+
+enum BMM_SCHEMA_STATE {
+  State_created 
+  State_validated_created 
+  State_includes_pending 
+  State_includes_processed 
+}
+
+
+@enduml

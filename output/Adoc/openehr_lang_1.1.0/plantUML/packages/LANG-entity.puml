@@ -1,0 +1,192 @@
+@startuml
+
+abstract class BMM_CLASS {
+  + ancestors : List<String> [*]
+  + package : BMM_PACKAGE [1]
+  + properties : List<String> [*]
+  + source_schema_id : String [1]
+  + immediate_descendants : List<BMM_CLASS> [*]
+  + is_override : Boolean [1]
+  + static_properties : List<String> [*]
+  + functions : List<String> [*]
+  + procedures : List<String> [*]
+  + is_primitive : Boolean [0..1]
+  + is_abstract : Boolean [0..1]
+  + invariants : List<BMM_ASSERTION> [*]
+  + creators : List<String> [*]
+  + converters : List<String> [*]
+  + features : List<BMM_FEATURE> [*]
+  + {abstract} type() : BMM_MODEL_TYPE [1]
+  + all_ancestors() : List<String> [*]
+  + all_descendants() : List<String> [*]
+  + suppliers() : List<String> [*]
+  + suppliers_non_primitive() : List<String> [*]
+  + supplier_closure() : List<String> [*]
+  + package_path() : String [1]
+  + class_path() : String [1]
+  + is_primitive() : Boolean [1]
+  + is_abstract() : Boolean [1]
+  + features() : List<Any> [*]
+  + flat_features() : List<Any> [*]
+  + flat_properties() : List<BMM_PROPERTY> [*]
+}
+
+class BMM_CONTAINER_TYPE {
+  + container_class : BMM_GENERIC_CLASS [1]
+  + item_type : BMM_UNITARY_TYPE [1]
+  + is_ordered : Boolean [0..1]
+  + is_unique : Boolean [0..1]
+  + type_name() : String [1]
+  + is_abstract() : Boolean [1]
+  + flattened_type_list() : List<String> [1..*]
+  + unitary_type() : BMM_UNITARY_TYPE [1]
+  + is_primitive() : Boolean [1]
+  + effective_type() : BMM_EFFECTIVE_TYPE [1]
+}
+
+abstract class BMM_EFFECTIVE_TYPE {
+  + effective_type() : BMM_EFFECTIVE_TYPE [1]
+  + {abstract} type_base_name() : String [1]
+}
+
+abstract class BMM_MODEL_TYPE {
+  + value_constraint : BMM_VALUE_SET_SPEC [0..1]
+  + base_class : BMM_CLASS [1]
+  + type_base_name() : String [1]
+  + is_primitive() : Boolean [1]
+}
+
+class BMM_GENERIC_CLASS {
+  + generic_parameters : Hash<String,BMM_PARAMETER_TYPE> [1]
+  + suppliers() : List<String> [*]
+  + type() : BMM_GENERIC_TYPE [1]
+  + generic_parameter_conformance_type( a_name : String [1] ) : String [1]
+}
+
+class BMM_GENERIC_TYPE {
+  + generic_parameters : List<BMM_UNITARY_TYPE> [1..*]
+  + base_class : BMM_GENERIC_CLASS [1]
+  + type_name() : String [1]
+  + type_signature() : String [1]
+  + is_abstract() : Boolean [1]
+  + flattened_type_list() : List<String> [1..*]
+  + is_partially_closed() : Boolean [1]
+  + effective_base_class() : BMM_GENERIC_CLASS [1]
+  + is_open() : Boolean [1]
+}
+
+class BMM_PARAMETER_TYPE {
+  + name : String [1]
+  + type_constraint : BMM_EFFECTIVE_TYPE [0..1]
+  + inheritance_precursor : BMM_PARAMETER_TYPE [0..1]
+  + flattened_conforms_to_type() : BMM_EFFECTIVE_TYPE [1]
+  + type_signature() : String [1]
+  + is_primitive() : Boolean [1]
+  + is_abstract() : Boolean [1]
+  + type_name() : String [1]
+  + flattened_type_list() : List<String> [1..*]
+  + effective_type() : BMM_EFFECTIVE_TYPE [1]
+}
+
+class BMM_TUPLE_TYPE {
+  + item_types : Hash<String,BMM_TYPE> [1]
+  + flattened_type_list() : List<String> [1..*]
+}
+
+abstract class BMM_TYPE {
+  + {abstract} type_name() : String [1]
+  + type_signature() : String [1]
+  + {abstract} is_abstract() : Boolean [1]
+  + {abstract} is_primitive() : Boolean [1]
+  + {abstract} unitary_type() : BMM_UNITARY_TYPE [1]
+  + {abstract} effective_type() : BMM_EFFECTIVE_TYPE [1]
+  + {abstract} flattened_type_list() : List<String> [1..*]
+}
+
+class BMM_SIMPLE_CLASS {
+  + type() : BMM_SIMPLE_TYPE [1]
+}
+
+class BMM_SIMPLE_TYPE {
+  + base_class : BMM_SIMPLE_CLASS [1]
+  + type_name() : String [1]
+  + is_abstract() : Boolean [1]
+  + flattened_type_list() : List<String> [1..*]
+  + effective_base_class() : BMM_SIMPLE_CLASS [1]
+}
+
+abstract class BMM_UNITARY_TYPE {
+  + unitary_type() : BMM_UNITARY_TYPE [1]
+}
+
+class BMM_INDEXED_CONTAINER_TYPE {
+  + index_type : BMM_SIMPLE_TYPE [1]
+  + type_name() : String [1]
+}
+
+class BMM_SIGNATURE {
+  + result_type : BMM_TYPE [1]
+  + flattened_type_list() : List<String> [1..*]
+}
+
+abstract class BMM_MODULE {
+  + scope : BMM_MODEL [1]
+  + feature_groups : List<BMM_FEATURE_GROUP> [*]
+  + features : List<BMM_FORMAL_ELEMENT> [*]
+}
+
+class BMM_STATUS_TYPE {
+}
+
+abstract class BMM_BUILTIN_TYPE {
+  + is_abstract() : Boolean [1]
+  + is_primitive() : Boolean [1]
+  + type_base_name() : String [1]
+  + type_name() : String [1]
+}
+
+class BMM_PROCEDURE_TYPE {
+  + result_type : BMM_STATUS_TYPE [0..1]
+}
+
+class BMM_FUNCTION_TYPE {
+}
+
+class BMM_ROUTINE_TYPE {
+  + argument_types : BMM_TUPLE_TYPE [0..1]
+}
+
+class BMM_PROPERTY_TYPE {
+}
+
+enum BMM_ENTITY_METATYPE {
+  Entity_metatype_simple 
+  Entity_metatype_generic 
+  Entity_metatype_generic_parameter 
+  Entity_metatype_range_constrained 
+  Entity_metatype_enumeration 
+  Entity_metatype_container 
+}
+
+BMM_MODULE <|-- BMM_CLASS
+BMM_TYPE <|-- BMM_CONTAINER_TYPE
+BMM_UNITARY_TYPE <|-- BMM_EFFECTIVE_TYPE
+BMM_EFFECTIVE_TYPE <|-- BMM_MODEL_TYPE
+BMM_CLASS <|-- BMM_GENERIC_CLASS
+BMM_MODEL_TYPE <|-- BMM_GENERIC_TYPE
+BMM_UNITARY_TYPE <|-- BMM_PARAMETER_TYPE
+BMM_BUILTIN_TYPE <|-- BMM_TUPLE_TYPE
+BMM_CLASS <|-- BMM_SIMPLE_CLASS
+BMM_MODEL_TYPE <|-- BMM_SIMPLE_TYPE
+BMM_TYPE <|-- BMM_UNITARY_TYPE
+BMM_CONTAINER_TYPE <|-- BMM_INDEXED_CONTAINER_TYPE
+BMM_BUILTIN_TYPE <|-- BMM_SIGNATURE
+BMM_MODEL_ELEMENT <|-- BMM_MODULE
+BMM_BUILTIN_TYPE <|-- BMM_STATUS_TYPE
+BMM_EFFECTIVE_TYPE <|-- BMM_BUILTIN_TYPE
+BMM_ROUTINE_TYPE <|-- BMM_PROCEDURE_TYPE
+BMM_ROUTINE_TYPE <|-- BMM_FUNCTION_TYPE
+BMM_SIGNATURE <|-- BMM_ROUTINE_TYPE
+BMM_SIGNATURE <|-- BMM_PROPERTY_TYPE
+
+@enduml

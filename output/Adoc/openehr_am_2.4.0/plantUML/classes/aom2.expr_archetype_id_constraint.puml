@@ -1,0 +1,32 @@
+@startuml
+
+class EXPR_ARCHETYPE_ID_CONSTRAINT {
+  + item : C_STRING [1]
+}
+
+class EXPR_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray {
+  + item : C_PRIMITIVE_OBJECT [1]
+}
+
+abstract class EXPR_LEAF  #whitesmoke;line:gray;line.dotted;text:gray {
+  + item : Any [0..1]
+}
+
+abstract class EXPRESSION  #whitesmoke;line:gray;line.dotted;text:gray {
+  + {abstract} type() : EXPR_TYPE_DEF [1]
+}
+
+abstract class EXPR_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + {abstract} value() : Any [1]
+}
+
+EXPR_VALUE <|-- EXPRESSION
+
+EXPRESSION <|-- EXPR_LEAF
+
+EXPR_LEAF <|-- EXPR_CONSTRAINT
+
+EXPR_CONSTRAINT <|-- EXPR_ARCHETYPE_ID_CONSTRAINT
+
+
+@enduml

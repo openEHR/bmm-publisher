@@ -1,12 +1,7 @@
-[plantuml,EL_TUPLE_ITEM,format=svg]
------
-@startuml
+////
+Auto-generated from el_tuple_item.puml — do not edit.
+////
+++++
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="102px" preserveAspectRatio="none" style="width:223px;height:102px;background:#FFFFFF;" version="1.1" viewBox="0 0 223 102" width="223px" zoomAndPan="magnify"><defs/><g><!--class EL_TUPLE_ITEM--><g class="entity" data-entity="EL_TUPLE_ITEM" data-source-line="2" data-uid="ent0002" id="entity_EL_TUPLE_ITEM"><rect fill="#F1F1F1" height="81.5999" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="202.8613" x="7" y="7"/><ellipse cx="53.1998" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M53.1998,29.4219 C54.3717,29.4219 55.6061,29.1563 56.9811,28.5469 L56.4967,27.0313 C55.403,27.4531 54.3873,27.6406 53.528,27.6406 C50.8092,27.6406 49.0905,25.7969 49.0905,22.8906 C49.0905,20.1406 50.653,18.5469 53.3873,18.5469 C54.3092,18.5469 55.3248,18.7344 56.4655,19.1563 L57.0436,17.6406 C55.9498,17.0625 54.653,16.7656 53.4655,16.7656 C49.6998,16.7656 47.1217,19.4063 47.1217,23.2188 C47.1217,26.8906 49.6061,29.4219 53.1998,29.4219 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101.9616" x="73.6998" y="28.362">EL_TUPLE_ITEM</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="208.8613" y1="39" y2="39"/><ellipse cx="18" cy="52.9" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176.8613" x="27" y="56.7619">item : EL_EXPRESSION [0..1]</text><ellipse cx="18" cy="69.6999" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116.6475" x="27" y="73.5619">name : String [0..1]</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="208.8613" y1="80.5999" y2="80.5999"/></g></g></svg>
 
-class EL_TUPLE_ITEM {
-  + item : EL_EXPRESSION [0..1]
-  + name : String [0..1]
-}
-
-
-@enduml
------
+++++
