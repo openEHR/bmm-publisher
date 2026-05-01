@@ -11,7 +11,7 @@ The [BMM](https://specifications.openehr.org/releases/LANG/latest/bmm.html) is a
 
 This tool processes those schemas and produces:
 
-- **AsciiDoc** tables and class diagrams — class definitions, effective (flattened) views, cross-referenced type links, and class diagrams referenced from the tabs partial via `image::uml/classes/<name>.svg[]` macros (no Kroki / asciidoctor-diagram dependency at site-build time); rendered SVGs (per-class and per-package overviews) are committed under `output/Adoc/<schema>/images/uml/{classes,diagrams}/`
+- **AsciiDoc** tables and class diagrams — class definitions, effective (flattened) views, cross-referenced type links, and class diagrams referenced from the tabs partial via `image::ROOT:uml/classes/<name>.svg[]` macros (no Kroki / asciidoctor-diagram dependency at site-build time); rendered SVGs (per-class and per-package overviews) are committed under `output/Adoc/<schema>/images/uml/{classes,diagrams}/`
 - **PlantUML** sources — `.puml` files for the same diagrams, kept alongside the generated partials as the source of truth
 - **YAML** — machine-readable serialisation of each schema
 - **Per-type JSON** — individual class files with links back to the relevant specification page
@@ -61,7 +61,7 @@ docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher asciido
 
 | Command | Aliases | Description |
 |---------|---------|-------------|
-| `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables, with class/package diagrams pre-rendered as standalone SVGs under `images/uml/{classes,diagrams}/` and referenced from the tabs partial via `image::uml/classes/<name>.svg[]` |
+| `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables, with class/package diagrams pre-rendered as standalone SVGs under `images/uml/{classes,diagrams}/` and referenced from the tabs partial via `image::ROOT:uml/classes/<name>.svg[]` |
 | `plantuml` | `uml`, `puml` | Generate the standalone PlantUML source tree (`output/PlantUML/<schema>/...`) — useful when you want only the `.puml` files |
 | `embed-svg` | | Re-run only the SVG sanitise + publish step against existing `.svg` files (debugging / surgical re-renders) |
 | `yaml` | | Convert BMM JSON schemas to YAML format |

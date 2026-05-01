@@ -70,7 +70,9 @@ Writers (callable classes, receive BmmSchemaCollection, delegate to Formatters):
 The `asciidoc` command is a self-contained pipeline (one PHP run, one container start):
   1. The `Asciidoc` writer emits raw `.puml` files under `output/Adoc/<schema>/plantUML/{classes,packages}/`.
      The tabs partial under `classes/<name>.adoc` already inlines the UML image macro
-     (`image::uml/classes/<name>.svg[]`).
+     (`image::ROOT:uml/classes/<name>.svg[]`); the `ROOT:` qualifier ensures Antora
+     resolves the asset in the ROOT module's `images/` tree regardless of which module
+     includes the partial.
   2. `AsciidocCommand` shells out via Symfony Process to the bundled `plantuml -tsvg -nometadata` CLI;
      one batch invocation per call (single warm JVM); SVGs land next to each `.puml`.
   3. The `EmbedSvg` writer validates each `.svg` (fails on `Syntax Error?`), strips MD5 stamps,
@@ -108,6 +110,7 @@ to relocate to `<module>/images/uml/{classes,diagrams}/`).
 - **Refactoring**: Rector (config in `tests/rector.php`). Run **`composer rector`** inside the dev container (`make sh` or `docker compose … run --rm app composer rector`); Rector is not part of CI.
 - **Branching**: `main` is releasable; use feature/fix branches and run **`make ci`** (or the equivalent Docker `composer ci`) before opening a PR.
 - **Commit messages**: Conventional style — **`type: imperative subject`**, under ~72 characters, optional body after a blank line. Types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`. See [.cursor/rules/commit-messages.mdc](.cursor/rules/commit-messages.mdc) for full detail.
+- **CHANGELOG entries**: keep each bullet to **1 sentence** (≈25 words). Lead with the user-visible change in **bold**; a brief parenthetical or em-dash clause is fine for the *why*; defer code paths, class renames, and rationale to commit messages and PR descriptions. Compare 0.4.0–0.7.0 entries for the target density.
 
 Keep PHPUnit, PHPStan, PHPCS, and Rector config under `tests/` so the project root stays minimal.
 
