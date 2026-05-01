@@ -114,7 +114,7 @@ to relocate to `<module>/images/uml/{classes,diagrams}/`).
 
 Keep PHPUnit, PHPStan, PHPCS, and Rector config under `tests/` so the project root stays minimal.
 
-**PHP version**: Development uses PHP 8.5 in Docker; `composer.json` requires `^8.4`. CI runs the same checks on **PHP 8.4 and 8.5** (both must pass). The release workflow runs on PHP 8.4.
+**PHP version**: PHP 8.5+ across the board — `composer.json` requires `^8.5`, both the Docker dev/prod images and the CI / release workflows run PHP 8.5.
 
 ## IDE and agent integration
 

@@ -1,7 +1,7 @@
 # bmm-publisher
 
 [![CI](https://github.com/openEHR/bmm-publisher/actions/workflows/ci.yml/badge.svg)](https://github.com/openEHR/bmm-publisher/actions/workflows/ci.yml)
-[![PHP](https://img.shields.io/badge/PHP-8.4%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![PHP](https://img.shields.io/badge/PHP-8.5%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
 [![License](https://img.shields.io/github/license/openEHR/bmm-publisher)](LICENSE)
 [![Docker](https://img.shields.io/badge/ghcr.io-openehr%2Fbmm--publisher-2496ED?logo=docker&logoColor=white)](https://ghcr.io/openehr/bmm-publisher)
 

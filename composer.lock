@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "490932992a4e59b4a17e55a67b229993",
+    "content-hash": "314cd824a14fcc422946faf7fcfe7918",
     "packages": [
         {
             "name": "cadasto/openehr-bmm",
@@ -3959,7 +3959,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.4",
+        "php": "^8.5",
         "ext-json": "*"
     },
     "platform-dev": {
