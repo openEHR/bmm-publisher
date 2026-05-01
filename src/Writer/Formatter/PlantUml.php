@@ -246,7 +246,7 @@ EOD;
                 },
                 $params,
             ));
-        } elseif (!empty($type->genericParameterDefs)) {
+        } elseif (count($type->genericParameterDefs) > 0) {
             $genericParameters = implode(',', array_map(function ($t) {
                 if ($t instanceof BmmGenericType) {
                     return $this->formatGenericParameterType($t);

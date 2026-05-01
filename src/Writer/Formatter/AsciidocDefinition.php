@@ -410,7 +410,7 @@ readonly class AsciidocDefinition
                 },
                 $params,
             ));
-        } elseif (!empty($type->genericParameterDefs)) {
+        } elseif (count($type->genericParameterDefs) > 0) {
             $genericParameters = implode(',', array_map(function ($t) use ($prefix, $schema) {
                 if ($t instanceof BmmGenericType) {
                     return $this->formatGenericType($t, $prefix, $schema);
