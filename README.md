@@ -83,6 +83,19 @@ docker run --rm \
   ghcr.io/openehr/bmm-publisher asciidoc all
 ```
 
+## Running as the host user
+
+By default the image runs as the bundled `app` user (uid 1000). To match the host user — so generated files in a bind-mounted `output/` are owned by your host uid — pass `--user`:
+
+```bash
+docker run --rm \
+  --user $(id -u):$(id -g) \
+  -v ./my-output:/app/output \
+  ghcr.io/openehr/bmm-publisher asciidoc all
+```
+
+The image supports arbitrary uids: any non-root user retains gid 0, and `/app/output` is group-writable, so writes succeed without rebuilding the image. Bundled `resources/*.bmm.json` ship as 0644, so files copied out with `docker cp` are world-readable on the host.
+
 ## Development
 
 Requires Docker. The development image includes xdebug and Composer.

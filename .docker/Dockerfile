@@ -34,9 +34,17 @@ COPY --from=vendor-builder /app/bin ./bin
 COPY --from=vendor-builder /app/src ./src
 COPY resources ./resources
 
+# Group-writable /app/output + HOME pointing at a world-writable dir lets the
+# image run under an arbitrary --user UID:GID (OpenShift "arbitrary UID" pattern):
+# any non-root uid retains gid 0, so the root-group write bit suffices, and the
+# JVM (PlantUML) and other tools have a writable HOME even when the uid has no
+# /etc/passwd entry.
 RUN adduser -S -u 1000 -G root app \
     && mkdir -p /app/output \
-    && chown app:root /app/output
+    && chown app:root /app/output \
+    && chmod g+w /app/output
+
+ENV HOME=/tmp
 USER app
 
 ENTRYPOINT ["php", "bin/bmm-publisher"]
