@@ -7,14 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-05-01
+
 ### Changed
 
-- **Production Docker image** now supports arbitrary `--user UID:GID` invocations: `/app/output` is group-writable and `HOME` points at `/tmp`, so non-root host users can run `docker run --user $(id -u):$(id -g) …` without rebuilding. Documented in README.
+- **Minimum PHP version** bumped to 8.5 — `composer.json` now requires `^8.5` and the CI matrix runs only on 8.5.
+- **Production Docker image** supports arbitrary `--user UID:GID` (group-writable `/app/output` + `HOME=/tmp`); see README.
 
 ### Fixed
 
-- **UML image macro in tabs partial** is now qualified as `image::ROOT:uml/classes/<name>.svg[]` so Antora resolves the asset in the ROOT module's `images/` tree even when the partial is included from a page in another module (e.g. `foundation_types`, `base_types`).
-- **`Helper\Filesystem::assureDir()`** no longer fails preflight on pre-existing unwritable directories — fixes spurious `Directory ... is not writable.` errors when integrators bind-mount additional volumes under `output/Adoc/<schema>/`. Real permission problems still surface at write time.
+- **UML image macro** in the tabs partial now qualified as `image::ROOT:uml/classes/<name>.svg[]` so Antora resolves it under the ROOT module when the partial is included from another module.
+- **`Helper\Filesystem::assureDir()`** no longer rejects pre-existing unwritable dirs — fixes spurious `Directory ... is not writable.` errors with nested bind mounts under `output/Adoc/<schema>/`.
 
 ## [0.6.0] - 2026-05-01
 
@@ -98,7 +101,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.6.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.7.0...HEAD
+[0.7.0]: https://github.com/openehr/bmm-publisher/compare/0.6.0...0.7.0
 [0.6.0]: https://github.com/openehr/bmm-publisher/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/openehr/bmm-publisher/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/openehr/bmm-publisher/compare/0.3.0...0.4.0
