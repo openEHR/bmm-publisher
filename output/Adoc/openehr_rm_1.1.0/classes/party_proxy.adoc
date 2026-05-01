@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/party_proxy.adoc[]
 
 UML::
 +
-image::uml/classes/party_proxy.svg[]
+image::ROOT:uml/classes/party_proxy.svg[]
 
 ====

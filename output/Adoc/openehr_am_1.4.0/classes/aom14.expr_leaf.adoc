@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom14.expr_leaf.adoc[]
 
 UML::
 +
-image::uml/classes/aom14.expr_leaf.svg[]
+image::ROOT:uml/classes/aom14.expr_leaf.svg[]
 
 ====

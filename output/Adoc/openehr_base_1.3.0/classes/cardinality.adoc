@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/cardinality.adoc[]
 
 UML::
 +
-image::uml/classes/cardinality.svg[]
+image::ROOT:uml/classes/cardinality.svg[]
 
 ====

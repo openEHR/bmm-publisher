@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/expr_for_all.adoc[]
 
 UML::
 +
-image::uml/classes/expr_for_all.svg[]
+image::ROOT:uml/classes/expr_for_all.svg[]
 
 ====

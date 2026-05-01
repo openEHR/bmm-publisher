@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/resource_usage.adoc[]
 
 UML::
 +
-image::uml/classes/resource_usage.svg[]
+image::ROOT:uml/classes/resource_usage.svg[]
 
 ====

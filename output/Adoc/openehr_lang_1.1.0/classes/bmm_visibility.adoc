@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_visibility.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_visibility.svg[]
+image::ROOT:uml/classes/bmm_visibility.svg[]
 
 ====

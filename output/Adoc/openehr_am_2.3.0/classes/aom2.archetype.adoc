@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.archetype.adoc[]
 
 UML::
 +
-image::uml/classes/aom2.archetype.svg[]
+image::ROOT:uml/classes/aom2.archetype.svg[]
 
 ====

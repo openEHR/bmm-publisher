@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_container_type.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_container_type.svg[]
+image::ROOT:uml/classes/bmm_container_type.svg[]
 
 ====

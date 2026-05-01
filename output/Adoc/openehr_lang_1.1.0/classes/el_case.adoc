@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_case.adoc[]
 
 UML::
 +
-image::uml/classes/el_case.svg[]
+image::ROOT:uml/classes/el_case.svg[]
 
 ====

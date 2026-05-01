@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/addressed_message.adoc[]
 
 UML::
 +
-image::uml/classes/addressed_message.svg[]
+image::ROOT:uml/classes/addressed_message.svg[]
 
 ====

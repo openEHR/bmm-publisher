@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/address.adoc[]
 
 UML::
 +
-image::uml/classes/address.svg[]
+image::ROOT:uml/classes/address.svg[]
 
 ====

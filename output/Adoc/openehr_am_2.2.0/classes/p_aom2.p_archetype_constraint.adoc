@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/p_aom2.p_archetype_constraint.adoc[]
 
 UML::
 +
-image::uml/classes/p_aom2.p_archetype_constraint.svg[]
+image::ROOT:uml/classes/p_aom2.p_archetype_constraint.svg[]
 
 ====

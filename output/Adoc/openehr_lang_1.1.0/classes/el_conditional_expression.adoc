@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_conditional_expression.adoc[]
 
 UML::
 +
-image::uml/classes/el_conditional_expression.svg[]
+image::ROOT:uml/classes/el_conditional_expression.svg[]
 
 ====

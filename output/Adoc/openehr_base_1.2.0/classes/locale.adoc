@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/locale.adoc[]
 
 UML::
 +
-image::uml/classes/locale.svg[]
+image::ROOT:uml/classes/locale.svg[]
 
 ====

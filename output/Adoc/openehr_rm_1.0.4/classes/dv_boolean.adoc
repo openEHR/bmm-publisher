@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_boolean.adoc[]
 
 UML::
 +
-image::uml/classes/dv_boolean.svg[]
+image::ROOT:uml/classes/dv_boolean.svg[]
 
 ====

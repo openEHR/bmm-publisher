@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/expr_unary_operator.adoc[]
 
 UML::
 +
-image::uml/classes/expr_unary_operator.svg[]
+image::ROOT:uml/classes/expr_unary_operator.svg[]
 
 ====

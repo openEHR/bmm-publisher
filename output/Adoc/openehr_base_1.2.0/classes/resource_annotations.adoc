@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/resource_annotations.adoc[]
 
 UML::
 +
-image::uml/classes/resource_annotations.svg[]
+image::ROOT:uml/classes/resource_annotations.svg[]
 
 ====

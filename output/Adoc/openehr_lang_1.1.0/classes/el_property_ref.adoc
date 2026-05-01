@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_property_ref.adoc[]
 
 UML::
 +
-image::uml/classes/el_property_ref.svg[]
+image::ROOT:uml/classes/el_property_ref.svg[]
 
 ====

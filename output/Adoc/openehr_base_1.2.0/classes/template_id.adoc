@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/template_id.adoc[]
 
 UML::
 +
-image::uml/classes/template_id.svg[]
+image::ROOT:uml/classes/template_id.svg[]
 
 ====

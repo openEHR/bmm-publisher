@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/versioned_ehr_access.adoc[]
 
 UML::
 +
-image::uml/classes/versioned_ehr_access.svg[]
+image::ROOT:uml/classes/versioned_ehr_access.svg[]
 
 ====

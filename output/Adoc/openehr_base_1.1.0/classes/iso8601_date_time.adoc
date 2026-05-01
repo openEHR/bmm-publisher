@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/iso8601_date_time.adoc[]
 
 UML::
 +
-image::uml/classes/iso8601_date_time.svg[]
+image::ROOT:uml/classes/iso8601_date_time.svg[]
 
 ====

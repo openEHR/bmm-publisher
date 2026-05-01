@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_boolean_expression.adoc[]
 
 UML::
 +
-image::uml/classes/el_boolean_expression.svg[]
+image::ROOT:uml/classes/el_boolean_expression.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/role.adoc[]
 
 UML::
 +
-image::uml/classes/role.svg[]
+image::ROOT:uml/classes/role.svg[]
 
 ====

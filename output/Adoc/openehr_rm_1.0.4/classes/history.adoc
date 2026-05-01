@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/history.adoc[]
 
 UML::
 +
-image::uml/classes/history.svg[]
+image::ROOT:uml/classes/history.svg[]
 
 ====

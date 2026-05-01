@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/function_def_external.adoc[]
 
 UML::
 +
-image::uml/classes/function_def_external.svg[]
+image::ROOT:uml/classes/function_def_external.svg[]
 
 ====

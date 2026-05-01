@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/p_bmm_generic_parameter.adoc[]
 
 UML::
 +
-image::uml/classes/p_bmm_generic_parameter.svg[]
+image::ROOT:uml/classes/p_bmm_generic_parameter.svg[]
 
 ====

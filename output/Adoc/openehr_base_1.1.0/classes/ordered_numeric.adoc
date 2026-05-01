@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/ordered_numeric.adoc[]
 
 UML::
 +
-image::uml/classes/ordered_numeric.svg[]
+image::ROOT:uml/classes/ordered_numeric.svg[]
 
 ====

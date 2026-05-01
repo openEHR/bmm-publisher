@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom14.c_defined_object.adoc[]
 
 UML::
 +
-image::uml/classes/aom14.c_defined_object.svg[]
+image::ROOT:uml/classes/aom14.c_defined_object.svg[]
 
 ====

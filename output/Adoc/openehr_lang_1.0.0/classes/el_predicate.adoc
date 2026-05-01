@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_predicate.adoc[]
 
 UML::
 +
-image::uml/classes/el_predicate.svg[]
+image::ROOT:uml/classes/el_predicate.svg[]
 
 ====

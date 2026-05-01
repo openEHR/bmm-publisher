@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/interval.adoc[]
 
 UML::
 +
-image::uml/classes/interval.svg[]
+image::ROOT:uml/classes/interval.svg[]
 
 ====

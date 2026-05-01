@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/multiplicity_interval.adoc[]
 
 UML::
 +
-image::uml/classes/multiplicity_interval.svg[]
+image::ROOT:uml/classes/multiplicity_interval.svg[]
 
 ====

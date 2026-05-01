@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_state.adoc[]
 
 UML::
 +
-image::uml/classes/dv_state.svg[]
+image::ROOT:uml/classes/dv_state.svg[]
 
 ====

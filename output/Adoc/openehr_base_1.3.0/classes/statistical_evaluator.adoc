@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/statistical_evaluator.adoc[]
 
 UML::
 +
-image::uml/classes/statistical_evaluator.svg[]
+image::ROOT:uml/classes/statistical_evaluator.svg[]
 
 ====

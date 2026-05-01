@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/ism_transition.adoc[]
 
 UML::
 +
-image::uml/classes/ism_transition.svg[]
+image::ROOT:uml/classes/ism_transition.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/feeder_audit_details.adoc[]
 
 UML::
 +
-image::uml/classes/feeder_audit_details.svg[]
+image::ROOT:uml/classes/feeder_audit_details.svg[]
 
 ====

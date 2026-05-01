@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_instantiable_ref.adoc[]
 
 UML::
 +
-image::uml/classes/el_instantiable_ref.svg[]
+image::ROOT:uml/classes/el_instantiable_ref.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_unitary_property.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_unitary_property.svg[]
+image::ROOT:uml/classes/bmm_unitary_property.svg[]
 
 ====

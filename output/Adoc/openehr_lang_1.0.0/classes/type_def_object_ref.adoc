@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/type_def_object_ref.adoc[]
 
 UML::
 +
-image::uml/classes/type_def_object_ref.svg[]
+image::ROOT:uml/classes/type_def_object_ref.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_tuple_item.adoc[]
 
 UML::
 +
-image::uml/classes/el_tuple_item.svg[]
+image::ROOT:uml/classes/el_tuple_item.svg[]
 
 ====

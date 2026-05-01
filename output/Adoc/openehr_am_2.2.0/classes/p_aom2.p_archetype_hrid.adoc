@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/p_aom2.p_archetype_hrid.adoc[]
 
 UML::
 +
-image::uml/classes/p_aom2.p_archetype_hrid.svg[]
+image::ROOT:uml/classes/p_aom2.p_archetype_hrid.svg[]
 
 ====

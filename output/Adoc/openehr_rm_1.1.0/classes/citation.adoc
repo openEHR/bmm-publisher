@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/citation.adoc[]
 
 UML::
 +
-image::uml/classes/citation.svg[]
+image::ROOT:uml/classes/citation.svg[]
 
 ====

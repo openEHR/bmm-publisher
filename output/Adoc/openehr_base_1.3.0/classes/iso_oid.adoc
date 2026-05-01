@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/iso_oid.adoc[]
 
 UML::
 +
-image::uml/classes/iso_oid.svg[]
+image::ROOT:uml/classes/iso_oid.svg[]
 
 ====

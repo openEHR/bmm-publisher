@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/attestation.adoc[]
 
 UML::
 +
-image::uml/classes/attestation.svg[]
+image::ROOT:uml/classes/attestation.svg[]
 
 ====

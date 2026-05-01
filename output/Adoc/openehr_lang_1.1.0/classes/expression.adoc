@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/expression.adoc[]
 
 UML::
 +
-image::uml/classes/expression.svg[]
+image::ROOT:uml/classes/expression.svg[]
 
 ====

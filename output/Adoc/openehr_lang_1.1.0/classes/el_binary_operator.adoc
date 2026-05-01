@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_binary_operator.adoc[]
 
 UML::
 +
-image::uml/classes/el_binary_operator.svg[]
+image::ROOT:uml/classes/el_binary_operator.svg[]
 
 ====

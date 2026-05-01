@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/admin_entry.adoc[]
 
 UML::
 +
-image::uml/classes/admin_entry.svg[]
+image::ROOT:uml/classes/admin_entry.svg[]
 
 ====

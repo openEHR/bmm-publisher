@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_procedure_agent.adoc[]
 
 UML::
 +
-image::uml/classes/el_procedure_agent.svg[]
+image::ROOT:uml/classes/el_procedure_agent.svg[]
 
 ====

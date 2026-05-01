@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/contact.adoc[]
 
 UML::
 +
-image::uml/classes/contact.svg[]
+image::ROOT:uml/classes/contact.svg[]
 
 ====

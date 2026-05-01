@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/math.adoc[]
 
 UML::
 +
-image::uml/classes/math.svg[]
+image::ROOT:uml/classes/math.svg[]
 
 ====

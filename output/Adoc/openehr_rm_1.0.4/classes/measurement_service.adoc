@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/measurement_service.adoc[]
 
 UML::
 +
-image::uml/classes/measurement_service.svg[]
+image::ROOT:uml/classes/measurement_service.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.aom_property_mapping.adoc[]
 
 UML::
 +
-image::uml/classes/aom2.aom_property_mapping.svg[]
+image::ROOT:uml/classes/aom2.aom_property_mapping.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom14.c_ordinal.adoc[]
 
 UML::
 +
-image::uml/classes/aom14.c_ordinal.svg[]
+image::ROOT:uml/classes/aom14.c_ordinal.svg[]
 
 ====

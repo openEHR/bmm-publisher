@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_scale.adoc[]
 
 UML::
 +
-image::uml/classes/dv_scale.svg[]
+image::ROOT:uml/classes/dv_scale.svg[]
 
 ====

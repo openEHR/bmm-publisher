@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/string.adoc[]
 
 UML::
 +
-image::uml/classes/string.svg[]
+image::ROOT:uml/classes/string.svg[]
 
 ====

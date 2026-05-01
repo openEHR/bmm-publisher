@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/reference_range.adoc[]
 
 UML::
 +
-image::uml/classes/reference_range.svg[]
+image::ROOT:uml/classes/reference_range.svg[]
 
 ====

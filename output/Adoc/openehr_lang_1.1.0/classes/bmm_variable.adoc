@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_variable.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_variable.svg[]
+image::ROOT:uml/classes/bmm_variable.svg[]
 
 ====

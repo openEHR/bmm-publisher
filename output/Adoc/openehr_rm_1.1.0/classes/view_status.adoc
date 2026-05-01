@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/view_status.adoc[]
 
 UML::
 +
-image::uml/classes/view_status.svg[]
+image::ROOT:uml/classes/view_status.svg[]
 
 ====

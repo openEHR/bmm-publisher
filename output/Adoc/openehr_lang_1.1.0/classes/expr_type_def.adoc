@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/expr_type_def.adoc[]
 
 UML::
 +
-image::uml/classes/expr_type_def.svg[]
+image::ROOT:uml/classes/expr_type_def.svg[]
 
 ====

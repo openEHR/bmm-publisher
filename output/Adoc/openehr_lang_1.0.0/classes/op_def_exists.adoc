@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/op_def_exists.adoc[]
 
 UML::
 +
-image::uml/classes/op_def_exists.svg[]
+image::ROOT:uml/classes/op_def_exists.svg[]
 
 ====

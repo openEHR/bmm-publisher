@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_action_decision_table.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_action_decision_table.svg[]
+image::ROOT:uml/classes/bmm_action_decision_table.svg[]
 
 ====

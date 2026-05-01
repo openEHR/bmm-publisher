@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/cluster.adoc[]
 
 UML::
 +
-image::uml/classes/cluster.svg[]
+image::ROOT:uml/classes/cluster.svg[]
 
 ====

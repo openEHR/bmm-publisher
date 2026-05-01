@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_schema_descriptor.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_schema_descriptor.svg[]
+image::ROOT:uml/classes/bmm_schema_descriptor.svg[]
 
 ====

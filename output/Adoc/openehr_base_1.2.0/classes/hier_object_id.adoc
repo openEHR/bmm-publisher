@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/hier_object_id.adoc[]
 
 UML::
 +
-image::uml/classes/hier_object_id.svg[]
+image::ROOT:uml/classes/hier_object_id.svg[]
 
 ====

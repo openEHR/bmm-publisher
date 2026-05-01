@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/procedure.adoc[]
 
 UML::
 +
-image::uml/classes/procedure.svg[]
+image::ROOT:uml/classes/procedure.svg[]
 
 ====

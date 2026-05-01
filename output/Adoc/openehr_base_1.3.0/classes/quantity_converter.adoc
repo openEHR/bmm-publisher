@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/quantity_converter.adoc[]
 
 UML::
 +
-image::uml/classes/quantity_converter.svg[]
+image::ROOT:uml/classes/quantity_converter.svg[]
 
 ====

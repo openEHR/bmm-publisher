@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/observation.adoc[]
 
 UML::
 +
-image::uml/classes/observation.svg[]
+image::ROOT:uml/classes/observation.svg[]
 
 ====

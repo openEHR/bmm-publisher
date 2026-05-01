@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/actor.adoc[]
 
 UML::
 +
-image::uml/classes/actor.svg[]
+image::ROOT:uml/classes/actor.svg[]
 
 ====

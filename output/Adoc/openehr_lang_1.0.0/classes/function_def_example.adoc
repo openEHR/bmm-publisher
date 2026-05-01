@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/function_def_example.adoc[]
 
 UML::
 +
-image::uml/classes/function_def_example.svg[]
+image::ROOT:uml/classes/function_def_example.svg[]
 
 ====

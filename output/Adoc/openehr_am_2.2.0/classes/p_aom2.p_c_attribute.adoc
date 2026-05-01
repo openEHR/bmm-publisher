@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/p_aom2.p_c_attribute.adoc[]
 
 UML::
 +
-image::uml/classes/p_aom2.p_c_attribute.svg[]
+image::ROOT:uml/classes/p_aom2.p_c_attribute.svg[]
 
 ====

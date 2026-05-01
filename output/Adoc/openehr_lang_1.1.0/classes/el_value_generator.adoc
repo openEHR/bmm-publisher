@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_value_generator.adoc[]
 
 UML::
 +
-image::uml/classes/el_value_generator.svg[]
+image::ROOT:uml/classes/el_value_generator.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/proportion_kind.adoc[]
 
 UML::
 +
-image::uml/classes/proportion_kind.svg[]
+image::ROOT:uml/classes/proportion_kind.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/access_group_ref.adoc[]
 
 UML::
 +
-image::uml/classes/access_group_ref.svg[]
+image::ROOT:uml/classes/access_group_ref.svg[]
 
 ====

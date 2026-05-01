@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/external_environment_access.adoc[]
 
 UML::
 +
-image::uml/classes/external_environment_access.svg[]
+image::ROOT:uml/classes/external_environment_access.svg[]
 
 ====

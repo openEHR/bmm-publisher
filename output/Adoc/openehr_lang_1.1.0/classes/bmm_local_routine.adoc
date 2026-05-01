@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_local_routine.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_local_routine.svg[]
+image::ROOT:uml/classes/bmm_local_routine.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/validity_kind.adoc[]
 
 UML::
 +
-image::uml/classes/validity_kind.svg[]
+image::ROOT:uml/classes/validity_kind.svg[]
 
 ====

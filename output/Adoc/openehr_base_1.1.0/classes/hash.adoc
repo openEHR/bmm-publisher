@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/hash.adoc[]
 
 UML::
 +
-image::uml/classes/hash.svg[]
+image::ROOT:uml/classes/hash.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_duration.adoc[]
 
 UML::
 +
-image::uml/classes/dv_duration.svg[]
+image::ROOT:uml/classes/dv_duration.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_writable_variable.adoc[]
 
 UML::
 +
-image::uml/classes/bmm_writable_variable.svg[]
+image::ROOT:uml/classes/bmm_writable_variable.svg[]
 
 ====

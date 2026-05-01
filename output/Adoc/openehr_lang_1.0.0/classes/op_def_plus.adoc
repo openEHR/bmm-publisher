@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/op_def_plus.adoc[]
 
 UML::
 +
-image::uml/classes/op_def_plus.svg[]
+image::ROOT:uml/classes/op_def_plus.svg[]
 
 ====

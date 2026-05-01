@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/integer64.adoc[]
 
 UML::
 +
-image::uml/classes/integer64.svg[]
+image::ROOT:uml/classes/integer64.svg[]
 
 ====

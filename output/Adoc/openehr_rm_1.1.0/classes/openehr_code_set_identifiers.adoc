@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/openehr_code_set_identifiers.adoc[]
 
 UML::
 +
-image::uml/classes/openehr_code_set_identifiers.svg[]
+image::ROOT:uml/classes/openehr_code_set_identifiers.svg[]
 
 ====

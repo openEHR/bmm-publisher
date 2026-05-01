@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/code_set_access.adoc[]
 
 UML::
 +
-image::uml/classes/code_set_access.svg[]
+image::ROOT:uml/classes/code_set_access.svg[]
 
 ====

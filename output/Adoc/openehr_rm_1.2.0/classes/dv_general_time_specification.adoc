@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_general_time_specification.adoc[]
 
 UML::
 +
-image::uml/classes/dv_general_time_specification.svg[]
+image::ROOT:uml/classes/dv_general_time_specification.svg[]
 
 ====

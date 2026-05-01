@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_agent_call.adoc[]
 
 UML::
 +
-image::uml/classes/el_agent_call.svg[]
+image::ROOT:uml/classes/el_agent_call.svg[]
 
 ====

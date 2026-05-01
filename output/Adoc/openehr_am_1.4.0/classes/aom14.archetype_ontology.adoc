@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom14.archetype_ontology.adoc[]
 
 UML::
 +
-image::uml/classes/aom14.archetype_ontology.svg[]
+image::ROOT:uml/classes/aom14.archetype_ontology.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/ehr.adoc[]
 
 UML::
 +
-image::uml/classes/ehr.svg[]
+image::ROOT:uml/classes/ehr.svg[]
 
 ====
