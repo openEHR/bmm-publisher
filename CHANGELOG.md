@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-05-01
+
+### Changed
+
+- **Class diagrams** are now committed as standalone SVGs under `output/Adoc/<schema>/images/uml/{classes,diagrams}/` and referenced via an `image::uml/classes/<name>.svg[]` macro inlined into the UML tab of the per-class tabs partial. Reverts 0.5.0's inline-SVG passthrough, which did not render reliably in downstream Antora pipelines.
+
+### Added
+
+- **`Writer\EmbedSvg`** + **`embed-svg` console subcommand** — replace `Writer\InlineSvg` / `inline-svg`; validate the rendered SVG, strip MD5 stamps via `Writer\Formatter\SvgSanitiser`, and publish it under `images/uml/{classes,diagrams}/`.
+
+### Removed
+
+- **`Writer\InlineSvg`**, **`Writer\Formatter\SvgPassthrough`**, the **`inline-svg`** subcommand, and the intermediate `plantUML/{classes,packages}/<name>.adoc` image-reference partials — superseded by the inlined image macro and standalone-SVG pipeline above.
+
 ## [0.5.0] - 2026-04-29
 
 ### Changed
@@ -75,7 +89,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.5.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.6.0...HEAD
+[0.6.0]: https://github.com/openehr/bmm-publisher/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/openehr/bmm-publisher/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/openehr/bmm-publisher/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/openehr/bmm-publisher/compare/0.2.0...0.3.0
