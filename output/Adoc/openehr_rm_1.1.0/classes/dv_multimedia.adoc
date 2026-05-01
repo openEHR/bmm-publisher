@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_multimedia.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_multimedia.adoc[]
+image::uml/classes/dv_multimedia.svg[]
 
 ====

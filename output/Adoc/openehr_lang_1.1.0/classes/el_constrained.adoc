@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_constrained.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/el_constrained.adoc[]
+image::uml/classes/el_constrained.svg[]
 
 ====

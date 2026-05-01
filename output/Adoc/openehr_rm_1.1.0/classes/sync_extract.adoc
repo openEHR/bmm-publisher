@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/sync_extract.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/sync_extract.adoc[]
+image::uml/classes/sync_extract.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/iso8601_duration.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/iso8601_duration.adoc[]
+image::uml/classes/iso8601_duration.svg[]
 
 ====

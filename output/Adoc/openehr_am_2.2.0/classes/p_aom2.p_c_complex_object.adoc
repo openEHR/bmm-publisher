@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/p_aom2.p_c_complex_object.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/p_aom2.p_c_complex_object.adoc[]
+image::uml/classes/p_aom2.p_c_complex_object.svg[]
 
 ====

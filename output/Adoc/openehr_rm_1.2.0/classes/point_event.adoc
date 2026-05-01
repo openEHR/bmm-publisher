@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/point_event.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/point_event.adoc[]
+image::uml/classes/point_event.svg[]
 
 ====

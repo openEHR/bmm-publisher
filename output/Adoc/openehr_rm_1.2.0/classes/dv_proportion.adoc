@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_proportion.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_proportion.adoc[]
+image::uml/classes/dv_proportion.svg[]
 
 ====

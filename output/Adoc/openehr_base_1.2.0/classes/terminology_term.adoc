@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/terminology_term.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/terminology_term.adoc[]
+image::uml/classes/terminology_term.svg[]
 
 ====

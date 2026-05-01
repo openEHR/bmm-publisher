@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/term_mapping.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/term_mapping.adoc[]
+image::uml/classes/term_mapping.svg[]
 
 ====

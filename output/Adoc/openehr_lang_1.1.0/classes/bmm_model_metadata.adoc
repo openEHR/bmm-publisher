@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_model_metadata.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/bmm_model_metadata.adoc[]
+image::uml/classes/bmm_model_metadata.svg[]
 
 ====

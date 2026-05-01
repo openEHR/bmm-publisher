@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/iso8601_type.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/iso8601_type.adoc[]
+image::uml/classes/iso8601_type.svg[]
 
 ====

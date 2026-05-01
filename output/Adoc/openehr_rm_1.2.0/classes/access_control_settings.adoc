@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/access_control_settings.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/access_control_settings.adoc[]
+image::uml/classes/access_control_settings.svg[]
 
 ====

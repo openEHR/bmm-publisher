@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/time_definitions.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/time_definitions.adoc[]
+image::uml/classes/time_definitions.svg[]
 
 ====

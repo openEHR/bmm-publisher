@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_encapsulated.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_encapsulated.adoc[]
+image::uml/classes/dv_encapsulated.svg[]
 
 ====

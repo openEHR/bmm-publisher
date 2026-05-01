@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_boolean_value.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/bmm_boolean_value.adoc[]
+image::uml/classes/bmm_boolean_value.svg[]
 
 ====

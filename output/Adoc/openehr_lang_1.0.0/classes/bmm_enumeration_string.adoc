@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_enumeration_string.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/bmm_enumeration_string.adoc[]
+image::uml/classes/bmm_enumeration_string.svg[]
 
 ====

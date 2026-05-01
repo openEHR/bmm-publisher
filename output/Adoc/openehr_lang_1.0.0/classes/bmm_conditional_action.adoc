@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_conditional_action.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/bmm_conditional_action.adoc[]
+image::uml/classes/bmm_conditional_action.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/uri.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/uri.adoc[]
+image::uml/classes/uri.svg[]
 
 ====

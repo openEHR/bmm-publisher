@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/extract_request.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/extract_request.adoc[]
+image::uml/classes/extract_request.svg[]
 
 ====

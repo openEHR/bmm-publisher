@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_singleton.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/bmm_singleton.adoc[]
+image::uml/classes/bmm_singleton.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.archetype_term.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom2.archetype_term.adoc[]
+image::uml/classes/aom2.archetype_term.svg[]
 
 ====

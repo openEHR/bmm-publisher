@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/bmm_readonly_variable.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/bmm_readonly_variable.adoc[]
+image::uml/classes/bmm_readonly_variable.svg[]
 
 ====

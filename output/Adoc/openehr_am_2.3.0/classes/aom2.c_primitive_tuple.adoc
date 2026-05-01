@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.c_primitive_tuple.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom2.c_primitive_tuple.adoc[]
+image::uml/classes/aom2.c_primitive_tuple.svg[]
 
 ====

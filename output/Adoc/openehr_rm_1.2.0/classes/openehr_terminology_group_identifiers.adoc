@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/openehr_terminology_group_identifiers.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/openehr_terminology_group_identifiers.adoc[]
+image::uml/classes/openehr_terminology_group_identifiers.svg[]
 
 ====

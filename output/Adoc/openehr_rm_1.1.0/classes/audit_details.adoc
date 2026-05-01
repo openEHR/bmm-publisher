@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/audit_details.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/audit_details.adoc[]
+image::uml/classes/audit_details.svg[]
 
 ====

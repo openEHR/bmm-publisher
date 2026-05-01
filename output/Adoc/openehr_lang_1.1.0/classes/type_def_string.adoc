@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/type_def_string.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/type_def_string.adoc[]
+image::uml/classes/type_def_string.svg[]
 
 ====

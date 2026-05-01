@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/interval_event.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/interval_event.adoc[]
+image::uml/classes/interval_event.svg[]
 
 ====

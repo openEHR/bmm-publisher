@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/tuple2.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/tuple2.adoc[]
+image::uml/classes/tuple2.svg[]
 
 ====

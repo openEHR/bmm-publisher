@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/data_structure.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/data_structure.adoc[]
+image::uml/classes/data_structure.svg[]
 
 ====

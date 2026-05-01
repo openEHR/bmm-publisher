@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/uid_based_id.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/uid_based_id.adoc[]
+image::uml/classes/uid_based_id.svg[]
 
 ====

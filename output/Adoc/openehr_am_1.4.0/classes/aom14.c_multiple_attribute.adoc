@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom14.c_multiple_attribute.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom14.c_multiple_attribute.adoc[]
+image::uml/classes/aom14.c_multiple_attribute.svg[]
 
 ====

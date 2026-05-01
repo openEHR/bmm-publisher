@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/basic_definitions.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/basic_definitions.adoc[]
+image::uml/classes/basic_definitions.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_ordered.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_ordered.adoc[]
+image::uml/classes/dv_ordered.svg[]
 
 ====

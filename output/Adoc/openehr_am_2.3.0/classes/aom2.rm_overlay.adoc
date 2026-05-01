@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.rm_overlay.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom2.rm_overlay.adoc[]
+image::uml/classes/aom2.rm_overlay.svg[]
 
 ====

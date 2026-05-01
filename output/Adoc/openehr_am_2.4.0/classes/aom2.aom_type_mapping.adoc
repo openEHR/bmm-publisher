@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.aom_type_mapping.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom2.aom_type_mapping.adoc[]
+image::uml/classes/aom2.aom_type_mapping.svg[]
 
 ====

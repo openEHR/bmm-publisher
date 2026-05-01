@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/point_interval.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/point_interval.adoc[]
+image::uml/classes/point_interval.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom14.operator_kind.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom14.operator_kind.adoc[]
+image::uml/classes/aom14.operator_kind.svg[]
 
 ====

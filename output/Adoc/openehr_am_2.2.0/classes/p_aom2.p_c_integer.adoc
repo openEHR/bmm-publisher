@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/p_aom2.p_c_integer.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/p_aom2.p_c_integer.adoc[]
+image::uml/classes/p_aom2.p_c_integer.svg[]
 
 ====

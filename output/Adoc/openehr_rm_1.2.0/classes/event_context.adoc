@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/event_context.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/event_context.adoc[]
+image::uml/classes/event_context.svg[]
 
 ====

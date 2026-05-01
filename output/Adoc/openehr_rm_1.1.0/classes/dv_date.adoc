@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_date.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_date.adoc[]
+image::uml/classes/dv_date.svg[]
 
 ====

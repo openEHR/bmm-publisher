@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/openehr_content_item.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/openehr_content_item.adoc[]
+image::uml/classes/openehr_content_item.svg[]
 
 ====

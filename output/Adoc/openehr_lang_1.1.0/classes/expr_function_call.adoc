@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/expr_function_call.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/expr_function_call.adoc[]
+image::uml/classes/expr_function_call.svg[]
 
 ====

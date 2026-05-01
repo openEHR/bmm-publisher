@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/expr_binary_operator.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/expr_binary_operator.adoc[]
+image::uml/classes/expr_binary_operator.svg[]
 
 ====

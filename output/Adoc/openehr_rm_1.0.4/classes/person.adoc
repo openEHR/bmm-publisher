@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/person.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/person.adoc[]
+image::uml/classes/person.svg[]
 
 ====

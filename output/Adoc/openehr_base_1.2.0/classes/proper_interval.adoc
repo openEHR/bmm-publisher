@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/proper_interval.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/proper_interval.adoc[]
+image::uml/classes/proper_interval.svg[]
 
 ====

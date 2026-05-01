@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/openehr_definitions.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/openehr_definitions.adoc[]
+image::uml/classes/openehr_definitions.svg[]
 
 ====

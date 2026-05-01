@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_absolute_quantity.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_absolute_quantity.adoc[]
+image::uml/classes/dv_absolute_quantity.svg[]
 
 ====

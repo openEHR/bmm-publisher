@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.c_temporal.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom2.c_temporal.adoc[]
+image::uml/classes/aom2.c_temporal.svg[]
 
 ====

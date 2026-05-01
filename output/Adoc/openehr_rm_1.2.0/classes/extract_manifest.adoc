@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/extract_manifest.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/extract_manifest.adoc[]
+image::uml/classes/extract_manifest.svg[]
 
 ====

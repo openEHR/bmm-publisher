@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.sibling_order.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom2.sibling_order.adoc[]
+image::uml/classes/aom2.sibling_order.svg[]
 
 ====

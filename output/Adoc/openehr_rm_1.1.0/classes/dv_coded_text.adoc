@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_coded_text.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_coded_text.adoc[]
+image::uml/classes/dv_coded_text.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/pathable.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/pathable.adoc[]
+image::uml/classes/pathable.svg[]
 
 ====

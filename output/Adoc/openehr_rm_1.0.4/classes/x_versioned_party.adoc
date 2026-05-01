@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/x_versioned_party.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/x_versioned_party.adoc[]
+image::uml/classes/x_versioned_party.svg[]
 
 ====

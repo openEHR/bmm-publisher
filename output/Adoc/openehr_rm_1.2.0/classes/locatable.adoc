@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/locatable.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/locatable.adoc[]
+image::uml/classes/locatable.svg[]
 
 ====

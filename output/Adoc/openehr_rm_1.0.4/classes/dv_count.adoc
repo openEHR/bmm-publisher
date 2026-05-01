@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/dv_count.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/dv_count.adoc[]
+image::uml/classes/dv_count.svg[]
 
 ====

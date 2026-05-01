@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/type_def_date_time.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/type_def_date_time.adoc[]
+image::uml/classes/type_def_date_time.svg[]
 
 ====

@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/integer.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/integer.adoc[]
+image::uml/classes/integer.svg[]
 
 ====

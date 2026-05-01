@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/consumable_use.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/consumable_use.adoc[]
+image::uml/classes/consumable_use.svg[]
 
 ====

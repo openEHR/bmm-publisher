@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/aom2.p_archetype_slot.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/aom2.p_archetype_slot.adoc[]
+image::uml/classes/aom2.p_archetype_slot.svg[]
 
 ====

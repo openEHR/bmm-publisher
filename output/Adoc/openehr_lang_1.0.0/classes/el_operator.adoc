@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/el_operator.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/el_operator.adoc[]
+image::uml/classes/el_operator.svg[]
 
 ====

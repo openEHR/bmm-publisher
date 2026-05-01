@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/expr_variable_ref.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/expr_variable_ref.adoc[]
+image::uml/classes/expr_variable_ref.svg[]
 
 ====

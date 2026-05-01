@@ -16,6 +16,6 @@ include::ROOT:partial$BMMs/comparable.adoc[]
 
 UML::
 +
-include::ROOT:partial$plantUML/classes/comparable.adoc[]
+image::uml/classes/comparable.svg[]
 
 ====
