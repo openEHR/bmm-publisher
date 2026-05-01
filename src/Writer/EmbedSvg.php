@@ -6,13 +6,21 @@ namespace OpenEHR\BmmPublisher\Writer;
 
 use OpenEHR\BmmPublisher\Helper\Filesystem;
 use OpenEHR\BmmPublisher\Helper\OutputDir;
-use OpenEHR\BmmPublisher\Writer\Formatter\SvgPassthrough;
+use OpenEHR\BmmPublisher\Writer\Formatter\SvgSanitiser;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-final class InlineSvg
+final class EmbedSvg
 {
-    private SvgPassthrough $formatter;
+    /**
+     * Map plantUML/<source-kind>/ source dirs to their published images/uml/<target-kind>/ dirs.
+     */
+    private const KIND_MAP = [
+        'classes' => 'classes',
+        'packages' => 'diagrams',
+    ];
+
+    private SvgSanitiser $sanitiser;
     private LoggerInterface $logger;
 
     /**
@@ -22,7 +30,7 @@ final class InlineSvg
         private readonly array $schemas = [],
         ?LoggerInterface $logger = null,
     ) {
-        $this->formatter = new SvgPassthrough();
+        $this->sanitiser = new SvgSanitiser();
         $this->logger = $logger ?? new NullLogger();
     }
 
@@ -35,18 +43,20 @@ final class InlineSvg
     {
         $base = rtrim(self::outputDir(), DIRECTORY_SEPARATOR);
         if (!is_dir($base)) {
-            $this->logger->warning('No Adoc output dir at {base}; nothing to inline.', ['base' => $base]);
+            $this->logger->warning('No Adoc output dir at {base}; nothing to embed.', ['base' => $base]);
             return;
         }
         foreach ($this->resolveSchemaDirs($base) as $schemaDir) {
-            foreach (['classes', 'packages'] as $kind) {
-                $dir = $schemaDir . DIRECTORY_SEPARATOR . 'plantUML' . DIRECTORY_SEPARATOR . $kind;
-                if (!is_dir($dir)) {
+            foreach (self::KIND_MAP as $sourceKind => $targetKind) {
+                $sourceDir = $schemaDir . DIRECTORY_SEPARATOR . 'plantUML' . DIRECTORY_SEPARATOR . $sourceKind;
+                if (!is_dir($sourceDir)) {
                     continue;
                 }
-                $svgFiles = glob($dir . DIRECTORY_SEPARATOR . '*.svg') ?: [];
+                $targetDir = $schemaDir . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'uml' . DIRECTORY_SEPARATOR . $targetKind;
+                Filesystem::assureDir($targetDir);
+                $svgFiles = glob($sourceDir . DIRECTORY_SEPARATOR . '*.svg') ?: [];
                 foreach ($svgFiles as $svgPath) {
-                    $this->processSvg($svgPath);
+                    $this->processSvg($svgPath, $targetDir, $targetKind);
                 }
             }
         }
@@ -67,15 +77,19 @@ final class InlineSvg
         ));
     }
 
-    private function processSvg(string $svgPath): void
+    private function processSvg(string $svgPath, string $targetDir, string $targetKind): void
     {
         $svg = (string) file_get_contents($svgPath);
         $base = basename($svgPath, '.svg');
-        $adocPath = \dirname($svgPath) . DIRECTORY_SEPARATOR . $base . '.adoc';
-        $this->logger->notice('Inlining {svg} -> {adoc}', ['svg' => basename($svgPath), 'adoc' => basename($adocPath)]);
-        Filesystem::writeFile($adocPath, $this->formatter->format($svg, $base . '.puml'), $this->logger);
-        // The SVG is now embedded in the .adoc passthrough block; keep the .puml as source-of-truth
-        // but discard the rendered .svg so it does not duplicate committed content.
+        $sanitised = $this->sanitiser->sanitise($svg, $base . '.puml');
+        $target = $targetDir . DIRECTORY_SEPARATOR . $base . '.svg';
+        $this->logger->notice('Publishing {svg} -> images/uml/{kind}/{name}.svg', [
+            'svg' => basename($svgPath),
+            'kind' => $targetKind,
+            'name' => $base,
+        ]);
+        Filesystem::writeFile($target, $sanitised, $this->logger);
+        // The .puml is the source of truth and stays committed; the rendered .svg now lives under images/uml/<kind>/.
         @unlink($svgPath);
     }
 }

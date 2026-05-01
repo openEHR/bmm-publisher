@@ -82,7 +82,7 @@ final class WriterTest extends TestCase
         // Definitions still produce .adoc
         self::assertNotEmpty(self::findFiles($schemaDir . '/definitions/*.adoc'));
 
-        // plantUML subdirs now contain .puml files (not .adoc — that's the inline-svg step's job)
+        // plantUML/{classes,packages}/ hold only .puml source — image macros live in the tabs partials
         self::assertNotEmpty(self::findFiles($schemaDir . '/plantUML/classes/*.puml'));
         self::assertNotEmpty(self::findFiles($schemaDir . '/plantUML/packages/*.puml'));
         self::assertEmpty(self::findFiles($schemaDir . '/plantUML/classes/*.adoc'));
@@ -94,6 +94,12 @@ final class WriterTest extends TestCase
         self::assertStringContainsString('@startuml', $content);
         self::assertStringContainsString('@enduml', $content);
         self::assertStringNotContainsString('[plantuml,', $content);
+
+        // Tabs partial under classes/ inlines image::uml/classes/<name>.svg[] in the UML tab
+        $tabFiles = self::findFiles($schemaDir . '/classes/*.adoc');
+        self::assertNotEmpty($tabFiles);
+        $tabContent = (string) file_get_contents($tabFiles[0]);
+        self::assertMatchesRegularExpression('/image::uml\/classes\/[^\s]+\.svg\[\]/', $tabContent);
     }
 
     #[Test]

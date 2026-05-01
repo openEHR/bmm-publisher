@@ -6,7 +6,7 @@ namespace OpenEHR\BmmPublisher\Console\Command;
 
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\Asciidoc;
-use OpenEHR\BmmPublisher\Writer\InlineSvg;
+use OpenEHR\BmmPublisher\Writer\EmbedSvg;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -16,7 +16,7 @@ use Symfony\Component\Process\Process;
 
 #[AsCommand(
     name: 'asciidoc',
-    description: 'Convert BMM JSON schemas to AsciiDoc tables (writer → PlantUML → SVG → inline passthrough).',
+    description: 'Convert BMM JSON schemas to AsciiDoc tables (writer → PlantUML → SVG → images/).',
     aliases: ['adoc'],
 )]
 class AsciidocCommand extends Command
@@ -54,7 +54,7 @@ class AsciidocCommand extends Command
 
             $schemaIds = $this->collectSchemaIds($collection);
             $this->renderDiagrams($schemaIds, $output);
-            (new InlineSvg($schemaIds, $logger))();
+            (new EmbedSvg($schemaIds, $logger))();
         } catch (\Throwable $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
             $output->writeln((string) $e, OutputInterface::VERBOSITY_VERBOSE);
@@ -79,7 +79,7 @@ class AsciidocCommand extends Command
     /**
      * Invoke the PlantUML CLI on each schema's plantUML directory in a single batch
      * (one JVM start), producing <name>.svg next to each <name>.puml. The SVGs are
-     * consumed and removed by the subsequent InlineSvg pass.
+     * relocated to the schema's images/ directory by the subsequent EmbedSvg pass.
      *
      * @param list<string> $schemaIds
      */

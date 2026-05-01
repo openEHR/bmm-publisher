@@ -24,6 +24,10 @@ readonly class AsciidocTab
             default => 'Class',
         };
         $location = $this->legacyFormat ? '../' : 'ROOT:partial$';
+        $svgFilename = str_ends_with($classFilename, '.adoc')
+            ? substr($classFilename, 0, -\strlen('.adoc')) . '.svg'
+            : $classFilename . '.svg';
+        $locationSvg = $this->legacyFormat ? '../' : '';
 
         return <<<ASCIIDOC
 === {$className} $classType
@@ -44,7 +48,7 @@ include::{$location}BMMs/{$classFilename}[]
 
 UML::
 +
-include::{$location}plantUML/classes/{$classFilename}[]
+image::{$locationSvg}uml/classes/{$svgFilename}[]
 
 ====
 ASCIIDOC;

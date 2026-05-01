@@ -10,7 +10,7 @@ ini_set('display_startup_errors', '1');
 require __DIR__ . '/../vendor/autoload.php';
 
 use OpenEHR\BmmPublisher\Console\Command\AsciidocCommand;
-use OpenEHR\BmmPublisher\Console\Command\InlineSvgCommand;
+use OpenEHR\BmmPublisher\Console\Command\EmbedSvgCommand;
 use OpenEHR\BmmPublisher\Console\Command\PlantUmlCommand;
 use OpenEHR\BmmPublisher\Console\Command\SplitJsonCommand;
 use OpenEHR\BmmPublisher\Console\Command\YamlCommand;
@@ -20,7 +20,7 @@ try {
     $console = new Application('bmm-publisher', '0.5.0');
     $console->addCommand(new AsciidocCommand());
     $console->addCommand(new PlantUmlCommand());
-    $console->addCommand(new InlineSvgCommand());
+    $console->addCommand(new EmbedSvgCommand());
     $console->addCommand(new YamlCommand());
     $console->addCommand(new SplitJsonCommand());
     exit($console->run());

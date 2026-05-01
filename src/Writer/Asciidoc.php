@@ -67,7 +67,7 @@ class Asciidoc
             $pkg = '';
         }
         $schemaDir = self::outputDir() . $schema->getSchemaId();
-        $this->cleanPlantUmlDirOnce($schema->getSchemaId(), $schemaDir);
+        $this->cleanGeneratedDirsOnce($schema->getSchemaId(), $schemaDir);
 
         $definitionsDir = $schemaDir . '/definitions/';
         Filesystem::assureDir($definitionsDir);
@@ -112,21 +112,22 @@ class Asciidoc
     }
 
     /**
-     * Recursively delete output/Adoc/<schema>/plantUML/ on first encounter of <schema>
+     * Recursively delete output/Adoc/<schema>/{plantUML,images}/ on first encounter of <schema>
      * within this writer invocation, so that orphaned files (e.g. classes renamed
      * across BMM versions) cannot linger in committed output.
      */
-    private function cleanPlantUmlDirOnce(string $schemaId, string $schemaDir): void
+    private function cleanGeneratedDirsOnce(string $schemaId, string $schemaDir): void
     {
         if (isset($this->cleanedSchemas[$schemaId])) {
             return;
         }
         $this->cleanedSchemas[$schemaId] = true;
-        $plantUmlDir = $schemaDir . '/plantUML';
-        if (!is_dir($plantUmlDir)) {
-            return;
+        foreach (['plantUML', 'images'] as $sub) {
+            $dir = $schemaDir . '/' . $sub;
+            if (is_dir($dir)) {
+                $this->rrmdir($dir);
+            }
         }
-        $this->rrmdir($plantUmlDir);
     }
 
     private function rrmdir(string $dir): void

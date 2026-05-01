@@ -20,7 +20,7 @@ Use this file as the **primary reference** for agents, automation, and contribut
 | `src/` | Application source; PSR-4 namespace `OpenEHR\BmmPublisher\` |
 | `resources/` | **Input**: openEHR BMM schemas in P_BMM JSON format (`.bmm.json` files) |
 | `output/` | **Generated** writer output (committed; CI's `verify-output` job re-runs `make publish-all` and fails on `git diff -- output/`) |
-| `output/Adoc/` | AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks); `plantUML/{classes,packages}/` holds the `.puml` source plus a passthrough-block `.adoc` partial with the rendered SVG embedded inline |
+| `output/Adoc/` | AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks); `plantUML/{classes,packages}/` holds only the `.puml` source — UML image macros are inlined directly into the tabs partials under `classes/<name>.adoc`; rendered diagrams live under `images/uml/{classes,diagrams}/` |
 | `output/PlantUML/` | PlantUML `.puml` diagram files |
 | `output/BMM-YAML/` | YAML serialisations of BMM schemas |
 | `output/BMM-JSON-development-types/` | Per-type split JSON files grouped by component (AM, RM, BASE, LANG, TERM) |
@@ -42,9 +42,9 @@ The entry point `bin/bmm-publisher` provides these Symfony Console commands:
 
 | Command | Aliases | Description |
 |---------|---------|-------------|
-| `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables. Atomic: the writer emits `.puml`, the in-image `plantuml` CLI renders `.svg`, and `InlineSvg` embeds the SVG as a passthrough block in the `.adoc` partial. |
+| `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables. Atomic: the writer emits `.puml` source plus the tabs partial with the UML image macro inlined, the in-image `plantuml` CLI renders `.svg`, and `EmbedSvg` sanitises and publishes each SVG under `images/uml/classes/` or `images/uml/diagrams/`. |
 | `plantuml` | `uml`, `puml` | Convert BMM JSON schemas to PlantUML diagrams (standalone tree under `output/PlantUML/`) |
-| `inline-svg` | | Re-run only the SVG-inline step against existing `.svg` files (debugging / surgical re-runs). |
+| `embed-svg` | | Re-run only the SVG sanitise + publish step against existing `.svg` files (debugging / surgical re-runs). |
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
 
@@ -60,19 +60,27 @@ BmmSchemaCollection: loads .bmm.json → BmmSchema objects (via cadasto/openehr-
                      provides cross-schema class/package lookups
 
 Writers (callable classes, receive BmmSchemaCollection, delegate to Formatters):
-  ├── Asciidoc      → AsciidocDefinition, AsciidocEffective, AsciidocTab,
-  │                   AsciidocBmmJson, Formatter\PlantUml (raw .puml output)
-  ├── InlineSvg     → SvgPassthrough  (post-render: .svg → .adoc passthrough; .svg removed)
+  ├── Asciidoc      → AsciidocDefinition, AsciidocEffective, AsciidocTab (UML image macro inlined),
+  │                   AsciidocBmmJson, Formatter\PlantUml (raw .puml only)
+  ├── EmbedSvg      → SvgSanitiser  (post-render: validate, strip MD5, publish .svg under images/uml/)
   ├── PlantUml      → Formatter\PlantUml
   ├── BmmYaml       (uses Symfony Yaml component)
   └── BmmJsonSplit  (per-type JSON with openEHR spec URLs)
 
 The `asciidoc` command is a self-contained pipeline (one PHP run, one container start):
   1. The `Asciidoc` writer emits raw `.puml` files under `output/Adoc/<schema>/plantUML/{classes,packages}/`.
-  2. `AsciidocCommand` shells out via Symfony Process to the bundled `plantuml -tsvg -nometadata` CLI; one batch invocation per call (single warm JVM).
-  3. The `InlineSvg` writer reads each `.svg`, sanitises it (strips XML PI/DOCTYPE/MD5 stamp, fails on `Syntax Error?`), wraps it in an Asciidoctor passthrough block, writes the `.adoc` partial, and unlinks the `.svg`.
+     The tabs partial under `classes/<name>.adoc` already inlines the UML image macro
+     (`image::uml/classes/<name>.svg[]`).
+  2. `AsciidocCommand` shells out via Symfony Process to the bundled `plantuml -tsvg -nometadata` CLI;
+     one batch invocation per call (single warm JVM); SVGs land next to each `.puml`.
+  3. The `EmbedSvg` writer validates each `.svg` (fails on `Syntax Error?`), strips MD5 stamps,
+     publishes the cleaned SVG to `output/Adoc/<schema>/images/uml/classes/<name>.svg` (per-class)
+     or `images/uml/diagrams/<name>.svg` (per-package), and unlinks the original.
 
-End state on disk: `<name>.puml` (committed source) + `<name>.adoc` (committed passthrough partial with SVG inline). No `.svg` left behind.
+End state on disk: `<name>.puml` (committed source under `plantUML/{classes,packages}/`) +
+tabs partial with inline image macro under `classes/<name>.adoc` +
+`images/uml/{classes,diagrams}/<name>.svg` (committed rendered diagram, ready for Antora
+to relocate to `<module>/images/uml/{classes,diagrams}/`).
 ```
 
 **Key patterns**:
