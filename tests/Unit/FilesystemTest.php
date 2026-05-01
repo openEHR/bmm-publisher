@@ -80,6 +80,26 @@ final class FilesystemTest extends TestCase
     }
 
     #[Test]
+    public function assureDirToleratesExistingNonWritableDirectory(): void
+    {
+        // Mirrors the Docker bind-mount case: Docker auto-creates the parent path
+        // with root ownership when only a child is mounted, so the container's
+        // app user sees an unwritable parent even though it only writes into
+        // children. Pre-existing dirs must not be rejected at preflight; any
+        // genuine permission problem surfaces at write time via writeFile().
+        $dir = $this->tempBase . DIRECTORY_SEPARATOR . 'readonly_parent';
+        self::assertTrue(mkdir($dir, 0500, true));
+
+        try {
+            Filesystem::assureDir($dir);
+            self::assertDirectoryExists($dir);
+        } finally {
+            // Restore writable mode so tearDown can remove it.
+            chmod($dir, 0700);
+        }
+    }
+
+    #[Test]
     public function writeFileWritesContent(): void
     {
         $file = $this->tempBase . DIRECTORY_SEPARATOR . 'out.txt';

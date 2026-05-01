@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **`Helper\Filesystem::assureDir()`** no longer fails preflight on pre-existing unwritable directories — fixes spurious `Directory ... is not writable.` errors when integrators bind-mount additional volumes under `output/Adoc/<schema>/`. Real permission problems still surface at write time.
+
 ## [0.6.0] - 2026-05-01
 
 ### Changed
