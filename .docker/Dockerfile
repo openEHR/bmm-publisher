@@ -51,7 +51,8 @@ COPY --chmod=0755 --from=mlocati/php-extension-installer /usr/bin/install-php-ex
 RUN set -eux \
     && mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
     && apk add --no-cache git \
-    && install-php-extensions xdebug @composer
+    && install-php-extensions xdebug @composer \
+    && git config --system --add safe.directory /app
 
 COPY .docker/php/zz-development.ini /usr/local/etc/php/conf.d/
 

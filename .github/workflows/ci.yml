@@ -77,7 +77,12 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build dev image
-        run: make build
+        # Align the container's app user with the runner's uid/gid so the bind-mounted
+        # /app workspace is writable from inside the container (composer install, output
+        # regeneration, git diff all run as that user).
+        run: |
+          docker compose -f .docker/docker-compose.yml build \
+            --build-arg uid=$(id -u) --build-arg gid=$(id -g)
 
       - name: Install PHP dependencies
         run: make install
