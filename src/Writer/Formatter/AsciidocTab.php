@@ -27,7 +27,10 @@ readonly class AsciidocTab
         $svgFilename = str_ends_with($classFilename, '.adoc')
             ? substr($classFilename, 0, -\strlen('.adoc')) . '.svg'
             : $classFilename . '.svg';
-        $locationSvg = $this->legacyFormat ? '../' : '';
+        // Qualify the image target with ROOT: so Antora resolves it in the ROOT
+        // module's images/ tree even when the tabs partial is included from a
+        // page in another module (foundation_types, base_types, …).
+        $locationSvg = $this->legacyFormat ? '../' : 'ROOT:';
 
         return <<<ASCIIDOC
 === {$className} $classType

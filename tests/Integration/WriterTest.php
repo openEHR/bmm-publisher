@@ -95,11 +95,13 @@ final class WriterTest extends TestCase
         self::assertStringContainsString('@enduml', $content);
         self::assertStringNotContainsString('[plantuml,', $content);
 
-        // Tabs partial under classes/ inlines image::uml/classes/<name>.svg[] in the UML tab
+        // Tabs partial under classes/ inlines image::ROOT:uml/classes/<name>.svg[] in the UML tab.
+        // The ROOT: qualifier is required so Antora resolves the asset in the ROOT module's
+        // images/ tree even when the partial is included from a page in another module.
         $tabFiles = self::findFiles($schemaDir . '/classes/*.adoc');
         self::assertNotEmpty($tabFiles);
         $tabContent = (string) file_get_contents($tabFiles[0]);
-        self::assertMatchesRegularExpression('/image::uml\/classes\/[^\s]+\.svg\[\]/', $tabContent);
+        self::assertMatchesRegularExpression('/image::ROOT:uml\/classes\/[^\s]+\.svg\[\]/', $tabContent);
     }
 
     #[Test]
