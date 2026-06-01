@@ -58,8 +58,7 @@ class Asciidoc
             $logger->warning('Empty package {package}.', ['package' => $package->name]);
             return;
         }
-        $prefix = 'org.openehr.' . strtolower($schema->schemaName) . '.';
-        $prefix .= explode('.', str_replace($prefix, '', $namePrefix . $package->name))[0];
+        $prefix = LegacyClassNaming::packagePrefix($schema, $namePrefix, $package);
         if (!$this->legacyFormat && $schema->schemaName === 'am') {
             $parts = explode('.', $prefix);
             $pkg = end($parts) . '.';
@@ -88,7 +87,7 @@ class Asciidoc
                 throw new RuntimeException(\sprintf('WARN: Class %s not found in schema', $className));
             }
             if ($this->legacyFormat) {
-                $filename = $prefix . '.' . strtolower($className) . '.adoc';
+                $filename = LegacyClassNaming::classFilename($prefix, $className);
             } else {
                 $filename = $pkg . strtolower($className) . '.adoc';
             }

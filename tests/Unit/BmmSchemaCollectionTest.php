@@ -46,6 +46,30 @@ final class BmmSchemaCollectionTest extends TestCase
     }
 
     #[Test]
+    public function loadPathReadsSchemaFromExplicitPath(): void
+    {
+        $path = ResourcesDir::path() . DIRECTORY_SEPARATOR . 'openehr_base_1.0.4.bmm.json';
+
+        $collection = new BmmSchemaCollection();
+        $collection->loadPath($path);
+
+        self::assertSame(1, $collection->count());
+        $schemas = iterator_to_array($collection, false);
+        self::assertSame('openehr_base_1.0.4', $schemas[0]->getSchemaId());
+    }
+
+    #[Test]
+    public function loadPathMissingFileThrowsRuntimeException(): void
+    {
+        $collection = new BmmSchemaCollection();
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('File missing or not readable');
+
+        $collection->loadPath('/no/such/dir/openehr_base_1.0.4.bmm.json');
+    }
+
+    #[Test]
     public function loadMissingFileThrowsRuntimeException(): void
     {
         $collection = new BmmSchemaCollection();
