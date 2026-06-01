@@ -30,15 +30,12 @@ class LegacyAdocCommand extends Command
         array $input = [],
         #[Option(description: 'Dependency schema id or .bmm.json path, loaded for cross-refs only, not exported. Repeatable.', shortcut: 'd')]
         array $dependency = [],
-        #[Option(description: 'Target directory for the generated class .adoc files. Defaults to <output>/legacy-adoc.', shortcut: 'o')]
+        #[Option(description: 'Output directory for class .adoc files. Default: <output>/legacy-adoc/<schema_id> per schema.', shortcut: 'o')]
         string $outputDir = '',
     ): int {
         if (empty($input)) {
             $output->writeln('<error>Please specify the BMM schema id(s) or JSON file(s) to read. See --help for usage.</error>');
             return Command::INVALID;
-        }
-        if ($outputDir === '') {
-            $outputDir = OutputDir::path() . DIRECTORY_SEPARATOR . 'legacy-adoc';
         }
 
         $toRead = $input === ['all'] ? BmmSchemaCollection::availableSchemas() : $input;
@@ -53,11 +50,21 @@ class LegacyAdocCommand extends Command
             foreach ($collection as $schema) {
                 $exportSchemaIds[] = $schema->getSchemaId();
             }
+            $exportSchemaIds = array_values(array_unique($exportSchemaIds));
             // Dependencies are loaded for cross-reference resolution only.
             foreach ($dependency as $schema) {
                 $this->loadInput($collection, $schema);
             }
-            (new LegacyClassDefinitions($collection, $outputDir, $exportSchemaIds))();
+            if ($outputDir !== '') {
+                // Explicit target: all exported schemas are written flat into the given directory.
+                (new LegacyClassDefinitions($collection, $outputDir, $exportSchemaIds))();
+            } else {
+                // Default: one directory per schema, inferred from its id, under <output>/legacy-adoc.
+                $base = OutputDir::path() . DIRECTORY_SEPARATOR . 'legacy-adoc';
+                foreach ($exportSchemaIds as $schemaId) {
+                    (new LegacyClassDefinitions($collection, $base . DIRECTORY_SEPARATOR . $schemaId, [$schemaId]))();
+                }
+            }
         } catch (\Throwable $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
             $output->writeln((string) $e, OutputInterface::VERBOSITY_VERBOSE);

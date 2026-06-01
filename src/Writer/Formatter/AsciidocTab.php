@@ -11,10 +11,6 @@ use Cadasto\OpenEHR\BMM\Model\BmmInterface;
 
 readonly class AsciidocTab
 {
-    public function __construct(private bool $legacyFormat = false)
-    {
-    }
-
     public function format(AbstractBmmClass $class, string $classFilename): string
     {
         $className = $class->getName();
@@ -23,14 +19,14 @@ readonly class AsciidocTab
             BmmEnumerationString::class, BmmEnumerationInteger::class => 'Enumeration',
             default => 'Class',
         };
-        $location = $this->legacyFormat ? '../' : 'ROOT:partial$';
+        $location = 'ROOT:partial$';
         $svgFilename = str_ends_with($classFilename, '.adoc')
             ? substr($classFilename, 0, -\strlen('.adoc')) . '.svg'
             : $classFilename . '.svg';
         // Qualify the image target with ROOT: so Antora resolves it in the ROOT
         // module's images/ tree even when the tabs partial is included from a
         // page in another module (foundation_types, base_types, …).
-        $locationSvg = $this->legacyFormat ? '../' : 'ROOT:';
+        $locationSvg = 'ROOT:';
 
         return <<<ASCIIDOC
 === {$className} $classType

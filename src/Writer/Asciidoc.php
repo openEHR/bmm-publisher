@@ -28,13 +28,18 @@ class Asciidoc
     /** @var array<string, true> */
     private array $cleanedSchemas = [];
 
+    /**
+     * @param array<int, string> $exportSchemaIds Schema ids to export; an empty list exports every
+     *        loaded schema. Schemas loaded for cross-reference resolution only (dependencies) are
+     *        omitted from this list so their artefacts are not written.
+     */
     public function __construct(
         private readonly BmmSchemaCollection $schemas,
-        private readonly bool $legacyFormat = false,
+        private readonly array $exportSchemaIds = [],
     ) {
-        $this->tab = new AsciidocTab($this->legacyFormat);
-        $this->definition = new AsciidocDefinition($schemas, $this->legacyFormat);
-        $this->effective = new AsciidocEffective($schemas, $this->legacyFormat);
+        $this->tab = new AsciidocTab();
+        $this->definition = new AsciidocDefinition($schemas);
+        $this->effective = new AsciidocEffective($schemas);
         $this->bmmJson = new AsciidocBmmJson();
         $this->plantUml = new PlantUmlFormatter($schemas);
     }
@@ -53,13 +58,18 @@ class Asciidoc
 
     private function writePackage(BmmPackage $package, BmmSchema $schema, string $namePrefix): void
     {
+        // Dependency schemas stay in the collection for cross-reference resolution but are not exported.
+        if ($this->exportSchemaIds !== [] && !\in_array($schema->getSchemaId(), $this->exportSchemaIds, true)) {
+            return;
+        }
+
         $logger = $this->schemas->logger;
         if (!\count($package->classes)) {
             $logger->warning('Empty package {package}.', ['package' => $package->name]);
             return;
         }
         $prefix = LegacyClassNaming::packagePrefix($schema, $namePrefix, $package);
-        if (!$this->legacyFormat && $schema->schemaName === 'am') {
+        if ($schema->schemaName === 'am') {
             $parts = explode('.', $prefix);
             $pkg = end($parts) . '.';
         } else {
@@ -86,11 +96,7 @@ class Asciidoc
             if (!$class) {
                 throw new RuntimeException(\sprintf('WARN: Class %s not found in schema', $className));
             }
-            if ($this->legacyFormat) {
-                $filename = LegacyClassNaming::classFilename($prefix, $className);
-            } else {
-                $filename = $pkg . strtolower($className) . '.adoc';
-            }
+            $filename = $pkg . strtolower($className) . '.adoc';
             $pumlFilename = preg_replace('/\.adoc$/', '.puml', $filename) ?? $filename;
             $logger->notice('Writing {file} class ...', ['file' => $filename]);
             Filesystem::writeFile($definitionsDir . $filename, $this->definition->format($class, $prefix, $schema), $logger);
@@ -101,11 +107,7 @@ class Asciidoc
         }
         $prefix = 'org.openehr.' . strtolower($schema->schemaName) . '.';
         $namePrefix = $prefix . str_replace($prefix, '', $namePrefix);
-        if ($this->legacyFormat) {
-            $packageName = rtrim($namePrefix . str_replace($namePrefix, '', $package->name), '.');
-        } else {
-            $packageName = strtoupper($schema->schemaName) . '-' . $pkg . rtrim(str_replace($namePrefix, '', $package->name), '.');
-        }
+        $packageName = strtoupper($schema->schemaName) . '-' . $pkg . rtrim(str_replace($namePrefix, '', $package->name), '.');
         $logger->notice('Writing {package} package ...', ['package' => $packageName]);
         Filesystem::writeFile($plantUmlPackagesDir . $packageName . '.puml', $this->plantUml->format($package, $packageName, $schema), $logger);
     }
