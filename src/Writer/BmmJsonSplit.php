@@ -14,8 +14,16 @@ use RuntimeException;
 
 class BmmJsonSplit
 {
+    /**
+     * @param string|null $componentSuffix Appended to the per-type output directory name
+     *        (e.g. `bmm3` -> `LANG-bmm3/`). Used to keep a variant schema that shares a
+     *        schema id with its base component — such as `openehr_lang_1.1.0-bmm3`, which
+     *        resolves to schema id `openehr_lang_1.1.0` — from overwriting the base
+     *        component's per-type files. Null keeps the default component directory.
+     */
     public function __construct(
         private readonly BmmSchemaCollection $schemas,
+        private readonly ?string $componentSuffix = null,
     ) {
     }
 
@@ -40,10 +48,14 @@ class BmmJsonSplit
         $packagePrefixName = 'org.openehr.' . strtolower($schema->schemaName) . '.';
         $packageName = $packagePrefixName . str_replace($packagePrefixName, '', $namePrefix . $package->name);
         if ($schema->schemaName === 'am') {
-            $outputDir = self::outputDir() . 'AM' . (str_starts_with($schema->rmRelease, '2') ? '2' : '') . '/';
+            $dirComponent = 'AM' . (str_starts_with($schema->rmRelease, '2') ? '2' : '');
         } else {
-            $outputDir = self::outputDir() . strtoupper($schema->schemaName) . '/';
+            $dirComponent = strtoupper($schema->schemaName);
         }
+        if ($this->componentSuffix !== null) {
+            $dirComponent .= '-' . $this->componentSuffix;
+        }
+        $outputDir = self::outputDir() . $dirComponent . '/';
         Filesystem::assureDir($outputDir);
         foreach ($package->classes as $className) {
             /** @var AbstractBmmClass $class */
