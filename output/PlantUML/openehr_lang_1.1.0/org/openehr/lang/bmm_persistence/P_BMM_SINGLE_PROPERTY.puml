@@ -3,7 +3,7 @@
 class P_BMM_SINGLE_PROPERTY {
   + type : String [0..1]
   + type_ref : P_BMM_SIMPLE_TYPE [0..1]
-  + bmm_property : BMM_UNITARY_PROPERTY [0..1]
+  + bmm_property : BMM_PROPERTY [0..1]
   + type_def() : P_BMM_SIMPLE_TYPE [1]
 }
 

@@ -1,8 +1,0 @@
-@startuml
-
-abstract class PARTY_PROXY {
-  + external_ref : PARTY_REF [0..1]
-}
-
-
-@enduml

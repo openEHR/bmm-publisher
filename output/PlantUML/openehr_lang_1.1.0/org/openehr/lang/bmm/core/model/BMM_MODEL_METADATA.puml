@@ -1,9 +1,0 @@
-@startuml
-
-class BMM_MODEL_METADATA {
-  + rm_publisher : String [1]
-  + rm_release : String [1]
-}
-
-
-@enduml

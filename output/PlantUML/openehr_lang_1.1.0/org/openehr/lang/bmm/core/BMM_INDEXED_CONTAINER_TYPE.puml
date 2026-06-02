@@ -1,0 +1,49 @@
+@startuml
+
+class BMM_INDEXED_CONTAINER_TYPE {
+  + index_type : BMM_SIMPLE_TYPE [1]
+}
+
+class BMM_CONTAINER_TYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + container_type : BMM_CLASS [1]
+  + base_type : BMM_TYPE [1]
+  + type_name() : String [1]
+}
+
+abstract class BMM_TYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + has_type_substitutions() : Boolean [1]
+  + type_substitutions() : List<String> [*]
+}
+
+abstract class BMM_TYPE_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+abstract class BMM_CLASSIFIER  #whitesmoke;line:gray;line.dotted;text:gray {
+  + type_name() : String [1]
+  + type_category() : String [1]
+  + type_signature() : String [1]
+  + base_class() : BMM_CLASS [1]
+  + flattened_type_list() : List<String> [*]
+}
+
+abstract class BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+  + documentation : String [0..1]
+}
+
+class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT
+
+BMM_MODEL_ELEMENT <|-- BMM_CLASSIFIER
+
+BMM_CLASSIFIER <|-- BMM_TYPE_ELEMENT
+
+BMM_TYPE_ELEMENT <|-- BMM_TYPE
+
+BMM_TYPE <|-- BMM_CONTAINER_TYPE
+
+BMM_CONTAINER_TYPE <|-- BMM_INDEXED_CONTAINER_TYPE
+
+
+@enduml

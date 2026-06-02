@@ -1,0 +1,55 @@
+@startuml
+
+class BMM_MODEL {
+  + class_definitions : Hash<String,BMM_CLASS> [0..1]
+  + primitive_types() : List<String> [*]
+  + enumeration_types() : List<String> [*]
+  + class_definition( a_name : String [1] ) : BMM_CLASS [1]
+  + enumeration_definition( a_name : String [1] ) : BMM_ENUMERATION [1]
+  + property_definition() : BMM_PROPERTY [1]
+  + ms_conformant_property_type( a_bmm_type_name : String [1], a_bmm_property_name : String [1], a_ms_property_name : String [1] ) : Boolean [1]
+  + property_definition_at_path() : BMM_PROPERTY [1]
+  + all_ancestor_classes( a_class : String [1] ) : List<String> [*]
+  + type_conforms_to( a_desc_type : String [1], an_anc_type : String [1] ) : Boolean [1]
+}
+
+class BMM_SCHEMA_CORE  #whitesmoke;line:gray;line.dotted;text:gray {
+  + rm_publisher : String [1]
+  + rm_release : String [1]
+  + schema_name : String [1]
+  + schema_revision : String [1]
+  + schema_lifecycle_state : String [1]
+  + schema_author : String [1]
+  + schema_description : String [1]
+  + schema_contributors : List<String> [*]
+  + archetype_parent_class : String [0..1]
+  + archetype_data_value_parent_class : String [0..1]
+  + archetype_rm_closure_packages : List<String> [*]
+  + archetype_visualise_descendants_of : String [0..1]
+  + schema_id() : String [1]
+}
+
+BMM_SCHEMA_CORE <|-- BMM_MODEL
+
+class BMM_PACKAGE_CONTAINER  #whitesmoke;line:gray;line.dotted;text:gray {
+  + packages : Hash<String,BMM_PACKAGE> [0..1]
+  + package_at_path( a_path : String [1] ) : BMM_PACKAGE [1]
+  + do_recursive_packages( action : PROCEDURE [1] ) :  [1]
+  + has_package_path( a_path : String [1] ) : Boolean [1]
+}
+
+abstract class BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+  + documentation : String [0..1]
+}
+
+class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT
+
+BMM_MODEL_ELEMENT <|-- BMM_PACKAGE_CONTAINER
+
+BMM_PACKAGE_CONTAINER <|-- BMM_MODEL
+
+
+@enduml

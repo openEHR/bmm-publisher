@@ -1,20 +1,190 @@
 @startuml
 
+class BMM_DEFINITIONS {
+}
+
 abstract class BMM_MODEL_ELEMENT {
+  + documentation : String [0..1]
+}
+
+abstract class BMM_CLASSIFIER {
+  + type_name() : String [1]
+  + type_category() : String [1]
+  + type_signature() : String [1]
+  + base_class() : BMM_CLASS [1]
+  + flattened_type_list() : List<String> [*]
+}
+
+class BMM_CLASS {
   + name : String [1]
-  + documentation : Hash<String,Any> [0..1]
-  + scope : BMM_MODEL_ELEMENT [1]
-  + extensions : Hash<String,Any> [0..1]
-  + is_root_scope() : Boolean [1]
+  + ancestors : Hash<String,BMM_CLASS> [0..1]
+  + package : BMM_PACKAGE [1]
+  + properties : Hash<String,BMM_PROPERTY> [0..1]
+  + source_schema_id : String [1]
+  + immediate_descendants : List<String> [*]
+  + is_abstract : Boolean [1]
+  + is_primitive_type : Boolean [1]
+  + is_override : Boolean [1]
+  + all_ancestors() : List<String> [*]
+  + all_descendants() : List<String> [*]
+  + suppliers() : List<String> [*]
+  + suppliers_non_primitive() : List<String> [*]
+  + supplier_closure() : List<String> [*]
+  + base_class() : BMM_CLASS [1]
+  + package_path() : String [1]
+  + class_path() : String [1]
+  + flat_properties() : List<BMM_PROPERTY> [*]
+  + type_name() : String [1]
 }
 
-abstract class BMM_FORMAL_ELEMENT {
-  + type : BMM_TYPE [1]
-  + is_nullable : Boolean [0..1]
-  + {abstract} signature() : BMM_SIGNATURE [1]
-  + is_boolean() : Boolean [1]
+class BMM_GENERIC_CLASS {
+  + generic_parameters : Hash<String,BMM_GENERIC_PARAMETER> [1]
+  + suppliers() : List<String> [*]
+  + type_signature() : String [1]
+  + type_name() : String [1]
 }
 
-BMM_MODEL_ELEMENT <|-- BMM_FORMAL_ELEMENT
+class BMM_ENUMERATION {
+  + item_names : List<String> [*]
+  + item_values : List<T> [*]
+  + underlying_type_name : String [1]
+}
+
+class BMM_ENUMERATION_INTEGER {
+  + underlying_type_name : String [1]
+}
+
+class BMM_ENUMERATION_STRING {
+  + underlying_type_name : String [1]
+}
+
+abstract class BMM_TYPE_ELEMENT {
+}
+
+abstract class BMM_TYPE {
+  + has_type_substitutions() : Boolean [1]
+  + type_substitutions() : List<String> [*]
+}
+
+class BMM_SIMPLE_TYPE {
+  + base_class : BMM_CLASS [1]
+  + type_name() : String [1]
+}
+
+class BMM_OPEN_TYPE {
+  + generic_constraint : BMM_GENERIC_PARAMETER [1]
+  + conformance_type_name() : String [1]
+}
+
+class BMM_CONTAINER_TYPE {
+  + container_type : BMM_CLASS [1]
+  + base_type : BMM_TYPE [1]
+  + type_name() : String [1]
+}
+
+class BMM_INDEXED_CONTAINER_TYPE {
+  + index_type : BMM_SIMPLE_TYPE [1]
+}
+
+class BMM_GENERIC_TYPE {
+  + generic_parameters : List<BMM_TYPE> [1..*]
+  + base_class : BMM_GENERIC_CLASS [1]
+  + type_name() : String [1]
+}
+
+class BMM_GENERIC_PARAMETER {
+  + name : String [1]
+  + conforms_to_type : BMM_CLASS [0..1]
+  + inheritance_precursor : BMM_GENERIC_PARAMETER [0..1]
+  + flattened_conforms_to_type() : String [1]
+  + effective_conforms_to_type() : BMM_CLASS [1]
+  + type_signature() : String [1]
+}
+
+class BMM_PROPERTY <T> {
+  + name : String [1]
+  + is_mandatory : Boolean [0..1]
+  + is_computed : Boolean [0..1]
+  + type : T [1]
+  + is_im_runtime : Boolean [0..1]
+  + is_im_infrastructure : Boolean [0..1]
+  + existence() : Multiplicity_interval [1]
+  + display_name() : String [1]
+}
+
+class BMM_CONTAINER_PROPERTY {
+  + cardinality : Multiplicity_interval [0..1]
+  + type : BMM_CONTAINER_TYPE [1]
+  + display_name() : String [1]
+}
+
+class BMM_PACKAGE_CONTAINER {
+  + packages : Hash<String,BMM_PACKAGE> [0..1]
+  + package_at_path( a_path : String [1] ) : BMM_PACKAGE [1]
+  + do_recursive_packages( action : PROCEDURE [1] ) :  [1]
+  + has_package_path( a_path : String [1] ) : Boolean [1]
+}
+
+class BMM_PACKAGE {
+  + name : String [1]
+  + classes : List<BMM_CLASS> [*]
+  + root_classes() : List<BMM_CLASS> [*]
+  + path() : String [1]
+}
+
+class BMM_MODEL {
+  + class_definitions : Hash<String,BMM_CLASS> [0..1]
+  + primitive_types() : List<String> [*]
+  + enumeration_types() : List<String> [*]
+  + class_definition( a_name : String [1] ) : BMM_CLASS [1]
+  + enumeration_definition( a_name : String [1] ) : BMM_ENUMERATION [1]
+  + property_definition() : BMM_PROPERTY [1]
+  + ms_conformant_property_type( a_bmm_type_name : String [1], a_bmm_property_name : String [1], a_ms_property_name : String [1] ) : Boolean [1]
+  + property_definition_at_path() : BMM_PROPERTY [1]
+  + all_ancestor_classes( a_class : String [1] ) : List<String> [*]
+  + type_conforms_to( a_desc_type : String [1], an_anc_type : String [1] ) : Boolean [1]
+}
+
+class BMM_SCHEMA_CORE {
+  + rm_publisher : String [1]
+  + rm_release : String [1]
+  + schema_name : String [1]
+  + schema_revision : String [1]
+  + schema_lifecycle_state : String [1]
+  + schema_author : String [1]
+  + schema_description : String [1]
+  + schema_contributors : List<String> [*]
+  + archetype_parent_class : String [0..1]
+  + archetype_data_value_parent_class : String [0..1]
+  + archetype_rm_closure_packages : List<String> [*]
+  + archetype_visualise_descendants_of : String [0..1]
+  + schema_id() : String [1]
+}
+
+class BMM_INCLUDE_SPEC {
+  + id : String [1]
+}
+
+BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT
+BMM_MODEL_ELEMENT <|-- BMM_CLASSIFIER
+BMM_CLASSIFIER <|-- BMM_CLASS
+BMM_CLASS <|-- BMM_GENERIC_CLASS
+BMM_CLASS <|-- BMM_ENUMERATION
+BMM_ENUMERATION <|-- BMM_ENUMERATION_INTEGER
+BMM_ENUMERATION <|-- BMM_ENUMERATION_STRING
+BMM_CLASSIFIER <|-- BMM_TYPE_ELEMENT
+BMM_TYPE_ELEMENT <|-- BMM_TYPE
+BMM_TYPE <|-- BMM_SIMPLE_TYPE
+BMM_TYPE <|-- BMM_OPEN_TYPE
+BMM_TYPE <|-- BMM_CONTAINER_TYPE
+BMM_CONTAINER_TYPE <|-- BMM_INDEXED_CONTAINER_TYPE
+BMM_TYPE <|-- BMM_GENERIC_TYPE
+BMM_TYPE_ELEMENT <|-- BMM_GENERIC_PARAMETER
+BMM_MODEL_ELEMENT <|-- BMM_PROPERTY
+BMM_PROPERTY <|-- BMM_CONTAINER_PROPERTY
+BMM_MODEL_ELEMENT <|-- BMM_PACKAGE_CONTAINER
+BMM_PACKAGE_CONTAINER <|-- BMM_PACKAGE
+BMM_SCHEMA_CORE <|-- BMM_MODEL
+BMM_PACKAGE_CONTAINER <|-- BMM_MODEL
 
 @enduml

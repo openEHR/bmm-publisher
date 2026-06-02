@@ -1,0 +1,61 @@
+@startuml
+
+class BMM_ENUMERATION_INTEGER {
+  + underlying_type_name : String [1]
+}
+
+class BMM_ENUMERATION  #whitesmoke;line:gray;line.dotted;text:gray {
+  + item_names : List<String> [*]
+  + item_values : List<T> [*]
+  + underlying_type_name : String [1]
+}
+
+class BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
+  + name : String [1]
+  + ancestors : Hash<String,BMM_CLASS> [0..1]
+  + package : BMM_PACKAGE [1]
+  + properties : Hash<String,BMM_PROPERTY> [0..1]
+  + source_schema_id : String [1]
+  + immediate_descendants : List<String> [*]
+  + is_abstract : Boolean [1]
+  + is_primitive_type : Boolean [1]
+  + is_override : Boolean [1]
+  + all_ancestors() : List<String> [*]
+  + all_descendants() : List<String> [*]
+  + suppliers() : List<String> [*]
+  + suppliers_non_primitive() : List<String> [*]
+  + supplier_closure() : List<String> [*]
+  + base_class() : BMM_CLASS [1]
+  + package_path() : String [1]
+  + class_path() : String [1]
+  + flat_properties() : List<BMM_PROPERTY> [*]
+  + type_name() : String [1]
+}
+
+abstract class BMM_CLASSIFIER  #whitesmoke;line:gray;line.dotted;text:gray {
+  + type_name() : String [1]
+  + type_category() : String [1]
+  + type_signature() : String [1]
+  + base_class() : BMM_CLASS [1]
+  + flattened_type_list() : List<String> [*]
+}
+
+abstract class BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+  + documentation : String [0..1]
+}
+
+class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT
+
+BMM_MODEL_ELEMENT <|-- BMM_CLASSIFIER
+
+BMM_CLASSIFIER <|-- BMM_CLASS
+
+BMM_CLASS <|-- BMM_ENUMERATION
+
+BMM_ENUMERATION <|-- BMM_ENUMERATION_INTEGER
+
+
+@enduml
