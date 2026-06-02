@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-06-02
+
 ### Added
 
 - **`legacy-adoc` command** — generates the legacy `docs/UML/classes` layout (flat `org.openehr.<schema>.<class>.adoc` class-definition tables) from BMM JSON, with `-d` dependencies and an `-o` output dir; also exposed as `make legacy-adoc`.
@@ -116,7 +118,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.7.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.8.0...HEAD
+[0.8.0]: https://github.com/openehr/bmm-publisher/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/openehr/bmm-publisher/compare/0.6.0...0.7.0
 [0.6.0]: https://github.com/openehr/bmm-publisher/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/openehr/bmm-publisher/compare/0.4.0...0.5.0
