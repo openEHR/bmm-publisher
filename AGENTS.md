@@ -45,12 +45,13 @@ The entry point `bin/bmm-publisher` provides these Symfony Console commands:
 | Command | Aliases | Description |
 |---------|---------|-------------|
 | `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables. Atomic: the writer emits `.puml` source plus the tabs partial with the UML image macro inlined, the in-image `plantuml` CLI renders `.svg`, and `EmbedSvg` sanitises and publishes each SVG under `images/uml/classes/` or `images/uml/diagrams/`. |
+| `legacy-adoc` | | Generate the legacy `docs/UML/classes` layout — flat `org.openehr.<schema>.<class>.adoc` class-definition tables only (no diagrams/effective/YAML). Supports `-o <dir>` for an explicit output directory. |
 | `plantuml` | `uml`, `puml` | Convert BMM JSON schemas to PlantUML diagrams (standalone tree under `output/PlantUML/`) |
 | `embed-svg` | | Re-run only the SVG sanitise + publish step against existing `.svg` files (debugging / surgical re-runs). |
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
 
-Commands accept schema id(s) (without `.bmm.json` extension) or `.bmm.json` path(s) as arguments, or `all` to process every schema in `resources/`.
+Commands accept schema id(s) (without `.bmm.json` extension) or `.bmm.json` path(s) as arguments, or `all` to process every schema in `resources/`. `asciidoc`, `legacy-adoc`, and `plantuml` also accept repeatable **`-d <schema>`** dependencies — loaded for cross-reference resolution but **not** exported.
 
 ## Architecture
 

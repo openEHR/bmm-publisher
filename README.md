@@ -45,12 +45,13 @@ See **[docs/install.md](docs/install.md)** for all invocation options — your o
 | Command | Aliases | Description |
 |---------|---------|-------------|
 | `asciidoc` | `adoc` | Convert BMM JSON schemas to AsciiDoc tables, with class/package diagrams pre-rendered as standalone SVGs under `images/uml/{classes,diagrams}/` and referenced from the tabs partial via `image::ROOT:uml/classes/<name>.svg[]` |
+| `legacy-adoc` | | Generate the legacy `docs/UML/classes` layout — flat per-class definition tables only (`-o <dir>` to choose the output directory) |
 | `plantuml` | `uml`, `puml` | Generate the standalone PlantUML source tree (`output/PlantUML/<schema>/...`) — useful when you want only the `.puml` files |
 | `embed-svg` | | Re-run only the SVG sanitise + publish step against existing `.svg` files (debugging / surgical re-renders) |
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
 
-Pass schema name(s) without `.bmm.json` extension, or `all` to process every schema in the input directory.
+Pass schema name(s) without `.bmm.json` extension (or `.bmm.json` paths), or `all` to process every schema in the input directory. `asciidoc`, `legacy-adoc`, and `plantuml` accept repeatable `-d <schema>` dependencies (loaded for cross-references, not exported).
 
 ## Input / output
 

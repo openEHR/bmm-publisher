@@ -7,9 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **`legacy-adoc` command** — generates the legacy `docs/UML/classes` layout (flat `org.openehr.<schema>.<class>.adoc` class-definition tables) from BMM JSON, with `-d` dependencies and an `-o` output dir; also exposed as `make legacy-adoc`.
+- **BMM v3 publishing** — the `openehr_lang_1.1.0-bmm3` overlay now publishes alongside legacy LANG: AsciiDoc namespaces its filenames with a `bmm3.` prefix (joining the existing `aom14.`/`aom2.` AM prefixes), YAML is named after the input file, and split-json emits a `LANG-bmm3/` component directory.
+- **`-d` dependency option** on `asciidoc`, `plantuml`, and `legacy-adoc` — load schemas for cross-reference resolution without exporting them; these commands also accept `.bmm.json` paths.
+
 ### Changed
 
-- **AI-assistance docs restructured** into gradual-disclosure tiers — `AGENTS.md` stays canonical, deep detail split into `docs/{architecture,ai-workflow,install,development,releases}.md`, and the `.claude`/`.cursor`/Copilot entrypoints slimmed to pointers.
+- **`asciidoc` writes per-schema output directories and prunes diagrams by namespace** — schemas sharing an output directory no longer wipe each other's committed `plantUML`/`images` files; the old single-tree legacy format was removed in favour of the dedicated `legacy-adoc` command.
+- **AI-assistance docs restructured** into gradual-disclosure tiers — `AGENTS.md` stays canonical, deep detail split into `docs/{architecture,ai-workflow,install,development,releases}.md`, and the `.claude`/`.cursor`/`.junie`/Copilot entrypoints slimmed to pointers.
+
+### Fixed
+
+- **`yaml` and `split-json` no longer drop inputs that share a schema id** (e.g. `openehr_lang_1.1.0` and its `-bmm3` overlay) — each input is processed independently and written to a distinct file/directory instead of silently overwriting the other.
 
 ## [0.7.0] - 2026-05-01
 
