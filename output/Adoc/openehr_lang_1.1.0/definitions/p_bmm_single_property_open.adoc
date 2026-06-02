@@ -23,7 +23,7 @@ a|Type definition of this property, if a simple String type reference. Really we
 
 h|*0..1 +
 (redefined)*
-|*bmm_property*: `xref:LANG:bmm:core_package.adoc#_bmm_unitary_property_class[BMM_UNITARY_PROPERTY]`
+|*bmm_property*: `xref:LANG:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]`
 a|`BMM_PROPERTY` created by `_create_bmm_property_definition_`.
 
 h|*Functions*

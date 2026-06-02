@@ -11,16 +11,16 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*name*: `link:/classes/String[String] ` +
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
 `{default{nbsp}={nbsp}"feature"}`
 a|Name of this feature group; defaults to 'feature'.
 
 h|*1..1*
-|*properties*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/String[String] >`
+|*properties*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|Set of properties of this group, represented as name/value pairs. These are understood to apply logically to all of the features contained within the group.
 
 h|*0..1*
-|*features*: `link:/classes/List[List] <xref:LANG:bmm:core_package.adoc#_bmm_class_feature_class[BMM_CLASS_FEATURE]>`
+|*features*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_class_feature_class[BMM_CLASS_FEATURE]>`
 a|Set of features in this group.
 
 h|*0..1*

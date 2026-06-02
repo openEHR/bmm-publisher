@@ -1,0 +1,21 @@
+=== BMM_ASSERTION Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.bmm_assertion.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.bmm_assertion.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.bmm_assertion.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.bmm_assertion.svg[]
+
+====

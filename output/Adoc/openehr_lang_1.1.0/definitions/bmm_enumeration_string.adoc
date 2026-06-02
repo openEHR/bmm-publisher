@@ -4,7 +4,7 @@ h|*Class*
 2+^h|*BMM_ENUMERATION_STRING*
 
 h|*Description*
-2+a|String-based enumeration meta-type.
+2+a|String-based enumeration type.
 
 h|*Inherit*
 2+|`xref:LANG:bmm:core_package.adoc#_bmm_enumeration_class[BMM_ENUMERATION]`
@@ -13,8 +13,9 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*0..1 +
+h|*1..1 +
 (redefined)*
-|*item_values*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_string_value_class[BMM_STRING_VALUE]>`
-a|Optional list of specific values. Must be 1:1 with `_item_names_` list.
+|*underlying_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+`{default{nbsp}={nbsp}"STRING"}`
+a|Name of type any concrete BMM_ENUMERATION_* sub-type is based on. Redefined to "STRING".
 |===

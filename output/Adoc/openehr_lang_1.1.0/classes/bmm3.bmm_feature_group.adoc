@@ -1,0 +1,21 @@
+=== BMM_FEATURE_GROUP Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.bmm_feature_group.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.bmm_feature_group.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.bmm_feature_group.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.bmm_feature_group.svg[]
+
+====

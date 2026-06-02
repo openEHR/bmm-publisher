@@ -14,7 +14,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*items*: `link:/classes/List[List] <xref:LANG:bmm:expression_package.adoc#_el_tuple_item_class[EL_TUPLE_ITEM]>`
+|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:expression_package.adoc#_el_tuple_item_class[EL_TUPLE_ITEM]>`
 a|Items in the tuple, potentially with names. Typical use is to represent an argument list to routine call.
 
 h|*1..1*

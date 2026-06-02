@@ -7,7 +7,7 @@
         "id": {
             "_type": "P_BMM_SINGLE_PROPERTY",
             "name": "id",
-            "documentation": "Full identifier of the included schema, e.g. `\"openehr_primitive_types_1.0.2\"`.",
+            "documentation": "Full identifier of the included schema, e.g. \"openehr_primitive_types_1.0.2\".",
             "is_mandatory": true,
             "type": "String"
         }

@@ -4,7 +4,7 @@ h|*Class*
 2+^h|*P_BMM_OPEN_TYPE*
 
 h|*Description*
-2+a|Persistent form of `BMM_PARAMETER_TYPE`.
+2+a|Persistent form of `BMM_GENERIC_PARAMETER` or `BMM_PARAMETER_TYPE` (in BMM v3).
 
 h|*Inherit*
 2+|`xref:LANG:bmm_persistence_package.adoc#_p_bmm_base_type_class[P_BMM_BASE_TYPE]`
@@ -19,6 +19,6 @@ a|Simple type parameter as a single letter like 'T', 'G' etc.
 
 h|*0..1 +
 (redefined)*
-|*bmm_type*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
+|*bmm_type*: `xref:LANG:bmm:core_package.adoc#_bmm_open_type_class[BMM_OPEN_TYPE]`
 a|Result of `_create_bmm_type()_` call.
 |===

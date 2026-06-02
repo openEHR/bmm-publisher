@@ -1,0 +1,49 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_SCHEMA_CORE*
+
+2+a|Core properties of BMM_SCHEMA.
+
+2+h|*Attributes*
+
+|*rm_publisher*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Publisher of model expressed in the schema. Persisted attribute.
+
+|*rm_release*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0". Persisted attribute.
+
+|*schema_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of model expressed in schema; a 'schema' usually contains all of the packages of one 'model' of a publisher. A publisher with more than one model can have multiple schemas. Persisted attribute.
+
+|*schema_revision*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Revision of schema. Persisted attribute.
+
+|*schema_lifecycle_state*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Persisted attribute.
+
+|*schema_author*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Primary author of schema. Persisted attribute.
+
+|*schema_description*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Description of schema. Persisted attribute.
+
+|*schema_contributors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Contributing authors of schema. Persisted attribute.
+
+|*archetype_parent_class*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Name of a parent class used within the schema to provide archetype capability, enabling filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.
+
+|*archetype_data_value_parent_class*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Name of a parent class of logical 'data types' used within the schema to provide archetype capability, enabling filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.
+
+|*archetype_rm_closure_packages*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of top-level package paths that provide the RM 'model' part in archetype identifiers, e.g. the path "org.openehr.ehr" gives "EHR" in "openEHR-EHR". Within this namespace, archetypes can be based on any class reachable from classes defined directly in these packages. Persisted attribute.
+
+|*archetype_visualise_descendants_of*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|If archetype_parent_class is not set, designate a class whose descendants should be made visible in tree and grid renderings of the archetype definition. Persisted attribute.
+
+2+h|*Functions*
+
+|*schema_id* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Derived name of schema, based on model publisher, model name, model release.
+|===

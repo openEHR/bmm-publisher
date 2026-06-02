@@ -14,7 +14,7 @@ h|*Constants*
 ^h|*Meaning*
 
 h|*1..1*
-|*base_name*: `link:/classes/String[String] {nbsp}={nbsp}"Signature"`
+|*base_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Signature"`
 a|Base name (built-in).
 
 h|*Attributes*
@@ -35,30 +35,30 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*type_base_name* (): `link:/classes/String[String] `
+|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Return `_base_name_`.
 
 h|*1..1 +
 (effected)*
-|*is_abstract* (): `link:/classes/Boolean[Boolean] `
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|Result = `False`.
 
 h|*1..1 +
 (effected)*
-|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_validity__: `Result = base_class.is_primitive`
 a|Result = `True`.
 
 h|*1..1 +
 (effected)*
-|*type_name* (): `link:/classes/String[String] ` +
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
  +
 __Post_result__: `Result.is_equal (base_name())`
 a|Return `_base_name_`
 
 h|*1..1 +
 (effected)*
-|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >`
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|Return the logical set (i.e. unique items) consisting of `_argument_types.flattened_type_list_()` and `_result_type.flattened_type_list_()`.
 |===

@@ -21,6 +21,10 @@ h|*0..1*
 |*item_values*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:overview.adoc#_any_class[Any]>`
 a|
 
+h|*0..1*
+|*item_documentations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+a|Optional documentation strings for the enumeration items, in the same order as `_item_names_`. Persisted attribute.
+
 h|*0..1 +
 (redefined)*
 |*bmm_class*: `xref:LANG:bmm:core_package.adoc#_bmm_enumeration_class[BMM_ENUMERATION]`

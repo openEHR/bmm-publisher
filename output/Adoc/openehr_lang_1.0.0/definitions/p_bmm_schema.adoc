@@ -14,11 +14,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*primitive_types*: `link:/classes/List[List] <xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>`
+|*primitive_types*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>`
 a|Primitive type definitions. Persisted attribute.
 
 h|*0..1*
-|*class_definitions*: `link:/classes/List[List] <xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>`
+|*class_definitions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>`
 a|Class definitions. Persisted attribute.
 
 h|*Functions*

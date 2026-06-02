@@ -6,6 +6,6 @@
 
 2+h|*Attributes*
 
-|*evaluation_agent*: `link:/classes/FUNCTION[FUNCTION] <link:/classes/TUPLE[TUPLE] ,link:/classes/Any[Any] >` [1..1]
+|*evaluation_agent*: `xref:BASE:foundation_types:functional.adoc#_function_class[FUNCTION]<xref:BASE:foundation_types:functional.adoc#_tuple_class[TUPLE],xref:BASE:foundation_types:overview.adoc#_any_class[Any]>` [1..1]
 a|
 |===

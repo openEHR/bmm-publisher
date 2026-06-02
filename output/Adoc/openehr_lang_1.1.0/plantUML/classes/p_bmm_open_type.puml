@@ -2,7 +2,7 @@
 
 class P_BMM_OPEN_TYPE {
   + type : String [1]
-  + bmm_type : Any [0..1]
+  + bmm_type : BMM_OPEN_TYPE [0..1]
 }
 
 abstract class P_BMM_BASE_TYPE  #whitesmoke;line:gray;line.dotted;text:gray {

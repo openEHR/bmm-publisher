@@ -28,7 +28,7 @@ _Inherited from xref:AM:aom2:persistence_package.adoc#_p_archetype_class[P_ARCHE
 a|The terminology of the archetype. +
 _Inherited from xref:AM:aom2:persistence_package.adoc#_p_archetype_class[P_ARCHETYPE]_
 
-|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:expression_package.adoc#_el_boolean_expression_class[EL_BOOLEAN_EXPRESSION]>` [0..1]
+|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/EL_BOOLEAN_EXPRESSION[EL_BOOLEAN_EXPRESSION] >` [0..1]
 a|Rules relating to this archetype. Statements are expressed in first order predicate logic, and usually refer to at least two attributes. +
 _Inherited from xref:AM:aom2:persistence_package.adoc#_p_archetype_class[P_ARCHETYPE]_
 

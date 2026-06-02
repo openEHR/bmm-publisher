@@ -12,7 +12,7 @@
 a|Result of `_create_bmm_type()_` call. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]_
 
-|*value_constraint*: `link:/classes/String[String] ` [0..1]
+|*value_constraint*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
 a|
 
 2+h|*Functions*
@@ -24,7 +24,7 @@ a_class_def: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
 a|Create appropriate `BMM_XXX` object; effected in descendants. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]_
 
-|_(abstract)_ *as_type_string* (): `link:/classes/String[String] ` [1..1]
+|_(abstract)_ *as_type_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Formal name of the type for display. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]_
 |===

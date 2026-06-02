@@ -15,12 +15,12 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*type_name*: `link:/classes/String[String] ` +
+|*type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
 `{default{nbsp}={nbsp}"Duration"}`
 a|
 
 h|*1..1 +
 (redefined)*
-|*type_anchor*: `link:/classes/Any[Any] `
+|*type_anchor*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
 a|
 |===

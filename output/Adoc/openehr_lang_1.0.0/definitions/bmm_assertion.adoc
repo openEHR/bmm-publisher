@@ -20,6 +20,6 @@ h|*1..1*
 a|
 
 h|*0..1*
-|*tag*: `link:/classes/String[String] `
+|*tag*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Optional tag, typically used to designate design intention of the assertion, e.g. `"Inv_all_members_valid"`.
 |===

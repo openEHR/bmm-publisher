@@ -15,12 +15,12 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*type_name*: `link:/classes/String[String] ` +
+|*type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
 `{default{nbsp}={nbsp}"Boolean"}`
 a|
 
 h|*1..1 +
 (redefined)*
-|*type_anchor*: `link:/classes/Boolean[Boolean] `
+|*type_anchor*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|
 |===

@@ -6,8 +6,6 @@ h|*Class*
 h|*Description*
 2+a|Abstraction of a package as a tree structure whose nodes can contain other packages and classes.
 
-The `_name_` may be qualified if it is a top-level package.
-
 h|*Inherit*
 2+|`xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]`
 
@@ -15,9 +13,13 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|*1..1*
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Name of this package. This name may be qualified if it is a top-level package.
+
 h|*0..1*
-|*members*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_module_class[BMM_MODULE]>`
-a|Member modules in this package.
+|*classes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]>`
+a|Classes listed as being in this package.
 
 h|*Functions*
 ^h|*Signature*

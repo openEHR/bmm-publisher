@@ -16,12 +16,12 @@ _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CO
 a|The container item type. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]_
 
-|*is_ordered*: `link:/classes/Boolean[Boolean] ` [0..1] +
+|*is_ordered*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1] +
 `{default{nbsp}={nbsp}true}`
 a|True indicates that order of the items in the container attribute is considered significant and must be preserved, e.g. across sessions, serialisation, deserialisation etc. Otherwise known as 'list' semantics. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]_
 
-|*is_unique*: `link:/classes/Boolean[Boolean] ` [0..1] +
+|*is_unique*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1] +
 `{default{nbsp}={nbsp}false}`
 a|True indicates that only unique instances of items in the container are allowed. Otherwise known as 'set' semantics. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]_
@@ -31,22 +31,22 @@ a|Type of the element index, typically `String` or `Integer`, but may be a numer
 
 2+h|*Functions*
 
-|*type_name* (): `link:/classes/String[String] ` [1..1]
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Return full type name, e.g. `HashMap<String, ELEMENT>`.
 
-|*type_signature* (): `link:/classes/String[String] ` [1..1]
+|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
 
 Defaults to the value of `_type_name()_`. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
 
-|*is_abstract* (): `link:/classes/Boolean[Boolean] ` +
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_is_abstract__: `Result = container_type.is_abstract` [1..1]
 a|True if the container class is abstract. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]_
 
-|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_validity__: `Result = base_class.is_primitive` +
 __Post_result__: `Result = item_type.is_primitive` [1..1]
@@ -61,7 +61,7 @@ _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CO
 a|Return `_item_type.effective_type_()`. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]_
 
-|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` +
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` +
  +
 __Post_result__: `Result = item_type.flattened_type_list` [1..1]
 a|Flattened list of type names of `_item_type_`, i.e. `_item_type.flattened_type_list_()`. +

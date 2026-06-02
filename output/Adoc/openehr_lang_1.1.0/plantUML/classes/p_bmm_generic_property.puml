@@ -2,7 +2,7 @@
 
 class P_BMM_GENERIC_PROPERTY {
   + type_def : P_BMM_GENERIC_TYPE [0..1]
-  + bmm_property : BMM_UNITARY_PROPERTY [0..1]
+  + bmm_property : BMM_PROPERTY [0..1]
 }
 
 abstract class P_BMM_PROPERTY  #whitesmoke;line:gray;line.dotted;text:gray {

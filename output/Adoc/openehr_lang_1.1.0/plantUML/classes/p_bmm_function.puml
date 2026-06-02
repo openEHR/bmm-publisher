@@ -1,0 +1,21 @@
+@startuml
+
+class P_BMM_FUNCTION {
+  + name : String [1]
+  + aliases : Hash<String,String> [0..1]
+  + is_abstract : Boolean [0..1]
+  + parameters : Hash<String,P_BMM_FUNCTION_PARAMETER> [0..1]
+  + pre_conditions : Hash<String,String> [0..1]
+  + post_conditions : Hash<String,String> [0..1]
+  + result : P_BMM_TYPE [0..1]
+  + is_nullable : Boolean [0..1]
+}
+
+abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+  + documentation : String [0..1]
+}
+
+P_BMM_MODEL_ELEMENT <|-- P_BMM_FUNCTION
+
+
+@enduml

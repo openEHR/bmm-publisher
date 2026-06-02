@@ -1,0 +1,21 @@
+=== EL_FEATURE_REF Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.el_feature_ref.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.el_feature_ref.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.el_feature_ref.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.el_feature_ref.svg[]
+
+====

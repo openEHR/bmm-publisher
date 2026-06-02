@@ -18,8 +18,17 @@ a|Name of the class. Persisted attribute.
 |*ancestors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
 a|List of immediate inheritance parents. If there are generic ancestors, use `_ancestor_defs_` instead. Persisted attribute.
 
+|*constants*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_p_bmm_constant_class[P_BMM_CONSTANT]>` [0..1]
+a|Constants defined in this class, keyed by name. Persistent attribute.
+
 |*properties*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]>` [0..1]
 a|List of attributes defined in this class. Persistent attribute.
+
+|*functions*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_p_bmm_function_class[P_BMM_FUNCTION]>` [0..1]
+a|List of functions (routines) defined in this class, keyed by name. Persistent attribute.
+
+|*invariants*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Invariants defined on this class, as a Hash of assertion expressions keyed by tag. Persisted attribute.
 
 |*is_abstract*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
 a|True if this is an abstract type. Persisted attribute.

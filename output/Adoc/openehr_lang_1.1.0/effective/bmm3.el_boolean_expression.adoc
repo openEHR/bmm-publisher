@@ -1,0 +1,33 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*EL_BOOLEAN_EXPRESSION*
+
+2+a|Boolean-returning expression.
+
+2+|Inherits: xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION], xref:LANG:bmm3:expression_package.adoc#_el_constrained_class[EL_CONSTRAINED]
+
+2+h|*Attributes*
+
+|*base_expression*: `xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]` [1..1]
+a|The base expression of this constrained form. +
+_Inherited from xref:LANG:bmm3:expression_package.adoc#_el_constrained_class[EL_CONSTRAINED]_
+
+2+h|*Functions*
+
+|_(abstract)_ *eval_type* (): `xref:LANG:bmm3:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
+a|Meta-type of expression entity used in type-checking and evaluation. 
+
+Effected in descendants. +
+_Inherited from xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
+
+|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
+a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +
+_Inherited from xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
+
+2+h|*Invariants*
+
+2+a|__Inv_boolean_expression__: `base_expression.is_boolean()`
+
+|===

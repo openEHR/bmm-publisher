@@ -18,11 +18,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*item_names*: `link:/classes/List[List] <link:/classes/String[String] >`
+|*item_names*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, ... are assumed.
 
 h|*0..1*
-|*item_values*: `link:/classes/List[List] <xref:LANG:bmm:core_package.adoc#_bmm_primitive_value_class[BMM_PRIMITIVE_VALUE]>`
+|*item_values*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_primitive_value_class[BMM_PRIMITIVE_VALUE]>`
 a|Optional list of specific values. Must be 1:1 with `_item_names_` list.
 
 h|*Functions*
@@ -30,6 +30,6 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*name_map* (): `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/String[String] >`
+|*name_map* (): `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|Map of `_item_names_` to `_item_values_` (stringified).
 |===

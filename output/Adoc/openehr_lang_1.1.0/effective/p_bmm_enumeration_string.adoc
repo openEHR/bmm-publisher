@@ -20,8 +20,20 @@ _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_
 a|List of immediate inheritance parents. If there are generic ancestors, use `_ancestor_defs_` instead. Persisted attribute. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]_
 
+|*constants*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_p_bmm_constant_class[P_BMM_CONSTANT]>` [0..1]
+a|Constants defined in this class, keyed by name. Persistent attribute. +
+_Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]_
+
 |*properties*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]>` [0..1]
 a|List of attributes defined in this class. Persistent attribute. +
+_Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]_
+
+|*functions*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_p_bmm_function_class[P_BMM_FUNCTION]>` [0..1]
+a|List of functions (routines) defined in this class, keyed by name. Persistent attribute. +
+_Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]_
+
+|*invariants*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Invariants defined on this class, as a Hash of assertion expressions keyed by tag. Persisted attribute. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]_
 
 |*is_abstract*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
@@ -57,6 +69,10 @@ _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_enumeration_class[
 
 |*item_values*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:overview.adoc#_any_class[Any]>` [0..1]
 a| +
+_Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_enumeration_class[P_BMM_ENUMERATION]_
+
+|*item_documentations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Optional documentation strings for the enumeration items, in the same order as `_item_names_`. Persisted attribute. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_enumeration_class[P_BMM_ENUMERATION]_
 
 2+h|*Functions*

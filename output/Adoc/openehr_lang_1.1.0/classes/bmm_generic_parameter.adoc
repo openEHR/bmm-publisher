@@ -1,0 +1,21 @@
+=== BMM_GENERIC_PARAMETER Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_generic_parameter.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_generic_parameter.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_generic_parameter.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm_generic_parameter.svg[]
+
+====

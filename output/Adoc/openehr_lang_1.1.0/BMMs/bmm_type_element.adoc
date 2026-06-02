@@ -1,0 +1,10 @@
+[source,json]
+--------
+{
+    "name": "BMM_TYPE_ELEMENT",
+    "is_abstract": true,
+    "ancestors": [
+        "BMM_CLASSIFIER"
+    ]
+}
+--------

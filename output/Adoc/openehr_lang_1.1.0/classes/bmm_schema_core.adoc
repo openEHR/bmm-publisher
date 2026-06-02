@@ -1,0 +1,21 @@
+=== BMM_SCHEMA_CORE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm_schema_core.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm_schema_core.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm_schema_core.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm_schema_core.svg[]
+
+====

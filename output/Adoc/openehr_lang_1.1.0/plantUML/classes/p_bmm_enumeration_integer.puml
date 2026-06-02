@@ -7,13 +7,17 @@ class P_BMM_ENUMERATION_INTEGER {
 class P_BMM_ENUMERATION  #whitesmoke;line:gray;line.dotted;text:gray {
   + item_names : List<String> [*]
   + item_values : List<Any> [*]
+  + item_documentations : List<String> [*]
   + bmm_class : BMM_ENUMERATION [0..1]
 }
 
 class P_BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + ancestors : List<String> [*]
+  + constants : Hash<String,P_BMM_CONSTANT> [0..1]
   + properties : Hash<String,P_BMM_PROPERTY> [0..1]
+  + functions : Hash<String,P_BMM_FUNCTION> [0..1]
+  + invariants : Hash<String,String> [0..1]
   + is_abstract : Boolean [0..1]
   + is_override : Boolean [0..1]
   + generic_parameter_defs : Hash<String,P_BMM_GENERIC_PARAMETER> [0..1]

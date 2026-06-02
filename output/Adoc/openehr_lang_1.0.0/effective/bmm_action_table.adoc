@@ -8,6 +8,6 @@
 
 2+h|*Attributes*
 
-|*items*: `link:/classes/List[List] <xref:LANG:bmm:statement_package.adoc#_bmm_conditional_action_class[BMM_CONDITIONAL_ACTION]>` [1..1]
+|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:statement_package.adoc#_bmm_conditional_action_class[BMM_CONDITIONAL_ACTION]>` [1..1]
 a|Decision branches.
 |===
