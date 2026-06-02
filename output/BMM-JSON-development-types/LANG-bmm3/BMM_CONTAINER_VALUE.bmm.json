@@ -1,0 +1,9 @@
+{
+    "name": "BMM_CONTAINER_VALUE",
+    "documentation": "Meta-type for literals whose concrete type is a linear container type, i.e. array, list or set.",
+    "ancestors": [
+        "BMM_LITERAL_VALUE"
+    ],
+    "package": "org.openehr.lang.bmm3.core.literal_value",
+    "specUrl": "https://specifications.openehr.org/releases/LANG/development/bmm3.html#_literal_value_package"
+}
