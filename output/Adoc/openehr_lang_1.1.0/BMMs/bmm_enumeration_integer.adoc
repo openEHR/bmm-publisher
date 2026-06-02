@@ -2,23 +2,18 @@
 --------
 {
     "name": "BMM_ENUMERATION_INTEGER",
-    "documentation": "Integer-based enumeration meta-type.",
+    "documentation": "Integer-based enumeration type.",
     "ancestors": [
         "BMM_ENUMERATION"
     ],
     "properties": {
-        "item_values": {
-            "_type": "P_BMM_CONTAINER_PROPERTY",
-            "name": "item_values",
-            "documentation": "Optional list of specific values. Must be 1:1 with `_item_names_` list.",
-            "type_def": {
-                "container_type": "List",
-                "type": "BMM_INTEGER_VALUE"
-            },
-            "cardinality": {
-                "lower": 0,
-                "upper_unbounded": true
-            }
+        "underlying_type_name": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "underlying_type_name",
+            "documentation": "Name of type any concrete BMM_ENUMERATION_* sub-type is based on. Redefined to \"INTEGER\".",
+            "is_mandatory": true,
+            "type": "String",
+            "default": "\"INTEGER\""
         }
     }
 }

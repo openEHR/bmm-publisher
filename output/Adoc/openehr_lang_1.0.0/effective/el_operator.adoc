@@ -8,10 +8,10 @@
 
 2+h|*Attributes*
 
-|*precedence_overridden*: `link:/classes/Boolean[Boolean] ` [0..1]
+|*precedence_overridden*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
 a|True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
 
-|*symbol*: `link:/classes/String[String] ` [0..1]
+|*symbol*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
 a|The symbol actually used in the expression, or intended to be used for serialisation. Must be a member of `OPERATOR_DEF._symbols_`.
 
 |*definition*: `xref:LANG:bmm:core_package.adoc#_bmm_function_class[BMM_FUNCTION]` [1..1]
@@ -25,7 +25,7 @@ a|Meta-type of expression entity used in type-checking and evaluation.
 Effected in descendants. +
 _Inherited from xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
 
-|*is_boolean* (): `link:/classes/Boolean[Boolean] ` +
+|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
 a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +

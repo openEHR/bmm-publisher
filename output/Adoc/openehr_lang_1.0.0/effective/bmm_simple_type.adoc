@@ -17,19 +17,19 @@ a|Defining class of this type.
 
 2+h|*Functions*
 
-|*type_name* (): `link:/classes/String[String] ` [1..1]
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Result is `_base_class.name_`.
 
-|*type_signature* (): `link:/classes/String[String] ` [1..1]
+|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
 
 Defaults to the value of `_type_name()_`. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]_
 
-|*is_abstract* (): `link:/classes/Boolean[Boolean] ` [1..1]
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|Result is `_base_class.is_abstract_`.
 
-|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_validity__: `Result = base_class.is_primitive` [1..1]
 a|Result = `_base_class.is_primitive_`. +
@@ -43,10 +43,10 @@ _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNIT
 a|Result = self. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]_
 
-|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` [1..1]
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
 a|Result is `_base_class.name_` .
 
-|*type_base_name* (): `link:/classes/String[String] ` [1..1]
+|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Result = `_base_class.name_`. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_type_class[BMM_MODEL_TYPE]_
 

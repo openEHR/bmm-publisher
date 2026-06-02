@@ -1,60 +1,46 @@
 [cols="2,3", frame=none, grid=rows]
 |===
-2+^h|*__BMM_PROPERTY (abstract)__*
+2+^h|*BMM_PROPERTY<T>*
 
-2+a|Meta-type of a writable property definition within a class definition of an object model. The `_is_composition_` attribute indicates whether the property has sub-part or an association semantics with respect to the owning class.
+2+a|Model of a property definition within a class definition of an object model. Generic parameter takes care of variants.
 
-2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT], xref:LANG:bmm:core_package.adoc#_bmm_formal_element_class[BMM_FORMAL_ELEMENT], xref:LANG:bmm:core_package.adoc#_bmm_feature_class[BMM_FEATURE], xref:LANG:bmm:core_package.adoc#_bmm_instantiable_feature_class[BMM_INSTANTIABLE_FEATURE]
+2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS], xref:LANG:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]
+
+2+h|*Constants*
+
+|*Bmm_internal_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+a|Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Schema_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"::"` [1..1]
+a|Delimiter used to separate schema id from package path in a fully qualified path. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Package_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"."` [1..1]
+a|Delimiter used to separate package names in a package path. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Bmm_schema_file_extension*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".bmm"` [1..1]
+a|Extension used for BMM files. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
 
 2+h|*Attributes*
 
+|*documentation*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Optional documentation of this element. +
+_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]_
+
 |*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
-a|Name of this model element. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]_
+a|Name of this property in the model.
 
-|*documentation*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:overview.adoc#_any_class[Any]>` [0..1]
-a|Optional documentation of this element, as a keyed list.
+|*is_mandatory*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this property is mandatory in its class.
 
-It is strongly recommended to use the following key /type combinations for the relevant purposes:
+|*is_computed*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this property is computed rather than stored in objects of this class.
 
-* `"purpose": String`
-* `"keywords": List<String>`
-* `"use": String`
-* `"misuse": String`
-* `"references": String`
-
-Other keys and value types may be freely added. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]_
-
-|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]` [1..1]
-a|Model element within which an element is declared. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_feature_class[BMM_FEATURE]_
-
-|*extensions*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:overview.adoc#_any_class[Any]>` [0..1]
-a|Optional meta-data of this element, as a keyed list. May be used to extend the meta-model. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]_
-
-|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
-a|Declared or inferred static type of the entity. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_formal_element_class[BMM_FORMAL_ELEMENT]_
-
-|*is_nullable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1] +
-`{default{nbsp}={nbsp}false}`
-a|True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes.. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_formal_element_class[BMM_FORMAL_ELEMENT]_
-
-|*is_synthesised_generic*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1] +
-`{default{nbsp}={nbsp}false}`
-a|True if this feature was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_feature_class[BMM_FEATURE]_
-
-|*feature_extensions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_feature_extension_class[BMM_FEATURE_EXTENSION]>` [0..1]
-a|Extensions to feature-level meta-types. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_feature_class[BMM_FEATURE]_
-
-|*group*: `xref:LANG:bmm:core_package.adoc#_bmm_feature_group_class[BMM_FEATURE_GROUP]` [1..1]
-a|Group containing this feature. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_feature_class[BMM_FEATURE]_
+|*type*: `T` [1..1]
+a|Formal type of this property.
 
 |*is_im_runtime*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1] +
 `{default{nbsp}={nbsp}false}`
@@ -64,40 +50,11 @@ a|True if this property is marked with info model `_im_runtime_` property.
 `{default{nbsp}={nbsp}false}`
 a|True if this property was marked with info model `_im_infrastructure_` flag.
 
-|*is_composition*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1] +
-`{default{nbsp}={nbsp}false}`
-a|True if this property instance is a compositional sub-part of the owning class instance. Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.
-
 2+h|*Functions*
 
-|*is_root_scope* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
- +
-__Post_result__: `Result = (scope = self)` [1..1]
-a|True if this model element is the root of a model structure hierarchy. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]_
-
-|_(abstract)_ *signature* (): `xref:LANG:bmm:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]` [1..1]
-a|Formal signature of this element, in the form:
-
-`name [arg1_name: T_arg1, ...][:T_value]`
-
-Specific implementations in descendants. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_formal_element_class[BMM_FORMAL_ELEMENT]_
-
-|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
- +
-__Post_result__: `Result = type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
-a|True if `_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `'Boolean'`). +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_formal_element_class[BMM_FORMAL_ELEMENT]_
-
 |*existence* (): `xref:BASE:foundation_types:interval.adoc#_multiplicity_interval_class[Multiplicity_interval]` [1..1]
-a|Interval form of `0..1`, `1..1` etc, derived from `_is_nullable_`.
+a|Interval form of `0..1`, `1..1` etc, generated from `_is_mandatory_`.
 
 |*display_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
-a|Name of this property to display in UI.
-
-2+h|*Invariants*
-
-2+a|__Inv_signature_no_args__: `signature().arguments = Void`
-
+a|Name of this attribute to display in UI.
 |===

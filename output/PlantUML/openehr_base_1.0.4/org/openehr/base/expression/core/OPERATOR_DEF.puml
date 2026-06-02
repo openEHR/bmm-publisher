@@ -1,9 +1,0 @@
-@startuml
-
-class OPERATOR_DEF {
-  + identifier : String [1]
-  + symbols : List<String> [*]
-}
-
-
-@enduml

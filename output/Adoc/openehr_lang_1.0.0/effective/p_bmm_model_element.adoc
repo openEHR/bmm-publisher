@@ -6,6 +6,6 @@
 
 2+h|*Attributes*
 
-|*documentation*: `link:/classes/String[String] ` [0..1]
+|*documentation*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
 a|Optional documentation of this element.
 |===

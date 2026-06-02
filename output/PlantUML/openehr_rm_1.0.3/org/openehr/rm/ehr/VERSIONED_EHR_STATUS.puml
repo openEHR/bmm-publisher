@@ -1,7 +1,0 @@
-@startuml
-
-class VERSIONED_EHR_STATUS {
-}
-
-
-@enduml

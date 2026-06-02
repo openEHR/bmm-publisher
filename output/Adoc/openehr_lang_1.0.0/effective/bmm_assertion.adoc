@@ -13,6 +13,6 @@ May be rendered in syntax as `assert condition` or similar.
 |*expression*: `xref:LANG:bmm:expression_package.adoc#_el_boolean_expression_class[EL_BOOLEAN_EXPRESSION]` [1..1]
 a|
 
-|*tag*: `link:/classes/String[String] ` [0..1]
+|*tag*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
 a|Optional tag, typically used to designate design intention of the assertion, e.g. `"Inv_all_members_valid"`.
 |===

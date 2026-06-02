@@ -17,8 +17,14 @@ class PlantUml
 {
     private PlantUmlFormatter $plantUml;
 
+    /**
+     * @param array<int, string> $exportSchemaIds Schema ids to export; an empty list exports every
+     *        loaded schema. Schemas loaded for cross-reference resolution only (dependencies) are
+     *        omitted from this list so their diagrams are not written.
+     */
     public function __construct(
         private readonly BmmSchemaCollection $schemas,
+        private readonly array $exportSchemaIds = [],
     ) {
         $this->plantUml = new PlantUmlFormatter($schemas);
     }
@@ -36,6 +42,11 @@ class PlantUml
 
     private function writePackage(BmmPackage $package, BmmSchema $schema, string $namePrefix): void
     {
+        // Dependency schemas stay in the collection for cross-reference resolution but are not exported.
+        if ($this->exportSchemaIds !== [] && !\in_array($schema->getSchemaId(), $this->exportSchemaIds, true)) {
+            return;
+        }
+
         $logger = $this->schemas->logger;
         if (!\count($package->classes)) {
             $logger->warning('Empty package {package}.', ['package' => $package->name]);

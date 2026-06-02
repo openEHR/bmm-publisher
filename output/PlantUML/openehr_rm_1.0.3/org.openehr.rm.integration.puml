@@ -1,9 +1,0 @@
-@startuml
-
-class GENERIC_ENTRY {
-  + data : ITEM_TREE [1]
-}
-
-CONTENT_ITEM <|-- GENERIC_ENTRY
-
-@enduml

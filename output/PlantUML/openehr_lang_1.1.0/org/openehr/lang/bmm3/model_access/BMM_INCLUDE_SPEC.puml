@@ -1,0 +1,8 @@
+@startuml
+
+class BMM_INCLUDE_SPEC {
+  + id : String [1]
+}
+
+
+@enduml

@@ -14,7 +14,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*cardinality*: `link:/classes/Interval[Interval] <link:/classes/Integer[Integer] >`
+|*cardinality*: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]<xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]>`
 a|Cardinality of this property in its class. Persistent attribute.
 
 h|*0..1 +

@@ -1,0 +1,21 @@
+=== EL_AGENT_CALL Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.el_agent_call.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.el_agent_call.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.el_agent_call.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.el_agent_call.svg[]
+
+====

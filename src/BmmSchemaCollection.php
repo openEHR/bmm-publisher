@@ -38,13 +38,28 @@ class BmmSchemaCollection implements \IteratorAggregate
         return ResourcesDir::path() . DIRECTORY_SEPARATOR;
     }
 
+    /**
+     * Load a bundled schema by name (with or without the `.bmm.json` suffix).
+     *
+     * Any directory component is stripped; the file is always resolved within
+     * the bundled resources directory. Use {@see loadPath()} to read a schema
+     * from an arbitrary location on disk.
+     */
     public function load(string $filename): void
     {
         if (!str_ends_with($filename, '.bmm.json')) {
             $filename .= '.bmm.json';
         }
         $filename = basename($filename);
-        $path = self::inputDir() . $filename;
+        $this->loadPath(self::inputDir() . $filename);
+    }
+
+    /**
+     * Load a schema from an explicit filesystem path (absolute or relative to
+     * the current working directory), bypassing the bundled resources directory.
+     */
+    public function loadPath(string $path): void
+    {
         if (!is_readable($path) || !is_file($path)) {
             throw new RuntimeException("File missing or not readable: $path.");
         }

@@ -1,0 +1,7 @@
+{
+    "name": "BMM_FEATURE_EXTENSION",
+    "documentation": "Abstract parent of feature extensions.",
+    "is_abstract": true,
+    "package": "org.openehr.lang.bmm3.core.feature",
+    "specUrl": "https://specifications.openehr.org/releases/LANG/development/bmm3.html#_feature_package"
+}

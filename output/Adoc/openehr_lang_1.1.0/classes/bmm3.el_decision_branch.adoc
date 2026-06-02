@@ -1,0 +1,21 @@
+=== EL_DECISION_BRANCH Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.el_decision_branch.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.el_decision_branch.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.el_decision_branch.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.el_decision_branch.svg[]
+
+====

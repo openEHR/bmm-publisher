@@ -1,0 +1,21 @@
+=== REFERENCE_MODEL_ACCESS Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/reference_model_access.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/reference_model_access.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/reference_model_access.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/reference_model_access.svg[]
+
+====

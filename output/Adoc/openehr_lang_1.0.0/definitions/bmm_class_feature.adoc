@@ -23,7 +23,7 @@ h|*0..1*
 a|Visibility of this item to client entities.
 
 h|*0..1*
-|*feature_extensions*: `link:/classes/List[List] <xref:LANG:bmm:core_package.adoc#_bmm_feature_extension_class[BMM_FEATURE_EXTENSION]>`
+|*feature_extensions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_feature_extension_class[BMM_FEATURE_EXTENSION]>`
 a|Extensions to feature-level meta-types.
 
 h|*1..1*

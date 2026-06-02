@@ -1,0 +1,21 @@
+=== P_BMM_FUNCTION_PARAMETER Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/p_bmm_function_parameter.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/p_bmm_function_parameter.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/p_bmm_function_parameter.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/p_bmm_function_parameter.svg[]
+
+====

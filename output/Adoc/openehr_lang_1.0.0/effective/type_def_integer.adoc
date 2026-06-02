@@ -8,10 +8,10 @@
 
 2+h|*Attributes*
 
-|*type_name*: `link:/classes/String[String] ` [1..1] +
+|*type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1] +
 `{default{nbsp}={nbsp}"Integer"}`
 a|
 
-|*type_anchor*: `link:/classes/Integer[Integer] ` [1..1]
+|*type_anchor*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
 a|
 |===

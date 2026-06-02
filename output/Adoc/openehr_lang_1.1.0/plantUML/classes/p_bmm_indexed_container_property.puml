@@ -2,7 +2,7 @@
 
 class P_BMM_INDEXED_CONTAINER_PROPERTY {
   + type_def : P_BMM_INDEXED_CONTAINER_TYPE [0..1]
-  + bmm_property : BMM_INDEXED_CONTAINER_PROPERTY [0..1]
+  + bmm_property : BMM_CONTAINER_PROPERTY [0..1]
 }
 
 class P_BMM_CONTAINER_PROPERTY  #whitesmoke;line:gray;line.dotted;text:gray {

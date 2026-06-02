@@ -8,13 +8,13 @@
 
 2+h|*Attributes*
 
-|*evaluation_agent*: `link:/classes/FUNCTION[FUNCTION] <>` [1..1]
+|*evaluation_agent*: `xref:BASE:foundation_types:functional.adoc#_function_class[FUNCTION]<>` [1..1]
 a|
 
-|*identifier*: `link:/classes/String[String] ` [1..1] +
+|*identifier*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1] +
 `{default{nbsp}={nbsp}"xxx"}`
 a|
 
-|*symbols*: `link:/classes/List[List] <link:/classes/String[String] >` [0..1]
+|*symbols*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
 a|
 |===

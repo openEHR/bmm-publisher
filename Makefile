@@ -61,20 +61,25 @@ sh: ## Open an interactive shell in dev container
 # references resolve correctly (e.g. RM needs BASE, AM needs BASE+LANG).
 #
 PUBLISH_RUNS = \
-	./bin/bmm-publisher $(1) openehr_am_2.3.0 openehr_lang_1.0.0 openehr_base_1.2.0 \
-	&& ./bin/bmm-publisher $(1) openehr_am_2.4.0 openehr_lang_1.1.0 openehr_base_1.3.0 \
-	&& ./bin/bmm-publisher $(1) openehr_rm_1.0.4 openehr_base_1.1.0 \
-	&& ./bin/bmm-publisher $(1) openehr_rm_1.1.0 openehr_base_1.2.0 \
-	&& ./bin/bmm-publisher $(1) openehr_rm_1.2.0 openehr_base_1.3.0 \
-	&& ./bin/bmm-publisher $(1) openehr_am_1.4.0 openehr_base_1.1.0 \
-	&& ./bin/bmm-publisher $(1) openehr_am_2.2.0 openehr_base_1.1.0 \
-	&& ./bin/bmm-publisher $(1) openehr_lang_1.1.0 openehr_base_1.3.0 \
-	&& ./bin/bmm-publisher $(1) openehr_lang_1.0.0 \
+	./bin/bmm-publisher $(1) openehr_am_2.3.0 -d openehr_lang_1.0.0 -d openehr_base_1.2.0 \
+	&& ./bin/bmm-publisher $(1) openehr_am_2.4.0 -d openehr_lang_1.1.0 -d openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_am_1.4.0 -d openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_rm_1.0.4 -d openehr_base_1.1.0 \
+	&& ./bin/bmm-publisher $(1) openehr_rm_1.1.0 -d openehr_base_1.2.0 \
+	&& ./bin/bmm-publisher $(1) openehr_rm_1.2.0 -d openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_am_1.4.0 -d openehr_base_1.1.0 \
+	&& ./bin/bmm-publisher $(1) openehr_am_2.2.0 -d openehr_base_1.1.0 \
+	&& ./bin/bmm-publisher $(1) openehr_lang_1.0.0 -d openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_lang_1.1.0 -d openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_lang_1.1.0-bmm3 -d openehr_base_1.3.0 \
 	&& ./bin/bmm-publisher $(1) openehr_base_1.1.0 \
 	&& ./bin/bmm-publisher $(1) openehr_base_1.2.0 \
 	&& ./bin/bmm-publisher $(1) openehr_base_1.3.0 \
 	&& ./bin/bmm-publisher $(1) openehr_term_3.0.0 \
 	&& ./bin/bmm-publisher $(1) openehr_term_3.1.0
+
+legacy-adoc: ## Generate legacy class-definition tables (docs/UML/classes layout) for all schemas
+	$(DOCKER_COMPOSE) run --rm app sh -c '$(call PUBLISH_RUNS,legacy-adoc)'
 
 adoc: ## Generate AsciiDoc for all schema combinations (writer + PlantUML render + SVG inline, atomic per call)
 	$(DOCKER_COMPOSE) run --rm app sh -c '$(call PUBLISH_RUNS,adoc)'
@@ -88,4 +93,4 @@ yaml: ## Generate YAML for all schemas
 split-json: ## Generate per-type split JSON
 	$(DOCKER_COMPOSE) run --rm app ./bin/bmm-publisher split-json
 
-publish-all: adoc puml yaml split-json ## Run all publishers
+publish-all: adoc puml yaml split-json legacy-adoc ## Run all publishers

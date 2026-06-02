@@ -1,0 +1,16 @@
+@startuml
+
+class P_BMM_CONSTANT {
+  + name : String [1]
+  + type : String [1]
+  + value : String [0..1]
+}
+
+abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+  + documentation : String [0..1]
+}
+
+P_BMM_MODEL_ELEMENT <|-- P_BMM_CONSTANT
+
+
+@enduml

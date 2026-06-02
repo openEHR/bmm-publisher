@@ -1,0 +1,21 @@
+=== SCHEMA_DESCRIPTOR Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/schema_descriptor.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/schema_descriptor.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/schema_descriptor.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/schema_descriptor.svg[]
+
+====

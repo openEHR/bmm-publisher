@@ -4,7 +4,7 @@ h|*Class*
 2+^h|*__P_BMM_BASE_TYPE (abstract)__*
 
 h|*Description*
-2+a|Persistent form of `BMM_PROPER_TYPE`.
+2+a|Persistent form of a proper (non-container) BMM type.
 
 h|*Inherit*
 2+|`xref:LANG:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]`

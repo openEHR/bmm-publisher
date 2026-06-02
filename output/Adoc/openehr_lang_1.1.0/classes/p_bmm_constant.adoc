@@ -1,0 +1,21 @@
+=== P_BMM_CONSTANT Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/p_bmm_constant.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/p_bmm_constant.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/p_bmm_constant.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/p_bmm_constant.svg[]
+
+====

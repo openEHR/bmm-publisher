@@ -14,11 +14,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*type*: `link:/classes/String[String] `
+|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Simple type parameter as a single letter like 'T', 'G' etc.
 
 h|*0..1 +
 (redefined)*
-|*bmm_type*: `link:/classes/Any[Any] `
+|*bmm_type*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
 a|Result of `_create_bmm_type()_` call.
 |===

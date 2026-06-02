@@ -1,7 +1,0 @@
-@startuml
-
-abstract class Comparable {
-}
-
-
-@enduml

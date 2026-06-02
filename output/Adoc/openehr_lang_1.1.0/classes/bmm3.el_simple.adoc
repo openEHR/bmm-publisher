@@ -1,0 +1,21 @@
+=== EL_SIMPLE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.el_simple.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.el_simple.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.el_simple.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.el_simple.svg[]
+
+====

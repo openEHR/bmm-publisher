@@ -33,6 +33,6 @@ h|*1..1*
 a|The terminology of the archetype.
 
 h|*0..1*
-|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:expression_package.adoc#_el_boolean_expression_class[EL_BOOLEAN_EXPRESSION]>`
+|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/EL_BOOLEAN_EXPRESSION[EL_BOOLEAN_EXPRESSION] >`
 a|Rules relating to this archetype. Statements are expressed in first order predicate logic, and usually refer to at least two attributes.
 |===

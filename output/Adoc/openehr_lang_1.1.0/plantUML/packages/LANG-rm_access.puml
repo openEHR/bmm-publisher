@@ -1,0 +1,29 @@
+@startuml
+
+class REFERENCE_MODEL_ACCESS {
+  + schema_directories : List<String> [*]
+  + all_schemas : Hash<String,SCHEMA_DESCRIPTOR> [0..1]
+  + valid_models : Hash<String,BMM_MODEL> [0..1]
+  + initialise_with_load_list( a_schema_dirs : List<String> [1], a_schema_load_list : List<String> [0..1] ) : void [1]
+  + initialise_all() : void [1]
+  + reload_schemas() : void [1]
+}
+
+class SCHEMA_DESCRIPTOR {
+  + p_schema : P_BMM_SCHEMA [0..1]
+  + schema : BMM_MODEL [0..1]
+  + schema_id : String [1]
+  + meta_data : Hash<String,String> [1]
+  + includes : List<String> [*]
+  + is_top_level() : Boolean [1]
+  + is_bmm_compatible() : Boolean [1]
+  + load() : void [1]
+  + validate() : void [1]
+  + validate_includes( all_schemas_list : List<String> [0..1] ) : void [1]
+  + create_schema() : void [1]
+}
+
+BMM_DEFINITIONS <|-- REFERENCE_MODEL_ACCESS
+BMM_DEFINITIONS <|-- SCHEMA_DESCRIPTOR
+
+@enduml

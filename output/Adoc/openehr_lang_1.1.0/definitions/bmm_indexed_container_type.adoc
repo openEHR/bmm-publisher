@@ -4,7 +4,7 @@ h|*Class*
 2+^h|*BMM_INDEXED_CONTAINER_TYPE*
 
 h|*Description*
-2+a|Meta-type of linear container type that indexes the contained items in the manner of a standard Hash table, map or dictionary.
+2+a|Type reference that specifies an indexed container such as `Hash<K,V>`, i.e. a container whose members are accessed via a key (index) type.
 
 h|*Inherit*
 2+|`xref:LANG:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]`
@@ -15,14 +15,5 @@ h|*Attributes*
 
 h|*1..1*
 |*index_type*: `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]`
-a|Type of the element index, typically `String` or `Integer`, but may be a numeric type or indeed any type from which a hash value can be derived.
-
-h|*Functions*
-^h|*Signature*
-^h|*Meaning*
-
-h|*1..1 +
-(redefined)*
-|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
-a|Return full type name, e.g. `HashMap<String, ELEMENT>`.
+a|The key (index) type of the container, e.g. `String` in `Hash<String,EVENT_ACTION>`.
 |===

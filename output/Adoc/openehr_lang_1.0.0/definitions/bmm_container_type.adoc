@@ -22,12 +22,12 @@ h|*1..1*
 a|The container item type.
 
 h|*0..1*
-|*is_ordered*: `link:/classes/Boolean[Boolean] ` +
+|*is_ordered*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
 `{default{nbsp}={nbsp}true}`
 a|True indicates that order of the items in the container attribute is considered significant and must be preserved, e.g. across sessions, serialisation, deserialisation etc. Otherwise known as 'list' semantics.
 
 h|*0..1*
-|*is_unique*: `link:/classes/Boolean[Boolean] ` +
+|*is_unique*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
 `{default{nbsp}={nbsp}false}`
 a|True indicates that only unique instances of items in the container are allowed. Otherwise known as 'set' semantics.
 
@@ -37,19 +37,19 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*type_name* (): `link:/classes/String[String] `
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Return full type name, e.g. `List<ELEMENT>`.
 
 h|*1..1 +
 (effected)*
-|*is_abstract* (): `link:/classes/Boolean[Boolean] ` +
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_is_abstract__: `Result = container_type.is_abstract`
 a|True if the container class is abstract.
 
 h|*1..1 +
 (effected)*
-|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >` +
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` +
  +
 __Post_result__: `Result = item_type.flattened_type_list`
 a|Flattened list of type names of `_item_type_`, i.e. `_item_type.flattened_type_list_()`.
@@ -61,7 +61,7 @@ a|Return `_item_type_`.
 
 h|*1..1 +
 (effected)*
-|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_validity__: `Result = base_class.is_primitive` +
 __Post_result__: `Result = item_type.is_primitive`

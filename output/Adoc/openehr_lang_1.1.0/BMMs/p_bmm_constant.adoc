@@ -1,0 +1,32 @@
+[source,json]
+--------
+{
+    "name": "P_BMM_CONSTANT",
+    "documentation": "Persistent form of a BMM constant, i.e. a named, typed literal value defined on a class.",
+    "ancestors": [
+        "P_BMM_MODEL_ELEMENT"
+    ],
+    "properties": {
+        "name": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "name",
+            "documentation": "Name of this constant within its class. Persisted attribute.",
+            "is_mandatory": true,
+            "type": "String"
+        },
+        "type": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "type",
+            "documentation": "Type name of this constant, as a simple class name. Persisted attribute.",
+            "is_mandatory": true,
+            "type": "String"
+        },
+        "value": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "value",
+            "documentation": "The literal value of this constant, in its persisted (serialised) form. Persisted attribute.",
+            "type": "String"
+        }
+    }
+}
+--------

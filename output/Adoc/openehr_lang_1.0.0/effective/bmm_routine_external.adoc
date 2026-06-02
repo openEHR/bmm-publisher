@@ -8,9 +8,9 @@
 
 2+h|*Attributes*
 
-|*meta_data*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/String[String] >` [1..1]
+|*meta_data*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
 a|External call general meta-data, including target routine name, type mapping etc.
 
-|*argument_mapping*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,link:/classes/String[String] >` [0..1]
+|*argument_mapping*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
 a|Optional argument-mapping meta-data.
 |===

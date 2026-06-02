@@ -15,6 +15,6 @@ h|*Attributes*
 
 h|*0..1 +
 (redefined)*
-|*item_values*: `link:/classes/List[List] <xref:LANG:bmm:core_package.adoc#_bmm_string_value_class[BMM_STRING_VALUE]>`
+|*item_values*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_string_value_class[BMM_STRING_VALUE]>`
 a|Optional list of specific values. Must be 1:1 with `_item_names_` list.
 |===

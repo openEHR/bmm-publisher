@@ -22,13 +22,15 @@ docker compose -f .docker/docker-compose.yml run --rm app composer test -- --fil
 Run inside the container (`make sh`) or via Docker:
 
 ```bash
-./bin/bmm-publisher asciidoc openehr_rm_1.2.0 openehr_base_1.3.0
+# Export RM 1.2.0; load BASE as a cross-reference dependency only (-d), not exported
+./bin/bmm-publisher asciidoc openehr_rm_1.2.0 -d openehr_base_1.3.0
+./bin/bmm-publisher legacy-adoc openehr_rm_1.2.0 -d openehr_base_1.3.0
 ./bin/bmm-publisher plantuml all
 ./bin/bmm-publisher yaml openehr_base_1.3.0
 ./bin/bmm-publisher split-json
 ```
 
-Use `-v` for progress output, `-vv` for detailed file-write logging.
+Use `-v` for progress output, `-vv` for detailed file-write logging. `asciidoc`, `legacy-adoc`, and `plantuml` accept repeatable `-d <schema>` dependencies (loaded for cross-references, not exported); inputs may be schema ids or `.bmm.json` paths.
 
 ## Composer scripts
 

@@ -11,10 +11,10 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*resource_id*: `link:/classes/String[String] `
+|*resource_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Identifier of a resource (typically available as a service) that contains legal values of a specific type. This is typically a URI but need not be.
 
 h|*1..1*
-|*value_set_id*: `link:/classes/String[String] `
+|*value_set_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Identifier of a value set within the resource identified by `_resource_id_`, which specifies the set of legal values of a type. This might be a URI, but need not be.
 |===

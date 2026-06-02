@@ -1,0 +1,21 @@
+=== EL_BINARY_OPERATOR Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.el_binary_operator.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.el_binary_operator.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.el_binary_operator.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.el_binary_operator.svg[]
+
+====

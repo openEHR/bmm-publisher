@@ -14,16 +14,16 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*identifier*: `link:/classes/String[String] ` +
+|*identifier*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
 `{default{nbsp}={nbsp}"xxx"}`
 a|
 
 h|*0..1*
-|*symbols*: `link:/classes/List[List] <link:/classes/String[String] >`
+|*symbols*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|
 
 h|*1..1 +
 (redefined)*
-|*evaluation_agent*: `link:/classes/FUNCTION[FUNCTION] <>`
+|*evaluation_agent*: `xref:BASE:foundation_types:functional.adoc#_function_class[FUNCTION]<>`
 a|
 |===

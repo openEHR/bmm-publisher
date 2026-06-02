@@ -27,12 +27,12 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*type_base_name* (): `link:/classes/String[String] `
+|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Result = `_base_class.name_`.
 
 h|*1..1 +
 (effected)*
-|*is_primitive* (): `link:/classes/Boolean[Boolean] ` +
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_validity__: `Result = base_class.is_primitive`
 a|Result = `_base_class.is_primitive_`.

@@ -12,23 +12,23 @@ h|*Functions*
 
 h|*1..1 +
 (abstract)*
-|*type_name* (): `link:/classes/String[String] `
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Formal string form of the type as per UML.
 
 h|*1..1*
-|*type_signature* (): `link:/classes/String[String] `
+|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Signature form of the type name, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
 
 Defaults to the value of `_type_name()_`.
 
 h|*1..1 +
 (abstract)*
-|*is_abstract* (): `link:/classes/Boolean[Boolean] `
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|If true, indicates an abstract class in a BMM model, or a type based on an abstract class, i.e. a type that cannot be directly instantiated.
 
 h|*1..1 +
 (abstract)*
-|*is_primitive* (): `link:/classes/Boolean[Boolean] `
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|If True, indicates that the entity in a BMM model is considered to relate to a primitive type set, i.e. be a primitive type, or be a definer of one.
 
 h|*1..1 +
@@ -43,6 +43,6 @@ a|Type with any container abstracted away, and any formal parameter replaced by 
 
 h|*1..1 +
 (abstract)*
-|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >`
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|Completely flattened list of type names, flattening out all generic parameters.
 |===

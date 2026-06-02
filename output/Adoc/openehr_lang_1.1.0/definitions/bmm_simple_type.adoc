@@ -7,37 +7,22 @@ h|*Description*
 2+a|Type reference to a single type i.e. not generic or container type.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_model_type_class[BMM_MODEL_TYPE]`
+2+|`xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*1..1 +
-(redefined)*
-|*base_class*: `xref:LANG:bmm:core_package.adoc#_bmm_simple_class_class[BMM_SIMPLE_CLASS]`
-a|Defining class of this type.
+h|*1..1*
+|*base_class*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+a|The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1 +
-(effected)*
+(redefined)*
 |*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
-a|Result is `_base_class.name_`.
-
-h|*1..1 +
-(effected)*
-|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
-a|Result is `_base_class.is_abstract_`.
-
-h|*1..1 +
-(effected)*
-|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
-a|Result is `_base_class.name_` .
-
-h|*1..1*
-|*effective_base_class* (): `xref:LANG:bmm:core_package.adoc#_bmm_simple_class_class[BMM_SIMPLE_CLASS]`
-a|Main design class for this type, from which properties etc can be extracted.
+a|Return base_class.type_name.
 |===

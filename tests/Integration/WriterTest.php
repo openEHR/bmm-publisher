@@ -9,6 +9,7 @@ use OpenEHR\BmmPublisher\Helper\OutputDir;
 use OpenEHR\BmmPublisher\Writer\Asciidoc;
 use OpenEHR\BmmPublisher\Writer\BmmJsonSplit;
 use OpenEHR\BmmPublisher\Writer\BmmYaml;
+use OpenEHR\BmmPublisher\Writer\LegacyClassDefinitions;
 use OpenEHR\BmmPublisher\Writer\PlantUml;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -114,6 +115,28 @@ final class WriterTest extends TestCase
 
         $content = (string) file_get_contents($files[0]);
         // AsciiDoc tables use |=== delimiters
+        self::assertStringContainsString('|===', $content);
+    }
+
+    #[Test]
+    public function legacyClassDefinitionsWritesFlatLegacyNamedDefinitionTables(): void
+    {
+        $target = $this->tempOutput . DIRECTORY_SEPARATOR . 'UML' . DIRECTORY_SEPARATOR . 'classes';
+
+        (new LegacyClassDefinitions($this->collection, $target))();
+
+        self::assertDirectoryExists($target);
+
+        // Flat directory of legacy-named class tables: org.openehr.term.<package>.<class>.adoc
+        $files = self::findFiles($target . '/org.openehr.term.*.adoc');
+        self::assertNotEmpty($files, 'Expected legacy-named class .adoc files');
+
+        // No subdirectories, no other formats (effective/tabs/BMMs/plantUML).
+        self::assertEmpty(self::findFiles($target . '/*/'), 'Expected a flat directory with no subfolders');
+
+        // Each file carries the legacy "=== <CLASS> Class" heading and an AsciiDoc table.
+        $content = (string) file_get_contents($files[0]);
+        self::assertMatchesRegularExpression('/^=== .+ (Class|Enumeration)$/m', $content);
         self::assertStringContainsString('|===', $content);
     }
 

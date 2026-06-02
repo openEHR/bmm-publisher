@@ -24,17 +24,17 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*type_name* (): `link:/classes/String[String] `
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Result is `_base_class.name_`.
 
 h|*1..1 +
 (effected)*
-|*is_abstract* (): `link:/classes/Boolean[Boolean] `
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|Result is `_base_class.is_abstract_`.
 
 h|*1..1 +
 (effected)*
-|*flattened_type_list* (): `link:/classes/List[List] <link:/classes/String[String] >`
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|Result is `_base_class.name_` .
 
 h|*1..1*

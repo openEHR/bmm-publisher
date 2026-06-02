@@ -20,6 +20,6 @@ a|Result = self.
 
 h|*1..1 +
 (abstract)*
-|*type_base_name* (): `link:/classes/String[String] `
+|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Name of base generator type, i.e. excluding any generic parts if present.
 |===

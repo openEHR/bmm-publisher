@@ -8,11 +8,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*name*: `link:/classes/String[String] ` +
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
 `{default{nbsp}={nbsp}"plus"}`
 a|
 
 h|*0..1*
-|*symbols*: `link:/classes/List[List] <link:/classes/String[String] >`
+|*symbols*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
 a|
 |===

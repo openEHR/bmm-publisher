@@ -19,6 +19,6 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*items*: `link:/classes/List[List] <xref:LANG:bmm:expression_package.adoc#_el_conditional_expression_class[EL_CONDITIONAL_EXPRESSION]>`
+|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:expression_package.adoc#_el_conditional_expression_class[EL_CONDITIONAL_EXPRESSION]>`
 a|Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
 |===

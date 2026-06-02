@@ -23,6 +23,6 @@ h|*Functions*
 
 h|*1..1 +
 (redefined)*
-|*type_name* (): `link:/classes/String[String] `
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Return full type name, e.g. `HashMap<String, ELEMENT>`.
 |===

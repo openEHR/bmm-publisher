@@ -1,0 +1,20 @@
+@startuml
+
+class BMM_SCHEMA_CORE {
+  + rm_publisher : String [1]
+  + rm_release : String [1]
+  + schema_name : String [1]
+  + schema_revision : String [1]
+  + schema_lifecycle_state : String [1]
+  + schema_author : String [1]
+  + schema_description : String [1]
+  + schema_contributors : List<String> [*]
+  + archetype_parent_class : String [0..1]
+  + archetype_data_value_parent_class : String [0..1]
+  + archetype_rm_closure_packages : List<String> [*]
+  + archetype_visualise_descendants_of : String [0..1]
+  + schema_id() : String [1]
+}
+
+
+@enduml

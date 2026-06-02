@@ -1,0 +1,21 @@
+=== BMM_LOCAL_ROUTINE Class
+
+[tabs]
+====
+Definition::
++
+include::ROOT:partial$definitions/bmm3.bmm_local_routine.adoc[]
+
+Effective::
++
+include::ROOT:partial$effective/bmm3.bmm_local_routine.adoc[]
+
+BMM::
++
+include::ROOT:partial$BMMs/bmm3.bmm_local_routine.adoc[]
+
+UML::
++
+image::ROOT:uml/classes/bmm3.bmm_local_routine.svg[]
+
+====

@@ -35,7 +35,7 @@ _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_property_class[P_B
 |*type_def*: `xref:LANG:bmm_persistence_package.adoc#_p_bmm_generic_type_class[P_BMM_GENERIC_TYPE]` [0..1]
 a|Type definition of this property, if not a simple String type reference. Persistent attribute.
 
-|*bmm_property*: `xref:LANG:bmm:core_package.adoc#_bmm_unitary_property_class[BMM_UNITARY_PROPERTY]` [0..1]
+|*bmm_property*: `xref:LANG:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]` [0..1]
 a|`BMM_PROPERTY` created by `_create_bmm_property_definition_`.
 
 2+h|*Functions*

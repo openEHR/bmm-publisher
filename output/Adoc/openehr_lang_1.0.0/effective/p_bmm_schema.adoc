@@ -8,23 +8,23 @@
 
 2+h|*Attributes*
 
-|*packages*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,xref:LANG:bmm_persistence_package.adoc#_p_bmm_package_class[P_BMM_PACKAGE]>` [1..1]
+|*packages*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_p_bmm_package_class[P_BMM_PACKAGE]>` [1..1]
 a|Package structure as a hierarchy of packages each potentially containing names of classes in that package in the original model. +
 _Inherited from xref:LANG:bmm_persistence_package.adoc#_p_bmm_package_container_class[P_BMM_PACKAGE_CONTAINER]_
 
-|*rm_publisher*: `link:/classes/String[String] ` [1..1]
+|*rm_publisher*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Publisher of model expressed in the schema. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MODEL_METADATA]_
 
-|*rm_release*: `link:/classes/String[String] ` [1..1]
+|*rm_release*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" . +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_model_metadata_class[BMM_MODEL_METADATA]_
 
-|*bmm_version*: `link:/classes/String[String] ` [1..1]
+|*bmm_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Version of BMM model, enabling schema evolution reasoning. Persisted attribute. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*includes*: `link:/classes/Hash[Hash] <link:/classes/String[String] ,xref:LANG:bmm_persistence_package.adoc#_bmm_include_spec_class[BMM_INCLUDE_SPEC]>` [0..1]
+|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm_persistence_package.adoc#_bmm_include_spec_class[BMM_INCLUDE_SPEC]>` [0..1]
 a|Inclusion list of any form of BMM model, in the form of a hash of individual include specifications, each of which at least specifies the id of another schema, and may specify a namespace via which types from the included schemas are known in this schema.
 Persisted attribute. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
@@ -37,38 +37,38 @@ _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SC
 a|Current processing state. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*model_name*: `link:/classes/String[String] ` [0..1]
+|*model_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
 a|Name of this model, if this schema is a model root point. Not set for sub-schemas that are not considered models on their own. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*schema_name*: `link:/classes/String[String] ` [1..1]
+|*schema_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Name of model expressed in schema; a 'schema' usually contains all of the packages of one 'model' of a publisher. A publisher with more than one model can have multiple schemas. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*schema_revision*: `link:/classes/String[String] ` [1..1]
+|*schema_revision*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Revision of schema. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*schema_lifecycle_state*: `link:/classes/String[String] ` [1..1]
+|*schema_lifecycle_state*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Schema development lifecycle state. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*schema_author*: `link:/classes/String[String] ` [1..1]
+|*schema_author*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Primary author of schema. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*schema_description*: `link:/classes/String[String] ` [1..1]
+|*schema_description*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Description of schema. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*schema_contributors*: `link:/classes/List[List] <link:/classes/String[String] >` [0..1]
+|*schema_contributors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
 a|Contributing authors of schema. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*primitive_types*: `link:/classes/List[List] <xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>` [0..1]
+|*primitive_types*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>` [0..1]
 a|Primitive type definitions. Persisted attribute.
 
-|*class_definitions*: `link:/classes/List[List] <xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>` [0..1]
+|*class_definitions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>` [0..1]
 a|Class definitions. Persisted attribute.
 
 2+h|*Functions*
@@ -103,13 +103,13 @@ a|Implementation of `_validate()_`
 __Pre_state__: `state = P_BMM_PACKAGE_STATE.State_includes_processed` [1..1]
 a|Implementation of `_create_bmm_model()_`
 
-|*read_to_validate* (): `link:/classes/Boolean[Boolean] ` +
+|*read_to_validate* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +
 __Post_state__: `state = State_includes_processed` [1..1]
 a|True when validation may be commenced. +
 _Inherited from xref:LANG:bmm:model_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]_
 
-|*schema_id* (): `link:/classes/String[String] ` [1..1]
+|*schema_id* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Identifier of this schema, used for stating inclusions and identifying files. Formed as:
 
 `\{BMM_DEFINITIONS}.create_schema_id ( _rm_publisher_,  _schema_name_,   _rm_release_)`
