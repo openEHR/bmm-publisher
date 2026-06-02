@@ -29,15 +29,30 @@ class BmmYaml
         Filesystem::assureDir(self::outputDir());
         /** @var BmmSchema $bmmSchema */
         foreach ($this->schemas as $bmmSchema) {
-            $schemaId = $bmmSchema->getSchemaId();
-            $filename = self::outputDir() . $schemaId . '.bmm.yaml';
-            $logger->notice('Writing to {file}.', ['file' => $filename]);
-            /** @var array<string, mixed> $data */
-            $data = $bmmSchema->jsonSerialize();
-            $tagged = self::convertTypeTags($data);
-            Filesystem::writeFile($filename, Yaml::dump($tagged, 10, 2, Yaml::DUMP_MULTI_LINE_LITERAL_BLOCK), $logger);
+            $this->writeSchema($bmmSchema, $bmmSchema->getSchemaId());
         }
         $logger->notice('Done - wrote {count} file(s).', ['count' => $this->schemas->count()]);
+    }
+
+    /**
+     * Write a single schema to `<outputDir>/<basename>.bmm.yaml`.
+     *
+     * The basename is supplied by the caller (the source filename, not the
+     * schema id) so that distinct input files sharing a schema id — e.g.
+     * `openehr_lang_1.1.0.bmm.json` and `openehr_lang_1.1.0-bmm3.bmm.json`,
+     * which both resolve to schema id `openehr_lang_1.1.0` — produce distinct
+     * YAML outputs instead of silently overwriting one another.
+     */
+    public function writeSchema(BmmSchema $schema, string $basename): void
+    {
+        $logger = $this->schemas->logger;
+        Filesystem::assureDir(self::outputDir());
+        $filename = self::outputDir() . $basename . '.bmm.yaml';
+        $logger->notice('Writing to {file}.', ['file' => $filename]);
+        /** @var array<string, mixed> $data */
+        $data = $schema->jsonSerialize();
+        $tagged = self::convertTypeTags($data);
+        Filesystem::writeFile($filename, Yaml::dump($tagged, 10, 2, Yaml::DUMP_MULTI_LINE_LITERAL_BLOCK), $logger);
     }
 
     /**
