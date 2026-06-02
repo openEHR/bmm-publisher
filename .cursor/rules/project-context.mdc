@@ -1,34 +1,12 @@
 ---
-description: Project context and where to find full agent instructions
+description: Project context; defers to AGENTS.md
 alwaysApply: true
 ---
 
-# bmm-publisher – Project Context
+# bmm-publisher
 
-- **What it is**: PHP CLI tool that reads openEHR BMM schemas and publishes class definitions as AsciiDoc, PlantUML, and YAML for the openEHR specifications website.
-- **Authoritative docs**:
-  - **AGENTS.md** – layout, ownership, standards (PSR-12, PHPStan, PHPUnit), architecture, escalation. Primary reference for agents.
-  - **README.md** – setup, CLI commands, quick start.
-  - **CLAUDE.md** – Claude Code entrypoint; defers to AGENTS.md and points at Cursor rules under `.cursor/rules/`.
-  - **`.cursor/rules/commit-messages.mdc`** – commit messages: conventional `type: imperative` subject per AGENTS.md.
+PHP CLI tool that reads openEHR BMM schemas and publishes class definitions as AsciiDoc, PlantUML, and YAML for the openEHR specifications website.
 
-## Layout
+**Canonical reference: [AGENTS.md](../../AGENTS.md)** — layout, architecture, standards, CLI commands, and workflows. Setup & commands: [README.md](../../README.md). AI working process: [docs/ai-workflow.md](../../docs/ai-workflow.md). Deep dev detail: [docs/development.md](../../docs/development.md).
 
-| Path | Purpose |
-|------|--------|
-| `bin/bmm-publisher` | CLI entry point (Symfony Console Application). |
-| `bin/Command/` | Console commands; namespace `OpenEHR\BmmPublisher\Console\Command\`. |
-| `src/` | Application source; namespace `OpenEHR\BmmPublisher\`. |
-| `resources/` | Input BMM schemas (`.bmm.json` files). |
-| `output/` | Generated artefacts (`Adoc/`, `PlantUML/`, `BMM-YAML/`, `BMM-JSON-development-types/`); gitignored. |
-| `tests/` | Tests **and** tool config: `phpunit.xml`, `phpstan.neon`, `phpcs.xml`, `rector.php`. |
-| `docs/` | Project documentation. Place any new docs here. |
-
-## Running commands
-
-- **Composer, PHP, PHPUnit, PHPStan, PHPCS**: run **inside the dev container** only. From repo root: **`make install`**, **`make ci`**, or `docker compose -f .docker/docker-compose.yml run --rm app composer …`. See the [Makefile](../../Makefile).
-- **CLI**: `./bin/bmm-publisher asciidoc all`, `./bin/bmm-publisher plantuml openehr_rm_1.2.0`, etc. Use `-v` for progress.
-- **Do not** rely on host `composer` / `php` being installed; agents should default to **`make …`** or the `docker compose` line above.
-- **Commits**: Follow **`commit-messages.mdc`** and **AGENTS.md** for every suggestion. Same hint: `conventional commit, <72 chars, feat/refactor/fix`.
-
-When in doubt, follow AGENTS.md for standards and README for commands and setup.
+**Critical:** `composer` / `php` / PHPUnit / PHPStan run **inside the dev container** only — use `make ci`, `make sh`, `make install`, or `docker compose -f .docker/docker-compose.yml run --rm app composer …`. Do not assume host PHP.

@@ -2,6 +2,15 @@
 
 Version tags are **SemVer only** (no `v` prefix): e.g. `1.0.0`, `2.1.3`. The release workflow runs only on tags matching that pattern and on `main`.
 
+## Version bump
+
+Before tagging, update **both** of these in the same commit/PR (they must match):
+
+1. **`CHANGELOG.md`** — move the `[Unreleased]` items into a new versioned section and update the comparison links at the bottom.
+2. **`bin/bmm-publisher`** — update the version string in `new Application('bmm-publisher', '<version>')`.
+
+## Release steps
+
 1. Ensure `main` is green (all CI checks pass).
 2. Tag and push:
 

@@ -1,16 +1,12 @@
 # Claude Code – project instructions
 
-This repo follows **[AGENTS.md](AGENTS.md)** for structure, PHP standards (PSR-12, PHPStan level 8, PHPUnit 12), tooling locations (`tests/` for config), commit style, and escalation.
+Follow **[AGENTS.md](../AGENTS.md)** — the canonical reference for layout, architecture, standards, CLI commands, commit style, and workflows.
 
-- **Setup and scripts**: [README.md](README.md) and `composer.json` scripts (e.g. `composer ci`).
-- **Cursor**: [`.cursor/rules/`](.cursor/rules/) — `project-context.mdc` is always applied; PHP and testing rules attach by glob.
-- **Docker**: `.docker/docker-compose.yml` or `Makefile` from the repo root.
+**Critical:** PHP / Composer / PHPUnit / PHPStan run **inside the dev container** only — there is no host PHP. Use `make ci`, `make sh`, `make install`, or `docker compose -f .docker/docker-compose.yml run --rm app composer …`.
 
-Do not add long-form project docs at the repo root; use `docs/` when you create documentation (see AGENTS.md).
+Deeper detail on demand:
 
-## Version bumps
-
-When releasing a new version, **both** of these must be updated in the same commit/PR:
-
-1. **`CHANGELOG.md`** — move the `[Unreleased]` items into a new versioned section and update the comparison links at the bottom.
-2. **`bin/bmm-publisher`** — update the version string in `new Application('bmm-publisher', '<version>')` to match.
+- AI agent working process (guardrails, verification, regenerate `output/`) — [docs/ai-workflow.md](../docs/ai-workflow.md)
+- Architecture (pipeline, writers, key patterns) — [docs/architecture.md](../docs/architecture.md)
+- Tooling, Composer scripts, Docker images — [docs/development.md](../docs/development.md)
+- Version bump & release process — [docs/releases.md](../docs/releases.md)

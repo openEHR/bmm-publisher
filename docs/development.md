@@ -69,8 +69,4 @@ make build          # Build development image (docker-compose default)
 make build-prod     # Build production image locally
 ```
 
-## Directory layout
-
-- **Input**: BMM schemas in `resources/` (`.bmm.json` files)
-- **Output**: Generated artefacts in `output/` (`Adoc/`, `PlantUML/`, `BMM-YAML/`, `BMM-JSON-development-types/`)
-- **Output dir override**: Set `BMM_OUTPUT_DIR` environment variable (used in Docker containers)
+For the directory layout (`resources/`, `output/`, namespaces) see [AGENTS.md](../AGENTS.md) § "Layout and ownership".
