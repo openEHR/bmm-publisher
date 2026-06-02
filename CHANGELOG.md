@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **AI-assistance docs restructured** into gradual-disclosure tiers — `AGENTS.md` stays canonical, deep detail split into `docs/{architecture,ai-workflow,install,development,releases}.md`, and the `.claude`/`.cursor`/Copilot entrypoints slimmed to pointers.
+
 ## [0.7.0] - 2026-05-01
 
 ### Changed
