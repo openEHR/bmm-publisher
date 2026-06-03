@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-06-03
+
 ### Added
 
-- **`odin` command** — serialises BMM JSON schemas to ODIN `.bmm` files (the hand-authored `specifications-ITS-BMM` schema format) under `output/BMM-ODIN/`, one file per input. Covers packages, classes, properties, generics, enumerations, cardinalities, functions, and invariants.
+- **`odin` command** — serialises BMM JSON schemas to ODIN `.bmm` files (the hand-authored `specifications-ITS-BMM` schema format) under `output/BMM-ODIN/`, one file per input (also exposed as `make odin`). Covers packages, classes, properties, generics, enumerations, cardinalities, functions, and invariants.
 
 ### Changed
 
@@ -130,7 +132,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.8.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.9.0...HEAD
+[0.9.0]: https://github.com/openehr/bmm-publisher/compare/0.8.0...0.9.0
 [0.8.0]: https://github.com/openehr/bmm-publisher/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/openehr/bmm-publisher/compare/0.6.0...0.7.0
 [0.6.0]: https://github.com/openehr/bmm-publisher/compare/0.5.0...0.6.0
