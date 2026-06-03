@@ -161,14 +161,17 @@ final class Odin
     }
 
     /**
-     * Whether every element of a list is a primitive (no nested arrays/objects).
+     * Whether every element of a list is a primitive — so the list renders as a comma-separated
+     * ODIN list rather than a keyed hash. Asserts positively (scalar or null): a non-array,
+     * non-scalar element (e.g. a stray model object) is NOT treated as a primitive, so it falls
+     * through to {@see self::block()} instead of being silently string-cast.
      *
      * @param array<array-key, mixed> $list
      */
     private function allScalar(array $list): bool
     {
         foreach ($list as $v) {
-            if (\is_array($v)) {
+            if (!\is_scalar($v) && $v !== null) {
                 return false;
             }
         }

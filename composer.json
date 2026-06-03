@@ -10,7 +10,7 @@
     "require": {
         "php": "^8.5",
         "ext-json": "*",
-        "cadasto/openehr-bmm": "^0.2.1",
+        "cadasto/openehr-bmm": "^0.3",
         "psr/log": "^3.0",
         "symfony/console": "^8.0",
         "symfony/process": "^8.0",

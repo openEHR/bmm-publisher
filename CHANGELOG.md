@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **`odin` command** — serialises BMM JSON schemas to ODIN `.bmm` files (the hand-authored `specifications-ITS-BMM` schema format) under `output/BMM-ODIN/`, one file per input. Covers packages, classes, properties, generics, enumerations, cardinalities, functions, and invariants.
 
+### Changed
+
+- **`cadasto/openehr-bmm` upgraded to `^0.3`** — `toArray()` now flattens nested generic types, so the `BmmOdin` writer no longer needs its JSON round-trip workaround.
+
+### Fixed
+
+- **YAML output for AM schemas no longer drops nested generic type parameters** — `generic_parameters` members such as `TUPLE2<String, String>` were serialised as `null`; they now render as proper `!P_BMM_GENERIC_TYPE` nodes (fixed by the `cadasto/openehr-bmm` 0.3 upgrade).
+
 ## [0.8.0] - 2026-06-02
 
 ### Added

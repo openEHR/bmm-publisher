@@ -447,7 +447,9 @@ class_definitions:
               root_type: FUNCTION
               generic_parameters:
                 - Boolean
-                - null
+                - !P_BMM_GENERIC_TYPE
+                  root_type: TUPLE2
+                  generic_parameters: [String, String]
         result: !P_BMM_SIMPLE_TYPE
           type: Boolean
       c_congruent_to:
@@ -542,7 +544,9 @@ class_definitions:
               root_type: FUNCTION
               generic_parameters:
                 - Boolean
-                - null
+                - !P_BMM_GENERIC_TYPE
+                  root_type: TUPLE2
+                  generic_parameters: [String, String]
         result: !P_BMM_SIMPLE_TYPE
           type: Boolean
       c_congruent_to:
@@ -676,7 +680,9 @@ class_definitions:
               root_type: FUNCTION
               generic_parameters:
                 - Boolean
-                - null
+                - !P_BMM_GENERIC_TYPE
+                  root_type: TUPLE2
+                  generic_parameters: [String, String]
         post_conditions:
           Post: 'Result = existence_conforms_to (other) and ((is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)))'
         result: !P_BMM_SIMPLE_TYPE
@@ -846,7 +852,9 @@ class_definitions:
               root_type: FUNCTION
               generic_parameters:
                 - Boolean
-                - null
+                - !P_BMM_GENERIC_TYPE
+                  root_type: TUPLE2
+                  generic_parameters: [String, String]
         result: !P_BMM_SIMPLE_TYPE
           type: Boolean
       c_value_conforms_to:
@@ -1012,7 +1020,9 @@ class_definitions:
               root_type: FUNCTION
               generic_parameters:
                 - Boolean
-                - null
+                - !P_BMM_GENERIC_TYPE
+                  root_type: TUPLE2
+                  generic_parameters: [String, String]
         result: !P_BMM_SIMPLE_TYPE
           type: Boolean
       c_congruent_to:
