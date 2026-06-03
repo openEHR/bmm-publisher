@@ -12,6 +12,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use OpenEHR\BmmPublisher\Console\Command\AsciidocCommand;
 use OpenEHR\BmmPublisher\Console\Command\EmbedSvgCommand;
 use OpenEHR\BmmPublisher\Console\Command\LegacyAdocCommand;
+use OpenEHR\BmmPublisher\Console\Command\OdinCommand;
 use OpenEHR\BmmPublisher\Console\Command\PlantUmlCommand;
 use OpenEHR\BmmPublisher\Console\Command\SplitJsonCommand;
 use OpenEHR\BmmPublisher\Console\Command\YamlCommand;
@@ -25,6 +26,7 @@ try {
     $console->addCommand(new YamlCommand());
     $console->addCommand(new SplitJsonCommand());
     $console->addCommand(new LegacyAdocCommand());
+    $console->addCommand(new OdinCommand());
     exit($console->run());
 } catch (\Throwable $exception) {
     error_log((string) $exception);

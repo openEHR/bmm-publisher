@@ -93,4 +93,7 @@ yaml: ## Generate YAML for all schemas
 split-json: ## Generate per-type split JSON
 	$(DOCKER_COMPOSE) run --rm app ./bin/bmm-publisher split-json
 
-publish-all: adoc puml yaml split-json legacy-adoc ## Run all publishers
+odin: ## Generate ODIN .bmm schema files for all schemas
+	$(DOCKER_COMPOSE) run --rm app ./bin/bmm-publisher odin all
+
+publish-all: adoc puml yaml split-json legacy-adoc odin ## Run all publishers

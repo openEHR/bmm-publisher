@@ -25,6 +25,7 @@ Use this file as the **primary reference** for agents, automation, and contribut
 | `output/Adoc/` | AsciiDoc tables (definitions, effective, tabs, BMM JSON blocks); `plantUML/{classes,packages}/` holds only the `.puml` source — UML image macros are inlined directly into the tabs partials under `classes/<name>.adoc`; rendered diagrams live under `images/uml/{classes,diagrams}/` |
 | `output/PlantUML/` | PlantUML `.puml` diagram files |
 | `output/BMM-YAML/` | YAML serialisations of BMM schemas |
+| `output/BMM-ODIN/` | ODIN `.bmm` serialisations of BMM schemas (the `specifications-ITS-BMM` schema format) |
 | `output/BMM-JSON-development-types/` | Per-type split JSON grouped by component (`AM`, `RM`, `BASE`, `LANG`, `TERM`), plus generation-suffixed dirs for same-id variants (`AM2`, `LANG-bmm3`) |
 | `tests/` | Unit/integration tests **and** tool config: `phpunit.xml`, `phpstan.neon`, `phpcs.xml`, `rector.php`, optional `phpstan-baseline.neon` |
 | `docs/` | Project documentation (guides, architecture). **Place new docs here**, not at the repo root except README/CONTRIBUTING/CODE_OF_CONDUCT/SECURITY. |
@@ -50,6 +51,7 @@ The entry point `bin/bmm-publisher` provides these Symfony Console commands:
 | `embed-svg` | | Re-run only the SVG sanitise + publish step against existing `.svg` files (debugging / surgical re-runs). |
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
+| `odin` | | Convert BMM JSON schemas to ODIN `.bmm` schema files (the hand-authored `specifications-ITS-BMM` format), one file per input |
 
 Commands accept schema id(s) (without `.bmm.json` extension) or `.bmm.json` path(s) as arguments, or `all` to process every schema in `resources/`. `asciidoc`, `legacy-adoc`, and `plantuml` also accept repeatable **`-d <schema>`** dependencies — loaded for cross-reference resolution but **not** exported.
 

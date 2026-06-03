@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **`odin` command** — serialises BMM JSON schemas to ODIN `.bmm` files (the hand-authored `specifications-ITS-BMM` schema format) under `output/BMM-ODIN/`, one file per input. Covers packages, classes, properties, generics, enumerations, cardinalities, functions, and invariants.
+
 ## [0.8.0] - 2026-06-02
 
 ### Added
