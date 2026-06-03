@@ -13,9 +13,14 @@ namespace OpenEHR\BmmPublisher\Writer\Formatter;
  *
  * - attribute objects → `attr = <...>` blocks (the schema root is emitted without outer brackets);
  * - the `_type` discriminator → an ODIN type marker `(P_BMM_TYPE)` on the enclosing `<...>`;
- * - keyed containers (packages, classes, properties, …) → `["key"] = <...>` hash members;
+ * - keyed containers (packages, class_definitions, properties, …) → `["key"] = <...>` hash members;
  * - string lists (ancestors, classes, item_names, …) → `<"a", "b">` (single item gets a `, ...` tail);
  * - `cardinality` intervals → ODIN range literals such as `|>=0|`.
+ *
+ * Known limitation: a `generic_parameters` list that mixes string type names with structured
+ * type references is emitted as an indexed hash, because the source JSON does not carry the
+ * parameter names (`T`, `U`, …) needed to reconstruct a keyed `generic_parameter_defs` block.
+ * The information is preserved and the result is valid ODIN, just not the hand-authored shape.
  *
  * @see https://specifications.openehr.org/releases/LANG/development/odin.html
  */
@@ -49,7 +54,8 @@ final class Odin
         'item_names', 'item_values', 'item_documentations',
         'container_type', 'root_type', 'type', 'type_def',
         'cardinality', 'default', 'result', 'value',
-        'classes', 'packages', 'primitive_types', 'properties', 'constants', 'functions', 'invariants',
+        'classes', 'packages', 'primitive_types', 'class_definitions',
+        'properties', 'constants', 'functions', 'invariants',
     ];
 
     /**
@@ -187,8 +193,9 @@ final class Odin
     }
 
     /**
-     * Render a P_BMM cardinality/Interval map (e.g. `{lower: 0, upper_unbounded: true}`)
-     * as an ODIN range literal such as `|>=0|`, `|1..4|`, or `|<=10|`.
+     * Render a P_BMM cardinality/Interval map as an ODIN range literal: `|>=0|`, `|1..4|`,
+     * `|<=10|`, or `|0..*|`. The P_BMM `Interval` serialisation only carries `lower`, `upper`,
+     * `lower_unbounded` and `upper_unbounded`, so bounds are always inclusive here.
      *
      * @param array<string, mixed> $iv
      */
@@ -196,22 +203,17 @@ final class Odin
     {
         $lower = $iv['lower'] ?? null;
         $upper = $iv['upper'] ?? null;
-        $lowerUnbounded = (bool) ($iv['lower_unbounded'] ?? false);
-        $upperUnbounded = (bool) ($iv['upper_unbounded'] ?? false);
-        $lowerIncluded = (bool) ($iv['lower_included'] ?? true);
-        $upperIncluded = (bool) ($iv['upper_included'] ?? true);
-
-        $hasLower = !$lowerUnbounded && $lower !== null;
-        $hasUpper = !$upperUnbounded && $upper !== null;
+        $hasLower = !($iv['lower_unbounded'] ?? false) && $lower !== null;
+        $hasUpper = !($iv['upper_unbounded'] ?? false) && $upper !== null;
 
         if ($hasLower && $hasUpper) {
-            return $lower === $upper ? (string) $lower : $lower . '..' . $upper;
+            return $lower . '..' . $upper;
         }
         if ($hasLower) {
-            return ($lowerIncluded ? '>=' : '>') . $lower;
+            return '>=' . $lower;
         }
         if ($hasUpper) {
-            return ($upperIncluded ? '<=' : '<') . $upper;
+            return '<=' . $upper;
         }
 
         return '0..*';

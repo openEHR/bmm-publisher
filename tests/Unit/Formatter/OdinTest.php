@@ -104,10 +104,22 @@ final class OdinTest extends TestCase
         self::assertStringContainsString(
             'cardinality = <|>=0|>',
             $this->format(['cardinality' => ['lower' => 0, 'upper_unbounded' => true]]),
+            'lower-only bound',
         );
         self::assertStringContainsString(
             'cardinality = <|1..4|>',
             $this->format(['cardinality' => ['lower' => 1, 'upper' => 4]]),
+            'both bounds',
+        );
+        self::assertStringContainsString(
+            'cardinality = <|<=10|>',
+            $this->format(['cardinality' => ['lower_unbounded' => true, 'upper' => 10]]),
+            'upper-only bound',
+        );
+        self::assertStringContainsString(
+            'cardinality = <|0..*|>',
+            $this->format(['cardinality' => ['lower_unbounded' => true, 'upper_unbounded' => true]]),
+            'fully unbounded fallback',
         );
     }
 
