@@ -54,11 +54,8 @@ class BmmOdin
         Filesystem::assureDir(self::outputDir());
         $filename = self::outputDir() . $basename . '.bmm';
         $logger->notice('Writing to {file}.', ['file' => $filename]);
-        // jsonSerialize() may leave nested model objects unresolved (they only serialize at
-        // json_encode time), so round-trip through JSON to get a fully-materialised array tree.
-        $json = json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
         /** @var array<string, mixed> $data */
-        $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        $data = $schema->jsonSerialize();
         Filesystem::writeFile($filename, $this->odin->format($data), $logger);
     }
 }
