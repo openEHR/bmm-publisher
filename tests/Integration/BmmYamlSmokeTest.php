@@ -60,4 +60,29 @@ final class BmmYamlSmokeTest extends TestCase
         self::assertNotSame('', $content);
         self::assertStringContainsString('rm_publisher', $content);
     }
+
+    /**
+     * Regression guard for the cadasto/openehr-bmm 0.3 fix: a structured member of a
+     * `generic_parameters` list (e.g. `TUPLE2<String, String>` in the AM schemas) must serialise
+     * as a `!P_BMM_GENERIC_TYPE` node, not the `null` that the 0.2.x model produced.
+     */
+    #[Test]
+    public function nestedGenericParametersAreNotDroppedToNull(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_am_2.4.0');
+
+        (new BmmYaml($collection))();
+
+        $file = $this->tempOutput . DIRECTORY_SEPARATOR . 'BMM-YAML' . DIRECTORY_SEPARATOR . 'openehr_am_2.4.0.bmm.yaml';
+        self::assertFileExists($file);
+        $content = (string) file_get_contents($file);
+
+        self::assertStringContainsString('root_type: TUPLE2', $content, 'nested generic type must be materialised');
+        self::assertDoesNotMatchRegularExpression(
+            '/generic_parameters:\s*\n(?:\s*- .*\n)*\s*- null\b/',
+            $content,
+            'no generic_parameters list item may be null',
+        );
+    }
 }

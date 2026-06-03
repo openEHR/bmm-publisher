@@ -65,6 +65,42 @@ final class BmmOdinSmokeTest extends TestCase
         self::assertTrue($this->bracketsBalanced($odin), 'every < is matched by a >');
     }
 
+    /**
+     * `BmmOdin` feeds `jsonSerialize()` straight to the formatter (no JSON round-trip), which only
+     * holds while the model serialises to a pure array tree. This pins that contract against the
+     * AM schema — the one with nested generic types — so a future upstream regression that left a
+     * live model object embedded would fail here rather than in published `.bmm` output.
+     */
+    #[Test]
+    public function jsonSerializeReturnsAnObjectFreeTree(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_am_2.4.0');
+
+        foreach ($collection as $schema) {
+            self::assertSame([], $this->objectPaths($schema->jsonSerialize()), 'no model objects may remain in the serialised tree');
+        }
+    }
+
+    /**
+     * @param array<array-key, mixed> $tree
+     * @return list<string> paths at which a non-array, non-scalar value was found
+     */
+    private function objectPaths(array $tree, string $path = ''): array
+    {
+        $found = [];
+        foreach ($tree as $key => $value) {
+            $here = $path . '/' . $key;
+            if (\is_array($value)) {
+                $found = array_merge($found, $this->objectPaths($value, $here));
+            } elseif (!\is_scalar($value) && $value !== null) {
+                $found[] = $here . ' => ' . get_debug_type($value);
+            }
+        }
+
+        return $found;
+    }
+
     /** String-, comment- and interval-aware delimiter balance check. */
     private function bracketsBalanced(string $odin): bool
     {
