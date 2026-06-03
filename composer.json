@@ -20,7 +20,7 @@
         "ext-xdebug": "*",
         "php-parallel-lint/php-parallel-lint": "^1.4",
         "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^12.5",
+        "phpunit/phpunit": "^13.1",
         "rector/rector": "^2.4",
         "roave/security-advisories": "dev-latest",
         "squizlabs/php_codesniffer": "^4.0"
