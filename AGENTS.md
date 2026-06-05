@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository is a **PHP CLI tool** that reads **openEHR BMM (Basic Meta-Model) schemas** and publishes class definitions as **AsciiDoc**, **PlantUML**, and **YAML** for the [openEHR specifications website](https://specifications.openehr.org/).
+This repository is a **PHP CLI tool** that reads **openEHR BMM (Basic Meta-Model) schemas** and publishes class definitions as **AsciiDoc**, **PlantUML**, **YAML**, **ODIN**, and per-type **JSON** for the [openEHR specifications website](https://specifications.openehr.org/).
 
 Use this file as the **primary reference** for agents, automation, and contribution expectations. See also **README.md** for install/commands and **CONTRIBUTING.md** for PR workflow.
 
@@ -9,7 +9,7 @@ Use this file as the **primary reference** for agents, automation, and contribut
 ## Purpose
 
 - **CLI tool**: Reads BMM 2.4 JSON schemas (P_BMM format) and generates output in multiple formats for use in the openEHR specifications documentation pipeline.
-- **Output formats**: AsciiDoc (for specification pages), PlantUML (for class diagrams), YAML (for structured data), split per-type JSON.
+- **Output formats**: AsciiDoc (for specification pages), PlantUML (for class diagrams), YAML (for structured data), ODIN `.bmm` schemas, split per-type JSON.
 - **Input**: P_BMM JSON schema files (see `resources/`).
 - **Dependency**: Uses `cadasto/openehr-bmm` as the BMM model library (provides `BmmSchema`, classes, properties, types, etc.).
 
@@ -63,7 +63,7 @@ bin/bmm-publisher  (Symfony Console Application)
 ```
 
 - **BmmSchemaCollection** loads `.bmm.json` → `BmmSchema` objects (via `cadasto/openehr-bmm`) and provides cross-schema lookups.
-- **Writers** are standalone callable classes (`__invoke()`), each receiving the collection: `Asciidoc`, `EmbedSvg`, `PlantUml`, `BmmYaml`, `BmmJsonSplit`. **Formatters** transform model objects into output strings.
+- **Writers** are standalone callable classes (`__invoke()`), each receiving the collection: `Asciidoc`, `EmbedSvg`, `PlantUml`, `BmmYaml`, `BmmJsonSplit`, `BmmOdin`, `LegacyClassDefinitions`. **Formatters** transform model objects into output strings.
 - The `asciidoc` command is a **self-contained pipeline** (writer → bundled `plantuml` CLI → `EmbedSvg`) in one container run.
 - **Gotcha — schema-id collisions**: the collection keys schemas by `getSchemaId()`, so same-id inputs (e.g. `openehr_lang_1.1.0` and the `…-bmm3` overlay) overwrite each other; writers that must emit both process each input separately and disambiguate output.
 
@@ -103,11 +103,11 @@ Each tool (Claude Code, Cursor, GitHub Copilot, JetBrains Junie) reads a minimal
 ## Escalation and triage
 
 1. Open or assign a GitHub issue with the `triage` label.
-2. For release blockers or security: follow CONTRIBUTING.md.
+2. For release blockers: follow CONTRIBUTING.md. For security: follow `SECURITY.md`.
 
 ## How to get help
 
 - **Usage or design**: GitHub Discussion or Issue.
 - **Bug**: Use the bug report issue form.
 - **Feature**: Use the feature request issue form.
-- **Security**: Do **not** open a public issue; follow the security reporting instructions in `CONTRIBUTING.md`.
+- **Security**: Do **not** open a public issue; follow the reporting instructions in `SECURITY.md`.
