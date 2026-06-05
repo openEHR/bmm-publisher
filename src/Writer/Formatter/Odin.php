@@ -6,7 +6,7 @@ namespace OpenEHR\BmmPublisher\Writer\Formatter;
 
 /**
  * Serialises a P_BMM schema array (as produced by {@see \Cadasto\OpenEHR\BMM\Model\BmmSchema::jsonSerialize()})
- * into ODIN — the syntax used by hand-authored `.bmm` schema files.
+ * into ODIN — the syntax used by the `.bmm` schema files in `specifications-ITS-BMM`.
  *
  * ODIN and the BMM JSON are two serialisations of the same P_BMM instance model, so this
  * walks the same tree the YAML/JSON writers consume and emits the equivalent ODIN constructs:

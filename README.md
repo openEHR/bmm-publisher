@@ -50,7 +50,7 @@ See **[docs/install.md](docs/install.md)** for all invocation options — your o
 | `embed-svg` | | Re-run only the SVG sanitise + publish step against existing `.svg` files (debugging / surgical re-renders) |
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
-| `odin` | | Convert BMM JSON schemas to ODIN `.bmm` schema files (the hand-authored openEHR BMM format) |
+| `odin` | | Convert BMM JSON schemas to ODIN `.bmm` schema files (the native openEHR BMM schema format) |
 
 Pass schema name(s) without `.bmm.json` extension (or `.bmm.json` paths), or `all` to process every schema in the input directory. `asciidoc`, `legacy-adoc`, and `plantuml` accept repeatable `-d <schema>` dependencies (loaded for cross-references, not exported).
 

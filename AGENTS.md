@@ -51,7 +51,7 @@ The entry point `bin/bmm-publisher` provides these Symfony Console commands:
 | `embed-svg` | | Re-run only the SVG sanitise + publish step against existing `.svg` files (debugging / surgical re-runs). |
 | `yaml` | | Convert BMM JSON schemas to YAML format |
 | `split-json` | | Split latest BMM JSON of each component into per-type files |
-| `odin` | | Convert BMM JSON schemas to ODIN `.bmm` schema files (the hand-authored `specifications-ITS-BMM` format), one file per input |
+| `odin` | | Convert BMM JSON schemas to ODIN `.bmm` schema files, one file per input |
 
 Commands accept schema id(s) (without `.bmm.json` extension) or `.bmm.json` path(s) as arguments, or `all` to process every schema in `resources/`. `asciidoc`, `legacy-adoc`, and `plantuml` also accept repeatable **`-d <schema>`** dependencies — loaded for cross-reference resolution but **not** exported.
 
