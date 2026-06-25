@@ -528,7 +528,9 @@ readonly class AsciidocDefinition
         foreach ($lines as $i => $line) {
             $marker = '';
             $inline = $line;
-            if (preg_match('/^(\s*\*+\s)(.*)$/', $line, $m)) {
+            // A preg engine error returns false (falsy) -> falls through to "no marker",
+            // which only ever over-escapes; require an explicit match of 1 for clarity.
+            if (preg_match('/^(\s*\*+\s)(.*)$/', $line, $m) === 1) {
                 $marker = $m[1];
                 $inline = $m[2];
             }

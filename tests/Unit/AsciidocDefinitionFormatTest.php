@@ -55,6 +55,23 @@ final class AsciidocDefinitionFormatTest extends TestCase
             '(0&#124;[1-9][0-9]&#42;)&#42;',
             $f->formatText('(0|[1-9][0-9]*)*'),
         );
+        // the rule is count-based, not pair-based: an odd run still escapes every asterisk
+        self::assertSame('x&#42;y&#42;z', $f->formatText('x*y*z'));
+        // removed TEXT_REPLACEMENT rules (']*', ')*') must now stay literal when alone
+        self::assertSame('ends with `[0-9]*`', $f->formatText('ends with `[0-9]*`'));
+    }
+
+    #[Test]
+    public function formatTextCountsAsterisksPerLineNotAcrossTheWholeString(): void
+    {
+        $f = $this->makeFormatter();
+
+        // AsciiDoc bold never spans a newline, so one asterisk on each of two lines
+        // must NOT be treated as a pair — guards against collapsing the per-line loop
+        // into a single whole-string substr_count.
+        self::assertSame("a*b\nc*d", $f->formatText("a*b\nc*d"));
+        // but two asterisks on the same line within a multi-line string are escaped
+        self::assertSame("a*b\nc&#42;d&#42;e", $f->formatText("a*b\nc*d*e"));
     }
 
     #[Test]
@@ -72,6 +89,25 @@ final class AsciidocDefinitionFormatTest extends TestCase
         );
         // but inline pairs after a marker are still escaped, marker preserved
         self::assertSame('* a &#42;bold&#42; word', $f->formatText('* a *bold* word'));
+        // a marker line whose inline part is a multi-asterisk regex: marker kept, regex escaped
+        self::assertSame(
+            '* a regex (0&#124;[1-9][0-9]&#42;)&#42;',
+            $f->formatText('* a regex (0|[1-9][0-9]*)*'),
+        );
+        // a nested list marker ('** ') is also preserved
+        self::assertSame('** nested item', $f->formatText('** nested item'));
+    }
+
+    #[Test]
+    public function formatTextTreatsLeadingAsterisksWithoutSpaceAsInlineBold(): void
+    {
+        $f = $this->makeFormatter();
+
+        // the marker regex requires whitespace after the asterisk(s); '*emphasis*'
+        // (no trailing space) is inline bold, not a list marker, so it is escaped
+        self::assertSame('&#42;emphasis&#42; text', $f->formatText('*emphasis* text'));
+        // '**bold**' likewise has no space after the leading '**' -> inline, all escaped
+        self::assertSame('&#42;&#42;bold&#42;&#42;', $f->formatText('**bold**'));
     }
 
     #[Test]
