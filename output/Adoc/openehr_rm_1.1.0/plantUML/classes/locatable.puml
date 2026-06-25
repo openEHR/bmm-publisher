@@ -11,7 +11,7 @@ abstract class LOCATABLE {
   + is_archetype_root() : Boolean [1]
 }
 
-abstract class PATHABLE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class PATHABLE #whitesmoke;line:gray;line.dotted;text:gray {
   + parent() : PATHABLE [1]
   + item_at_path( a_path : String [1] ) : Any [1]
   + items_at_path( a_path : String [1] ) : List<Any> [*]

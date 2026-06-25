@@ -4,12 +4,12 @@ class P_BMM_SINGLE_FUNCTION_PARAMETER_OPEN {
   + type : String [1]
 }
 
-abstract class P_BMM_FUNCTION_PARAMETER  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_FUNCTION_PARAMETER #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + is_nullable : Boolean [0..1]
 }
 
-abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 

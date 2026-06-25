@@ -3,7 +3,7 @@
 class DV_EHR_URI {
 }
 
-class DV_URI  #whitesmoke;line:gray;line.dotted;text:gray {
+class DV_URI #whitesmoke;line:gray;line.dotted;text:gray {
   + value : String [1]
   + scheme() : String [1]
   + path() : String [1]
@@ -11,7 +11,7 @@ class DV_URI  #whitesmoke;line:gray;line.dotted;text:gray {
   + query() : String [1]
 }
 
-abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DATA_VALUE <|-- DV_URI

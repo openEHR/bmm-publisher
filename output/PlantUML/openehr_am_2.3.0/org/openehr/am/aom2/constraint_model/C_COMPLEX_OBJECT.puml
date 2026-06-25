@@ -8,7 +8,7 @@ class C_COMPLEX_OBJECT {
   + c_congruent_to( other : C_COMPLEX_OBJECT [1] ) : Boolean [1]
 }
 
-abstract class C_DEFINED_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class C_DEFINED_OBJECT #whitesmoke;line:gray;line.dotted;text:gray {
   + default_value : Any [0..1]
   + {abstract} any_allowed() : Boolean [1]
   + {abstract} valid_value( a_value : Any [1] ) : Boolean [1]
@@ -16,7 +16,7 @@ abstract class C_DEFINED_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
   + has_default_value() : Boolean [1]
 }
 
-abstract class C_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class C_OBJECT #whitesmoke;line:gray;line.dotted;text:gray {
   + rm_type_name : String [1]
   + occurrences : Multiplicity_interval [0..1]
   + node_id : String [1]
@@ -31,7 +31,7 @@ abstract class C_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
   + is_prohibited() : Boolean [1]
 }
 
-abstract class ARCHETYPE_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class ARCHETYPE_CONSTRAINT #whitesmoke;line:gray;line.dotted;text:gray {
   + parent : ARCHETYPE_CONSTRAINT [0..1]
   + soc_parent : C_SECOND_ORDER [0..1]
   + {abstract} is_prohibited() : Boolean [1]
@@ -44,7 +44,7 @@ abstract class ARCHETYPE_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray
   + is_leaf() : Boolean [1]
 }
 
-class ADL_CODE_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+class ADL_CODE_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
   + codes_conformant( a_child_code : String [1], a_parent_code : String [1] ) : Boolean [1]
   + is_adl_code( a_code : String [1] ) : Boolean [1]
   + is_id_code( a_code : String [1] ) : Boolean [1]

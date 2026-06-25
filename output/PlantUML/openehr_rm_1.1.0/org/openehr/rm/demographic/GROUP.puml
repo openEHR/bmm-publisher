@@ -3,12 +3,12 @@
 class GROUP {
 }
 
-abstract class ACTOR  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class ACTOR #whitesmoke;line:gray;line.dotted;text:gray {
   + languages : List<DV_TEXT> [*]
   + roles : List<PARTY_REF> [*]
 }
 
-abstract class PARTY  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class PARTY #whitesmoke;line:gray;line.dotted;text:gray {
   + identities : List<PARTY_IDENTITY> [1..*]
   + contacts : List<CONTACT> [*]
   + details : ITEM_STRUCTURE [0..1]
@@ -17,7 +17,7 @@ abstract class PARTY  #whitesmoke;line:gray;line.dotted;text:gray {
   + type() : DV_TEXT [1]
 }
 
-abstract class LOCATABLE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
   + name : DV_TEXT [1]
   + archetype_node_id : String [1]
   + uid : UID_BASED_ID [0..1]
@@ -28,7 +28,7 @@ abstract class LOCATABLE  #whitesmoke;line:gray;line.dotted;text:gray {
   + is_archetype_root() : Boolean [1]
 }
 
-abstract class PATHABLE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class PATHABLE #whitesmoke;line:gray;line.dotted;text:gray {
   + parent() : PATHABLE [1]
   + item_at_path( a_path : String [1] ) : Any [1]
   + items_at_path( a_path : String [1] ) : List<Any> [*]

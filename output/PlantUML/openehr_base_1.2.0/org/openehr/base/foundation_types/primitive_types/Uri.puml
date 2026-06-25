@@ -3,7 +3,7 @@
 class Uri {
 }
 
-class String  #whitesmoke;line:gray;line.dotted;text:gray {
+class String #whitesmoke;line:gray;line.dotted;text:gray {
   + is_empty() : Boolean [1]
   + is_integer() : Boolean [1]
   + as_integer() : Integer [1]
@@ -12,7 +12,7 @@ class String  #whitesmoke;line:gray;line.dotted;text:gray {
   + contains( other : String [1] ) : Boolean [1]
 }
 
-abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} less_than( other : Ordered [1] ) : Boolean [1]
   + less_than_or_equal( other : Ordered [1] ) : Boolean [1]
   + greater_than( other : Ordered [1] ) : Boolean [1]

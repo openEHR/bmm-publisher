@@ -3,6 +3,9 @@
 abstract class CONTENT_ITEM {
 }
 
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 LOCATABLE <|-- CONTENT_ITEM
 
 @enduml

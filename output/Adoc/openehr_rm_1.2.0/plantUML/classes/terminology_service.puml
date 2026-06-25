@@ -11,13 +11,13 @@ class TERMINOLOGY_SERVICE {
   + code_set_identifiers() : List<String> [*]
 }
 
-class OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS  #whitesmoke;line:gray;line.dotted;text:gray {
+class OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS #whitesmoke;line:gray;line.dotted;text:gray {
   + valid_terminology_group_id( an_id : Boolean [1] ) : Boolean [1]
 }
 
 OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS <|-- TERMINOLOGY_SERVICE
 
-class OPENEHR_CODE_SET_IDENTIFIERS  #whitesmoke;line:gray;line.dotted;text:gray {
+class OPENEHR_CODE_SET_IDENTIFIERS #whitesmoke;line:gray;line.dotted;text:gray {
   + valid_code_set_id( an_id : String [1] ) : Boolean [1]
 }
 

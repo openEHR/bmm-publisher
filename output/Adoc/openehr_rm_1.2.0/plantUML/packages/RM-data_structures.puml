@@ -4,6 +4,9 @@ abstract class DATA_STRUCTURE {
   + as_hierarchy() : ITEM [1]
 }
 
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 LOCATABLE <|-- DATA_STRUCTURE
 
 @enduml

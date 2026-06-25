@@ -10,7 +10,7 @@ abstract class DV_AMOUNT {
   + prefix -() : DV_AMOUNT [1]
 }
 
-abstract class DV_QUANTIFIED  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DV_QUANTIFIED #whitesmoke;line:gray;line.dotted;text:gray {
   + magnitude_status : String [0..1]
   + accuracy : Any [0..1]
   + valid_magnitude_status() : Boolean [1]
@@ -18,7 +18,7 @@ abstract class DV_QUANTIFIED  #whitesmoke;line:gray;line.dotted;text:gray {
   + accuracy_unknown() : Boolean [1]
 }
 
-abstract class DV_ORDERED  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DV_ORDERED #whitesmoke;line:gray;line.dotted;text:gray {
   + normal_status : CODE_PHRASE [0..1]
   + normal_range : DV_INTERVAL [0..1]
   + other_reference_ranges : List<REFERENCE_RANGE<DV_ORDERED>> [*]
@@ -28,12 +28,12 @@ abstract class DV_ORDERED  #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} infix <( other : Ordered [1] ) : Boolean [1]
 }
 
-abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DATA_VALUE <|-- DV_ORDERED
 
-abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} infix <( other : Ordered [1] ) : Boolean [1]
 }
 

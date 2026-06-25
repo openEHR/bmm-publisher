@@ -4,7 +4,7 @@ class GENERIC_ID {
   + scheme : String [1]
 }
 
-abstract class OBJECT_ID  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class OBJECT_ID #whitesmoke;line:gray;line.dotted;text:gray {
   + value : String [1]
 }
 

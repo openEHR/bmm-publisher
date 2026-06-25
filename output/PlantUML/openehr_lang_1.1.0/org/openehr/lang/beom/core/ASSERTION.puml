@@ -6,7 +6,7 @@ class ASSERTION {
   + expression : EXPRESSION [1]
 }
 
-abstract class STATEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class STATEMENT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 STATEMENT <|-- ASSERTION

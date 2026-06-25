@@ -5,13 +5,13 @@ class BMM_ASSIGNMENT {
   + source : EL_EXPRESSION [1]
 }
 
-abstract class BMM_SIMPLE_STATEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_SIMPLE_STATEMENT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class BMM_STATEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_STATEMENT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class BMM_STATEMENT_ITEM  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_STATEMENT_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_STATEMENT_ITEM <|-- BMM_STATEMENT

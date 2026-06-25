@@ -8,7 +8,7 @@ class DV_URI {
   + query() : String [1]
 }
 
-abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DATA_VALUE <|-- DV_URI

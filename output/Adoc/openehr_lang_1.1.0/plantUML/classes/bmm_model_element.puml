@@ -4,7 +4,7 @@ abstract class BMM_MODEL_ELEMENT {
   + documentation : String [0..1]
 }
 
-class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT

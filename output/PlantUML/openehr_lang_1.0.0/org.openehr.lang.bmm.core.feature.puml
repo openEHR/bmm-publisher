@@ -4,24 +4,20 @@ class BMM_CONSTANT {
   + generator : EL_INSTANCE_REF [1]
 }
 
+abstract class BMM_INSTANTIABLE {
+}
+
+abstract class BMM_CLASS_FEATURE {
+  + scope : BMM_CLASS [1]
+  + visibility : BMM_VISIBILITY [0..1]
+  + feature_extensions : List<BMM_FEATURE_EXTENSION> [*]
+  + group : BMM_FEATURE_GROUP [1]
+}
+
 class BMM_CONTAINER_PROPERTY {
   + cardinality : Multiplicity_interval [0..1]
   + type : BMM_CONTAINER_TYPE [1]
   + display_name() : String [1]
-}
-
-class BMM_FUNCTION {
-  + operator_definition : BMM_OPERATOR [0..1]
-  + result : BMM_RESULT [1]
-}
-
-class BMM_LOCAL {
-}
-
-class BMM_OPERATOR {
-  + position : BMM_OPERATOR_POSITION [1]
-  + symbols : List<String> [1..*]
-  + name : String [1]
 }
 
 abstract class BMM_PROPERTY {
@@ -30,6 +26,15 @@ abstract class BMM_PROPERTY {
   + is_composition : Boolean [0..1]
   + existence() : Multiplicity_interval [1]
   + display_name() : String [1]
+}
+
+class BMM_FUNCTION {
+  + operator_definition : BMM_OPERATOR [0..1]
+  + result : BMM_RESULT [1]
+}
+
+abstract class BMM_TYPED_FEATURE {
+  + is_nullable : Boolean [0..1]
 }
 
 abstract class BMM_ROUTINE {
@@ -42,13 +47,27 @@ abstract class BMM_ROUTINE {
   + signature() :  [1]
 }
 
-class BMM_PARAMETER {
-  + direction : BMM_PARAMETER_DIRECTION [0..1]
+class BMM_LOCAL {
 }
 
 abstract class BMM_VARIABLE {
   + scope : BMM_ROUTINE [1]
   + signature() :  [1]
+}
+
+class BMM_OPERATOR {
+  + position : BMM_OPERATOR_POSITION [1]
+  + symbols : List<String> [1..*]
+  + name : String [1]
+}
+
+class BMM_PARAMETER {
+  + direction : BMM_PARAMETER_DIRECTION [0..1]
+}
+
+abstract class BMM_CLASS_ENTITY {
+  + is_synthesised_generic : Boolean [0..1]
+  + {abstract} signature() : BMM_SIGNATURE [1]
 }
 
 class BMM_PROCEDURE {
@@ -58,28 +77,15 @@ class BMM_UNITARY_PROPERTY {
   + type : BMM_UNITARY_TYPE [1]
 }
 
-abstract class BMM_CLASS_FEATURE {
-  + scope : BMM_CLASS [1]
-  + visibility : BMM_VISIBILITY [0..1]
-  + feature_extensions : List<BMM_FEATURE_EXTENSION> [*]
-  + group : BMM_FEATURE_GROUP [1]
-}
-
 class BMM_INDEXED_CONTAINER_PROPERTY {
   + type : BMM_INDEXED_CONTAINER_TYPE [1]
   + display_name() : String [1]
 }
 
-abstract class BMM_TYPED_FEATURE {
-  + is_nullable : Boolean [0..1]
+abstract class BMM_TYPED #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class BMM_INSTANTIABLE {
-}
-
-abstract class BMM_CLASS_ENTITY {
-  + is_synthesised_generic : Boolean [0..1]
-  + {abstract} signature() : BMM_SIGNATURE [1]
+abstract class BMM_DECLARATION #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class BMM_RESULT {
@@ -120,23 +126,23 @@ enum BMM_PARAMETER_DIRECTION {
 
 BMM_INSTANTIABLE <|-- BMM_CONSTANT
 BMM_CLASS_FEATURE <|-- BMM_CONSTANT
+BMM_TYPED_FEATURE <|-- BMM_INSTANTIABLE
+BMM_CLASS_ENTITY <|-- BMM_CLASS_FEATURE
 BMM_PROPERTY <|-- BMM_CONTAINER_PROPERTY
-BMM_TYPED_FEATURE <|-- BMM_FUNCTION
-BMM_ROUTINE <|-- BMM_FUNCTION
-BMM_VARIABLE <|-- BMM_LOCAL
 BMM_INSTANTIABLE <|-- BMM_PROPERTY
 BMM_CLASS_FEATURE <|-- BMM_PROPERTY
+BMM_TYPED_FEATURE <|-- BMM_FUNCTION
+BMM_ROUTINE <|-- BMM_FUNCTION
+BMM_TYPED <|-- BMM_TYPED_FEATURE
 BMM_CLASS_FEATURE <|-- BMM_ROUTINE
-BMM_VARIABLE <|-- BMM_PARAMETER
+BMM_VARIABLE <|-- BMM_LOCAL
 BMM_INSTANTIABLE <|-- BMM_VARIABLE
 BMM_CLASS_ENTITY <|-- BMM_VARIABLE
+BMM_VARIABLE <|-- BMM_PARAMETER
+BMM_DECLARATION <|-- BMM_CLASS_ENTITY
 BMM_ROUTINE <|-- BMM_PROCEDURE
 BMM_PROPERTY <|-- BMM_UNITARY_PROPERTY
-BMM_CLASS_ENTITY <|-- BMM_CLASS_FEATURE
 BMM_CONTAINER_PROPERTY <|-- BMM_INDEXED_CONTAINER_PROPERTY
-BMM_TYPED <|-- BMM_TYPED_FEATURE
-BMM_TYPED_FEATURE <|-- BMM_INSTANTIABLE
-BMM_DECLARATION <|-- BMM_CLASS_ENTITY
 BMM_VARIABLE <|-- BMM_RESULT
 BMM_ROUTINE_BODY <|-- BMM_ROUTINE_EXTERNAL
 

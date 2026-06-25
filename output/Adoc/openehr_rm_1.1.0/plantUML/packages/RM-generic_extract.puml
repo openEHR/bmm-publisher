@@ -15,6 +15,9 @@ class GENERIC_CONTENT_ITEM {
   + item : LOCATABLE [0..1]
 }
 
+abstract class EXTRACT_CONTENT_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 EXTRACT_CONTENT_ITEM <|-- GENERIC_CONTENT_ITEM
 
 @enduml

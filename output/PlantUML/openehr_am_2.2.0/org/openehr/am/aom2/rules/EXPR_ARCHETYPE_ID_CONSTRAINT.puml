@@ -4,7 +4,7 @@ class EXPR_ARCHETYPE_ID_CONSTRAINT {
   + item : C_STRING [1]
 }
 
-class EXPR_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray {
+class EXPR_CONSTRAINT #whitesmoke;line:gray;line.dotted;text:gray {
   + item : C_PRIMITIVE_OBJECT [1]
 }
 

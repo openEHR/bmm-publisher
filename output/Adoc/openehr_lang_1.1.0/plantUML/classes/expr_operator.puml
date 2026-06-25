@@ -6,11 +6,11 @@ abstract class EXPR_OPERATOR {
   + symbol : String [0..1]
 }
 
-abstract class EXPRESSION  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EXPRESSION #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} type() : EXPR_TYPE_DEF [1]
 }
 
-abstract class EXPR_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EXPR_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} value() : Any [1]
 }
 

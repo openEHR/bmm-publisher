@@ -4,6 +4,16 @@ class ADMIN_ENTRY {
   + data : ITEM_STRUCTURE [1]
 }
 
+abstract class ENTRY {
+  + language : CODE_PHRASE [1]
+  + encoding : CODE_PHRASE [1]
+  + other_participations : List<PARTICIPATION> [*]
+  + workflow_id : OBJECT_REF [0..1]
+  + subject : PARTY_PROXY [1]
+  + provider : PARTY_PROXY [0..1]
+  + subject_is_self() : Boolean [1]
+}
+
 abstract class CARE_ENTRY {
   + protocol : ITEM_STRUCTURE [0..1]
   + guideline_id : OBJECT_REF [0..1]
@@ -31,11 +41,17 @@ class ACTIVITY {
   + description : ITEM_STRUCTURE [1]
 }
 
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class ISM_TRANSITION {
   + current_state : DV_CODED_TEXT [1]
   + transition : DV_CODED_TEXT [0..1]
   + careflow_step : DV_CODED_TEXT [0..1]
   + reason : List<DV_TEXT> [*]
+}
+
+abstract class PATHABLE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class INSTRUCTION_DETAILS {
@@ -44,14 +60,7 @@ class INSTRUCTION_DETAILS {
   + wf_details : ITEM_STRUCTURE [0..1]
 }
 
-abstract class ENTRY {
-  + language : CODE_PHRASE [1]
-  + encoding : CODE_PHRASE [1]
-  + other_participations : List<PARTICIPATION> [*]
-  + workflow_id : OBJECT_REF [0..1]
-  + subject : PARTY_PROXY [1]
-  + provider : PARTY_PROXY [0..1]
-  + subject_is_self() : Boolean [1]
+abstract class CONTENT_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class INSTRUCTION {
@@ -62,14 +71,16 @@ class INSTRUCTION {
 }
 
 ENTRY <|-- ADMIN_ENTRY
+CONTENT_ITEM <|-- ENTRY
 ENTRY <|-- CARE_ENTRY
 CARE_ENTRY <|-- OBSERVATION
 CARE_ENTRY <|-- EVALUATION
 CARE_ENTRY <|-- ACTION
 LOCATABLE <|-- ACTIVITY
+PATHABLE <|-- LOCATABLE
 PATHABLE <|-- ISM_TRANSITION
 PATHABLE <|-- INSTRUCTION_DETAILS
-CONTENT_ITEM <|-- ENTRY
+LOCATABLE <|-- CONTENT_ITEM
 CARE_ENTRY <|-- INSTRUCTION
 
 @enduml

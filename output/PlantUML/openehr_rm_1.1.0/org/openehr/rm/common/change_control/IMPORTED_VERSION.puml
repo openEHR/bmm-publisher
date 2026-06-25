@@ -8,7 +8,7 @@ class IMPORTED_VERSION <T> {
   + data() : T [1]
 }
 
-abstract class VERSION <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class VERSION <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + contribution : OBJECT_REF [1]
   + signature : String [0..1]
   + commit_audit : AUDIT_DETAILS [1]

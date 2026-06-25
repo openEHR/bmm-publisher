@@ -5,13 +5,13 @@ abstract class EL_PREDICATE {
   + eval_type() : BMM_SIMPLE_TYPE [1]
 }
 
-abstract class EL_SIMPLE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_SIMPLE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class EL_TERMINAL  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_TERMINAL #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class EL_EXPRESSION  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_EXPRESSION #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} eval_type() : BMM_TYPE [1]
   + is_boolean() : Boolean [1]
 }

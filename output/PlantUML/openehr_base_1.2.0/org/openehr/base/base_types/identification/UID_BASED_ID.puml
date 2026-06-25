@@ -6,7 +6,7 @@ abstract class UID_BASED_ID {
   + has_extension() : Boolean [1]
 }
 
-abstract class OBJECT_ID  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class OBJECT_ID #whitesmoke;line:gray;line.dotted;text:gray {
   + value : String [1]
 }
 

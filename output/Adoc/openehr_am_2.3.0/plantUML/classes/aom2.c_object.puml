@@ -15,7 +15,7 @@ abstract class C_OBJECT {
   + is_prohibited() : Boolean [1]
 }
 
-abstract class ARCHETYPE_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class ARCHETYPE_CONSTRAINT #whitesmoke;line:gray;line.dotted;text:gray {
   + parent : ARCHETYPE_CONSTRAINT [0..1]
   + soc_parent : C_SECOND_ORDER [0..1]
   + {abstract} is_prohibited() : Boolean [1]
@@ -28,7 +28,7 @@ abstract class ARCHETYPE_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray
   + is_leaf() : Boolean [1]
 }
 
-class ADL_CODE_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+class ADL_CODE_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
   + codes_conformant( a_child_code : String [1], a_parent_code : String [1] ) : Boolean [1]
   + is_adl_code( a_code : String [1] ) : Boolean [1]
   + is_id_code( a_code : String [1] ) : Boolean [1]

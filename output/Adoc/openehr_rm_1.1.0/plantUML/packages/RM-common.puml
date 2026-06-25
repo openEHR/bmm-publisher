@@ -10,6 +10,9 @@ class EXTRACT {
   + participations : List<EXTRACT_PARTICIPATION> [*]
 }
 
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class EXTRACT_ACTION_REQUEST {
   + request_id : OBJECT_REF [1]
   + uid : HIER_OBJECT_ID [1]
@@ -25,6 +28,9 @@ abstract class EXTRACT_CONTENT_ITEM {
   + is_changed : Boolean [0..1]
   + is_masked : Boolean [0..1]
   + item : Any [0..1]
+}
+
+abstract class EXTRACT_ITEM {
 }
 
 class EXTRACT_ENTITY_CHAPTER {
@@ -46,9 +52,6 @@ class EXTRACT_ERROR {
 
 class EXTRACT_FOLDER {
   + items : List<EXTRACT_ITEM> [*]
-}
-
-abstract class EXTRACT_ITEM {
 }
 
 class EXTRACT_MANIFEST {
@@ -97,9 +100,9 @@ LOCATABLE <|-- EXTRACT
 LOCATABLE <|-- EXTRACT_ACTION_REQUEST
 LOCATABLE <|-- EXTRACT_CHAPTER
 EXTRACT_ITEM <|-- EXTRACT_CONTENT_ITEM
+LOCATABLE <|-- EXTRACT_ITEM
 EXTRACT_CHAPTER <|-- EXTRACT_ENTITY_CHAPTER
 EXTRACT_ITEM <|-- EXTRACT_FOLDER
-LOCATABLE <|-- EXTRACT_ITEM
 LOCATABLE <|-- EXTRACT_REQUEST
 
 @enduml

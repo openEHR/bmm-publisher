@@ -5,6 +5,14 @@ class EL_BINARY_OPERATOR {
   + right_operand : EL_EXPRESSION [1]
 }
 
+abstract class EL_OPERATOR {
+  + precedence_overridden : Boolean [0..1]
+  + symbol : String [0..1]
+  + call : EL_FUNCTION_CALL [1]
+  + operator_definition() : BMM_OPERATOR [1]
+  + equivalent_call() : EL_FUNCTION_CALL [1]
+}
+
 abstract class EL_EXPRESSION {
   + {abstract} eval_type() : BMM_TYPE [1]
   + is_boolean() : Boolean [1]
@@ -15,12 +23,7 @@ class EL_LITERAL {
   + eval_type() : BMM_TYPE [1]
 }
 
-abstract class EL_OPERATOR {
-  + precedence_overridden : Boolean [0..1]
-  + symbol : String [0..1]
-  + call : EL_FUNCTION_CALL [1]
-  + operator_definition() : BMM_OPERATOR [1]
-  + equivalent_call() : EL_FUNCTION_CALL [1]
+abstract class EL_SIMPLE {
 }
 
 class EL_UNARY_OPERATOR {
@@ -31,6 +34,11 @@ class EL_PROPERTY_REF {
   + definition : BMM_PROPERTY [1]
   + is_writable : Boolean [1]
   + eval_type() : BMM_TYPE [1]
+}
+
+abstract class EL_FEATURE_REF {
+  + scoper : EL_VALUE_GENERATOR [0..1]
+  + reference() : String [1]
 }
 
 abstract class EL_PREDICATE {
@@ -96,27 +104,31 @@ abstract class EL_VALUE_GENERATOR {
 class EL_BOOLEAN_EXPRESSION {
 }
 
+abstract class EL_CONSTRAINED {
+  + base_expression : EL_EXPRESSION [1]
+}
+
 class EL_TYPE_REF {
   + type : BMM_TYPE [1]
   + is_mutable : Boolean [1]
   + eval_type() : BMM_TYPE [1]
 }
 
-abstract class EL_FEATURE_REF {
-  + scoper : EL_VALUE_GENERATOR [0..1]
-  + reference() : String [1]
-}
-
 class EL_CONDITIONAL_EXPRESSION <T> {
   + condition : EL_EXPRESSION [1]
+}
+
+abstract class EL_DECISION_BRANCH <T> {
+  + result : T [1]
 }
 
 class EL_CONDITION_CHAIN <T> {
   + items : List<EL_CONDITIONAL_EXPRESSION<T>> [1..*]
 }
 
-abstract class EL_CONSTRAINED {
-  + base_expression : EL_EXPRESSION [1]
+abstract class EL_DECISION_TABLE <T> {
+  + items : List<EL_DECISION_BRANCH<T>> [1..*]
+  + else : T [1]
 }
 
 class EL_CASE_TABLE <T> {
@@ -128,22 +140,10 @@ class EL_CASE <T> {
   + value_constraint : C_OBJECT [1]
 }
 
-abstract class EL_DECISION_TABLE <T> {
-  + items : List<EL_DECISION_BRANCH<T>> [1..*]
-  + else : T [1]
-}
-
-abstract class EL_DECISION_BRANCH <T> {
-  + result : T [1]
-}
-
-abstract class EL_VARIABLE {
-}
-
 abstract class EL_TERMINAL {
 }
 
-abstract class EL_SIMPLE {
+abstract class EL_VARIABLE {
 }
 
 class EL_STATIC_REF {
@@ -162,10 +162,12 @@ class EL_READONLY_VARIABLE {
 }
 
 EL_OPERATOR <|-- EL_BINARY_OPERATOR
-EL_SIMPLE <|-- EL_LITERAL
 EL_EXPRESSION <|-- EL_OPERATOR
+EL_SIMPLE <|-- EL_LITERAL
+EL_TERMINAL <|-- EL_SIMPLE
 EL_OPERATOR <|-- EL_UNARY_OPERATOR
 EL_FEATURE_REF <|-- EL_PROPERTY_REF
+EL_VALUE_GENERATOR <|-- EL_FEATURE_REF
 EL_SIMPLE <|-- EL_PREDICATE
 EL_PREDICATE <|-- EL_DEFINED
 EL_FEATURE_REF <|-- EL_FUNCTION_CALL
@@ -177,17 +179,15 @@ EL_AGENT <|-- EL_FUNCTION_AGENT
 EL_PREDICATE <|-- EL_ATTACHED
 EL_SIMPLE <|-- EL_VALUE_GENERATOR
 EL_CONSTRAINED <|-- EL_BOOLEAN_EXPRESSION
+EL_EXPRESSION <|-- EL_CONSTRAINED
 EL_VALUE_GENERATOR <|-- EL_TYPE_REF
-EL_VALUE_GENERATOR <|-- EL_FEATURE_REF
 EL_DECISION_BRANCH <|-- EL_CONDITIONAL_EXPRESSION
 EL_DECISION_TABLE <|-- EL_CONDITION_CHAIN
-EL_EXPRESSION <|-- EL_CONSTRAINED
+EL_TERMINAL <|-- EL_DECISION_TABLE
 EL_DECISION_TABLE <|-- EL_CASE_TABLE
 EL_DECISION_BRANCH <|-- EL_CASE
-EL_TERMINAL <|-- EL_DECISION_TABLE
-EL_VALUE_GENERATOR <|-- EL_VARIABLE
 EL_EXPRESSION <|-- EL_TERMINAL
-EL_TERMINAL <|-- EL_SIMPLE
+EL_VALUE_GENERATOR <|-- EL_VARIABLE
 EL_FEATURE_REF <|-- EL_STATIC_REF
 EL_VARIABLE <|-- EL_WRITABLE_VARIABLE
 EL_VARIABLE <|-- EL_READONLY_VARIABLE

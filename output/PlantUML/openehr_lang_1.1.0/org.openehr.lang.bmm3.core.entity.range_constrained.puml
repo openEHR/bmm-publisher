@@ -11,6 +11,9 @@ class BMM_ENUMERATION {
   + name_map() : Hash<String,String> [1]
 }
 
+class BMM_SIMPLE_CLASS #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class BMM_ENUMERATION_INTEGER {
   + item_values : List<BMM_INTEGER_VALUE> [*]
 }

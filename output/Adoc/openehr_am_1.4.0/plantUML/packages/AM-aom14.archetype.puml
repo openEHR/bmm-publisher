@@ -23,6 +23,9 @@ class ARCHETYPE {
   + version() : String [1]
 }
 
+abstract class AUTHORED_RESOURCE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 AUTHORED_RESOURCE <|-- ARCHETYPE
 
 @enduml

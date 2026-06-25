@@ -5,7 +5,7 @@ class PARTY_IDENTIFIED {
   + identifiers : List<DV_IDENTIFIER> [*]
 }
 
-abstract class PARTY_PROXY  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class PARTY_PROXY #whitesmoke;line:gray;line.dotted;text:gray {
   + external_ref : PARTY_REF [0..1]
 }
 

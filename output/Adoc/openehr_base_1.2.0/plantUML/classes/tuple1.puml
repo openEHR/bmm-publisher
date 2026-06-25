@@ -3,7 +3,7 @@
 class TUPLE1 <A> {
 }
 
-class TUPLE  #whitesmoke;line:gray;line.dotted;text:gray {
+class TUPLE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 TUPLE <|-- TUPLE1

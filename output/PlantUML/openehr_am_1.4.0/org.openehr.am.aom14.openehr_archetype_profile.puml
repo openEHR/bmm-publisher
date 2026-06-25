@@ -4,6 +4,9 @@ class C_ORDINAL {
   + list : List<ORDINAL> [*]
 }
 
+abstract class C_DOMAIN_TYPE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class C_CODED_TEXT {
   + terminology : String [1]
   + code_list : List<String> [0..1]
