@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **`cadasto/openehr-bmm` upgraded to `^0.3`** — `toArray()` now flattens nested generic types, so the `BmmOdin` writer no longer needs its JSON round-trip workaround.
+- **Improve formatting of external ancestors in package diagrams** — Ancestors from other packages are now grayed out and marked abstract where applicable. Inheritance relations between ancestors are shown if both the parent and child are visible in the diagram.
 
 ### Fixed
 
