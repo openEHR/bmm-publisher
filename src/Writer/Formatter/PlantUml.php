@@ -354,6 +354,7 @@ EOD;
      * Generate PlantUML relationships for a class
      *
      * @param BmmClass $class The BMM class to generate relationships for
+     * @param Collection $visibleClasses Classes that are visible in the diagram
      * @return string The PlantUML relationships
      */
     private function generateRelationships(BmmClass $class, Collection $visibleClasses): string
