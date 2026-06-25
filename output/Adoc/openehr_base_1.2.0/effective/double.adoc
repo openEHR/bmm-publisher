@@ -83,7 +83,7 @@ other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]
 ): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
 a|Double-precision real number subtraction.
 
-|*multiply* __alias__ "&#42;" ( +
+|*multiply* __alias__ "*" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
 a|Double-precision real number multiplication.

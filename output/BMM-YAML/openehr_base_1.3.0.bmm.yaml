@@ -382,7 +382,7 @@ primitive_types:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Integer multiplication.'
         parameters:
           other: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -501,7 +501,7 @@ primitive_types:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Double-precision real number multiplication.'
         parameters:
           other: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -606,7 +606,7 @@ primitive_types:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Product by `_other_`. Actual type of result depends on arithmetic balancing rules.'
         is_abstract: true
         parameters:
@@ -853,7 +853,7 @@ primitive_types:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Real number multiplication.'
         parameters:
           other: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -955,7 +955,7 @@ primitive_types:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Large integer multiplication.'
         parameters:
           other: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -1383,7 +1383,7 @@ primitive_types:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Arithmetic multiplication a duration by a number.'
         parameters:
           a_val: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -1708,7 +1708,7 @@ primitive_types:
         name: Multiplicity_unbounded_marker
         documentation: 'Symbol to use to indicate upper limit unbounded.'
         type: Character
-        value: "'&#42;'"
+        value: "'*'"
     functions:
       is_open:
         name: is_open
@@ -2211,7 +2211,7 @@ class_definitions:
       Regex_any_pattern:
         name: Regex_any_pattern
         type: String
-        value: '".&#42;"'
+        value: '".*"'
       Default_encoding:
         name: Default_encoding
         type: String

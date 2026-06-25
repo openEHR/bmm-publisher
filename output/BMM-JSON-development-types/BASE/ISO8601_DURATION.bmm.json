@@ -148,7 +148,7 @@
         "multiply": {
             "name": "multiply",
             "aliases": [
-                "&#42;"
+                "*"
             ],
             "documentation": "Arithmetic multiplication a duration by a number.",
             "parameters": {

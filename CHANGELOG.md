@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **AsciiDoc class tables no longer escape a lone asterisk to `&#42;`** — `formatText()` previously replaced fixed substrings (`.*`, `'*'`, `)*`, `]*`) with the `&#42;` HTML entity, escaping single regex/multiplicity asterisks (e.g. `0..*`, `` `[a-z]*` ``) that render perfectly well as literal `*` and diverge from the hand-authored spec style. Escaping is now applied per line and only when two or more asterisks remain after excluding a leading list marker — so a lone asterisk stays literal while genuine multi-asterisk regexes (e.g. `(0|[1-9][0-9]*)...*`) are still escaped to prevent stray inline bold. Affected committed `output/Adoc` and `output/legacy-adoc` snapshots regenerated.
+- **Normalised pre-escaped `&#42;` HTML entities in the bundled BMM source data** — the `multiply` operator alias, the `Multiplicity_unbounded_marker` constant, and the `Regex_any_pattern` constant stored a literal asterisk as `&#42;` in `resources/openehr_base_1.2.0`, `openehr_base_1.3.0`, `openehr_rm_1.1.0`, and `openehr_rm_1.2.0`. The model now carries the plain `*` character (output-format escaping is the publisher's job), removing a cross-version inconsistency where the same constant rendered as `*` in some schemas and `&#42;` in others. All derived snapshots regenerated.
 
 ## [0.9.0] - 2026-06-03
 
