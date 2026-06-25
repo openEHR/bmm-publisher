@@ -39,7 +39,7 @@ _Inherited from xref:AM:AOM2:model_overview.adoc#_adl_code_definitions_class[ADL
 a|Regex used to define the legal numeric part of any archetype code. Corresponds to the simple pattern of dotted numbers, as used in typical multi-level numbering schemes. +
 _Inherited from xref:AM:AOM2:model_overview.adoc#_adl_code_definitions_class[ADL_CODE_DEFINITIONS]_
 
-|*Root_code_regex_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"^(id1&#124;at0000)(\.1)&#42;$"` [1..1]
+|*Root_code_regex_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"^(id1&#124;at0000)(\.1)*$"` [1..1]
 a|Regex pattern of the root code of any archetype. Corresponds to at-codes of the form `at0000`, `at0000.1`, `at0000.1.1` etc, and id-codes of the form `id1`, `id1.1`, `id1.1.1` etc. For at-coded ADL2 numbering starts with zero (i.e. `at0000`) while the id-coded ADL2 numbering starts with one (i.e. `id1`). +
 _Inherited from xref:AM:AOM2:model_overview.adoc#_adl_code_definitions_class[ADL_CODE_DEFINITIONS]_
 

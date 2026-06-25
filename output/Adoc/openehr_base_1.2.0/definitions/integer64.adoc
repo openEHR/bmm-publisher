@@ -29,7 +29,7 @@ a|Large integer subtraction.
 
 h|*1..1 +
 (effected)*
-|*multiply* __alias__ "&#42;" ( +
+|*multiply* __alias__ "*" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_integer64_class[Integer64]`
 a|Large integer multiplication.

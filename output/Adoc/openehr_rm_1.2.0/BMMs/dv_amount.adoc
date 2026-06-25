@@ -98,7 +98,7 @@
         "multiply": {
             "name": "multiply",
             "aliases": [
-                "&#42;"
+                "*"
             ],
             "documentation": "Product of this Amount and `_factor_`.",
             "parameters": {

@@ -90,7 +90,7 @@ other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][
 a|Result of subtracting `_other_`. Actual type of result depends on arithmetic balancing rules. +
 _Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
 
-|_(abstract)_ *multiply* __alias__ "&#42;" ( +
+|_(abstract)_ *multiply* __alias__ "*" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
 a|Product by `_other_`. Actual type of result depends on arithmetic balancing rules. +

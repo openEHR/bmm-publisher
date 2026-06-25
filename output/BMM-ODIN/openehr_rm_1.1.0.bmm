@@ -2982,7 +2982,7 @@ Misuse: Should not be used to represent things like blood pressure which are oft
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"DV_PROPORTION">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["factor"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"factor">
@@ -3154,7 +3154,7 @@ If the `_accuracy_` value is a percentage in one operand and not in the other, t
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"DV_AMOUNT">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["factor"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"factor">
@@ -3299,7 +3299,7 @@ NOTE: The display name may be language-dependent for various older and non-syste
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"DV_QUANTITY">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["factor"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"factor">
@@ -3417,7 +3417,7 @@ Misuse: Not to be used for amounts of physical entities (which all have units)."
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"DV_COUNT">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["factor"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"factor">
@@ -3724,7 +3724,7 @@ Misuse: Durations cannot be used to represent points in time, or intervals of ti
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"DV_DURATION">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["factor"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"factor">

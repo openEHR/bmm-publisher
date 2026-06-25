@@ -28,7 +28,7 @@ _Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions
 a| +
 _Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".*"` [1..1]
 a| +
 _Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 

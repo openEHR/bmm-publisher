@@ -2528,7 +2528,7 @@ class_definitions:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Product of this Proportion and `_factor_`.'
         parameters:
           factor: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -2683,7 +2683,7 @@ class_definitions:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Product of this Amount and `_factor_`.'
         parameters:
           factor: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -2809,7 +2809,7 @@ class_definitions:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Product of this `DV_QUANTITY` and `_factor_`.'
         parameters:
           factor: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -2904,7 +2904,7 @@ class_definitions:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Product of this `DV_COUNT` and `_factor_`.'
         parameters:
           factor: !P_BMM_SINGLE_FUNCTION_PARAMETER
@@ -3163,7 +3163,7 @@ class_definitions:
       multiply:
         name: multiply
         aliases:
-          - '&#42;'
+          - '*'
         documentation: 'Product of this Duration and `_factor_`.'
         parameters:
           factor: !P_BMM_SINGLE_FUNCTION_PARAMETER

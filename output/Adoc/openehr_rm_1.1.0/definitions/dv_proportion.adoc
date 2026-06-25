@@ -79,7 +79,7 @@ a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
 h|*1..1 +
 (redefined)*
-|*multiply* __alias__ "&#42;" ( +
+|*multiply* __alias__ "*" ( +
 factor: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
 ): `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]`
 a|Product of this Proportion and `_factor_`.

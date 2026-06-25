@@ -400,7 +400,7 @@ primitive_types = <
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"Integer">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["other"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"other">
@@ -549,7 +549,7 @@ primitive_types = <
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"Double">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["other"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"other">
@@ -681,7 +681,7 @@ primitive_types = <
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"Numeric">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["other"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"other">
@@ -980,7 +980,7 @@ primitive_types = <
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"Real">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["other"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"other">
@@ -1108,7 +1108,7 @@ primitive_types = <
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"Integer64">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["other"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"other">
@@ -1657,7 +1657,7 @@ NOTE: two deviations from ISO 8601 are supported, the first, to allow a negative
 				result = (P_BMM_SIMPLE_TYPE) <
 					type = <"Iso8601_duration">
 				>
-				aliases = <"&#42;", ...>
+				aliases = <"*", ...>
 				parameters = <
 					["a_val"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) <
 						name = <"a_val">
@@ -2065,7 +2065,7 @@ See `Time_definitions._valid_iso8601_date()_` for validity.">
 				name = <"Multiplicity_unbounded_marker">
 				documentation = <"Symbol to use to indicate upper limit unbounded.">
 				type = <"Character">
-				value = <"'&#42;'">
+				value = <"'*'">
 			>
 		>
 		functions = <
@@ -2700,7 +2700,7 @@ Lexical form: `name [  '(' version  ')' ]`.
 			["Regex_any_pattern"] = <
 				name = <"Regex_any_pattern">
 				type = <"String">
-				value = <"\".&#42;\"">
+				value = <"\".*\"">
 			>
 			["Default_encoding"] = <
 				name = <"Default_encoding">

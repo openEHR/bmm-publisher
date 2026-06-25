@@ -29,7 +29,7 @@ a|Result of subtracting `_other_`. Actual type of result depends on arithmetic b
 
 h|*1..1 +
 (abstract)*
-|*multiply* __alias__ "&#42;" ( +
+|*multiply* __alias__ "*" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]`
 a|Product by `_other_`. Actual type of result depends on arithmetic balancing rules.

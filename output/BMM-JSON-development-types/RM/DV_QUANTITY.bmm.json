@@ -108,7 +108,7 @@
         "multiply": {
             "name": "multiply",
             "aliases": [
-                "&#42;"
+                "*"
             ],
             "documentation": "Product of this `DV_QUANTITY` and `_factor_`.",
             "parameters": {

@@ -45,7 +45,7 @@ May be omitted if:
 |*action_archetype_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Perl-compliant regular expression pattern, enclosed in  '//' delimiters, indicating the valid identifiers of archetypes for Actions corresponding to this Activity specification. 
 
-Defaults to  `/.&#42;/`, meaning any archetype.
+Defaults to  `/.*/`, meaning any archetype.
 
 |*description*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [1..1]
 a|Description of the activity, in the form of an archetyped structure.
