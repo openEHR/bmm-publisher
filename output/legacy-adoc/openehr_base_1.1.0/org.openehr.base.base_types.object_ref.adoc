@@ -18,7 +18,7 @@ a|Namespace to which this identifier belongs in the local system context (and po
 
 * `"local"`
 * `"unknown"`
-* a string matching the regex `[a-zA-Z][a-zA-Z0-9_-:/&+?]&#42;`
+* a string matching the regex `[a-zA-Z][a-zA-Z0-9_-:/&+?]*`
 
 h|*1..1*
 |*type*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`

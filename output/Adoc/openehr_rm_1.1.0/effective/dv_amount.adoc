@@ -20,7 +20,7 @@ _Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions
 a| +
 _Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
-|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".*"` [1..1]
 a| +
 _Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
 
@@ -199,7 +199,7 @@ a|Difference of this amount and another. The value of `_accuracy_` in the result
 
 If the `_accuracy_` value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
-|*multiply* __alias__ "&#42;" ( +
+|*multiply* __alias__ "*" ( +
 factor: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
 ): `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]` [1..1]
 a|Product of this Amount and `_factor_`.
