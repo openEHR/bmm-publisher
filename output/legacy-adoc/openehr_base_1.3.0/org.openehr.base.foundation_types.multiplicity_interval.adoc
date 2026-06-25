@@ -29,7 +29,7 @@ h|*Functions*
 
 h|*1..1*
 |*is_open* (): `<<_boolean_class,Boolean>>`
-a|True if this interval imposes no constraints, i.e. is set to `0..&#42;`.
+a|True if this interval imposes no constraints, i.e. is set to `0..*`.
 
 h|*1..1*
 |*is_optional* (): `<<_boolean_class,Boolean>>`

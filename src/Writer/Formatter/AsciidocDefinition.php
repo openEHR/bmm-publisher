@@ -31,10 +31,6 @@ readonly class AsciidocDefinition
     public const array TEXT_REPLACEMENT = [
         '|' => '&#124;',
         '<=' => '\<=',
-        '.*' => '.&#42;',
-        "'*'" => "'&#42;'",
-        ")*" => ")&#42;",
-        "]*" => "]&#42;",
         " {" => " \{",
     ];
 
@@ -512,7 +508,36 @@ readonly class AsciidocDefinition
         $text = $text ?? '';
         $replaced = preg_replace('/(\{[\w.]*})/', '\\\$1', $text, -1, $count);
         $text = $replaced ?? '';
-        return str_replace(array_keys(self::TEXT_REPLACEMENT), array_values(self::TEXT_REPLACEMENT), trim($text));
+        $text = str_replace(array_keys(self::TEXT_REPLACEMENT), array_values(self::TEXT_REPLACEMENT), trim($text));
+        return $this->escapeBoldAsterisks($text);
+    }
+
+    /**
+     * Neutralise AsciiDoc bold formed by asterisks, while leaving a lone asterisk literal.
+     *
+     * Inline bold requires a pair of '*' on the same line, so escaping is applied per line
+     * and only when two or more remain. A leading list marker ('*'/'**'… followed by a space)
+     * is a block-level marker that can never open inline bold, so it is preserved and excluded
+     * from the count. This keeps single regex/multiplicity asterisks literal (e.g. '0..*',
+     * '`[a-z]*`', and bulleted regex lists) while escaping multi-asterisk regexes
+     * (e.g. '(0|[1-9][0-9]*)...*') that would otherwise pair into stray bold.
+     */
+    private function escapeBoldAsterisks(string $text): string
+    {
+        $lines = explode("\n", $text);
+        foreach ($lines as $i => $line) {
+            $marker = '';
+            $inline = $line;
+            if (preg_match('/^(\s*\*+\s)(.*)$/', $line, $m)) {
+                $marker = $m[1];
+                $inline = $m[2];
+            }
+            if (substr_count($inline, '*') >= 2) {
+                $inline = str_replace('*', '&#42;', $inline);
+            }
+            $lines[$i] = $marker . $inline;
+        }
+        return implode("\n", $lines);
     }
 
     /**

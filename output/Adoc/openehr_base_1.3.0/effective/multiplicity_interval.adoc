@@ -97,7 +97,7 @@ a|True if current interval properly contains `_other_`? True if all points of `_
 _Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
 
 |*is_open* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|True if this interval imposes no constraints, i.e. is set to `0..&#42;`.
+a|True if this interval imposes no constraints, i.e. is set to `0..*`.
 
 |*is_optional* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|True if this interval expresses optionality, i.e. `0..1`.

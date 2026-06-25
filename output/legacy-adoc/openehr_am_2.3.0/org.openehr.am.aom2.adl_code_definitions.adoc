@@ -33,7 +33,7 @@ h|*1..1*
 a|Regex used to define the legal numeric part of any archetype code. Corresponds to the simple pattern of dotted numbers, as used in typical multi-level numbering schemes.
 
 h|*1..1*
-|*Root_code_regex_pattern*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]{nbsp}={nbsp}"^id1(\.1)&#42;$"`
+|*Root_code_regex_pattern*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]{nbsp}={nbsp}"^id1(\.1)*$"`
 a|Regex pattern of the root id code of any archetype. Corresponds to codes of the form `id1`, `id1.1`, `id1.1.1` etc..
 
 h|*1..1*
