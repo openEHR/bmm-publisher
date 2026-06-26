@@ -47,6 +47,9 @@ abstract class BMM_SCHEMA {
   + schema_id() : String [1]
 }
 
+class BMM_MODEL_METADATA #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class BMM_INCLUDE_SPEC {
   + id : String [1]
 }

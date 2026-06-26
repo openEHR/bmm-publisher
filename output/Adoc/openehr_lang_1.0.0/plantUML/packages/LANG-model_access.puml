@@ -47,6 +47,9 @@ abstract class BMM_SCHEMA {
   + schema_id() : String [1]
 }
 
+class BMM_MODEL_METADATA #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 enum BMM_SCHEMA_METADATA_KEY {
   bmm_version 
   model_publisher 

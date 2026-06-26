@@ -4,7 +4,7 @@ class TEMPLATE {
   + overlays : List<TEMPLATE_OVERLAY> [*]
 }
 
-class AUTHORED_ARCHETYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+class AUTHORED_ARCHETYPE #whitesmoke;line:gray;line.dotted;text:gray {
   + adl_version : String [0..1]
   + build_uid : UUID [1]
   + rm_release : String [1]
@@ -12,7 +12,7 @@ class AUTHORED_ARCHETYPE  #whitesmoke;line:gray;line.dotted;text:gray {
   + other_meta_data : Hash<String,String> [1]
 }
 
-abstract class ARCHETYPE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class ARCHETYPE #whitesmoke;line:gray;line.dotted;text:gray {
   + parent_archetype_id : String [0..1]
   + archetype_id : ARCHETYPE_HRID [1]
   + is_differential : Boolean [1]
@@ -29,7 +29,7 @@ abstract class ARCHETYPE  #whitesmoke;line:gray;line.dotted;text:gray {
 
 ARCHETYPE <|-- AUTHORED_ARCHETYPE
 
-abstract class AUTHORED_RESOURCE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class AUTHORED_RESOURCE #whitesmoke;line:gray;line.dotted;text:gray {
   + uid : UUID [0..1]
   + original_language : Terminology_code [1]
   + description : RESOURCE_DESCRIPTION [0..1]

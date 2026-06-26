@@ -7,10 +7,10 @@ class Multiplicity_interval {
   + is_prohibited() : Boolean [1]
 }
 
-class Proper_interval <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+class Proper_interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class Interval <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + lower : T [0..1]
   + upper : T [0..1]
   + lower_unbounded : Boolean [1]

@@ -23,6 +23,9 @@ class AUTHORED_ARCHETYPE {
   + other_meta_data : Hash<String,String> [1]
 }
 
+abstract class AUTHORED_RESOURCE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class TEMPLATE {
   + overlays : List<TEMPLATE_OVERLAY> [*]
 }

@@ -3,7 +3,7 @@
 class BMM_INDEXED_CONTAINER_VALUE {
 }
 
-abstract class BMM_LITERAL_VALUE <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_LITERAL_VALUE <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + value_literal : String [1]
   + value : Any [0..1]
   + syntax : String [0..1]

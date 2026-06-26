@@ -3,6 +3,10 @@
 abstract class VIEW_ENTRY {
 }
 
+abstract class VIEW_ITEM {
+  + meta_data : CLUSTER [0..1]
+}
+
 class VIEW_SECTION {
   + items : List<VIEW_ITEM> [*]
 }
@@ -14,8 +18,7 @@ class CITATION <L> {
   + resolved : L [1]
 }
 
-abstract class VIEW_ITEM {
-  + meta_data : CLUSTER [0..1]
+abstract class CONTENT_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 enum VIEW_STATUS {
@@ -24,8 +27,8 @@ enum VIEW_STATUS {
 }
 
 VIEW_ITEM <|-- VIEW_ENTRY
+CONTENT_ITEM <|-- VIEW_ITEM
 VIEW_ITEM <|-- VIEW_SECTION
 VIEW_ENTRY <|-- CITATION
-CONTENT_ITEM <|-- VIEW_ITEM
 
 @enduml

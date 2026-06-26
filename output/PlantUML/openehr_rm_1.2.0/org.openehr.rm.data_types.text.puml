@@ -4,6 +4,9 @@ class DV_PARAGRAPH {
   + items : List<DV_TEXT> [1..*]
 }
 
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class DV_TEXT {
   + value : String [1]
   + hyperlink : DV_URI [0..1]

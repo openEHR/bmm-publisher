@@ -6,7 +6,7 @@ class BMM_CONTAINER_PROPERTY {
   + display_name() : String [1]
 }
 
-class BMM_PROPERTY <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_PROPERTY <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + is_mandatory : Boolean [0..1]
   + is_computed : Boolean [0..1]
@@ -17,11 +17,11 @@ class BMM_PROPERTY <T>  #whitesmoke;line:gray;line.dotted;text:gray {
   + display_name() : String [1]
 }
 
-abstract class BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 
-class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT

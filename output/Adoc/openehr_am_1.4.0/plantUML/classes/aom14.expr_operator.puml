@@ -5,7 +5,7 @@ abstract class EXPR_OPERATOR {
   + operator : OPERATOR_KIND [1]
 }
 
-abstract class EXPR_ITEM  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EXPR_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
   + type : String [1]
 }
 

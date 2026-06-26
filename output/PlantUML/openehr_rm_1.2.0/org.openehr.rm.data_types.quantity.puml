@@ -10,7 +10,16 @@ abstract class DV_ORDERED {
   + {abstract} less_than( other : DV_ORDERED [1] ) : Boolean [1]
 }
 
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class DV_INTERVAL <T> {
+}
+
+abstract class Interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class REFERENCE_RANGE <T> {

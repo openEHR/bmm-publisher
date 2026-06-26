@@ -6,7 +6,7 @@ class OP_DEF_AND {
   + evaluation_agent : FUNCTION<> [1]
 }
 
-abstract class OPERATOR_DEF_EXTERNAL  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class OPERATOR_DEF_EXTERNAL #whitesmoke;line:gray;line.dotted;text:gray {
   + evaluation_agent : FUNCTION<TUPLE,Any> [1]
 }
 

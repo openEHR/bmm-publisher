@@ -19,6 +19,10 @@ class P_BMM_CLASS {
   + populate_bmm_class( a_bmm_schema : BMM_MODEL [1] ) : void [1]
 }
 
+abstract class P_BMM_MODEL_ELEMENT {
+  + documentation : String [0..1]
+}
+
 class P_BMM_INTERFACE {
   + name : String [1]
   + functions : Hash<String,P_BMM_FUNCTION> [0..1]
@@ -42,6 +46,13 @@ class P_BMM_SCHEMA {
   + validate() : void [1]
   + create_bmm_model() : void [1]
   + canonical_packages() : P_BMM_PACKAGE [1]
+}
+
+class P_BMM_PACKAGE_CONTAINER {
+  + packages : Hash<String,P_BMM_PACKAGE> [1]
+}
+
+class BMM_SCHEMA_CORE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 abstract class P_BMM_PROPERTY {
@@ -81,6 +92,10 @@ class P_BMM_SIMPLE_TYPE {
   + bmm_type : BMM_SIMPLE_TYPE [0..1]
 }
 
+abstract class P_BMM_BASE_TYPE {
+  + value_constraint : String [0..1]
+}
+
 class P_BMM_OPEN_TYPE {
   + type : String [1]
   + bmm_type : BMM_OPEN_TYPE [0..1]
@@ -100,10 +115,6 @@ class P_BMM_PACKAGE {
   + bmm_package_definition : BMM_PACKAGE [0..1]
   + merge( other : P_BMM_PACKAGE [1] ) : void [1]
   + create_bmm_package_definition() : void [1]
-}
-
-class P_BMM_PACKAGE_CONTAINER {
-  + packages : Hash<String,P_BMM_PACKAGE> [1]
 }
 
 class P_BMM_CONTAINER_PROPERTY {
@@ -179,16 +190,11 @@ class P_BMM_ENUMERATION_STRING {
   + bmm_class : BMM_ENUMERATION_STRING [0..1]
 }
 
-abstract class P_BMM_MODEL_ELEMENT {
-  + documentation : String [0..1]
-}
-
-abstract class P_BMM_BASE_TYPE {
-  + value_constraint : String [0..1]
-}
-
 class P_BMM_SCHEMA_DESCRIPTOR {
   + bmm_schema : P_BMM_SCHEMA [0..1]
+}
+
+class SCHEMA_DESCRIPTOR #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class P_BMM_INDEXED_CONTAINER_PROPERTY {
@@ -210,6 +216,7 @@ P_BMM_MODEL_ELEMENT <|-- P_BMM_PROPERTY
 P_BMM_MODEL_ELEMENT <|-- P_BMM_GENERIC_PARAMETER
 P_BMM_TYPE <|-- P_BMM_CONTAINER_TYPE
 P_BMM_BASE_TYPE <|-- P_BMM_SIMPLE_TYPE
+P_BMM_TYPE <|-- P_BMM_BASE_TYPE
 P_BMM_BASE_TYPE <|-- P_BMM_OPEN_TYPE
 P_BMM_BASE_TYPE <|-- P_BMM_GENERIC_TYPE
 P_BMM_PACKAGE_CONTAINER <|-- P_BMM_PACKAGE
@@ -227,7 +234,6 @@ P_BMM_FUNCTION_PARAMETER <|-- P_BMM_CONTAINER_FUNCTION_PARAMETER
 P_BMM_FUNCTION_PARAMETER <|-- P_BMM_GENERIC_FUNCTION_PARAMETER
 P_BMM_ENUMERATION <|-- P_BMM_ENUMERATION_INTEGER
 P_BMM_ENUMERATION <|-- P_BMM_ENUMERATION_STRING
-P_BMM_TYPE <|-- P_BMM_BASE_TYPE
 SCHEMA_DESCRIPTOR <|-- P_BMM_SCHEMA_DESCRIPTOR
 P_BMM_CONTAINER_PROPERTY <|-- P_BMM_INDEXED_CONTAINER_PROPERTY
 P_BMM_CONTAINER_TYPE <|-- P_BMM_INDEXED_CONTAINER_TYPE

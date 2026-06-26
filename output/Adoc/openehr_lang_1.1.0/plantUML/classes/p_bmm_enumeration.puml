@@ -7,7 +7,7 @@ class P_BMM_ENUMERATION {
   + bmm_class : BMM_ENUMERATION [0..1]
 }
 
-class P_BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
+class P_BMM_CLASS #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + ancestors : List<String> [*]
   + constants : Hash<String,P_BMM_CONSTANT> [0..1]
@@ -26,7 +26,7 @@ class P_BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
   + populate_bmm_class( a_bmm_schema : BMM_MODEL [1] ) : void [1]
 }
 
-abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 

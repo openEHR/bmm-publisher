@@ -5,7 +5,7 @@ abstract class DV_ENCAPSULATED {
   + language : CODE_PHRASE [0..1]
 }
 
-abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DATA_VALUE <|-- DV_ENCAPSULATED

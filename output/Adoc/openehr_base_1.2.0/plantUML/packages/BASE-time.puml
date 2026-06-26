@@ -25,6 +25,12 @@ class Iso8601_date_time {
   + subtract_nominal( a_diff : Iso8601_duration [1] ) : Iso8601_date [1]
 }
 
+abstract class Iso8601_type {
+  + value : String [1]
+  + {abstract} is_partial() : Boolean [1]
+  + {abstract} is_extended() : Boolean [1]
+}
+
 class Iso8601_duration {
   + is_extended() : Boolean [1]
   + is_partial() : Boolean [1]
@@ -75,10 +81,21 @@ class Iso8601_timezone {
   + as_string() : String [1]
 }
 
-abstract class Iso8601_type {
-  + value : String [1]
-  + {abstract} is_partial() : Boolean [1]
-  + {abstract} is_extended() : Boolean [1]
+abstract class Temporal {
+}
+
+class Time_Definitions {
+  + valid_year( y : Integer [1] ) : Boolean [1]
+  + valid_month( m : Integer [1] ) : Boolean [1]
+  + valid_day( y : Integer [1], m : Integer [1], d : Integer [1] ) : Boolean [1]
+  + valid_hour( h : Integer [1], m : Integer [1], s : Integer [1] ) : Boolean [1]
+  + valid_minute( m : Integer [1] ) : Boolean [1]
+  + valid_second( s : Integer [1] ) : Boolean [1]
+  + valid_fractional_second( fs : Double [1] ) : Boolean [1]
+  + valid_iso8601_date( s : String [1] ) : Boolean [1]
+  + valid_iso8601_time( s : String [1] ) : Boolean [1]
+  + valid_iso8601_date_time( s : String [1] ) : Boolean [1]
+  + valid_iso8601_duration( s : String [1] ) : Boolean [1]
 }
 
 class Iso8601_date {
@@ -98,30 +115,16 @@ class Iso8601_date {
   + subtract_nominal( a_diff : Iso8601_duration [1] ) : Iso8601_date [1]
 }
 
-class Time_Definitions {
-  + valid_year( y : Integer [1] ) : Boolean [1]
-  + valid_month( m : Integer [1] ) : Boolean [1]
-  + valid_day( y : Integer [1], m : Integer [1], d : Integer [1] ) : Boolean [1]
-  + valid_hour( h : Integer [1], m : Integer [1], s : Integer [1] ) : Boolean [1]
-  + valid_minute( m : Integer [1] ) : Boolean [1]
-  + valid_second( s : Integer [1] ) : Boolean [1]
-  + valid_fractional_second( fs : Double [1] ) : Boolean [1]
-  + valid_iso8601_date( s : String [1] ) : Boolean [1]
-  + valid_iso8601_time( s : String [1] ) : Boolean [1]
-  + valid_iso8601_date_time( s : String [1] ) : Boolean [1]
-  + valid_iso8601_duration( s : String [1] ) : Boolean [1]
-}
-
-abstract class Temporal {
+abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 Iso8601_type <|-- Iso8601_date_time
+Temporal <|-- Iso8601_type
+Time_Definitions <|-- Iso8601_type
 Iso8601_type <|-- Iso8601_duration
 Iso8601_type <|-- Iso8601_time
 Iso8601_type <|-- Iso8601_timezone
-Temporal <|-- Iso8601_type
-Time_Definitions <|-- Iso8601_type
-Iso8601_type <|-- Iso8601_date
 Ordered <|-- Temporal
+Iso8601_type <|-- Iso8601_date
 
 @enduml

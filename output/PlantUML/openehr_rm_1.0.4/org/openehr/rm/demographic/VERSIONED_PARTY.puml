@@ -3,7 +3,7 @@
 class VERSIONED_PARTY {
 }
 
-class VERSIONED_OBJECT <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+class VERSIONED_OBJECT <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + uid : HIER_OBJECT_ID [1]
   + owner_id : OBJECT_REF [1]
   + time_created : DV_DATE_TIME [1]

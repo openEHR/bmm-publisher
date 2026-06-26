@@ -4,6 +4,9 @@ class SECTION {
   + items : List<CONTENT_ITEM> [*]
 }
 
+abstract class CONTENT_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 CONTENT_ITEM <|-- SECTION
 
 @enduml

@@ -4,7 +4,7 @@ class P_BMM_SCHEMA_DESCRIPTOR {
   + bmm_schema : P_BMM_SCHEMA [0..1]
 }
 
-class SCHEMA_DESCRIPTOR  #whitesmoke;line:gray;line.dotted;text:gray {
+class SCHEMA_DESCRIPTOR #whitesmoke;line:gray;line.dotted;text:gray {
   + p_schema : P_BMM_SCHEMA [0..1]
   + schema : BMM_MODEL [0..1]
   + schema_id : String [1]
@@ -18,7 +18,7 @@ class SCHEMA_DESCRIPTOR  #whitesmoke;line:gray;line.dotted;text:gray {
   + create_schema() : void [1]
 }
 
-class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_DEFINITIONS <|-- SCHEMA_DESCRIPTOR

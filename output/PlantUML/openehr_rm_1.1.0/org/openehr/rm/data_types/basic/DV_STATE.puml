@@ -5,7 +5,7 @@ class DV_STATE {
   + is_terminal : Boolean [1]
 }
 
-abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DATA_VALUE <|-- DV_STATE

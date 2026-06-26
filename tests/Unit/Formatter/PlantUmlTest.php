@@ -115,6 +115,45 @@ final class PlantUmlTest extends TestCase
     }
 
     #[Test]
+    public function formatPackageProducesGrayedOutExternalAncestor(): void
+    {
+        /** @var BmmPackage $package */
+        $package = $this->baseSchema->packages->get("org.openehr.base.bmm_persistence");
+        self::assertInstanceOf(BmmPackage::class, $package);
+
+        $output = $this->formatter->format($package, 'org.openehr.term', $this->termSchema);
+
+        // Package diagrams contain class definitions
+        self::assertStringContainsString('class BMM_SCHEMA #whitesmoke;line:gray;line.dotted;text:gray', $output);
+    }
+
+    #[Test]
+    public function formatPackageProducesAbstractExternalAncestor(): void
+    {
+        /** @var BmmPackage $package */
+        $package = $this->baseSchema->packages->get("org.openehr.base.bmm_persistence");
+        self::assertInstanceOf(BmmPackage::class, $package);
+
+        $output = $this->formatter->format($package, 'org.openehr.term', $this->termSchema);
+
+        // Package diagrams contain class definitions
+        self::assertStringContainsString('abstract class BMM_SCHEMA', $output);
+    }
+
+    #[Test]
+    public function formatPackageProducesInheritanceRelationForExternalAncestor(): void
+    {
+        /** @var BmmPackage $package */
+        $package = $this->baseSchema->packages->get("org.openehr.base.bmm_persistence");
+        self::assertInstanceOf(BmmPackage::class, $package);
+
+        $output = $this->formatter->format($package, 'org.openehr.term', $this->termSchema);
+
+        // Package diagrams contain class definitions
+        self::assertStringContainsString('P_BMM_PACKAGE_CONTAINER <|-- BMM_SCHEMA', $output);
+    }
+
+    #[Test]
     public function formatTypeReturnsTypeName(): void
     {
         self::assertSame('String', $this->formatter->formatType('String'));

@@ -23,7 +23,7 @@ class ARCHETYPE {
   + version() : String [1]
 }
 
-abstract class AUTHORED_RESOURCE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class AUTHORED_RESOURCE #whitesmoke;line:gray;line.dotted;text:gray {
   + uid : UUID [0..1]
   + original_language : Terminology_code [1]
   + description : RESOURCE_DESCRIPTION [0..1]

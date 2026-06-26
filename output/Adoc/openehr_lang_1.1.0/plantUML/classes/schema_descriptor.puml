@@ -14,7 +14,7 @@ class SCHEMA_DESCRIPTOR {
   + create_schema() : void [1]
 }
 
-class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_DEFINITIONS <|-- SCHEMA_DESCRIPTOR

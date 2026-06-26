@@ -15,6 +15,10 @@ class OP_DEF_AND {
   + evaluation_agent : FUNCTION<> [1]
 }
 
+abstract class OPERATOR_DEF_EXTERNAL {
+  + evaluation_agent : FUNCTION<TUPLE,Any> [1]
+}
+
 class OP_DEF_EXAMPLE {
   + identifier : String [1]
   + symbols : List<String> [*]
@@ -30,10 +34,6 @@ class OP_DEF_EXISTS {
 class OP_DEF_PLUS {
   + name : String [1]
   + symbols : List<String> [*]
-}
-
-abstract class OPERATOR_DEF_EXTERNAL {
-  + evaluation_agent : FUNCTION<TUPLE,Any> [1]
 }
 
 FUNCTION_DEF_EXTERNAL <|-- FUNCTION_DEF_EXAMPLE

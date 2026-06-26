@@ -5,18 +5,18 @@ class EXPR_ARCHETYPE_REF {
   + item : ARCHETYPE_CONSTRAINT [1]
 }
 
-class EXPR_VALUE_REF  #whitesmoke;line:gray;line.dotted;text:gray {
+class EXPR_VALUE_REF #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class EXPR_LEAF  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EXPR_LEAF #whitesmoke;line:gray;line.dotted;text:gray {
   + item : Any [0..1]
 }
 
-abstract class EXPRESSION  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EXPRESSION #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} type() : EXPR_TYPE_DEF [1]
 }
 
-abstract class EXPR_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EXPR_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} value() : Any [1]
 }
 

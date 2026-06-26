@@ -3,10 +3,16 @@
 class VERSIONED_FOLDER {
 }
 
+class VERSIONED_OBJECT <T> #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class FOLDER {
   + items : List<OBJECT_REF> [*]
   + folders : List<FOLDER> [*]
   + details : ITEM_STRUCTURE [0..1]
+}
+
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 VERSIONED_OBJECT <|-- VERSIONED_FOLDER

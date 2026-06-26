@@ -15,6 +15,9 @@ class EHR {
 class VERSIONED_EHR_ACCESS {
 }
 
+class VERSIONED_OBJECT <T> #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class VERSIONED_EHR_STATUS {
 }
 
@@ -25,6 +28,9 @@ class VERSIONED_COMPOSITION {
 class EHR_ACCESS {
   + settings : ACCESS_CONTROL_SETTINGS [0..1]
   + scheme() : String [1]
+}
+
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class EHR_STATUS {

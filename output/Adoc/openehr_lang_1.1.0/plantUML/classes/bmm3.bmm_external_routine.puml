@@ -5,7 +5,7 @@ class BMM_EXTERNAL_ROUTINE {
   + argument_mapping : Hash<String,String> [0..1]
 }
 
-abstract class BMM_ROUTINE_DEFINITION  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_ROUTINE_DEFINITION #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_ROUTINE_DEFINITION <|-- BMM_EXTERNAL_ROUTINE

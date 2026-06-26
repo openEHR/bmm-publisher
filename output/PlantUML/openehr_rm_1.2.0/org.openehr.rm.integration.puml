@@ -4,6 +4,9 @@ class GENERIC_ENTRY {
   + data : ITEM [1]
 }
 
+abstract class CONTENT_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 CONTENT_ITEM <|-- GENERIC_ENTRY
 
 @enduml

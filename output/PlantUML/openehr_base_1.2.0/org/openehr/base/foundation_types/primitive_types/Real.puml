@@ -13,10 +13,10 @@ class Real {
   + equal( other : Real [1] ) : Boolean [1]
 }
 
-abstract class Ordered_Numeric  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Ordered_Numeric #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} less_than( other : Ordered [1] ) : Boolean [1]
   + less_than_or_equal( other : Ordered [1] ) : Boolean [1]
   + greater_than( other : Ordered [1] ) : Boolean [1]
@@ -25,7 +25,7 @@ abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
 
 Ordered <|-- Ordered_Numeric
 
-abstract class Numeric  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Numeric #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} add( other : Numeric [1] ) : Numeric [1]
   + {abstract} subtract( other : Numeric [1] ) : Numeric [1]
   + {abstract} multiply( other : Numeric [1] ) : Numeric [1]

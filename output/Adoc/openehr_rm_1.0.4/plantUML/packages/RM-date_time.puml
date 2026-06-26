@@ -5,9 +5,18 @@ class DV_DURATION {
   + is_strictly_comparable_to( other : DV_ORDERED [1] ) : Boolean [1]
 }
 
+abstract class DV_AMOUNT #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
+class Iso8601_duration #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 abstract class DV_TEMPORAL {
   + accuracy : DV_DURATION [0..1]
   + diff( other : DV_TEMPORAL [1] ) : DV_DURATION [1]
+}
+
+abstract class DV_ABSOLUTE_QUANTITY #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class DV_DATE {
@@ -20,6 +29,9 @@ class DV_DATE {
   + diff( other : DV_DATE [1] ) : DV_DURATION [1]
 }
 
+class Iso8601_date #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class DV_TIME {
   + value : String [1]
   + magnitude() : Real [1]
@@ -28,6 +40,9 @@ class DV_TIME {
   + subtract( a_diif : DV_AMOUNT [1] ) : DV_ABSOLUTE_QUANTITY [1]
   + operator=( source : DV_TIME [1] ) : DV_TIME [1]
   + diff( other : DV_TIME [1] ) : DV_DURATION [1]
+}
+
+class Iso8601_time #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class DV_DATE_TIME {
@@ -39,6 +54,9 @@ class DV_DATE_TIME {
   + diff( other : DV_ABSOLUTE_QUANTITY [1] ) : DV_AMOUNT [1]
   + operator=( source : DV_DATE_TIME [1] ) : DV_DATE_TIME [1]
   + as_string() : String [1]
+}
+
+class Iso8601_date_time #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DV_AMOUNT <|-- DV_DURATION

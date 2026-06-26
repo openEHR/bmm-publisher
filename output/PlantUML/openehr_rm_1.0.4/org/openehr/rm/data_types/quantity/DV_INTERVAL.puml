@@ -3,12 +3,12 @@
 class DV_INTERVAL <T> {
 }
 
-abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DATA_VALUE <|-- DV_INTERVAL
 
-class Interval <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+class Interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + lower : T [0..1]
   + upper : T [0..1]
   + lower_unbounded : Boolean [1]

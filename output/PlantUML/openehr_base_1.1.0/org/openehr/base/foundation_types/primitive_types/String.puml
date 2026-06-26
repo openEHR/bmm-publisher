@@ -7,7 +7,7 @@ class String {
   + as_integer() : Integer [1]
 }
 
-abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} infix <( other : Ordered [1] ) : Boolean [1]
 }
 

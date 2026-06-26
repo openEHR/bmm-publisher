@@ -3,7 +3,7 @@
 class FUNCTION <ARGS, RESULT> {
 }
 
-class ROUTINE <ARGS>  #whitesmoke;line:gray;line.dotted;text:gray {
+class ROUTINE <ARGS> #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 ROUTINE <|-- FUNCTION

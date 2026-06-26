@@ -19,7 +19,7 @@ class P_BMM_CLASS {
   + populate_bmm_class( a_bmm_schema : BMM_MODEL [1] ) : void [1]
 }
 
-abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 

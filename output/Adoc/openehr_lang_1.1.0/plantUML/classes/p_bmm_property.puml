@@ -11,7 +11,7 @@ abstract class P_BMM_PROPERTY {
   + create_bmm_property( a_bmm_schema : BMM_MODEL [1], a_class_def : BMM_CLASS [1] ) : void [1]
 }
 
-abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 

@@ -10,12 +10,12 @@ abstract class DV_ORDERED {
   + {abstract} less_than( other : DV_ORDERED [1] ) : Boolean [1]
 }
 
-abstract class DATA_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 DATA_VALUE <|-- DV_ORDERED
 
-abstract class Ordered  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} less_than( other : Ordered [1] ) : Boolean [1]
   + less_than_or_equal( other : Ordered [1] ) : Boolean [1]
   + greater_than( other : Ordered [1] ) : Boolean [1]

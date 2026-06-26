@@ -7,6 +7,9 @@ abstract class EVENT <T> {
   + offset() : DV_DURATION [1]
 }
 
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class POINT_EVENT <T> {
 }
 
@@ -26,9 +29,13 @@ class HISTORY <T> {
   + is_periodic() : Boolean [1]
 }
 
+abstract class DATA_STRUCTURE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 LOCATABLE <|-- EVENT
 EVENT <|-- POINT_EVENT
 EVENT <|-- INTERVAL_EVENT
 DATA_STRUCTURE <|-- HISTORY
+LOCATABLE <|-- DATA_STRUCTURE
 
 @enduml

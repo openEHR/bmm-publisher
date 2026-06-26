@@ -31,13 +31,13 @@ abstract class BMM_CLASS {
   + flat_properties() : List<BMM_PROPERTY> [*]
 }
 
-abstract class BMM_MODULE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_MODULE #whitesmoke;line:gray;line.dotted;text:gray {
   + scope : BMM_MODEL [1]
   + feature_groups : List<BMM_FEATURE_GROUP> [*]
   + features : List<BMM_FORMAL_ELEMENT> [*]
 }
 
-abstract class BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + documentation : Hash<String,Any> [0..1]
   + scope : BMM_MODEL_ELEMENT [1]
