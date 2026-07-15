@@ -10,6 +10,10 @@ class ARCHETYPE_ID {
   + version_id() : String [1]
 }
 
+abstract class OBJECT_ID {
+  + value : String [1]
+}
+
 class GENERIC_ID {
   + scheme : String [1]
 }
@@ -17,14 +21,16 @@ class GENERIC_ID {
 class HIER_OBJECT_ID {
 }
 
+abstract class UID_BASED_ID {
+  + root() : UID [1]
+  + extension() : String [1]
+  + has_extension() : Boolean [1]
+}
+
 class LOCATABLE_REF {
   + path : String [0..1]
   + id : UID_BASED_ID [1]
   + as_uri() : String [1]
-}
-
-abstract class OBJECT_ID {
-  + value : String [1]
 }
 
 class OBJECT_REF {
@@ -57,20 +63,14 @@ class VERSION_TREE_ID {
   + branch_version() : String [1]
 }
 
-abstract class UID_BASED_ID {
-  + root() : UID [1]
-  + extension() : String [1]
-  + has_extension() : Boolean [1]
-}
-
 class UUID {
-}
-
-class INTERNET_ID {
 }
 
 abstract class UID {
   + value : String [1]
+}
+
+class INTERNET_ID {
 }
 
 class ISO_OID {
@@ -85,11 +85,11 @@ class ACCESS_GROUP_REF {
 OBJECT_ID <|-- ARCHETYPE_ID
 OBJECT_ID <|-- GENERIC_ID
 UID_BASED_ID <|-- HIER_OBJECT_ID
+OBJECT_ID <|-- UID_BASED_ID
 OBJECT_REF <|-- LOCATABLE_REF
 UID_BASED_ID <|-- OBJECT_VERSION_ID
 OBJECT_REF <|-- PARTY_REF
 OBJECT_ID <|-- TERMINOLOGY_ID
-OBJECT_ID <|-- UID_BASED_ID
 UID <|-- UUID
 UID <|-- INTERNET_ID
 UID <|-- ISO_OID

@@ -24,6 +24,7 @@ use Cadasto\OpenEHR\BMM\Model\BmmSingleFunctionParameter;
 use Cadasto\OpenEHR\BMM\Model\BmmSingleFunctionParameterOpen;
 use Cadasto\OpenEHR\BMM\Model\BmmSingleProperty;
 use Cadasto\OpenEHR\BMM\Model\BmmSinglePropertyOpen;
+use Cadasto\OpenEHR\BMM\Helper\Collection;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 
 readonly class PlantUml
@@ -55,22 +56,7 @@ readonly class PlantUml
             $content = $this->formatEnum($bmmItem);
         }
         if ($bmmItem instanceof BmmPackage && count($bmmItem->classes)) {
-            $classesOutput = [];
-            $relationshipOutput = [];
-            foreach ($bmmItem->classes as $className) {
-                $class = $this->resolveClass($schema, $className);
-                if ($class instanceof BmmClass) {
-                    $classesOutput[] = $this->formatClass($class);
-                    $relationshipOutput[] = $this->generateRelationships($class);
-                }
-                if ($class instanceof BmmInterface) {
-                    $classesOutput[] = $this->formatInterface($class);
-                }
-                if ($class instanceof BmmEnumerationString || $class instanceof BmmEnumerationInteger) {
-                    $classesOutput[] = $this->formatEnum($class);
-                }
-            }
-            $content = implode('', $classesOutput) . implode('', $relationshipOutput);
+            $content = $this->formatPackage($bmmItem, $schema);
         }
 
         return <<<EOD
@@ -82,12 +68,62 @@ EOD;
     }
 
     /**
+     * Generate PlantUML package diagram
+     *
+     * @param BmmPackage $package The BMM package to generate the diagram for
+     * @param BmmSchema $schema The BMM schema containing the package
+     * @return string The PlantUML package diagram
+     */
+    private function formatPackage(BmmPackage $package, BmmSchema $schema): string
+    {
+        // All classes in this package are visible, and also all direct ancestors. Except if a class is hidden.
+        $visibleClasses = new Collection();
+        foreach ($package->classes as $className) {
+            $class = $this->resolveClass($schema, $className);
+            if ($class === null) {
+                continue;
+            }
+            $visibleClasses->set($className, $class);
+            if ($class instanceof BmmClass) {
+                foreach ($class->ancestors as $ancestorName) {
+                    if ($this->isHidden($ancestorName)) {
+                        continue;
+                    }
+                    $ancestorClass = $this->resolveClass($schema, $ancestorName);
+                    if ($ancestorClass) {
+                        $visibleClasses->set($ancestorName, $ancestorClass);
+                    }
+                }
+            }
+        }
+
+        $classesOutput = [];
+        $relationshipOutput = [];
+        foreach ($visibleClasses as $class) {
+            $classInPackage = in_array($class->getName(), $package->classes);
+            if ($class instanceof BmmClass) {
+                $classesOutput[] = $this->formatClass($class, !$classInPackage, $classInPackage);
+                $relationshipOutput[] = $this->generateRelationships($class, $visibleClasses);
+            }
+            if ($class instanceof BmmInterface) {
+                $classesOutput[] = $this->formatInterface($class);
+            }
+            if ($class instanceof BmmEnumerationString || $class instanceof BmmEnumerationInteger) {
+                $classesOutput[] = $this->formatEnum($class);
+            }
+        }
+        return implode('', $classesOutput) . implode('', $relationshipOutput);
+    }
+
+    /**
      * Generate PlantUML class definition
      *
      * @param BmmClass $class The BMM class to convert
+     * @param bool $gray Whether to gray out the class
+     * @param bool $includeMembers Whether to include class members (properties and functions)
      * @return string The PlantUML class definition
      */
-    private function formatClass(BmmClass $class): string
+    private function formatClass(BmmClass $class, bool $gray = false, bool $includeMembers = true): string
     {
         $output = '';
 
@@ -99,16 +135,21 @@ EOD;
             $genericParameterDefs = array_map(fn($item) => $item->getName(), $class->genericParameterDefs->getArrayCopy());
             $output .= '<' . implode(', ', $genericParameterDefs) . '> ';
         }
+        if ($gray) {
+            $output .= "#whitesmoke;line:gray;line.dotted;text:gray ";
+        }
         $output .= "{\n";
 
-        /** @var AbstractBmmProperty $property */
-        foreach ($class->properties as $property) {
-            $output .= "  " . $this->formatProperty($property) . "\n";
-        }
+        if ($includeMembers) {
+            /** @var AbstractBmmProperty $property */
+            foreach ($class->properties as $property) {
+                $output .= "  " . $this->formatProperty($property) . "\n";
+            }
 
-        /** @var BmmFunction $function */
-        foreach ($class->functions as $function) {
-            $output .= "  " . $this->formatFunction($function) . "\n";
+            /** @var BmmFunction $function */
+            foreach ($class->functions as $function) {
+                $output .= "  " . $this->formatFunction($function) . "\n";
+            }
         }
 
         $output .= "}\n\n";
@@ -301,21 +342,22 @@ EOD;
             }
             $ancestor = $this->resolveClass($schema, $ancestorName);
             if ($ancestor instanceof BmmClass) {
-                $output .= $this->formatClass($ancestor);
+                $output .= $this->formatClass($ancestor, true);
                 $output .= $this->formatClassAncestors($ancestor, $schema);
             }
             $output .= $ancestorName . " <|-- " . $class->name . "\n\n";
         }
-        return (string) preg_replace('/\bclass ([^{#]+)\{/', "class $1 #whitesmoke;line:gray;line.dotted;text:gray {", $output);
+        return $output;
     }
 
     /**
      * Generate PlantUML relationships for a class
      *
      * @param BmmClass $class The BMM class to generate relationships for
+     * @param Collection $visibleClasses Classes that are visible in the diagram
      * @return string The PlantUML relationships
      */
-    private function generateRelationships(BmmClass $class): string
+    private function generateRelationships(BmmClass $class, Collection $visibleClasses): string
     {
         $output = '';
 
@@ -323,6 +365,9 @@ EOD;
         if ($class->ancestors) {
             foreach ($class->ancestors as $ancestorName) {
                 if ($this->isHidden($ancestorName)) {
+                    continue;
+                }
+                if ($visibleClasses->get($ancestorName) === null) {
                     continue;
                 }
                 $output .= $ancestorName . " <|-- " . $class->name . "\n";

@@ -8,13 +8,13 @@ class P_BMM_PACKAGE {
   + create_bmm_package_definition() : void [1]
 }
 
-class P_BMM_PACKAGE_CONTAINER  #whitesmoke;line:gray;line.dotted;text:gray {
+class P_BMM_PACKAGE_CONTAINER #whitesmoke;line:gray;line.dotted;text:gray {
   + packages : Hash<String,P_BMM_PACKAGE> [1]
 }
 
 P_BMM_PACKAGE_CONTAINER <|-- P_BMM_PACKAGE
 
-abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 

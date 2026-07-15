@@ -4,7 +4,7 @@ class EL_PROCEDURE_AGENT {
   + definition : BMM_PROCEDURE [0..1]
 }
 
-abstract class EL_AGENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_AGENT #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + closed_args : EL_TUPLE [0..1]
   + open_args : List<String> [*]
@@ -13,20 +13,20 @@ abstract class EL_AGENT  #whitesmoke;line:gray;line.dotted;text:gray {
   + is_callable() : Boolean [1]
 }
 
-abstract class EL_SCOPED_REF  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_SCOPED_REF #whitesmoke;line:gray;line.dotted;text:gray {
   + scope : EL_INSTANCE_REF [0..1]
 }
 
-abstract class EL_INSTANCE_REF  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_INSTANCE_REF #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class EL_TERMINAL  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_TERMINAL #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class EL_SIMPLE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_SIMPLE #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class EL_EXPRESSION  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_EXPRESSION #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} eval_type() : BMM_TYPE [1]
   + is_boolean() : Boolean [1]
 }

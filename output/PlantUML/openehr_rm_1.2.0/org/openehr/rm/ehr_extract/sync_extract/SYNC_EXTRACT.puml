@@ -5,7 +5,7 @@ class SYNC_EXTRACT {
   + items : List<X_CONTRIBUTION> [*]
 }
 
-abstract class MESSAGE_CONTENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class MESSAGE_CONTENT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 MESSAGE_CONTENT <|-- SYNC_EXTRACT

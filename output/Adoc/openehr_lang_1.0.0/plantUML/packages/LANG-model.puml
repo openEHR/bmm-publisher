@@ -24,6 +24,14 @@ class BMM_MODEL {
   + boolean_type_definition() : BMM_SIMPLE_TYPE [1]
 }
 
+abstract class BMM_PACKAGE_CONTAINER {
+  + packages : Hash<String,BMM_PACKAGE> [0..1]
+  + scope : BMM_PACKAGE_CONTAINER [1]
+  + package_at_path( a_path : String [1] ) : BMM_PACKAGE [0..1]
+  + do_recursive_packages( action : EL_PROCEDURE_AGENT [1] ) : void [1]
+  + has_package_path( a_path : String [1] ) : Boolean [1]
+}
+
 class BMM_MODEL_METADATA {
   + rm_publisher : String [1]
   + rm_release : String [1]
@@ -35,17 +43,12 @@ class BMM_PACKAGE {
   + path() : String [1]
 }
 
-abstract class BMM_PACKAGE_CONTAINER {
-  + packages : Hash<String,BMM_PACKAGE> [0..1]
-  + scope : BMM_PACKAGE_CONTAINER [1]
-  + package_at_path( a_path : String [1] ) : BMM_PACKAGE [0..1]
-  + do_recursive_packages( action : EL_PROCEDURE_AGENT [1] ) : void [1]
-  + has_package_path( a_path : String [1] ) : Boolean [1]
+abstract class BMM_DECLARATION #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_PACKAGE_CONTAINER <|-- BMM_MODEL
 BMM_MODEL_METADATA <|-- BMM_MODEL
-BMM_PACKAGE_CONTAINER <|-- BMM_PACKAGE
 BMM_DECLARATION <|-- BMM_PACKAGE_CONTAINER
+BMM_PACKAGE_CONTAINER <|-- BMM_PACKAGE
 
 @enduml

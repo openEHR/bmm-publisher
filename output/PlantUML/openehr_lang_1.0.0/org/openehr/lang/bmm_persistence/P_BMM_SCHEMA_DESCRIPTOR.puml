@@ -4,7 +4,7 @@ class P_BMM_SCHEMA_DESCRIPTOR {
   + bmm_schema : P_BMM_SCHEMA [0..1]
 }
 
-abstract class BMM_SCHEMA_DESCRIPTOR  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_SCHEMA_DESCRIPTOR #whitesmoke;line:gray;line.dotted;text:gray {
   + bmm_schema : BMM_SCHEMA [0..1]
   + bmm_model : BMM_MODEL [0..1]
   + schema_id : String [1]

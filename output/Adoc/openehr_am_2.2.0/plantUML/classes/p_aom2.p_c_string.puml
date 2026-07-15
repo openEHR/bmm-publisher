@@ -6,18 +6,18 @@ class P_C_STRING {
   + assumed_value : String [0..1]
 }
 
-abstract class P_C_PRIMITIVE_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_C_PRIMITIVE_OBJECT #whitesmoke;line:gray;line.dotted;text:gray {
   + assumed_value : Any [0..1]
   + is_enumerated_type_constraint : Boolean [0..1]
   + constraint : Any [1]
 }
 
-abstract class P_C_DEFINED_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_C_DEFINED_OBJECT #whitesmoke;line:gray;line.dotted;text:gray {
   + is_frozen : Boolean [0..1]
   + default_value : Any [1]
 }
 
-abstract class P_C_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_C_OBJECT #whitesmoke;line:gray;line.dotted;text:gray {
   + rm_type_name : String [1]
   + occurrences : String [0..1]
   + node_id : String [1]
@@ -25,7 +25,7 @@ abstract class P_C_OBJECT  #whitesmoke;line:gray;line.dotted;text:gray {
   + specialisation_depth() : Integer [1]
 }
 
-abstract class P_ARCHETYPE_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_ARCHETYPE_CONSTRAINT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 P_ARCHETYPE_CONSTRAINT <|-- P_C_OBJECT

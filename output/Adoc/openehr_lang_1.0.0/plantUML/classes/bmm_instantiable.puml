@@ -3,11 +3,11 @@
 abstract class BMM_INSTANTIABLE {
 }
 
-abstract class BMM_TYPED_FEATURE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_TYPED_FEATURE #whitesmoke;line:gray;line.dotted;text:gray {
   + is_nullable : Boolean [0..1]
 }
 
-abstract class BMM_TYPED  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_TYPED #whitesmoke;line:gray;line.dotted;text:gray {
   + type : BMM_TYPE [1]
   + is_boolean() : Boolean [1]
 }

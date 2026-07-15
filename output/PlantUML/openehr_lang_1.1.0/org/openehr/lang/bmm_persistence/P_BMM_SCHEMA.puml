@@ -13,13 +13,13 @@ class P_BMM_SCHEMA {
   + canonical_packages() : P_BMM_PACKAGE [1]
 }
 
-class P_BMM_PACKAGE_CONTAINER  #whitesmoke;line:gray;line.dotted;text:gray {
+class P_BMM_PACKAGE_CONTAINER #whitesmoke;line:gray;line.dotted;text:gray {
   + packages : Hash<String,P_BMM_PACKAGE> [1]
 }
 
 P_BMM_PACKAGE_CONTAINER <|-- P_BMM_SCHEMA
 
-class BMM_SCHEMA_CORE  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_SCHEMA_CORE #whitesmoke;line:gray;line.dotted;text:gray {
   + rm_publisher : String [1]
   + rm_release : String [1]
   + schema_name : String [1]

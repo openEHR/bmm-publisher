@@ -3,6 +3,9 @@
 abstract class ITEM {
 }
 
+abstract class LOCATABLE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class CLUSTER {
   + items : List<ITEM> [1..*]
 }

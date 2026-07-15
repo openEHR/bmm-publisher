@@ -4,7 +4,7 @@ abstract class EXPRESSION {
   + {abstract} type() : EXPR_TYPE_DEF [1]
 }
 
-abstract class EXPR_VALUE  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EXPR_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
   + {abstract} value() : Any [1]
 }
 

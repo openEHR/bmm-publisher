@@ -10,6 +10,9 @@ class C_BOOLEAN {
   + c_value_congruent_to( other : C_BOOLEAN [1] ) : Boolean [1]
 }
 
+abstract class C_PRIMITIVE_OBJECT #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class C_STRING {
   + constraint : List<String> [*]
   + default_value : String [0..1]
@@ -27,12 +30,6 @@ class C_INTEGER {
   + assumed_value : Real [0..1]
 }
 
-class C_REAL {
-  + constraint : List<Interval<Real>> [*]
-  + default_value : Real [0..1]
-  + assumed_value : Real [0..1]
-}
-
 abstract class C_ORDERED <T> {
   + constraint : List<Interval<T>> [*]
   + default_value : T [0..1]
@@ -40,6 +37,12 @@ abstract class C_ORDERED <T> {
   + any_allowed() : Boolean [1]
   + c_value_conforms_to( other : C_ORDERED [1] ) : Boolean [1]
   + c_value_congruent_to( other : C_ORDERED [1] ) : Boolean [1]
+}
+
+class C_REAL {
+  + constraint : List<Interval<Real>> [*]
+  + default_value : Real [0..1]
+  + assumed_value : Real [0..1]
 }
 
 class C_TERMINOLOGY_CODE {
@@ -143,8 +146,8 @@ enum CONSTRAINT_STATUS {
 C_PRIMITIVE_OBJECT <|-- C_BOOLEAN
 C_PRIMITIVE_OBJECT <|-- C_STRING
 C_ORDERED <|-- C_INTEGER
-C_ORDERED <|-- C_REAL
 C_PRIMITIVE_OBJECT <|-- C_ORDERED
+C_ORDERED <|-- C_REAL
 C_PRIMITIVE_OBJECT <|-- C_TERMINOLOGY_CODE
 C_ORDERED <|-- C_TEMPORAL
 C_TEMPORAL <|-- C_TIME

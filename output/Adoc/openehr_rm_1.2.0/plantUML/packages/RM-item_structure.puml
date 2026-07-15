@@ -3,6 +3,9 @@
 abstract class ITEM_STRUCTURE {
 }
 
+abstract class DATA_STRUCTURE #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class ITEM_TREE {
   + items : List<ITEM> [*]
   + has_element_path( a_path : String [1] ) : Boolean [1]

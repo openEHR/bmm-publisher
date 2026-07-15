@@ -6,6 +6,9 @@ class P_C_BOOLEAN {
   + default_value : Boolean [1]
 }
 
+abstract class P_C_PRIMITIVE_OBJECT #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class P_C_STRING {
   + constraint : List<String> [1..*]
   + default_value : String [1]

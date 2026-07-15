@@ -9,6 +9,9 @@ class REFERENCE_MODEL_ACCESS {
   + reload_schemas() : void [1]
 }
 
+class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class SCHEMA_DESCRIPTOR {
   + p_schema : P_BMM_SCHEMA [0..1]
   + schema : BMM_MODEL [0..1]

@@ -6,13 +6,13 @@ class TUPLE {
 class FUNCTION <ARGS, RESULT> {
 }
 
+class ROUTINE <ARGS> {
+}
+
 class TUPLE1 <A> {
 }
 
 class TUPLE2 <A, B> {
-}
-
-class ROUTINE <ARGS> {
 }
 
 class PROCEDURE <ARGS> {

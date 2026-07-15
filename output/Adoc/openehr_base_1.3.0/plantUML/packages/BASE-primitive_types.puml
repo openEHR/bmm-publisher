@@ -3,10 +3,35 @@
 class Uri {
 }
 
+class String {
+  + is_empty() : Boolean [1]
+  + is_integer() : Boolean [1]
+  + as_integer() : Integer [1]
+  + append( other : String [1] ) : String [1]
+  + less_than( other : String [1] ) : Boolean [1]
+  + contains( other : String [1] ) : Boolean [1]
+}
+
 abstract class Comparable {
 }
 
 abstract class Ordered_Numeric {
+}
+
+abstract class Ordered {
+  + {abstract} less_than( other : Ordered [1] ) : Boolean [1]
+  + less_than_or_equal( other : Ordered [1] ) : Boolean [1]
+  + greater_than( other : Ordered [1] ) : Boolean [1]
+  + greater_than_or_equal( other : Ordered [1] ) : Boolean [1]
+}
+
+abstract class Numeric {
+  + {abstract} add( other : Numeric [1] ) : Numeric [1]
+  + {abstract} subtract( other : Numeric [1] ) : Numeric [1]
+  + {abstract} multiply( other : Numeric [1] ) : Numeric [1]
+  + {abstract} divide( other : Numeric [1] ) : Numeric [1]
+  + {abstract} exponent( other : Numeric [1] ) : Numeric [1]
+  + {abstract} negative() : Numeric [1]
 }
 
 class Integer {
@@ -35,15 +60,6 @@ class Double {
   + equal( other : Double [1] ) : Boolean [1]
 }
 
-abstract class Numeric {
-  + {abstract} add( other : Numeric [1] ) : Numeric [1]
-  + {abstract} subtract( other : Numeric [1] ) : Numeric [1]
-  + {abstract} multiply( other : Numeric [1] ) : Numeric [1]
-  + {abstract} divide( other : Numeric [1] ) : Numeric [1]
-  + {abstract} exponent( other : Numeric [1] ) : Numeric [1]
-  + {abstract} negative() : Numeric [1]
-}
-
 class Octet {
 }
 
@@ -58,15 +74,6 @@ class Boolean {
   + exclusive_disjunction( other : Boolean [1] ) : Boolean [1]
   + implication( other : Boolean [1] ) : Boolean [1]
   + negation() : Boolean [1]
-}
-
-class String {
-  + is_empty() : Boolean [1]
-  + is_integer() : Boolean [1]
-  + as_integer() : Integer [1]
-  + append( other : String [1] ) : String [1]
-  + less_than( other : String [1] ) : Boolean [1]
-  + contains( other : String [1] ) : Boolean [1]
 }
 
 class Real {
@@ -95,21 +102,14 @@ class Integer64 {
   + equal( other : Integer64 [1] ) : Boolean [1]
 }
 
-abstract class Ordered {
-  + {abstract} less_than( other : Ordered [1] ) : Boolean [1]
-  + less_than_or_equal( other : Ordered [1] ) : Boolean [1]
-  + greater_than( other : Ordered [1] ) : Boolean [1]
-  + greater_than_or_equal( other : Ordered [1] ) : Boolean [1]
-}
-
 String <|-- Uri
+Ordered <|-- String
 Ordered <|-- Ordered_Numeric
 Numeric <|-- Ordered_Numeric
 Ordered_Numeric <|-- Integer
 Ordered_Numeric <|-- Double
 Ordered <|-- Octet
 Ordered <|-- Character
-Ordered <|-- String
 Ordered_Numeric <|-- Real
 Ordered_Numeric <|-- Integer64
 

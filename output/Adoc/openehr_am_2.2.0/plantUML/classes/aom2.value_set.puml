@@ -3,7 +3,7 @@
 class VALUE_SET {
 }
 
-abstract class TERMINOLOGY_RELATION  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class TERMINOLOGY_RELATION #whitesmoke;line:gray;line.dotted;text:gray {
   + id : String [1]
   + members : List<String> [1..*]
 }

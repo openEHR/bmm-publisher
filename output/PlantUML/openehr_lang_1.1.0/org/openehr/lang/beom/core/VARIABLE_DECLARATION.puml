@@ -5,7 +5,7 @@ class VARIABLE_DECLARATION {
   + type : EXPR_TYPE_DEF [1]
 }
 
-abstract class STATEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class STATEMENT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 STATEMENT <|-- VARIABLE_DECLARATION

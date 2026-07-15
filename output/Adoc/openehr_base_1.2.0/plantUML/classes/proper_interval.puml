@@ -3,7 +3,7 @@
 class Proper_interval <T> {
 }
 
-abstract class Interval <T>  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + lower : T [0..1]
   + upper : T [0..1]
   + lower_unbounded : Boolean [1]

@@ -9,7 +9,7 @@ class P_C_ATTRIBUTE {
   + is_multiple : Boolean [1]
 }
 
-abstract class P_ARCHETYPE_CONSTRAINT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_ARCHETYPE_CONSTRAINT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 P_ARCHETYPE_CONSTRAINT <|-- P_C_ATTRIBUTE

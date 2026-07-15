@@ -7,7 +7,7 @@ class BMM_GENERIC_CLASS {
   + type_name() : String [1]
 }
 
-class BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_CLASS #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + ancestors : Hash<String,BMM_CLASS> [0..1]
   + package : BMM_PACKAGE [1]
@@ -29,7 +29,7 @@ class BMM_CLASS  #whitesmoke;line:gray;line.dotted;text:gray {
   + type_name() : String [1]
 }
 
-abstract class BMM_CLASSIFIER  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_CLASSIFIER #whitesmoke;line:gray;line.dotted;text:gray {
   + type_name() : String [1]
   + type_category() : String [1]
   + type_signature() : String [1]
@@ -37,11 +37,11 @@ abstract class BMM_CLASSIFIER  #whitesmoke;line:gray;line.dotted;text:gray {
   + flattened_type_list() : List<String> [*]
 }
 
-abstract class BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 
-class BMM_DEFINITIONS  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT

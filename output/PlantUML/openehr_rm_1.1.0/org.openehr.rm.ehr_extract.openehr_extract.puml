@@ -4,6 +4,9 @@ class OPENEHR_CONTENT_ITEM {
   + item : X_VERSIONED_OBJECT [0..1]
 }
 
+abstract class EXTRACT_CONTENT_ITEM #whitesmoke;line:gray;line.dotted;text:gray {
+}
+
 class X_VERSIONED_OBJECT <T> {
   + uid : HIER_OBJECT_ID [1]
   + owner_id : OBJECT_REF [1]

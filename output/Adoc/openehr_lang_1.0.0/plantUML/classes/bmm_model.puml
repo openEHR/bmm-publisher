@@ -24,7 +24,7 @@ class BMM_MODEL {
   + boolean_type_definition() : BMM_SIMPLE_TYPE [1]
 }
 
-abstract class BMM_PACKAGE_CONTAINER  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_PACKAGE_CONTAINER #whitesmoke;line:gray;line.dotted;text:gray {
   + packages : Hash<String,BMM_PACKAGE> [0..1]
   + scope : BMM_PACKAGE_CONTAINER [1]
   + package_at_path( a_path : String [1] ) : BMM_PACKAGE [0..1]
@@ -32,7 +32,7 @@ abstract class BMM_PACKAGE_CONTAINER  #whitesmoke;line:gray;line.dotted;text:gra
   + has_package_path( a_path : String [1] ) : Boolean [1]
 }
 
-abstract class BMM_DECLARATION  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class BMM_DECLARATION #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + documentation : Hash<String,Any> [0..1]
   + scope : BMM_DECLARATION [1]
@@ -44,7 +44,7 @@ BMM_DECLARATION <|-- BMM_PACKAGE_CONTAINER
 
 BMM_PACKAGE_CONTAINER <|-- BMM_MODEL
 
-class BMM_MODEL_METADATA  #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_MODEL_METADATA #whitesmoke;line:gray;line.dotted;text:gray {
   + rm_publisher : String [1]
   + rm_release : String [1]
 }

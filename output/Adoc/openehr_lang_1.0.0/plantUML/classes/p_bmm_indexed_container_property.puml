@@ -5,14 +5,14 @@ class P_BMM_INDEXED_CONTAINER_PROPERTY {
   + bmm_property : BMM_INDEXED_CONTAINER_PROPERTY [0..1]
 }
 
-class P_BMM_CONTAINER_PROPERTY  #whitesmoke;line:gray;line.dotted;text:gray {
+class P_BMM_CONTAINER_PROPERTY #whitesmoke;line:gray;line.dotted;text:gray {
   + cardinality : Interval<Integer> [0..1]
   + type_def : P_BMM_CONTAINER_TYPE [0..1]
   + bmm_property : BMM_CONTAINER_PROPERTY [0..1]
   + create_bmm_property( a_bmm_schema : BMM_MODEL [1], a_class_def : BMM_CLASS [1] ) : void [1]
 }
 
-abstract class P_BMM_PROPERTY  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_PROPERTY #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + is_mandatory : Boolean [0..1]
   + is_computed : Boolean [0..1]
@@ -23,7 +23,7 @@ abstract class P_BMM_PROPERTY  #whitesmoke;line:gray;line.dotted;text:gray {
   + create_bmm_property( a_bmm_schema : BMM_MODEL [1], a_class_def : BMM_CLASS [1] ) : void [1]
 }
 
-abstract class P_BMM_MODEL_ELEMENT  #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
   + documentation : String [0..1]
 }
 
