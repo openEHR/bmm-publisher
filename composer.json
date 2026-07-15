@@ -55,7 +55,6 @@
             "/.docker",
             "/.editorconfig",
             "/.git*",
-            "/.junie",
             "/tests",
             "/var"
         ]

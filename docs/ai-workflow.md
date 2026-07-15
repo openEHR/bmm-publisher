@@ -1,6 +1,6 @@
 # AI agent workflow
 
-How AI assistants (Claude Code, Cursor, GitHub Copilot, JetBrains Junie) should work in this repository. **[AGENTS.md](../AGENTS.md)** remains the canonical reference for layout, architecture, standards, and CLI commands; this file covers the *working process*.
+How AI assistants (Claude Code, Cursor, GitHub Copilot) should work in this repository. **[AGENTS.md](../AGENTS.md)** remains the canonical reference for layout, architecture, standards, and CLI commands; this file covers the *working process*.
 
 ## Run everything through the dev container
 
@@ -30,7 +30,7 @@ Full command reference: **[development.md](development.md)**.
 
 ## Commits
 
-Conventional commits per **[AGENTS.md](../AGENTS.md)**: `type: imperative subject` (`feat`/`fix`/`chore`/`docs`/`refactor`/`test`/`ci`), subject < 72 chars. Commit only when explicitly asked. Tool-specific co-author trailers (e.g. Junie's `Co-authored-by: Junie <junie@jetbrains.com>`) are configured in each tool's own entrypoint file.
+Conventional commits per **[AGENTS.md](../AGENTS.md)**: `type: imperative subject` (`feat`/`fix`/`chore`/`docs`/`refactor`/`test`/`ci`), subject < 72 chars. Commit only when explicitly asked. Tool-specific co-author trailers are configured in each tool's own entrypoint file.
 
 ## Agent entrypoint files
 

@@ -98,7 +98,7 @@ Keep PHPUnit, PHPStan, PHPCS, and Rector config under `tests/` so the project ro
 
 ## IDE and agent integration
 
-Each tool (Claude Code, Cursor, GitHub Copilot, JetBrains Junie) reads a minimal entrypoint that defers to this file and to **[docs/ai-workflow.md](docs/ai-workflow.md)** — the agent working process (container-only tooling, editing guardrails, verification checklist, entrypoint map).
+Each tool (Claude Code, Cursor, GitHub Copilot) reads a minimal entrypoint that defers to this file and to **[docs/ai-workflow.md](docs/ai-workflow.md)** — the agent working process (container-only tooling, editing guardrails, verification checklist, entrypoint map).
 
 ## Escalation and triage
 
