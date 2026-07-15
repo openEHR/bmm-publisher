@@ -82,6 +82,8 @@ composer check:phpstan
 
 See [docs/development.md](docs/development.md) for full Composer scripts and tooling reference.
 
+## AI agents
+
 See [AGENTS.md](AGENTS.md) for project structure, standards, and architecture.
 
 ## License
