@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-07-15
+
 ### Fixed
 
 - **AsciiDoc class tables no longer escape a lone asterisk to `&#42;`** — `formatText()` previously replaced fixed substrings (`.*`, `'*'`, `)*`, `]*`) with the `&#42;` HTML entity, escaping single regex/multiplicity asterisks (e.g. `0..*`, `` `[a-z]*` ``) that render perfectly well as literal `*` and diverge from the hand-authored spec style. Escaping is now applied per line and only when two or more asterisks remain after excluding a leading list marker — so a lone asterisk stays literal while genuine multi-asterisk regexes (e.g. `(0|[1-9][0-9]*)...*`) are still escaped to prevent stray inline bold. Affected committed `output/Adoc` and `output/legacy-adoc` snapshots regenerated.
@@ -138,7 +140,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.9.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.10.0...HEAD
+[0.10.0]: https://github.com/openehr/bmm-publisher/compare/0.9.0...0.10.0
 [0.9.0]: https://github.com/openehr/bmm-publisher/compare/0.8.0...0.9.0
 [0.8.0]: https://github.com/openehr/bmm-publisher/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/openehr/bmm-publisher/compare/0.6.0...0.7.0
