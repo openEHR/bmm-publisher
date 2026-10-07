@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Integration;
 
+use Cadasto\OpenEHR\BMM\Model\BmmPackage;
+use Cadasto\OpenEHR\BMM\Model\BmmSchema;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Helper\OutputDir;
 use OpenEHR\BmmPublisher\Writer\Asciidoc;
@@ -11,6 +13,7 @@ use OpenEHR\BmmPublisher\Writer\BmmJsonSplit;
 use OpenEHR\BmmPublisher\Writer\BmmYaml;
 use OpenEHR\BmmPublisher\Writer\LegacyClassDefinitions;
 use OpenEHR\BmmPublisher\Writer\PlantUml;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -116,6 +119,85 @@ final class WriterTest extends TestCase
         $content = (string) file_get_contents($files[0]);
         // AsciiDoc tables use |=== delimiters
         self::assertStringContainsString('|===', $content);
+    }
+
+    /** @return array<string, array{string}> */
+    public static function schemasWithSharedPackageNames(): array
+    {
+        return [
+            'AM 2.3.0' => ['openehr_am_2.3.0'],
+            'AM 2.4.0' => ['openehr_am_2.4.0'],
+            'BASE 1.0.4' => ['openehr_base_1.0.4'],
+            'LANG 1.1.0' => ['openehr_lang_1.1.0'],
+            'RM 1.1.0' => ['openehr_rm_1.1.0'],
+        ];
+    }
+
+    #[Test]
+    #[DataProvider('schemasWithSharedPackageNames')]
+    public function asciidocWritesOnePackageDiagramPerPackage(string $schemaId): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load($schemaId);
+
+        (new Asciidoc($collection, [$schemaId]))();
+
+        $expected = 0;
+        $collection->forEachPackage(static function (BmmPackage $package, BmmSchema $schema) use (&$expected, $schemaId): void {
+            if ($schema->getSchemaId() === $schemaId && $package->classes !== []) {
+                ++$expected;
+            }
+        });
+
+        self::assertGreaterThan(0, $expected);
+        self::assertCount($expected, self::findFiles($this->tempOutput . '/Adoc/' . $schemaId . '/plantUML/packages/*.puml'));
+    }
+
+    /** @return array<string, array{string, string, string}> */
+    public static function clashingPackageDiagramNames(): array
+    {
+        return [
+            'AM persistence archetype' => ['openehr_am_2.4.0', 'AM-aom2.archetype', 'AM-aom2.persistence.archetype'],
+            'AM persistence constraint_model' => ['openehr_am_2.4.0', 'AM-aom2.constraint_model', 'AM-aom2.persistence.constraint_model'],
+            'AM persistence primitive' => ['openehr_am_2.4.0', 'AM-aom2.primitive', 'AM-aom2.persistence.primitive'],
+            'AM persistence terminology' => ['openehr_am_2.4.0', 'AM-aom2.terminology', 'AM-aom2.persistence.terminology'],
+            'BASE expression core' => ['openehr_base_1.0.4', 'BASE-core', 'BASE-expression.core'],
+            'LANG beom core' => ['openehr_lang_1.1.0', 'LANG-core', 'LANG-beom.core'],
+            'RM nested common resource' => ['openehr_rm_1.1.0', 'RM-resource', 'RM-common.resource'],
+        ];
+    }
+
+    #[Test]
+    #[DataProvider('clashingPackageDiagramNames')]
+    public function asciidocQualifiesOnlyTheLaterPackageOfAClashingName(string $schemaId, string $shortName, string $qualifiedName): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load($schemaId);
+
+        (new Asciidoc($collection, [$schemaId]))();
+
+        $dir = $this->tempOutput . '/Adoc/' . $schemaId . '/plantUML/packages/';
+        self::assertFileExists($dir . $shortName . '.puml');
+        self::assertFileExists($dir . $qualifiedName . '.puml');
+        self::assertNotSame(file_get_contents($dir . $shortName . '.puml'), file_get_contents($dir . $qualifiedName . '.puml'));
+    }
+
+    #[Test]
+    public function asciidocKeepsTheAom2PackageDiagramUnderItsShortName(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_am_2.4.0');
+
+        (new Asciidoc($collection, ['openehr_am_2.4.0']))();
+
+        $dir = $this->tempOutput . '/Adoc/openehr_am_2.4.0/plantUML/packages/';
+        $aom2 = (string) file_get_contents($dir . 'AM-aom2.archetype.puml');
+        $persistence = (string) file_get_contents($dir . 'AM-aom2.persistence.archetype.puml');
+
+        self::assertStringContainsString('TEMPLATE_OVERLAY', $aom2);
+        self::assertStringNotContainsString('P_ARCHETYPE', $aom2);
+        self::assertStringContainsString('P_ARCHETYPE', $persistence);
+        self::assertStringNotContainsString('TEMPLATE_OVERLAY', $persistence);
     }
 
     #[Test]

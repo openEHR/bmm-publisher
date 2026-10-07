@@ -28,6 +28,9 @@ class Asciidoc
     /** @var array<string, true> Guards prune-once per (schema id, filename namespace). */
     private array $cleanedNamespaces = [];
 
+    /** @var array<string, array<string, string>> Package diagram name by package path, per schema id. */
+    private array $packageDiagramNames = [];
+
     /**
      * @param array<int, string> $exportSchemaIds Schema ids to export; an empty list exports every
      *        loaded schema. Schemas loaded for cross-reference resolution only (dependencies) are
@@ -53,6 +56,7 @@ class Asciidoc
     {
         Filesystem::assureDir(self::outputDir());
         $this->cleanedNamespaces = [];
+        $this->packageDiagramNames = [];
         $this->schemas->forEachPackage($this->writePackage(...));
     }
 
@@ -100,11 +104,68 @@ class Asciidoc
             Filesystem::writeFile($bmmJsonDir . $filename, $this->bmmJson->format($class), $logger);
             Filesystem::writeFile($plantUmlClassesDir . $pumlFilename, $this->plantUml->format($class, $prefix, $schema), $logger);
         }
-        $prefix = 'org.openehr.' . strtolower($schema->schemaName) . '.';
-        $namePrefix = $prefix . str_replace($prefix, '', $namePrefix);
-        $packageName = strtoupper($schema->schemaName) . '-' . $pkg . rtrim(str_replace($namePrefix, '', $package->name), '.');
+        $packageName = $this->packageDiagramName($schema, $namePrefix, $package);
         $logger->notice('Writing {package} package ...', ['package' => $packageName]);
         Filesystem::writeFile($plantUmlPackagesDir . $packageName . '.puml', $this->plantUml->format($package, $packageName, $schema), $logger);
+    }
+
+    /**
+     * Name of a package diagram, e.g. `RM-composition` or `AM-aom2.archetype`.
+     */
+    private function packageDiagramName(BmmSchema $schema, string $namePrefix, BmmPackage $package): string
+    {
+        $schemaId = $schema->getSchemaId();
+        $this->packageDiagramNames[$schemaId] ??= $this->resolvePackageDiagramNames($schema);
+
+        return $this->packageDiagramNames[$schemaId][LegacyClassNaming::packagePath($schema, $namePrefix, $package)];
+    }
+
+    /**
+     * Diagram name per package path, for every package of the schema that has classes.
+     *
+     * A diagram is named after the package's last name segment, which is how the spec pages
+     * refer to it. Packages in different branches can share that segment (AM `aom2.archetype`
+     * and `aom2.persistence.archetype`), and the later one would overwrite the earlier one's
+     * files. Of such a group the package nearest the component root keeps the short name, with
+     * ties going to the first in traversal order; the others are named by their full path
+     * below the component (`AM-aom2.persistence.archetype`).
+     *
+     * @return array<string, string>
+     */
+    private function resolvePackageDiagramNames(BmmSchema $schema): array
+    {
+        $component = strtoupper($schema->schemaName) . '-';
+        $prefix = 'org.openehr.' . strtolower($schema->schemaName) . '.';
+
+        $pathsByShortName = [];
+        $this->schemas->forEachPackage(
+            static function (BmmPackage $package, BmmSchema $other, string $namePrefix) use ($schema, $component, $prefix, &$pathsByShortName): void {
+                if ($other !== $schema || $package->classes === []) {
+                    return;
+                }
+                $filenamePrefix = LegacyClassNaming::filenamePrefix($schema, LegacyClassNaming::packagePrefix($schema, $namePrefix, $package));
+                $parentPrefix = $prefix . str_replace($prefix, '', $namePrefix);
+                $shortName = $component . $filenamePrefix . rtrim(str_replace($parentPrefix, '', $package->name), '.');
+                $pathsByShortName[$shortName][] = LegacyClassNaming::packagePath($schema, $namePrefix, $package);
+            },
+        );
+
+        $names = [];
+        foreach ($pathsByShortName as $shortName => $paths) {
+            usort($paths, static fn (string $a, string $b): int => substr_count($a, '.') <=> substr_count($b, '.'));
+            foreach ($paths as $i => $path) {
+                $names[$path] = $i === 0 ? $shortName : $component . $path;
+                if ($i > 0) {
+                    $this->schemas->logger->notice('Package diagram name {short} is taken in {schema}; using {name}.', [
+                        'short' => $shortName,
+                        'schema' => $schema->getSchemaId(),
+                        'name' => $names[$path],
+                    ]);
+                }
+            }
+        }
+
+        return $names;
     }
 
     /**

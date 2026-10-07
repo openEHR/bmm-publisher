@@ -39,11 +39,12 @@ final class OutputDirTest extends TestCase
         putenv('BMM_OUTPUT_DIR=/first');
         OutputDir::reset();
 
-        self::assertSame('/first', OutputDir::path());
+        $first = OutputDir::path();
+        self::assertSame('/first', $first);
 
         putenv('BMM_OUTPUT_DIR=/second');
 
-        self::assertSame('/first', OutputDir::path());
+        self::assertSame($first, OutputDir::path());
     }
 
     #[Test]
