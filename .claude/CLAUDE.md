@@ -1,12 +1,15 @@
-# Claude Code – project instructions
+# Claude Code: project instructions
 
-Follow **[AGENTS.md](../AGENTS.md)** — the canonical reference for layout, architecture, standards, CLI commands, commit style, and workflows.
+Follow **[AGENTS.md](../AGENTS.md)**, the canonical reference for layout, architecture, standards, CLI commands, commit style, and workflows.
 
-**Critical:** PHP / Composer / PHPUnit / PHPStan run **inside the dev container** only — there is no host PHP. Use `make ci`, `make sh`, `make install`, or `docker compose -f .docker/docker-compose.yml run --rm app composer …`.
+**Critical:** there is no host PHP. Run PHP, Composer, PHPUnit, and PHPStan inside the dev container with `make ci`, `make sh`, `make install`, or `docker compose -f .docker/docker-compose.yml run --rm app composer …`.
 
-Deeper detail on demand:
+**Before you finish:** `make ci` must pass. If you changed a writer, formatter, or template, also run `make publish-all` and include the regenerated `output/`. Never edit `output/` by hand.
 
-- AI agent working process (guardrails, verification, regenerate `output/`) — [docs/ai-workflow.md](../docs/ai-workflow.md)
-- Architecture (pipeline, writers, key patterns) — [docs/architecture.md](../docs/architecture.md)
-- Tooling, Composer scripts, Docker images — [docs/development.md](../docs/development.md)
-- Version bump & release process — [docs/releases.md](../docs/releases.md)
+Details on demand:
+
+- [Documentation index](../docs/README.md)
+- [AI workflow](../docs/ai-workflow.md): guardrails, verification, regenerating `output/`
+- [Architecture](../docs/architecture.md): pipeline, writers, key patterns
+- [Development](../docs/development.md): Composer scripts, tooling, Docker images
+- [Releases](../docs/releases.md): version bump and release process
