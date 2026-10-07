@@ -40,6 +40,23 @@ final class LegacyClassNaming
     }
 
     /**
+     * Dotted path of a package below `org.openehr.<component>.`, e.g.
+     * `aom2.persistence.archetype` or `expression.core`.
+     *
+     * Unlike the package's own last segment (`archetype`, `core`) this is unique
+     * within a schema, so it can tell apart packages that share a last segment.
+     *
+     * @param string $namePrefix The parent chain handed to the package callback by
+     *        {@see \OpenEHR\BmmPublisher\BmmSchemaCollection::forEachPackage()}.
+     */
+    public static function packagePath(BmmSchema $schema, string $namePrefix, BmmPackage $package): string
+    {
+        $component = 'org.openehr.' . strtolower($schema->schemaName) . '.';
+        $name = str_starts_with($package->name, 'org.openehr.') ? $package->name : $namePrefix . $package->name;
+        return str_starts_with($name, $component) ? substr($name, \strlen($component)) : $name;
+    }
+
+    /**
      * Short filename prefix that namespaces parallel model generations which
      * share a schema id (and therefore an output directory), e.g. `aom14.`,
      * `aom2.`, `bmm3.`.
