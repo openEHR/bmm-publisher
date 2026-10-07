@@ -1,8 +1,8 @@
-# Installation & usage (Docker)
+# Install and usage (Docker)
 
-The published production image (`ghcr.io/openehr/bmm-publisher`) ships with all openEHR BMM schemas, the `plantuml` CLI (with OpenJDK and Graphviz), and runs `bmm-publisher` as its entrypoint — pass the command and arguments directly. No PHP, Composer, or local checkout is required.
+The published production image (`ghcr.io/openehr/bmm-publisher`) contains all openEHR BMM schemas and the `plantuml` CLI (with OpenJDK and Graphviz), and it starts `bmm-publisher` as its entrypoint. Pass the command and its arguments directly. You need no PHP, Composer or local checkout.
 
-For the command list and aliases, see the **Commands** table in [README.md](../README.md). For local development against the source, see [development.md](development.md).
+The **Commands** table in [README.md](../README.md) lists the commands and aliases. [development.md](development.md) covers working against the source.
 
 ## Running the image
 
@@ -23,20 +23,20 @@ docker run --rm \
 docker run --rm ghcr.io/openehr/bmm-publisher list
 ```
 
-Use `-v` for progress output, `-vv` for detailed file-write logging:
+Use `-v` for progress output and `-vv` for detailed file-write logging:
 
 ```bash
 docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher asciidoc -v all
 ```
 
-The `asciidoc` command is self-contained: it writes the AsciiDoc tables (with the UML image macro already inlined under the UML tab), runs PlantUML to render every class diagram to SVG, and publishes those SVGs under `output/Adoc/<schema>/images/uml/{classes,diagrams}/` — all in a single invocation.
+The `asciidoc` command runs the whole pipeline in one invocation. It writes the AsciiDoc tables (with the UML image macro already inlined under the UML tab), runs PlantUML to render every class diagram to SVG, and publishes the SVGs under `output/Adoc/<schema>/images/uml/{classes,diagrams}/`.
 
-## Input / output
+## Input and output
 
-- **Input**: BMM schemas in `resources/` (`.bmm.json` files, shipped with the image)
-- **Output**: generated artefacts in `output/` — mount a volume to retrieve them
+- **Input**: BMM schemas in `resources/` (`.bmm.json` files, shipped with the image). To use your own, mount a directory at `/app/resources`.
+- **Output**: generated artefacts in `output/`. Mount a volume to retrieve them.
 
-Override paths via environment variables:
+Set `BMM_OUTPUT_DIR` to write the output somewhere else:
 
 ```bash
 docker run --rm \
@@ -47,7 +47,7 @@ docker run --rm \
 
 ## Running as the host user
 
-By default the image runs as the bundled `app` user (uid 1000). To match the host user — so generated files in a bind-mounted `output/` are owned by your host uid — pass `--user`:
+By default the image runs as the bundled `app` user (uid 1000). To make the generated files in a bind-mounted `output/` belong to your host uid, pass `--user`:
 
 ```bash
 docker run --rm \
@@ -56,8 +56,8 @@ docker run --rm \
   ghcr.io/openehr/bmm-publisher asciidoc all
 ```
 
-The image supports arbitrary uids: any non-root user retains gid 0, and `/app/output` is group-writable, so writes succeed without rebuilding the image. Bundled `resources/*.bmm.json` ship as 0644, so files copied out with `docker cp` are world-readable on the host.
+The image supports arbitrary uids: any non-root user retains gid 0, and `/app/output` is group-writable, so writes succeed without rebuilding the image. The bundled `resources/*.bmm.json` files ship as 0644, so files copied out with `docker cp` are world-readable on the host.
 
 ## Tagged images
 
-Tagged images follow SemVer: `ghcr.io/openehr/bmm-publisher:1.0.0`, `:1.0`, `:1`. See [releases.md](releases.md) for the release/publishing process.
+Tagged images follow SemVer: `ghcr.io/openehr/bmm-publisher:1.0.0`, `:1.0` and `:1`. [releases.md](releases.md) describes the release and publishing process.

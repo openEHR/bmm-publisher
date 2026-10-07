@@ -1,6 +1,6 @@
 # Architecture
 
-```
+```text
 bin/bmm-publisher  (Symfony Console Application)
   └── Command  →  BmmSchemaCollection  →  Writer
 
@@ -39,8 +39,8 @@ to relocate to `<module>/images/uml/{classes,diagrams}/`).
 - **Writers** are standalone callable classes (`__invoke()`), each receiving `BmmSchemaCollection` via constructor.
 - **Filesystem** helper provides `assureDir()` and `writeFile()` used by all writers.
 - **Formatters** are readonly classes that transform BMM model objects into output strings.
-- **Logging**: PSR-3 via Symfony `ConsoleLogger`. Created in commands, injected into `BmmSchemaCollection`, accessed by writers via `$schemas->logger`. Progress at `notice` level (shown with `-v`), detail at `info` (`-vv`).
+- **Logging**: PSR-3 through Symfony `ConsoleLogger`. Commands create it and inject it into `BmmSchemaCollection`; writers reach it as `$schemas->logger`. Progress is logged at `notice` level (shown with `-v`) and detail at `info` (`-vv`).
 - **`ResourcesDir`** resolves the input schemas path (hardcoded to `{cwd}/resources`).
 - **`OutputDir`** resolves the output path: override via `BMM_OUTPUT_DIR` env var (for Docker), defaults to `{cwd}/output`.
-- **Schema-id collisions**: `BmmSchemaCollection` keys schemas by `getName()` = `getSchemaId()` (`rm_publisher_schemaName_rmRelease`). Two input files with the same id — e.g. `openehr_lang_1.1.0.bmm.json` and the BMM-v3 overlay `openehr_lang_1.1.0-bmm3.bmm.json` (both → `openehr_lang_1.1.0`) — **overwrite each other** in one collection, and most writers key output by schema id. Writers that must emit both process each input in its **own** collection and disambiguate output: `Asciidoc` namespaces filenames (`bmm3.` / `aom14.` / `aom2.`), `BmmYaml` names by input filename, `BmmJsonSplit` uses a suffixed component dir (`LANG-bmm3/`).
+- **Schema-id collisions**: `BmmSchemaCollection` keys schemas by `getName()`, which equals `getSchemaId()` (`rm_publisher_schemaName_rmRelease`). Two input files with the same id overwrite each other in one collection, and most writers key their output by schema id. One example is `openehr_lang_1.1.0.bmm.json` and the BMM v3 overlay `openehr_lang_1.1.0-bmm3.bmm.json`, which both resolve to `openehr_lang_1.1.0`. Writers that must emit both process each input in its own collection and disambiguate the output: `Asciidoc` namespaces filenames (`bmm3.`, `aom14.`, `aom2.`), `BmmYaml` names files by input filename, and `BmmJsonSplit` uses a suffixed component directory (`LANG-bmm3/`).
 - **Package-diagram name clashes**: `Asciidoc` names a package diagram after the package's last name segment (`RM-composition`, `AM-aom2.archetype`). Several packages of one schema can share that segment (AM `aom2.archetype` and `aom2.persistence.archetype`, BASE `bmm.core` and `expression.core`). The package nearest the component root keeps the short name, ties go to the first in traversal order, and the others are named by their full path below the component (`AM-aom2.persistence.archetype`).

@@ -41,6 +41,7 @@ Or use the Makefile: `make install` then `make ci`.
 
 PRs must pass:
 
+- `composer check:lint`
 - `composer check:cs`
 - `composer check:phpstan`
 - `composer test`

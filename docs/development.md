@@ -2,7 +2,7 @@
 
 ## PHP tools (Docker)
 
-**`composer`, `php`, and `vendor/bin/*` are intended to run inside the dev container**, not on arbitrary host machines. From the **repository root**:
+Run `composer`, `php` and `vendor/bin/*` inside the dev container, not on the host. From the repository root:
 
 | Command | Purpose |
 |---------|---------|
@@ -11,7 +11,7 @@
 | `make sh` | Interactive shell in the container |
 | `docker compose -f .docker/docker-compose.yml run --rm app composer <script>` | Run any Composer script |
 
-Example — run a single test class:
+To run a single test class:
 
 ```bash
 docker compose -f .docker/docker-compose.yml run --rm app composer test -- --filter BmmSchemaCollectionTest
@@ -19,7 +19,7 @@ docker compose -f .docker/docker-compose.yml run --rm app composer test -- --fil
 
 ## CLI commands
 
-Run inside the container (`make sh`) or via Docker:
+Run these inside the container (`make sh`) or through Docker:
 
 ```bash
 # Export RM 1.2.0; load BASE as a cross-reference dependency only (-d), not exported
@@ -30,31 +30,31 @@ Run inside the container (`make sh`) or via Docker:
 ./bin/bmm-publisher split-json
 ```
 
-Use `-v` for progress output, `-vv` for detailed file-write logging. `asciidoc`, `legacy-adoc`, and `plantuml` accept repeatable `-d <schema>` dependencies (loaded for cross-references, not exported); inputs may be schema ids or `.bmm.json` paths.
+Use `-v` for progress output and `-vv` for detailed file-write logging. `asciidoc`, `legacy-adoc` and `plantuml` accept repeatable `-d <schema>` dependencies, which are loaded for cross-references but not exported. Inputs can be schema ids or `.bmm.json` paths.
 
 ## Composer scripts
 
-Commands below are run **via** `make …` or `docker compose … app composer …` as above.
+Run these through `make …` or `docker compose … app composer …` as shown above.
 
 | Script | Description |
 |--------|-------------|
 | `composer test` | Run PHPUnit |
 | `composer test:dox` | PHPUnit with testdox output |
-| `composer test:coverage` | PHPUnit with HTML coverage report in `var/` |
+| `composer test:coverage` | PHPUnit with an HTML coverage report in `var/` |
 | `composer check:lint` | parallel-lint (syntax) |
 | `composer check:cs` | PHPCS (PSR-12) |
 | `composer check:phpstan` | PHPStan (level 8) |
-| `composer check:phpstan-baseline` | Generate PHPStan baseline |
+| `composer check:phpstan-baseline` | Generate the PHPStan baseline |
 | `composer rector` | Run Rector refactoring (applies changes) |
-| `composer rector:dry-run` | Run Rector in dry-run (no changes) |
-| `composer ci` | Run lint, CS, PHPStan, and tests (what CI runs) |
+| `composer rector:dry-run` | Run Rector in dry-run mode (no changes) |
+| `composer ci` | Run lint, CS, PHPStan and tests (what CI runs) |
 
 ## Standards and tooling
 
-- **Coding style**: PSR-12 (enforced by PHPCS; config in `tests/phpcs.xml`).
+- **Coding style**: PSR-12, enforced by PHPCS (config in `tests/phpcs.xml`).
 - **Static analysis**: PHPStan level 8 (config in `tests/phpstan.neon`).
-- **Tests**: PHPUnit 12 (config in `tests/phpunit.xml`).
-- **Refactoring**: Rector (config in `tests/rector.php`; run locally; not in CI by default).
+- **Tests**: PHPUnit 13 (config in `tests/phpunit.xml`).
+- **Refactoring**: Rector (config in `tests/rector.php`). Run it locally; CI does not run it.
 
 ## Docker images
 
@@ -62,13 +62,13 @@ The Dockerfile (`.docker/Dockerfile`) is multistage:
 
 | Target | Purpose | Includes |
 |--------|---------|----------|
-| `base` (shared) | Foundation for both targets | PHP 8.5-cli Alpine, Alpine `plantuml` (transitively pulls in OpenJDK + Graphviz + DejaVu fonts — used by the atomic `asciidoc` pipeline) |
-| `development` | Local dev, CI composer scripts | base + xdebug, Composer, git, `php.ini-development` |
-| `production` | Release image pushed to GHCR | base + bundled BMM resources, no xdebug, no Composer, `php.ini-production`, `ENTRYPOINT ["php", "bin/bmm-publisher"]` |
+| `base` (shared) | Foundation for both targets | PHP 8.5-cli Alpine and the Alpine `plantuml` package, which pulls in OpenJDK, Graphviz and DejaVu fonts for the `asciidoc` pipeline |
+| `development` | Local development and CI Composer scripts | base + xdebug, Composer, git, `php.ini-development` |
+| `production` | Release image pushed to GHCR | base + bundled BMM resources, `php.ini-production`, `ENTRYPOINT ["php", "bin/bmm-publisher"]`; no xdebug, no Composer |
 
 ```bash
-make build          # Build development image (docker-compose default)
-make build-prod     # Build production image locally
+make build          # Build the development image (docker-compose default)
+make build-prod     # Build the production image locally
 ```
 
-For the directory layout (`resources/`, `output/`, namespaces) see [AGENTS.md](../AGENTS.md) § "Layout and ownership".
+The directory layout (`resources/`, `output/`, namespaces) is described in [AGENTS.md](../AGENTS.md), section "Layout and ownership".

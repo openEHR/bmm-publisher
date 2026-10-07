@@ -4,10 +4,10 @@ Version tags are **SemVer only** (no `v` prefix): e.g. `1.0.0`, `2.1.3`. The rel
 
 ## Version bump
 
-Before tagging, update **both** of these in the same commit/PR (they must match):
+Before tagging, update both of these in the same commit or PR. The two versions must match:
 
-1. **`CHANGELOG.md`** — move the `[Unreleased]` items into a new versioned section and update the comparison links at the bottom.
-2. **`bin/bmm-publisher`** — update the version string in `new Application('bmm-publisher', '<version>')`.
+1. **`CHANGELOG.md`**: move the `[Unreleased]` items into a new versioned section and update the comparison links at the bottom.
+2. **`bin/bmm-publisher`**: update the version string in `new Application('bmm-publisher', '<version>')`.
 
 ## Release steps
 
@@ -29,7 +29,7 @@ Before tagging, update **both** of these in the same commit/PR (they must match)
 
 Tagged images follow SemVer: `ghcr.io/openehr/bmm-publisher:1.0.0`, `:1.0`, `:1`.
 
-The production image runs `bmm-publisher` as its entrypoint — pass commands directly:
+The production image runs `bmm-publisher` as its entrypoint, so you pass commands directly:
 
 ```bash
 # Generate AsciiDoc for all bundled schemas, output to local directory
