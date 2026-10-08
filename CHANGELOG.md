@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-10-08
+
 ### Added
 
 - **Warn about types no loaded schema defines** — such types render as dead `link:/classes/…` links, usually because a dependency was not passed with `-d`; each is reported once.
@@ -155,7 +157,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.11.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.12.0...HEAD
+[0.12.0]: https://github.com/openehr/bmm-publisher/compare/0.11.0...0.12.0
 [0.11.0]: https://github.com/openehr/bmm-publisher/compare/0.10.0...0.11.0
 [0.10.0]: https://github.com/openehr/bmm-publisher/compare/0.9.0...0.10.0
 [0.9.0]: https://github.com/openehr/bmm-publisher/compare/0.8.0...0.9.0
