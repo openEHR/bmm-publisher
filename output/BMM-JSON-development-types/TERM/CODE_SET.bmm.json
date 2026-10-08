@@ -47,7 +47,7 @@
             "name": "status",
             "documentation": "Status of this code set.",
             "type": "TERMINOLOGY_STATUS",
-            "default": ""
+            "default": "active"
         }
     },
     "package": "org.openehr.term.terminology",

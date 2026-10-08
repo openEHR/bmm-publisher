@@ -13,6 +13,6 @@ a|The code of this concept.
 a|The rubric, i.e. linguistic expression, of this concept, in the language of this terminology instance.
 
 |*status*: `xref:TERM:terminology_package.adoc#_terminology_status_enumeration[TERMINOLOGY_STATUS]` [0..1] +
-`{default{nbsp}={nbsp}}`
+`{default{nbsp}={nbsp}active}`
 a|Status of this concept within the vocabulary.
 |===
