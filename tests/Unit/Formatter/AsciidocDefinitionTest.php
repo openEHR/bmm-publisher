@@ -11,6 +11,8 @@ use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocDefinition;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LogLevel;
+use Tests\Unit\Support\RecordingLogger;
 
 final class AsciidocDefinitionTest extends TestCase
 {
@@ -178,5 +180,55 @@ final class AsciidocDefinitionTest extends TestCase
 
         // Should not be plain text — should be resolved via cross-schema lookup
         self::assertNotSame('UUID', $output);
+    }
+
+    #[Test]
+    public function formatTypeWarnsOnceForATypeNoLoadedSchemaDefines(): void
+    {
+        $logger = new RecordingLogger();
+        $collection = new BmmSchemaCollection($logger);
+        $collection->load('openehr_term_3.0.0'); // BASE, which defines String, is deliberately not loaded
+        $termSchema = iterator_to_array($collection, false)[0];
+        $formatter = new AsciidocDefinition($collection, true);
+
+        $first = $formatter->formatType('String', 'org.openehr.term', $termSchema);
+        $formatter->formatType('String', 'org.openehr.term', $termSchema);
+
+        self::assertSame('link:/classes/String[String] ', $first);
+        $warnings = $logger->recordsAt(LogLevel::WARNING);
+        self::assertCount(1, $warnings);
+        self::assertSame('String', $warnings[0]['context']['type']);
+        self::assertSame('openehr_term_3.0.0', $warnings[0]['context']['schema']);
+    }
+
+    #[Test]
+    public function formatTypeDoesNotWarnForTypesTheLoadedSchemasDefine(): void
+    {
+        $logger = new RecordingLogger();
+        $collection = new BmmSchemaCollection($logger);
+        $collection->load('openehr_term_3.0.0');
+        $collection->load('openehr_base_1.0.4');
+        $termSchema = iterator_to_array($collection, false)[0];
+        $formatter = new AsciidocDefinition($collection, true);
+
+        $formatter->formatType('String', 'org.openehr.term', $termSchema); // defined in BASE
+        $formatter->formatType('CODE', 'org.openehr.term', $termSchema); // defined in TERM
+
+        self::assertSame([], $logger->recordsAt(LogLevel::WARNING));
+    }
+
+    #[Test]
+    public function formatTypeNamesAnEmptyTypeReferenceInItsWarning(): void
+    {
+        $logger = new RecordingLogger();
+        $collection = new BmmSchemaCollection($logger);
+        $collection->load('openehr_term_3.0.0');
+        $termSchema = iterator_to_array($collection, false)[0];
+
+        (new AsciidocDefinition($collection, true))->formatType('', 'org.openehr.term', $termSchema);
+
+        $warnings = $logger->recordsAt(LogLevel::WARNING);
+        self::assertCount(1, $warnings);
+        self::assertStringContainsString('empty type name', $warnings[0]['message']);
     }
 }

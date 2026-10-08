@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Warn about types no loaded schema defines** — such types render as dead `link:/classes/…` links, usually because a dependency was not passed with `-d`; each is reported once.
+- **Log each schema's `schema_revision` when reading it** (shown with `-v`), so a run shows which revision of a bundled or path-loaded schema was used.
+
+### Fixed
+
+- **Restored the default `active` of the four `status` attributes in `openehr_term_3.1.0`** — lost in the UML-to-BMM migration, which left an empty default rendered as `{default = }`.
+
 ## [0.11.0] - 2026-10-07
 
 ### Fixed

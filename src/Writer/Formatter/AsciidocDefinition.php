@@ -500,6 +500,9 @@ readonly class AsciidocDefinition
             };
             return 'xref:' . $xref . '.adoc#_' . strtolower($type) . '_' . $classType . '[' . $type . ']';
         }
+        if ($packageQname === '') {
+            $this->allSchemas->reportUnresolvedType($type, $schema->getSchemaId());
+        }
         return 'link:/classes/' . $type . '[' . $type . '] ' . $packageQname;
     }
 
