@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Log each schema's `schema_revision` when reading it** (shown with `-v`), so a run shows which revision of a bundled or path-loaded schema was used.
+
 ## [0.11.0] - 2026-10-07
 
 ### Fixed

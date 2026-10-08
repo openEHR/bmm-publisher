@@ -9,7 +9,9 @@ use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Helper\ResourcesDir;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LogLevel;
 use RuntimeException;
+use Tests\Unit\Support\RecordingLogger;
 
 final class BmmSchemaCollectionTest extends TestCase
 {
@@ -56,6 +58,19 @@ final class BmmSchemaCollectionTest extends TestCase
         self::assertSame(1, $collection->count());
         $schemas = iterator_to_array($collection, false);
         self::assertSame('openehr_base_1.0.4', $schemas[0]->getSchemaId());
+    }
+
+    #[Test]
+    public function loadLogsTheSchemaRevisionOfTheFileRead(): void
+    {
+        $logger = new RecordingLogger();
+        $collection = new BmmSchemaCollection($logger);
+        $collection->load('openehr_base_1.0.4');
+
+        $schema = iterator_to_array($collection, false)[0];
+        self::assertNotSame('', $schema->schemaRevision);
+        $revisions = array_column(array_column($logger->recordsAt(LogLevel::NOTICE), 'context'), 'revision');
+        self::assertSame([$schema->schemaRevision], $revisions);
     }
 
     #[Test]

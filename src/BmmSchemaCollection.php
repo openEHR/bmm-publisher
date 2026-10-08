@@ -72,9 +72,10 @@ class BmmSchemaCollection implements \IteratorAggregate
 
         $this->logger->info('Deserializing to BMM objects...');
         $schema = BmmSchema::fromArray($data);
-        $this->logger->notice('  Read {count} BMM Classes from {schema}.', [
+        $this->logger->notice('  Read {count} BMM Classes from {schema}, schema_revision {revision}.', [
             'count' => $schema->classDefinitions->count(),
             'schema' => $schema->getSchemaId(),
+            'revision' => $schema->schemaRevision,
         ]);
         $this->schemas->add($schema);
     }
