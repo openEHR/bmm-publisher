@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Warn about types no loaded schema defines** — such types render as dead `link:/classes/…` links, usually because a dependency was not passed with `-d`; each is reported once.
 - **Log each schema's `schema_revision` when reading it** (shown with `-v`), so a run shows which revision of a bundled or path-loaded schema was used.
 
 ## [0.11.0] - 2026-10-07

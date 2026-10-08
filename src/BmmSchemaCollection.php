@@ -27,6 +27,9 @@ class BmmSchemaCollection implements \IteratorAggregate
     /** @var array<string, string|null> */
     private array $qnameCache = [];
 
+    /** @var array<string, true> type names already reported as unresolved */
+    private array $unresolvedTypes = [];
+
     public function __construct(?LoggerInterface $logger = null)
     {
         $this->schemas = new Collection();
@@ -156,6 +159,33 @@ class BmmSchemaCollection implements \IteratorAggregate
             }
         }
         return $this->qnameCache[$className] = null;
+    }
+
+    /**
+     * Warn, once per type name, that no loaded schema defines a referenced type.
+     *
+     * Such a type is rendered without a working link, which usually means a dependency
+     * schema was not loaded with `-d`.
+     */
+    public function reportUnresolvedType(string $typeName, string $schemaId): void
+    {
+        if (isset($this->unresolvedTypes[$typeName])) {
+            return;
+        }
+        $this->unresolvedTypes[$typeName] = true;
+        if ($typeName === '') {
+            $this->logger->warning(
+                'An empty type name (used in {schema}) is rendered as an empty link;'
+                . ' the schema declares a type reference without a name.',
+                ['type' => $typeName, 'schema' => $schemaId],
+            );
+            return;
+        }
+        $this->logger->warning(
+            'Type {type} (used in {schema}) is not defined in any loaded schema, so it is rendered without a link;'
+            . ' load the schema that defines it with -d.',
+            ['type' => $typeName, 'schema' => $schemaId],
+        );
     }
 
     /**
