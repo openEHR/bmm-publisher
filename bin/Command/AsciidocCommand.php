@@ -32,6 +32,8 @@ class AsciidocCommand extends Command
         array $input = [],
         #[Option(description: 'Dependency schema id or .bmm.json path, loaded for cross-refs only, not exported. Repeatable.', shortcut: 'd')]
         array $dependency = [],
+        #[Option(description: 'Directory of example partials; a class with <class filename>.adoc there gets an Example tab.')]
+        ?string $examplesDir = null,
     ): int {
         if (empty($input)) {
             $output->writeln('<error>Please specify which BMM schema(s) to read. See --help for usage.</error>');
@@ -56,7 +58,10 @@ class AsciidocCommand extends Command
             foreach ($dependency as $schema) {
                 $this->loadInput($collection, $schema);
             }
-            (new Asciidoc($collection, $exportSchemaIds))();
+            if ($examplesDir !== null && !is_dir($examplesDir)) {
+                $logger->warning('Examples directory {dir} not found; no Example tabs written.', ['dir' => $examplesDir]);
+            }
+            (new Asciidoc($collection, $exportSchemaIds, $examplesDir))();
 
             $this->renderDiagrams($exportSchemaIds, $output);
             (new EmbedSvg($exportSchemaIds, $logger))();

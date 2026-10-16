@@ -109,6 +109,29 @@ final class WriterTest extends TestCase
     }
 
     #[Test]
+    public function asciidocAddsExampleTabOnlyForClassesWithAnExamplePartial(): void
+    {
+        (new Asciidoc($this->collection))();
+        $tabFiles = self::findFiles($this->tempOutput . '/Adoc/openehr_term_3.0.0/classes/*.adoc');
+        self::assertGreaterThan(1, \count($tabFiles));
+        $withExample = basename($tabFiles[0]);
+        $withoutExample = basename($tabFiles[1]);
+
+        $examplesDir = $this->tempOutput . DIRECTORY_SEPARATOR . 'examples';
+        self::assertTrue(mkdir($examplesDir));
+        file_put_contents($examplesDir . DIRECTORY_SEPARATOR . $withExample, "[source,json]\n----\n{}\n----\n");
+
+        (new Asciidoc($this->collection, [], $examplesDir))();
+
+        $classesDir = $this->tempOutput . '/Adoc/openehr_term_3.0.0/classes/';
+        self::assertStringContainsString(
+            'include::ROOT:partial$examples/' . $withExample . '[]',
+            (string) file_get_contents($classesDir . $withExample),
+        );
+        self::assertStringNotContainsString('Example::', (string) file_get_contents($classesDir . $withoutExample));
+    }
+
+    #[Test]
     public function asciidocOutputContainsValidAsciidocStructure(): void
     {
         (new Asciidoc($this->collection))();
