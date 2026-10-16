@@ -33,6 +33,8 @@ h|*1..1*
 |*reason*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]`
 a|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_attestation_reason[openEHR Terminology, attestation reason group]
+
 h|*1..1*
 |*is_pending*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|True if this attestation is outstanding; False means it has been completed.

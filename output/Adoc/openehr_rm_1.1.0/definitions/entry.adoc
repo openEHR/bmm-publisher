@@ -19,9 +19,13 @@ h|*1..1*
 |*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
 a|Mandatory indicator of the localised language in which this Entry is written. Coded from openEHR Code Set  languages .
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
+
 h|*1..1*
 |*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
 a|Name of character set in which text values in this Entry are encoded. Coded from openEHR Code Set  character sets.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_character_sets[openEHR code set character sets]
 
 h|*0..1*
 |*other_participations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:generic_package.adoc#_participation_class[PARTICIPATION]>`

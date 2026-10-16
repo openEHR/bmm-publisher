@@ -34,6 +34,28 @@ readonly class AsciidocDefinition
         " {" => " \{",
     ];
 
+    /**
+     * TERM page that holds one section per vocabulary and code set (anchor: '_' + openEHR id).
+     */
+    public const string TERMINOLOGY_PAGE = 'TERM:SupportTerminology:terminology.adoc';
+
+    /**
+     * Invariant identifiers whose name differs from the openEHR id used in the TERM spec.
+     */
+    public const array TERMINOLOGY_ID_ALIASES = [
+        'null_flavour' => 'null_flavours',
+    ];
+
+    /**
+     * Coded attributes without a 'has_code_for_group_id' or 'code_set' invariant in the BMM;
+     * the group is only named in their documentation. Key: CLASS.attribute, value: [kind, openEHR id].
+     */
+    public const array TERMINOLOGY_EXTRA = [
+        'EXTRACT_ACTION_REQUEST.action' => ['group', 'extract_action_type'],
+        'EXTRACT_SPEC.extract_type' => ['group', 'extract_content_type'],
+        'EXTRACT_UPDATE_SPEC.trigger_events' => ['group', 'extract_update_trigger_event_type'],
+    ];
+
     public function __construct(
         protected BmmSchemaCollection $allSchemas,
         protected bool $legacyFormat = false,
@@ -195,7 +217,7 @@ readonly class AsciidocDefinition
                 $rows[] = 'h|*' . $card . $override . '*';
                 $rows[] = '|' . $signature . $default;
                 $doc = property_exists($property, 'documentation') ? $this->formatText($property->documentation ?? '') : '';
-                $rows[] = 'a|' . $doc;
+                $rows[] = 'a|' . $doc . $this->formatTerminologyLink($class, $property->getName(), $schema);
             }
         }
 
@@ -504,6 +526,69 @@ readonly class AsciidocDefinition
             $this->allSchemas->reportUnresolvedType($type, $schema->getSchemaId());
         }
         return 'link:/classes/' . $type . '[' . $type . '] ' . $packageQname;
+    }
+
+    /**
+     * Link from a coded attribute to its openEHR Terminology vocabulary or code set in the TERM spec.
+     *
+     * The group comes from the class invariants (own or inherited), e.g.
+     * 'has_code_for_group_id (Group_id_setting, setting.defining_code)' or
+     * 'code_set (Code_set_id_languages).has_code (language)', with TERMINOLOGY_EXTRA for attributes
+     * that have no such invariant. Returns an empty string when there is no group or in legacy format.
+     */
+    public function formatTerminologyLink(BmmClass $class, string $propertyName, BmmSchema $schema): string
+    {
+        if ($this->legacyFormat) {
+            return '';
+        }
+        $group = $this->findTerminologyGroup($class, $propertyName, $schema);
+        if ($group === null) {
+            return '';
+        }
+        [$kind, $id] = $group;
+        $label = $kind === 'group'
+            ? 'openEHR Terminology, ' . str_replace('_', ' ', $id) . ' group'
+            : 'openEHR code set ' . str_replace('_', ' ', $id);
+        return "\n\nTerminology: xref:" . self::TERMINOLOGY_PAGE . '#_' . $id . '[' . $label . ']';
+    }
+
+    /**
+     * @param array<string, true> $visited
+     * @return array{0: string, 1: string}|null [kind ('group' or 'code_set'), openEHR id]
+     */
+    protected function findTerminologyGroup(AbstractBmmClass $class, string $propertyName, BmmSchema $schema, array &$visited = []): ?array
+    {
+        $className = $class->getName();
+        if (isset($visited[$className])) {
+            return null;
+        }
+        $visited[$className] = true;
+
+        if (isset(self::TERMINOLOGY_EXTRA[$className . '.' . $propertyName])) {
+            return self::TERMINOLOGY_EXTRA[$className . '.' . $propertyName];
+        }
+        if ($class instanceof BmmClass) {
+            foreach ($class->invariants as $expr) {
+                $expr = (string)$expr;
+                $prop = preg_quote($propertyName, '/');
+                if (preg_match('/Group_id_(\w+)\s*,\s*' . $prop . '\b/', $expr, $m)) {
+                    return ['group', self::TERMINOLOGY_ID_ALIASES[$m[1]] ?? $m[1]];
+                }
+                if (preg_match('/Code_set_id_(\w+)\s*\)\s*\.\s*has_(?:code|concept_id)\s*\(\s*' . $prop . '\b/', $expr, $m)) {
+                    return ['code_set', self::TERMINOLOGY_ID_ALIASES[$m[1]] ?? $m[1]];
+                }
+            }
+            foreach ($class->ancestors as $ancestorName) {
+                $ancestor = $this->resolveClass($schema, $ancestorName);
+                if ($ancestor) {
+                    $found = $this->findTerminologyGroup($ancestor, $propertyName, $schema, $visited);
+                    if ($found !== null) {
+                        return $found;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public function formatText(?string $text): string

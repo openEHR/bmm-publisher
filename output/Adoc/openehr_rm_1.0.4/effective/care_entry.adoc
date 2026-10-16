@@ -35,11 +35,15 @@ a|Audit trail from non-openEHR system of original commit of information forming 
 _Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 |*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
-a|Mandatory indicator of the localised language in which this Entry is written. Coded from openEHR Code Set  languages . +
+a|Mandatory indicator of the localised language in which this Entry is written. Coded from openEHR Code Set  languages .
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages] +
 _Inherited from xref:RM:ehr:content_package.adoc#_entry_class[ENTRY]_
 
 |*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
-a|Name of character set in which text values in this Entry are encoded. Coded from openEHR Code Set  character sets. +
+a|Name of character set in which text values in this Entry are encoded. Coded from openEHR Code Set  character sets.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_character_sets[openEHR code set character sets] +
 _Inherited from xref:RM:ehr:content_package.adoc#_entry_class[ENTRY]_
 
 |*other_participations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:generic_package.adoc#_participation_class[PARTICIPATION]>` [0..1]

@@ -11,8 +11,12 @@
 |*current_state*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
 a|The ISM current state. Coded by openEHR terminology group Instruction states.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_instruction_states[openEHR Terminology, instruction states group]
+
 |*transition*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
 a|The ISM transition which occurred to arrive in the current_state. Coded by openEHR terminology group  Instruction transitions.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_instruction_transitions[openEHR Terminology, instruction transitions group]
 
 |*careflow_step*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
 a|The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration. This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.

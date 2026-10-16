@@ -18,6 +18,8 @@ h|*1..1*
 |*original_language*: `xref:BASE:foundation_types:terminology.adoc#_terminology_code_class[Terminology_code]`
 a|Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
+
 h|*0..1*
 |*description*: `xref:BASE:resource:resource_package.adoc#_resource_description_class[RESOURCE_DESCRIPTION]`
 a|Description and lifecycle information of the resource.

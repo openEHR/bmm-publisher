@@ -21,6 +21,8 @@ The first three values are taken from the ISO standards 2788 ( Guide to Establis
 |*purpose*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
 a|Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_term_mapping_purpose[openEHR Terminology, term mapping purpose group]
+
 |*target*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
 a|The target term of the mapping.
 

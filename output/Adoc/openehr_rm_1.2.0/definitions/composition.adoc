@@ -20,9 +20,13 @@ h|*1..1*
 |*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
 a|Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  `languages`. The language of an Entry if different from the Composition is indicated in `ENTRY._language_`.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
+
 h|*1..1*
 |*territory*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
 a|Name of territory in which this Composition was written. Coded from openEHR  countries  code set, which is an expression of the ISO 3166 standard.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_countries[openEHR code set countries]
 
 h|*1..1*
 |*category*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
@@ -33,6 +37,8 @@ a|Temporal category of this Composition, i.e.
 * `433&#124;event&#124;` - valid at the time of recording (long-term validity requires subsequent clinical assessment).
 
 or any other code defined in the openEHR terminology group 'category'.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_composition_category[openEHR Terminology, composition category group]
 
 h|*0..1*
 |*context*: `xref:RM:ehr:composition_package.adoc#_event_context_class[EVENT_CONTEXT]`

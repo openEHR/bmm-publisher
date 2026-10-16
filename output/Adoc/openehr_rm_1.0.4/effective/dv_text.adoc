@@ -49,8 +49,12 @@ a|Terms from other terminologies most closely matching this term, typically used
 |*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
 a|Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing `ENTRY`, or else the text object is being used outside of an `ENTRY` or other enclosing structure which indicates the language.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
+
 |*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_character_sets[openEHR code set character sets]
 
 2+h|*Invariants*
 
