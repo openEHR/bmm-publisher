@@ -2730,7 +2730,7 @@ Generally useful for display purposes.
 				name = <"name_map">
 				documentation = <"Map of `_item_values_` (stringified) to `_item_names_`.">
 				result = (P_BMM_GENERIC_TYPE) <
-					generic_parameters = <"String,String", ...>
+					generic_parameters = <"String", "String">
 					root_type = <"Hash">
 				>
 			>

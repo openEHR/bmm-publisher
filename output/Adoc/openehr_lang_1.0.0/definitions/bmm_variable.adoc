@@ -24,6 +24,6 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*signature* (): `link:/classes/[] `
+|*signature* ()
 a|Formal signature of this element, in the form `'name [arg1_name: T_arg1, ...][:T_value]'`.
 |===

@@ -42,7 +42,7 @@ a|Package at the path `a_path'.
 
 |*do_recursive_packages* ( +
 action: `xref:BASE:foundation_types:functional.adoc#_procedure_class[PROCEDURE][1]` +
-): `` [1..1]
+) [1..1]
 a|Recursively execute `action', which is a procedure taking a BMM_PACKAGE argument, on all members of packages.
 
 |*has_package_path* ( +
