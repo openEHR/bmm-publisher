@@ -362,7 +362,8 @@ readonly class AsciidocDefinition
         if ($function->aliases) {
             $aliases = '__alias__ "' . implode('", "', $function->aliases) . '" ';
         }
-        $signature = '*' . $function->name . '* ' . $aliases . '(' . $args . '): `' . $type . '`';
+        // A function whose schema gives no result type is shown without one, as in the legacy tables.
+        $signature = '*' . $function->name . '* ' . $aliases . '(' . $args . ')' . ($type !== '' ? ': `' . $type . '`' : '');
         if ($function->preConditions) {
             $signature .= " +\n +\n" . implode(" +\n", array_map(function ($key, $value) {
                     return '__' . $key . '__: `' . $this->formatText($value) . '`';

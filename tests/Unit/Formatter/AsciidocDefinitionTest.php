@@ -239,6 +239,23 @@ final class AsciidocDefinitionTest extends TestCase
     }
 
     #[Test]
+    public function formatClassShowsAFunctionWithoutResultTypeWithoutOne(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_lang_1.0.0'); // BMM_ROUTINE.signature has result type ""
+        $collection->load('openehr_base_1.1.0');
+        $langSchema = iterator_to_array($collection, false)[0];
+        $class = $langSchema->classDefinitions->get('BMM_ROUTINE');
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new AsciidocDefinition($collection))->format($class, 'org.openehr.lang', $langSchema);
+
+        self::assertStringContainsString('|*signature* ()', $output);
+        self::assertStringNotContainsString('link:/classes/[]', $output);
+        self::assertStringNotContainsString('(): ``', $output);
+    }
+
+    #[Test]
     public function formatTypeResolvesATypeNameThatDiffersOnlyInCase(): void
     {
         $logger = new RecordingLogger();

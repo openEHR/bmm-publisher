@@ -208,7 +208,7 @@ class BmmSchemaCollection implements \IteratorAggregate
         $this->unresolvedTypes[$typeName] = true;
         if ($typeName === '') {
             $this->logger->warning(
-                'An empty type name (used in {schema}) is rendered as an empty link;'
+                'An empty type name (used in {schema}) is rendered without a type;'
                 . ' the schema declares a type reference without a name.',
                 ['type' => $typeName, 'schema' => $schemaId],
             );
