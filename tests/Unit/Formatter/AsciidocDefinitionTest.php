@@ -231,4 +231,35 @@ final class AsciidocDefinitionTest extends TestCase
         self::assertCount(1, $warnings);
         self::assertStringContainsString('empty type name', $warnings[0]['message']);
     }
+
+    #[Test]
+    public function formatTypeRendersNothingForAnEmptyTypeReference(): void
+    {
+        self::assertSame('', $this->formatter->formatType('', 'org.openehr.term', $this->termSchema));
+    }
+
+    #[Test]
+    public function formatTypeResolvesATypeNameThatDiffersOnlyInCase(): void
+    {
+        $logger = new RecordingLogger();
+        $collection = new BmmSchemaCollection($logger);
+        $collection->load('openehr_term_3.0.0');
+        $collection->load('openehr_base_1.0.4'); // defines Iso8601_date
+        $termSchema = iterator_to_array($collection, false)[0];
+
+        $output = (new AsciidocDefinition($collection))->formatType('ISO8601_DATE', 'org.openehr.term', $termSchema);
+
+        self::assertStringStartsWith('xref:BASE:', $output);
+        self::assertStringEndsWith('#_iso8601_date_class[ISO8601_DATE]', $output);
+        self::assertSame([], $logger->recordsAt(LogLevel::WARNING));
+    }
+
+    #[Test]
+    public function formatTypeResolvesByteToTheBaseOctetPrimitive(): void
+    {
+        $output = $this->formatter->formatType('Byte', 'org.openehr.term', $this->termSchema);
+
+        self::assertStringStartsWith('xref:BASE:', $output);
+        self::assertStringEndsWith('#_octet_class[Byte]', $output);
+    }
 }

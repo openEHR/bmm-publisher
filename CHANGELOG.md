@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **Type references that differ only in case now resolve** — e.g. `ISO8601_DATE` in `openehr_rm_1.0.3` links to the BASE `Iso8601_date` class instead of a dead `link:/classes/…` link; the link text keeps the referenced spelling.
+- **`Byte` resolves to the BASE `Octet` primitive** — used by `openehr_rm_1.0.2` / `1.0.3`.
+- **An empty type reference renders nothing** instead of an empty `link:/classes/[]` (e.g. `BMM_ROUTINE.signature` in `openehr_lang_1.0.0`); it is still reported as a warning.
+
 ## [0.12.0] - 2026-10-08
 
 ### Added
