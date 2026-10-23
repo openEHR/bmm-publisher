@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **A bounded cardinality keeps its upper bound in ODIN and class diagrams** — `cadasto/openehr-bmm` 0.4.0 no longer reads `|2..4|` as `|>=2|` (Cadasto/openehr-bmm#8).
 - **Effective tables no longer break after a closing `----` listing or other delimited block** — the inherited-from note kept the block open and swallowed the rest of the table.
 - **Type references that differ only in case now resolve** — e.g. `ISO8601_DATE` in `openehr_rm_1.0.3` links to BASE `Iso8601_date` instead of a dead `link:/classes/…` link.
 - **`Byte` resolves to the BASE `Octet` primitive** — used by `openehr_rm_1.0.2` / `1.0.3`.
