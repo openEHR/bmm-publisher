@@ -7,7 +7,7 @@
 * A path referring to a value in the archetype (paths with a leading ‘/’ are in the definition section.
 * Paths with no leading ‘/’ are in the outer part of the archetype, e.g. “archetype_id/value” refers to the String value of the archetype_id attribute of the enclosing archetype.
 
-2+|Inherits: link:/classes/EXPR_VALUE_REF[EXPR_VALUE_REF] 
+2+|Inherits: link:/classes/EXPR_VALUE_REF[EXPR_VALUE_REF]
 
 2+h|*Attributes*
 

@@ -22,7 +22,7 @@ a|Root node of the definition of this archetype.
 |*terminology*: `xref:AM:AOM2:terminology_package.adoc#_archetype_terminology_class[ARCHETYPE_TERMINOLOGY]` [1..1]
 a|The terminology of the archetype.
 
-|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/STATEMENT_SET[STATEMENT_SET] >` [0..1]
+|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/STATEMENT_SET[STATEMENT_SET]>` [0..1]
 a|Rules relating to this archetype. Statements are expressed in first order predicate logic, and usually refer to at least two attributes.
 
 |*rm_overlay*: `xref:AM:AOM2:rm_adaptation.adoc#_rm_overlay_class[RM_OVERLAY]` [0..1]

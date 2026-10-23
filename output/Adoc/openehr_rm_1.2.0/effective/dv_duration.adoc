@@ -10,7 +10,7 @@ Used for recording the duration of something in the real world, particularly whe
 
 Misuse: Durations cannot be used to represent points in time, or intervals of time.
 
-2+|Inherits: xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:time_types.adoc#_temporal_class[Temporal], xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions], xref:BASE:foundation_types:time_types.adoc#_iso8601_type_class[Iso8601_type], xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT], xref:BASE:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]
+2+|Inherits: xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED], xref:BASE:foundation_types:time_types.adoc#_temporal_class[Temporal], xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions], xref:BASE:foundation_types:time_types.adoc#_iso8601_type_class[Iso8601_type], xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT], xref:BASE:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]
 
 2+h|*Constants*
 
@@ -147,14 +147,10 @@ a|ISO8601 duration string, including described deviations to support negative va
 2+h|*Functions*
 
 |_(abstract)_ *is_equal* ( +
-other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
-
-.Parameters +
-[horizontal]
-`_other_`:: Other object for comparison.
+a|Return True if this `DV_AMOUNT` is considered equal to `_other_`. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
 
 |*equal* __alias__ "=", "==" ( +
 other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
@@ -193,7 +189,7 @@ __Pre_comparable__: `is_strictly_comparable_to (other)` +
 __Post_result__: `Result = magnitude < other.magnitude` [1..1]
 a|True if this duration object is less than `_other_`, based on comparison of `_magnitude()_`.
 
-|*less_than_or_equal* __alias__ "<=", "≤" ( +
+|*less_than_or_equal* __alias__ "\<=", "≤" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +

@@ -12,7 +12,7 @@ class C_TIME {
   + valid_pattern_constraint_replacement( a_pattern : String [1], an_other_pattern : String [1] ) : Boolean [1]
 }
 
-abstract class C_TEMPORAL <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class C_TEMPORAL <T: Temporal> #whitesmoke;line:gray;line.dotted;text:gray {
   + pattern_constraint : String [0..1]
   + {abstract} valid_pattern_constraint( a_pattern : String [1] ) : Boolean [1]
   + {abstract} valid_pattern_constraint_replacement( a_pattern : String [1], an_other_pattern : String [1] ) : Boolean [1]
@@ -21,7 +21,7 @@ abstract class C_TEMPORAL <T> #whitesmoke;line:gray;line.dotted;text:gray {
   + c_value_congruent_to( other : C_ORDERED [1] ) : Boolean [1]
 }
 
-abstract class C_ORDERED <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class C_ORDERED <T: Ordered> #whitesmoke;line:gray;line.dotted;text:gray {
   + constraint : List<Interval<T>> [*]
   + default_value : T [0..1]
   + assumed_value : T [0..1]
@@ -80,6 +80,14 @@ abstract class ARCHETYPE_CONSTRAINT #whitesmoke;line:gray;line.dotted;text:gray 
 }
 
 class ADL_CODE_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} At_code_leader : String = "at" {readOnly}
+  + {static} Id_code_leader : String = "id" {readOnly}
+  + {static} Value_code_leader : String = "at" {readOnly}
+  + {static} Value_set_code_leader : String = "ac" {readOnly}
+  + {static} Specialisation_separator : Character = '.' {readOnly}
+  + {static} Code_regex_pattern : String = "(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*" {readOnly}
+  + {static} Root_code_regex_pattern : String = "^(id1|at0000)(\.1)*$" {readOnly}
+  + {static} Primitive_node_id : String = "at9999" {readOnly}
   + codes_conformant( a_child_code : String [1], a_parent_code : String [1] ) : Boolean [1]
   + is_adl_code( a_code : String [1] ) : Boolean [1]
   + is_at_code( a_code : String [1] ) : Boolean [1]

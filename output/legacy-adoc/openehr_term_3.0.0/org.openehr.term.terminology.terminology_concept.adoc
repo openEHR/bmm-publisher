@@ -13,15 +13,14 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*id*: `link:/classes/String[String] `
+|*id*: `link:/classes/String[String]`
 a|The code of this concept.
 
 h|*1..1*
-|*rubric*: `link:/classes/String[String] `
+|*rubric*: `link:/classes/String[String]`
 a|The rubric, i.e. linguistic expression, of this concept, in the language of this terminology instance.
 
 h|*0..1*
-|*status*: `<<_terminology_status_enumeration,TERMINOLOGY_STATUS>>` +
-`{default{nbsp}={nbsp}}`
+|*status*: `<<_terminology_status_enumeration,TERMINOLOGY_STATUS>>`
 a|Status of this concept within the vocabulary.
 |===

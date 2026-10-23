@@ -21,8 +21,7 @@ a|Other contributors to the resource, each listed in "name <email>"  form.
 |*lifecycle_state*: `xref:BASE:foundation_types:terminology.adoc#_terminology_code_class[Terminology_code]` [1..1]
 a|Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.
 
-|*parent_resource*: `xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]` [1..1] +
-`{default{nbsp}={nbsp}}`
+|*parent_resource*: `xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]` [1..1]
 a|Reference to owning resource.
 
 |*custodian_namespace*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]

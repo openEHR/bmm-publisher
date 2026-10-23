@@ -7,7 +7,7 @@ class INTERVAL_EVENT <T> {
   + interval_start_time() : DV_DATE_TIME [1]
 }
 
-abstract class EVENT <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EVENT <T: ITEM_STRUCTURE> #whitesmoke;line:gray;line.dotted;text:gray {
   + time : DV_DATE_TIME [1]
   + state : ITEM_STRUCTURE [0..1]
   + data : T [1]

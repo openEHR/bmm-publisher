@@ -4,7 +4,7 @@
 
 2+a|Abstract notional parent class of ordered, numeric types, which are types with both the `_less_than_()` and arithmetic functions defined.
 
-2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]
 
 2+h|*Functions*
 
@@ -54,7 +54,7 @@ a|Arithmetic value comparison. Returns True if current object is less than `_oth
 In conjunction with `=`, enables the definition of the related functions `_greater_than_()` etc. +
 _Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
 
-|*less_than_or_equal* __alias__ "<=", "≤" ( +
+|*less_than_or_equal* __alias__ "\<=", "≤" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +

@@ -1,6 +1,6 @@
 @startuml
 
-abstract class P_C_ORDERED <T> {
+abstract class P_C_ORDERED <T: Ordered> {
   + constraint : List<Interval<T>> [1..*]
 }
 

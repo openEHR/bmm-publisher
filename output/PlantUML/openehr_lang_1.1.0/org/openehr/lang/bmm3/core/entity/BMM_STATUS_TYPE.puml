@@ -1,9 +1,11 @@
 @startuml
 
 class BMM_STATUS_TYPE {
+  + {static} base_name : String = "Status" {readOnly}
 }
 
 abstract class BMM_BUILTIN_TYPE #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} base_name : String {readOnly}
   + is_abstract() : Boolean [1]
   + is_primitive() : Boolean [1]
   + type_base_name() : String [1]

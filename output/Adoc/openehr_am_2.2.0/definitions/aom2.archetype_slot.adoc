@@ -14,11 +14,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION] >`
+|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION]>`
 a|List of constraints defining other archetypes that could be included at this point.
 
 h|*0..1*
-|*excludes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION] >`
+|*excludes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION]>`
 a|List of constraints defining other archetypes that cannot be included at this point.
 
 h|*1..1*

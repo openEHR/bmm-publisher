@@ -8,7 +8,7 @@
 
 2+h|*Constants*
 
-|*base_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+|*base_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Base name (built-in typename).
 
 2+h|*Functions*

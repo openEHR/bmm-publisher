@@ -1,10 +1,10 @@
 @startuml
 
-class EL_CONDITION_CHAIN <T> {
+class EL_CONDITION_CHAIN <T: EL_TERMINAL> {
   + items : List<EL_CONDITIONAL_EXPRESSION<T>> [1..*]
 }
 
-abstract class EL_DECISION_TABLE <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_DECISION_TABLE <T: EL_TERMINAL> #whitesmoke;line:gray;line.dotted;text:gray {
   + items : List<EL_DECISION_BRANCH<T>> [1..*]
   + else : T [1]
 }

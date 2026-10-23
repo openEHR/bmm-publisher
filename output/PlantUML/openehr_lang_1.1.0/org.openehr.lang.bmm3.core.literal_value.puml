@@ -12,7 +12,7 @@ class BMM_STRING_VALUE {
   + value : String [1]
 }
 
-abstract class BMM_LITERAL_VALUE <T> {
+abstract class BMM_LITERAL_VALUE <T: BMM_TYPE> {
   + value_literal : String [1]
   + value : Any [0..1]
   + syntax : String [0..1]
@@ -23,7 +23,7 @@ class BMM_BOOLEAN_VALUE {
   + value : Boolean [1]
 }
 
-abstract class BMM_UNITARY_VALUE <T> {
+abstract class BMM_UNITARY_VALUE <T: BMM_UNITARY_TYPE> {
 }
 
 class BMM_CONTAINER_VALUE {

@@ -1,6 +1,6 @@
 @startuml
 
-abstract class Interval <T> {
+abstract class Interval <T: Ordered> {
   + lower : T [0..1]
   + upper : T [0..1]
   + lower_unbounded : Boolean [1]

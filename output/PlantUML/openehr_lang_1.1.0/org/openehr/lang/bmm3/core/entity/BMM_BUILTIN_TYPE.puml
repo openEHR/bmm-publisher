@@ -1,6 +1,7 @@
 @startuml
 
 abstract class BMM_BUILTIN_TYPE {
+  + {static} base_name : String {readOnly}
   + is_abstract() : Boolean [1]
   + is_primitive() : Boolean [1]
   + type_base_name() : String [1]

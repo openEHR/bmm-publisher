@@ -69,10 +69,10 @@ _Inherited from xref:AM:AOM2:constraint_model-class_definitions.adoc#_c_object_c
 a|Optional indicator of order of this node with respect to another sibling. Only meaningful in a specialised archetype for a `C_OBJECT` within a `C_ATTRIBUTE` with `_is_multiple_` = True. +
 _Inherited from xref:AM:AOM2:constraint_model-class_definitions.adoc#_c_object_class[C_OBJECT]_
 
-|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION] >` [0..1]
+|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION]>` [0..1]
 a|List of constraints defining other archetypes that could be included at this point.
 
-|*excludes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION] >` [0..1]
+|*excludes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/ASSERTION[ASSERTION]>` [0..1]
 a|List of constraints defining other archetypes that cannot be included at this point.
 
 |*is_closed*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]

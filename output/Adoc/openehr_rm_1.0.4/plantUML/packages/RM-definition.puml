@@ -4,6 +4,8 @@ class OPENEHR_DEFINITIONS {
 }
 
 class BASIC_DEFINITIONS {
+  + {static} CR : Character = '\015' {readOnly}
+  + {static} LF : Character = '\012' {readOnly}
 }
 
 BASIC_DEFINITIONS <|-- OPENEHR_DEFINITIONS

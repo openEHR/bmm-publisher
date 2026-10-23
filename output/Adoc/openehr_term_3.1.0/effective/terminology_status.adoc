@@ -4,7 +4,7 @@
 
 2+a|Enumeration of possible lifecycle states of any part of the terminomlogy.
 
-2+|Inherits: link:/classes/String[String] 
+2+|Inherits: link:/classes/String[String]
 
 2+h|*Constants*
 

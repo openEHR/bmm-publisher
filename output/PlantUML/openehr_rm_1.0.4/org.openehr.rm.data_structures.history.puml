@@ -1,6 +1,6 @@
 @startuml
 
-abstract class EVENT <T> {
+abstract class EVENT <T: ITEM_STRUCTURE> {
   + time : DV_DATE_TIME [1]
   + state : ITEM_STRUCTURE [0..1]
   + data : T [1]
@@ -20,7 +20,7 @@ class INTERVAL_EVENT <T> {
   + interval_start_time() : DV_DATE_TIME [1]
 }
 
-class HISTORY <T> {
+class HISTORY <T: ITEM_STRUCTURE> {
   + origin : DV_DATE_TIME [1]
   + period : DV_DURATION [0..1]
   + duration : DV_DURATION [0..1]

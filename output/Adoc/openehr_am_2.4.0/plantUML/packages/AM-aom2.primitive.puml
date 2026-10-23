@@ -30,7 +30,7 @@ class C_INTEGER {
   + assumed_value : Real [0..1]
 }
 
-abstract class C_ORDERED <T> {
+abstract class C_ORDERED <T: Ordered> {
   + constraint : List<Interval<T>> [*]
   + default_value : T [0..1]
   + assumed_value : T [0..1]
@@ -62,7 +62,7 @@ class C_TERMINOLOGY_CODE {
   + c_value_congruent_to( other : C_TERMINOLOGY_CODE [1] ) : Boolean [1]
 }
 
-abstract class C_TEMPORAL <T> {
+abstract class C_TEMPORAL <T: Temporal> {
   + pattern_constraint : String [0..1]
   + {abstract} valid_pattern_constraint( a_pattern : String [1] ) : Boolean [1]
   + {abstract} valid_pattern_constraint_replacement( a_pattern : String [1], an_other_pattern : String [1] ) : Boolean [1]

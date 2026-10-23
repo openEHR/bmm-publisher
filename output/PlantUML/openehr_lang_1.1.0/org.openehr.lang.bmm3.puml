@@ -1,6 +1,28 @@
 @startuml
 
 class BMM_DEFINITIONS {
+  + {static} Bmm_internal_version : String {readOnly}
+  + {static} Schema_name_delimiter : String = "::" {readOnly}
+  + {static} Package_name_delimiter : String = "." {readOnly}
+  + {static} Bmm_schema_file_extension : String = ".bmm" {readOnly}
+  + {static} Type_delimiter : Character = ':' {readOnly}
+  + {static} Generic_left_delimiter : Character = '<' {readOnly}
+  + {static} Generic_right_delimiter : Character = '>' {readOnly}
+  + {static} Generic_separator : Character = ',' {readOnly}
+  + {static} Generic_constraint_delimiter : Character = ':' {readOnly}
+  + {static} Tuple_left_delim : Character = '[' {readOnly}
+  + {static} Tuple_right_delim : Character = ']' {readOnly}
+  + {static} Tuple_separator : Character = ',' {readOnly}
+  + {static} Constraint_left_delim : Character = '«' {readOnly}
+  + {static} Constraint_right_delim : Character = '»' {readOnly}
+  + {static} Metadata_bmm_version : String = "bmm_version" {readOnly}
+  + {static} Metadata_schema_name : String = "schema_name" {readOnly}
+  + {static} Metadata_rm_publisher : String = "rm_publisher" {readOnly}
+  + {static} Metadata_rm_release : String = "rm_release" {readOnly}
+  + {static} Metadata_schema_revision : String = "schema_revision" {readOnly}
+  + {static} Metadata_schema_lifecycle_state : String = "schema_lifecycle_state" {readOnly}
+  + {static} Metadata_schema_description : String = "schema_description" {readOnly}
+  + {static} Metadata_schema_path : String = "schema_path" {readOnly}
   + Any_class() : BMM_SIMPLE_CLASS [1]
   + Any_type() : BMM_SIMPLE_TYPE [1]
   + create_schema_id( a_model_publisher : Any [1], a_schema_name : Any [1], a_model_release : String [1] ) : String [1]

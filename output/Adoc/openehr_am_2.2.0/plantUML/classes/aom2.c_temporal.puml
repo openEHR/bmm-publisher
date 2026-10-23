@@ -9,7 +9,7 @@ abstract class C_TEMPORAL <T> {
   + c_value_congruent_to( other : C_ORDERED [1] ) : Boolean [1]
 }
 
-abstract class C_ORDERED <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class C_ORDERED <T: Ordered> #whitesmoke;line:gray;line.dotted;text:gray {
   + constraint : List<Interval<T>> [*]
   + any_allowed() : Boolean [1]
   + c_value_conforms_to( other : C_ORDERED [1] ) : Boolean [1]
@@ -65,6 +65,13 @@ abstract class ARCHETYPE_CONSTRAINT #whitesmoke;line:gray;line.dotted;text:gray 
 }
 
 class ADL_CODE_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} Id_code_leader : String = "id" {readOnly}
+  + {static} Value_code_leader : String = "at" {readOnly}
+  + {static} Value_set_code_leader : String = "ac" {readOnly}
+  + {static} Specialisation_separator : Character = '.' {readOnly}
+  + {static} Code_regex_pattern : String = "(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*" {readOnly}
+  + {static} Root_code_regex_pattern : String = "^id1(\.1)*$" {readOnly}
+  + {static} Primitive_node_id : String = "id9999" {readOnly}
   + codes_conformant( a_child_code : String [1], a_parent_code : String [1] ) : Boolean [1]
   + is_adl_code( a_code : String [1] ) : Boolean [1]
   + is_id_code( a_code : String [1] ) : Boolean [1]

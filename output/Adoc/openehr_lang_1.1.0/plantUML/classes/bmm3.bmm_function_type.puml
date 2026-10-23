@@ -1,18 +1,22 @@
 @startuml
 
 class BMM_FUNCTION_TYPE {
+  + {static} base_name : String = "Function" {readOnly}
 }
 
 class BMM_ROUTINE_TYPE #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} base_name : String = "Routine" {readOnly}
   + argument_types : BMM_TUPLE_TYPE [0..1]
 }
 
 class BMM_SIGNATURE #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} base_name : String = "Signature" {readOnly}
   + result_type : BMM_TYPE [1]
   + flattened_type_list() : List<String> [1..*]
 }
 
 abstract class BMM_BUILTIN_TYPE #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} base_name : String {readOnly}
   + is_abstract() : Boolean [1]
   + is_primitive() : Boolean [1]
   + type_base_name() : String [1]

@@ -1,6 +1,6 @@
 @startuml
 
-class HISTORY <T> {
+class HISTORY <T: ITEM_STRUCTURE> {
   + origin : DV_DATE_TIME [1]
   + period : DV_DURATION [0..1]
   + duration : DV_DURATION [0..1]

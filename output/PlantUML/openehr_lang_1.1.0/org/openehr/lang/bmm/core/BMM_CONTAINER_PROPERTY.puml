@@ -6,7 +6,7 @@ class BMM_CONTAINER_PROPERTY {
   + display_name() : String [1]
 }
 
-class BMM_PROPERTY <T> #whitesmoke;line:gray;line.dotted;text:gray {
+class BMM_PROPERTY <T: BMM_TYPE> #whitesmoke;line:gray;line.dotted;text:gray {
   + name : String [1]
   + is_mandatory : Boolean [0..1]
   + is_computed : Boolean [0..1]
@@ -22,6 +22,10 @@ abstract class BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} Bmm_internal_version : String {readOnly}
+  + {static} Schema_name_delimiter : String = "::" {readOnly}
+  + {static} Package_name_delimiter : String = "." {readOnly}
+  + {static} Bmm_schema_file_extension : String = ".bmm" {readOnly}
 }
 
 BMM_DEFINITIONS <|-- BMM_MODEL_ELEMENT
