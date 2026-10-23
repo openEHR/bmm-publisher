@@ -9,11 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- **Effective tables no longer break after a closing `----` listing** — the " +" before "_Inherited from …_" turned the delimiter into `---- +`, which left the listing open and swallowed the rest of the table (13 classes in `openehr_base_1.0.4`); the note now starts its own paragraph there.
-- **Type references that differ only in case now resolve** — e.g. `ISO8601_DATE` in `openehr_rm_1.0.3` links to the BASE `Iso8601_date` class instead of a dead `link:/classes/…` link; the link text keeps the referenced spelling.
+- **Effective tables no longer break after a closing `----` listing or other delimited block** — the inherited-from note kept the block open and swallowed the rest of the table.
+- **Type references that differ only in case now resolve** — e.g. `ISO8601_DATE` in `openehr_rm_1.0.3` links to BASE `Iso8601_date` instead of a dead `link:/classes/…` link.
 - **`Byte` resolves to the BASE `Octet` primitive** — used by `openehr_rm_1.0.2` / `1.0.3`.
 - **`openehr_base_1.0.4`: `BMM_ENUMERATION.name_map` is `Hash<String, String>`** — the two generic parameters were stored as one `"String,String"`, rendered as a dead `link:/classes/String,String`.
-- **An empty type reference renders nothing** instead of an empty `link:/classes/[]`; a function without result type is shown as `*name* ()`, as in the legacy tables (e.g. `BMM_ROUTINE.signature` in `openehr_lang_1.0.0`). It is still reported as a warning.
+- **An empty type reference renders nothing** instead of an empty `link:/classes/[]` link, and is still reported as a warning.
+- **A function without result type is shown as `*name* ()`**, as in the legacy tables (e.g. `BMM_ROUTINE.signature` in `openehr_lang_1.0.0`).
 
 ## [0.12.0] - 2026-10-08
 
