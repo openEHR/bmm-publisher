@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Formatter;
 
+use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmClass;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocEffective;
@@ -68,6 +69,40 @@ final class AsciidocEffectiveTest extends TestCase
 
         self::assertSame("Text. +\n_Inherited from X_", $formatter->withInheritedNote('Text.', " +\n_Inherited from X_"));
         self::assertSame('Text.', $formatter->withInheritedNote('Text.', ''));
+    }
+
+    #[Test]
+    public function effectiveViewKeepsARedefinitionWhenASharedAncestorIsReachedAgain(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_rm_1.2.0');
+        $collection->load('openehr_base_1.3.0');
+        $rmSchema = iterator_to_array($collection, false)[0];
+        // DV_DURATION inherits DV_AMOUNT, which redefines Any.is_equal, and Iso8601_duration, which reaches Any again
+        $class = $rmSchema->classDefinitions->get('DV_DURATION');
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new AsciidocEffective($collection))->format($class, 'org.openehr.rm.data_types', $rmSchema);
+
+        self::assertMatchesRegularExpression('/\*is_equal\* \( \+\nother: `[^`]*\[DV_AMOUNT\]/', $output);
+        self::assertDoesNotMatchRegularExpression('/\*is_equal\* \( \+\nother: `[^`]*\[Any\]/', $output);
+    }
+
+    #[Test]
+    public function inheritsLineListsASharedAncestorOnce(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+        // Integer -> Ordered_Numeric -> Ordered and Numeric, and both of those inherit Any
+        $class = $schema->primitiveTypes->get('Integer') ?? $schema->classDefinitions->get('Integer');
+        self::assertInstanceOf(AbstractBmmClass::class, $class);
+
+        $output = (new AsciidocEffective($collection))->format($class, 'org.openehr.base.foundation_types', $schema);
+
+        $inherits = array_values(preg_grep('/^2\+\|Inherits: /', explode("\n", $output)) ?: [])[0] ?? '';
+        self::assertNotSame('', $inherits);
+        self::assertSame(1, substr_count($inherits, '[Any]'));
     }
 
     #[Test]
