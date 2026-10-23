@@ -123,7 +123,7 @@ a_date_time: `xref:BASE:foundation_types:time_types.adoc#_iso8601_date_time_clas
 a|Difference of two date/times.
 
 h|*1..1*
-|*add_nominal* __alias__ "++" ( +
+|*add_nominal* __alias__ "{plus}{plus}" ( +
 a_diff: `xref:BASE:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration][1]` +
 ): `xref:BASE:foundation_types:time_types.adoc#_iso8601_date_class[Iso8601_date]`
 a|Addition of nominal duration represented by `_a_diff_`. See `Iso8601_date._add_nominal_()` for semantics.

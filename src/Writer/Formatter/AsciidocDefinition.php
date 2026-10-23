@@ -31,7 +31,6 @@ readonly class AsciidocDefinition
     public const array TEXT_REPLACEMENT = [
         '|' => '&#124;',
         '<=' => '\<=',
-        " {" => " \{",
     ];
 
     /**
@@ -617,11 +616,35 @@ readonly class AsciidocDefinition
 
     public function formatText(?string $text): string
     {
-        $text = $text ?? '';
-        $replaced = preg_replace('/(\{[\w.]*})/', '\\\$1', $text, -1, $count);
-        $text = $replaced ?? '';
-        $text = str_replace(array_keys(self::TEXT_REPLACEMENT), array_values(self::TEXT_REPLACEMENT), trim($text));
+        $text = trim($text ?? '');
+        // Escape only what Asciidoctor reads as an attribute reference ({name}, {set:...}, {counter:...}):
+        // before any other brace, such as "{units, range}", the backslash would stay visible.
+        $text = preg_replace('/\{(?:\w[\w-]*|(?:set|counter2?):[^}\n]*)\}/', '\\\$0', $text) ?? '';
+        // After the braces, so the {plus} written here is not escaped in turn.
+        $text = $this->escapePassthroughPlus($text);
+        $text = str_replace(array_keys(self::TEXT_REPLACEMENT), array_values(self::TEXT_REPLACEMENT), $text);
         return $this->escapeBoldAsterisks($text);
+    }
+
+    /**
+     * Write each '+' as {plus}, since '+x+', '++' and '+++' are AsciiDoc passthrough
+     * markup (`{neg, trace, +, ++, +++}` rendered as `{neg, trace, , , }`).
+     *
+     * A ' +' hard line break at the end of a line and a lone '+' list-continuation line
+     * are AsciiDoc the schema text uses on purpose, so they are kept.
+     */
+    private function escapePassthroughPlus(string $text): string
+    {
+        $lines = explode("\n", $text);
+        foreach ($lines as $i => $line) {
+            if (trim($line) === '+') {
+                continue;
+            }
+            $hardBreak = preg_match('/ \+\s*$/', $line) === 1;
+            $body = $hardBreak ? substr(rtrim($line), 0, -1) : $line;
+            $lines[$i] = str_replace('+', '{plus}', $body) . ($hardBreak ? '+' : '');
+        }
+        return implode("\n", $lines);
     }
 
     /**

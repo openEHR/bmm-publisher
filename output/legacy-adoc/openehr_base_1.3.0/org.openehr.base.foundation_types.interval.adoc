@@ -29,7 +29,7 @@ a|True if `_lower_` boundary open (i.e. = `-infinity`).
 
 h|*1..1*
 |*upper_unbounded*: `<<_boolean_class,Boolean>>`
-a|True if `_upper_` boundary open (i.e. = `+infinity`).
+a|True if `_upper_` boundary open (i.e. = `{plus}infinity`).
 
 h|*1..1*
 |*lower_included*: `<<_boolean_class,Boolean>>`

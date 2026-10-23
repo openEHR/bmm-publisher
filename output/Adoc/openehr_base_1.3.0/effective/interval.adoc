@@ -18,7 +18,7 @@ a|Upper bound.
 a|True if `_lower_` boundary open (i.e. = `-infinity`).
 
 |*upper_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
-a|True if `_upper_` boundary open (i.e. = `+infinity`).
+a|True if `_upper_` boundary open (i.e. = `{plus}infinity`).
 
 |*lower_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|True if `_lower_` boundary value included in range, if `not _lower_unbounded_`.

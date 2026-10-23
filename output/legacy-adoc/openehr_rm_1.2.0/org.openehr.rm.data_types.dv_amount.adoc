@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*__DV_AMOUNT (abstract)__*
 
 h|*Description*
-2+a|Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  `+` and  `-` operators are defined (unlike descendants of `DV_ABSOLUTE_QUANTITY`, such as the date/time types).
+2+a|Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  `{plus}` and  `-` operators are defined (unlike descendants of `DV_ABSOLUTE_QUANTITY`, such as the date/time types).
 
 h|*Inherit*
 2+|`<<_dv_quantified_class,DV_QUANTIFIED>>`
