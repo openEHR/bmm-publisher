@@ -114,7 +114,7 @@ __Post_result__: `Result = magnitude < other.magnitude` [1..1]
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`. +
 _Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
 
-|*less_than_or_equal* __alias__ "<=", "≤" ( +
+|*less_than_or_equal* __alias__ "\<=", "≤" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +

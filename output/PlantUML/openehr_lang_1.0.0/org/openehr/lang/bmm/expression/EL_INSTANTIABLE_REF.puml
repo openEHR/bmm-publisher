@@ -1,6 +1,6 @@
 @startuml
 
-class EL_INSTANTIABLE_REF <T> {
+class EL_INSTANTIABLE_REF <T: BMM_INSTANTIABLE> {
   + definition : T [0..1]
   + eval_type() : BMM_TYPE [1]
 }

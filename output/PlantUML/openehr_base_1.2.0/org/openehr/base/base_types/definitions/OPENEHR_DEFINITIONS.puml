@@ -1,9 +1,16 @@
 @startuml
 
 class OPENEHR_DEFINITIONS {
+  + {static} Local_terminology_id : String = "local" {readOnly}
 }
 
 class BASIC_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} CR : Character = '\015' {readOnly}
+  + {static} LF : Character = '\012' {readOnly}
+  + {static} Any_type_name : String = "Any" {readOnly}
+  + {static} Regex_any_pattern : String = ".*" {readOnly}
+  + {static} Default_encoding : String = "UTF-8" {readOnly}
+  + {static} None_type_name : String = "None" {readOnly}
 }
 
 BASIC_DEFINITIONS <|-- OPENEHR_DEFINITIONS

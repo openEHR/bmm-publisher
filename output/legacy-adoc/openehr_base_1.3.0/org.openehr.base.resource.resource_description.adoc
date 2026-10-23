@@ -33,8 +33,7 @@ h|*0..1*
 a|Other contributors to the resource, each listed in "name <email>"  form.
 
 h|*1..1*
-|*parent_resource*: `<<_authored_resource_class,AUTHORED_RESOURCE>>` +
-`{default{nbsp}={nbsp}}`
+|*parent_resource*: `<<_authored_resource_class,AUTHORED_RESOURCE>>`
 a|Reference to owning resource.
 
 h|*1..1*

@@ -2,7 +2,7 @@
 |===
 2+^h|*Double*
 
-2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric]
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric]
 
 2+h|*Functions*
 

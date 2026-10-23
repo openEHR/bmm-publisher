@@ -15,6 +15,10 @@ class SCHEMA_DESCRIPTOR {
 }
 
 class BMM_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} Bmm_internal_version : String {readOnly}
+  + {static} Schema_name_delimiter : String = "::" {readOnly}
+  + {static} Package_name_delimiter : String = "." {readOnly}
+  + {static} Bmm_schema_file_extension : String = ".bmm" {readOnly}
 }
 
 BMM_DEFINITIONS <|-- SCHEMA_DESCRIPTOR

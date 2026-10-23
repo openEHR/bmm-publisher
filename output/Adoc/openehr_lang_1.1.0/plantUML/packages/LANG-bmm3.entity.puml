@@ -109,11 +109,13 @@ class BMM_PARAMETER_TYPE {
 }
 
 class BMM_TUPLE_TYPE {
+  + {static} base_name : String = "Tuple" {readOnly}
   + item_types : Hash<String,BMM_TYPE> [1]
   + flattened_type_list() : List<String> [1..*]
 }
 
 abstract class BMM_BUILTIN_TYPE {
+  + {static} base_name : String {readOnly}
   + is_abstract() : Boolean [1]
   + is_primitive() : Boolean [1]
   + type_base_name() : String [1]
@@ -138,6 +140,7 @@ class BMM_INDEXED_CONTAINER_TYPE {
 }
 
 class BMM_SIGNATURE {
+  + {static} base_name : String = "Signature" {readOnly}
   + result_type : BMM_TYPE [1]
   + flattened_type_list() : List<String> [1..*]
 }
@@ -146,17 +149,21 @@ abstract class BMM_MODEL_ELEMENT #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 class BMM_STATUS_TYPE {
+  + {static} base_name : String = "Status" {readOnly}
 }
 
 class BMM_PROCEDURE_TYPE {
+  + {static} base_name : String = "Procedure" {readOnly}
   + result_type : BMM_STATUS_TYPE [0..1]
 }
 
 class BMM_ROUTINE_TYPE {
+  + {static} base_name : String = "Routine" {readOnly}
   + argument_types : BMM_TUPLE_TYPE [0..1]
 }
 
 class BMM_FUNCTION_TYPE {
+  + {static} base_name : String = "Function" {readOnly}
 }
 
 class BMM_PROPERTY_TYPE {

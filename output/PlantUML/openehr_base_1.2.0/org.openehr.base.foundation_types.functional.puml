@@ -3,19 +3,19 @@
 class TUPLE {
 }
 
-class FUNCTION <ARGS, RESULT> {
+class FUNCTION <ARGS: TUPLE, RESULT: Any> {
 }
 
-class ROUTINE <ARGS> {
+class ROUTINE <ARGS: TUPLE> {
 }
 
-class TUPLE1 <A> {
+class TUPLE1 <A: Any> {
 }
 
-class TUPLE2 <A, B> {
+class TUPLE2 <A: Any, B: Any> {
 }
 
-class PROCEDURE <ARGS> {
+class PROCEDURE <ARGS: TUPLE> {
 }
 
 ROUTINE <|-- FUNCTION

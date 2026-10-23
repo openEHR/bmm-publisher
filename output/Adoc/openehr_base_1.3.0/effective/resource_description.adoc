@@ -21,8 +21,7 @@ a|Plain text name of organisation that originally published this artefact, if an
 |*other_contributors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
 a|Other contributors to the resource, each listed in "name <email>"  form.
 
-|*parent_resource*: `xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]` [1..1] +
-`{default{nbsp}={nbsp}}`
+|*parent_resource*: `xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]` [1..1]
 a|Reference to owning resource.
 
 |*lifecycle_state*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]

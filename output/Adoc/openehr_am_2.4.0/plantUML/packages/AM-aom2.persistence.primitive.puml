@@ -21,7 +21,7 @@ class P_C_INTEGER {
 class P_C_REAL {
 }
 
-abstract class P_C_ORDERED <T> {
+abstract class P_C_ORDERED <T: Ordered> {
   + constraint : List<Interval<T>> [1..*]
 }
 
@@ -31,7 +31,7 @@ class P_C_TERMINOLOGY_CODE {
   + default_value : Terminology_code [1]
 }
 
-abstract class P_C_TEMPORAL <T> {
+abstract class P_C_TEMPORAL <T: Temporal> {
   + pattern_constraint : String [1]
 }
 

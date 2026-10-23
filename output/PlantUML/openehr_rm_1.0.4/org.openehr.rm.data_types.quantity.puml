@@ -16,13 +16,13 @@ abstract class DATA_VALUE #whitesmoke;line:gray;line.dotted;text:gray {
 abstract class Ordered #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-class DV_INTERVAL <T> {
+class DV_INTERVAL <T: DV_ORDERED> {
 }
 
-class Interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
+class Interval <T: Ordered> #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-class REFERENCE_RANGE <T> {
+class REFERENCE_RANGE <T: DV_ORDERED> {
   + meaning : DV_TEXT [1]
   + range : DV_INTERVAL [1]
   + is_in_range( v : DV_ORDERED [1] ) : Boolean [1]

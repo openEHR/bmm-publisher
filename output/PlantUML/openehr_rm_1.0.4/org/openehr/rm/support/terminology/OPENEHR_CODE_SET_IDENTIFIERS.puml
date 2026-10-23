@@ -1,6 +1,13 @@
 @startuml
 
 class OPENEHR_CODE_SET_IDENTIFIERS {
+  + {static} Code_set_id_character_sets : String = "character sets" {readOnly}
+  + {static} Code_set_id_compression_algorithms : String = "compression algorithms" {readOnly}
+  + {static} Code_set_id_countries : String = "countries" {readOnly}
+  + {static} Code_set_integrity_check_algorithms : String = "integrity check algorithms" {readOnly}
+  + {static} Code_set_id_languages : String = "languages" {readOnly}
+  + {static} Code_set_id_media_types : String = "media types" {readOnly}
+  + {static} Code_set_id_normal_statuses : String = "normal statuses" {readOnly}
   + valid_code_set_id( an_id : String [1] ) : Boolean [1]
 }
 

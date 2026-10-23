@@ -4,11 +4,13 @@ class BMM_PROPERTY_TYPE {
 }
 
 class BMM_SIGNATURE #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} base_name : String = "Signature" {readOnly}
   + result_type : BMM_TYPE [1]
   + flattened_type_list() : List<String> [1..*]
 }
 
 abstract class BMM_BUILTIN_TYPE #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} base_name : String {readOnly}
   + is_abstract() : Boolean [1]
   + is_primitive() : Boolean [1]
   + type_base_name() : String [1]

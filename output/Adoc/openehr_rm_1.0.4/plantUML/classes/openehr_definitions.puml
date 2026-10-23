@@ -4,6 +4,8 @@ class OPENEHR_DEFINITIONS {
 }
 
 class BASIC_DEFINITIONS #whitesmoke;line:gray;line.dotted;text:gray {
+  + {static} CR : Character = '\015' {readOnly}
+  + {static} LF : Character = '\012' {readOnly}
 }
 
 BASIC_DEFINITIONS <|-- OPENEHR_DEFINITIONS

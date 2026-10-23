@@ -18,5 +18,5 @@
         }
     },
     "package": "org.openehr.lang.bmm3.core.entity.range_constrained",
-    "specUrl": "https://specifications.openehr.org/releases/LANG/development/core.html#_range_constrained_package"
+    "specUrl": "https://specifications.openehr.org/releases/LANG/development/bmm3.html#_range_constrained_package"
 }

@@ -1,10 +1,10 @@
 @startuml
 
-class EL_CONDITIONAL_EXPRESSION <T> {
+class EL_CONDITIONAL_EXPRESSION <T: EL_TERMINAL> {
   + condition : EL_EXPRESSION [1]
 }
 
-abstract class EL_DECISION_BRANCH <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class EL_DECISION_BRANCH <T: EL_TERMINAL> #whitesmoke;line:gray;line.dotted;text:gray {
   + result : T [1]
 }
 

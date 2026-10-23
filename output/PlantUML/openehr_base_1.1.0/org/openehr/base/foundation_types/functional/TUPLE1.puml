@@ -1,6 +1,6 @@
 @startuml
 
-class TUPLE1 <A> {
+class TUPLE1 <A: Any> {
 }
 
 class TUPLE #whitesmoke;line:gray;line.dotted;text:gray {

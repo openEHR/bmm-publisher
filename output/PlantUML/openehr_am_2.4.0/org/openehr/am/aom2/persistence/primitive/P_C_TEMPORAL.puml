@@ -1,10 +1,10 @@
 @startuml
 
-abstract class P_C_TEMPORAL <T> {
+abstract class P_C_TEMPORAL <T: Temporal> {
   + pattern_constraint : String [1]
 }
 
-abstract class P_C_ORDERED <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class P_C_ORDERED <T: Ordered> #whitesmoke;line:gray;line.dotted;text:gray {
   + constraint : List<Interval<T>> [1..*]
 }
 

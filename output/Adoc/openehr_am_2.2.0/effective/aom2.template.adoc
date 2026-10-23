@@ -28,7 +28,7 @@ _Inherited from xref:AM:AOM2:archetype_package.adoc#_archetype_class[ARCHETYPE]_
 a|The terminology of the archetype. +
 _Inherited from xref:AM:AOM2:archetype_package.adoc#_archetype_class[ARCHETYPE]_
 
-|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/STATEMENT[STATEMENT] >` [0..1]
+|*rules*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<link:/classes/STATEMENT[STATEMENT]>` [0..1]
 a|Rules relating to this archetype. Statements are expressed in first order predicate logic, and usually refer to at least two attributes. +
 _Inherited from xref:AM:AOM2:archetype_package.adoc#_archetype_class[ARCHETYPE]_
 

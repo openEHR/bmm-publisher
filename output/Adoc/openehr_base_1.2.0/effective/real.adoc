@@ -4,7 +4,7 @@
 
 2+a|Type used to represent decimal numbers. Corresponds to a single-precision floating point value in most languages.
 
-2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric]
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric]
 
 2+h|*Functions*
 
@@ -49,7 +49,7 @@ other: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|Returns True if current Real is less than `_other_`.
 
-|*less_than_or_equal* __alias__ "<=", "≤" ( +
+|*less_than_or_equal* __alias__ "\<=", "≤" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +

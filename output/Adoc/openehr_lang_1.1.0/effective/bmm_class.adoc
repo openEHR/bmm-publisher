@@ -8,7 +8,7 @@
 
 2+h|*Constants*
 
-|*Bmm_internal_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+|*Bmm_internal_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
 

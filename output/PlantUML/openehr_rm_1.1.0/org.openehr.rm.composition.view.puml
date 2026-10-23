@@ -11,7 +11,7 @@ class VIEW_SECTION {
   + items : List<VIEW_ITEM> [*]
 }
 
-class CITATION <L> {
+class CITATION <L: LOCATABLE> {
   + source_type : String [0..1]
   + source_ref : LOCATABLE_REF [1]
   + source_parent_ref : LOCATABLE_REF [1]

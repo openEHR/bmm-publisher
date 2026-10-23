@@ -1,11 +1,11 @@
 @startuml
 
-class Hash <K, V> {
+class Hash <K: Ordered, V> {
   + has_key( a_key : K [1] ) : Boolean [1]
   + item( a_key : K [1] ) : V [1]
 }
 
-abstract class Container <T> {
+abstract class Container <T: Any> {
   + {abstract} has( v : T [1] ) : Boolean [1]
   + {abstract} count() : Integer [1]
   + {abstract} is_empty() : Boolean [1]
@@ -15,15 +15,15 @@ abstract class Container <T> {
   + select( test : Operation [1] ) : T [0..1]
 }
 
-class List <T> {
+class List <T: Any> {
   + first() : T [1]
   + last() : T [1]
 }
 
-class Set <T> {
+class Set <T: Any> {
 }
 
-class Array <T> {
+class Array <T: Any> {
   + item( a_key : Integer [1] ) : T [1]
 }
 

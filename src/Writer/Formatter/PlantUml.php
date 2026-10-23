@@ -7,6 +7,7 @@ namespace OpenEHR\BmmPublisher\Writer\Formatter;
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmClass;
 use Cadasto\OpenEHR\BMM\Model\AbstractBmmProperty;
 use Cadasto\OpenEHR\BMM\Model\BmmClass;
+use Cadasto\OpenEHR\BMM\Model\BmmConstant;
 use Cadasto\OpenEHR\BMM\Model\BmmContainerFunctionParameter;
 use Cadasto\OpenEHR\BMM\Model\BmmContainerProperty;
 use Cadasto\OpenEHR\BMM\Model\BmmContainerType;
@@ -14,6 +15,7 @@ use Cadasto\OpenEHR\BMM\Model\BmmEnumerationInteger;
 use Cadasto\OpenEHR\BMM\Model\BmmEnumerationString;
 use Cadasto\OpenEHR\BMM\Model\BmmFunction;
 use Cadasto\OpenEHR\BMM\Model\BmmGenericFunctionParameter;
+use Cadasto\OpenEHR\BMM\Model\BmmGenericParameter;
 use Cadasto\OpenEHR\BMM\Model\BmmGenericProperty;
 use Cadasto\OpenEHR\BMM\Model\BmmGenericType;
 use Cadasto\OpenEHR\BMM\Model\BmmInterface;
@@ -132,7 +134,11 @@ EOD;
         }
         $output .= "class " . $class->name . " ";
         if ($class->genericParameterDefs->count() > 0) {
-            $genericParameterDefs = array_map(fn($item) => $item->getName(), $class->genericParameterDefs->getArrayCopy());
+            $genericParameterDefs = [];
+            /** @var BmmGenericParameter $item */
+            foreach ($class->genericParameterDefs as $item) {
+                $genericParameterDefs[] = $item->getName() . ($item->conformsToType ? ': ' . $item->conformsToType : '');
+            }
             $output .= '<' . implode(', ', $genericParameterDefs) . '> ';
         }
         if ($gray) {
@@ -141,6 +147,11 @@ EOD;
         $output .= "{\n";
 
         if ($includeMembers) {
+            /** @var BmmConstant $constant */
+            foreach ($class->constants as $constant) {
+                $output .= "  " . $this->formatConstant($constant) . "\n";
+            }
+
             /** @var AbstractBmmProperty $property */
             foreach ($class->properties as $property) {
                 $output .= "  " . $this->formatProperty($property) . "\n";
@@ -183,6 +194,18 @@ EOD;
         }
         $output .= "}\n\n";
         return $output;
+    }
+
+    /**
+     * Format a BMM class constant for PlantUML, as a static read-only attribute with its value
+     *
+     * @param BmmConstant $constant The constant to format
+     * @return string The formatted constant
+     */
+    private function formatConstant(BmmConstant $constant): string
+    {
+        $value = $constant->value !== null ? ' = ' . (string) $constant->value : '';
+        return '+ {static} ' . $constant->name . ' : ' . $this->formatType($constant->type) . $value . ' {readOnly}';
     }
 
     /**
@@ -330,20 +353,26 @@ EOD;
     /**
      * Generates PlantUML representation for all ancestor classes and their inheritance relationships
      *
+     * Each ancestor is declared once, even when it is reached through more than one
+     * inheritance path (e.g. Ordered, below both DV_ORDERED and Temporal for DV_DATE);
+     * a second declaration would make PlantUML list its members twice.
+     *
      * @param BmmClass $class The BMM class to generate ancestors for
+     * @param array<string, true> $declared classes already declared in the diagram
      * @return string The PlantUML representation of ancestors and inheritance relationships
      */
-    private function formatClassAncestors(BmmClass $class, BmmSchema $schema): string
+    private function formatClassAncestors(BmmClass $class, BmmSchema $schema, array &$declared = []): string
     {
+        $declared[$class->name] = true;
         $output = '';
         foreach ($class->ancestors as $ancestorName) {
             if ($this->isHidden($ancestorName)) {
                 continue;
             }
             $ancestor = $this->resolveClass($schema, $ancestorName);
-            if ($ancestor instanceof BmmClass) {
+            if ($ancestor instanceof BmmClass && !isset($declared[$ancestorName])) {
                 $output .= $this->formatClass($ancestor, true);
-                $output .= $this->formatClassAncestors($ancestor, $schema);
+                $output .= $this->formatClassAncestors($ancestor, $schema, $declared);
             }
             $output .= $ancestorName . " <|-- " . $class->name . "\n\n";
         }

@@ -1,9 +1,9 @@
 @startuml
 
-class Proper_interval <T> {
+class Proper_interval <T: Ordered> {
 }
 
-class Interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
+class Interval <T: Ordered> #whitesmoke;line:gray;line.dotted;text:gray {
   + lower : T [0..1]
   + upper : T [0..1]
   + lower_unbounded : Boolean [1]

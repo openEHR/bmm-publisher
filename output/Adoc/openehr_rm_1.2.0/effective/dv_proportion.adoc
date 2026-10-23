@@ -8,7 +8,7 @@ Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary
  
 Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) "6/24" in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.
 
-2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric], xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer], xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED], xref:RM:data_types:quantity_package.adoc#_proportion_kind_enumeration[PROPORTION_KIND], xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric], xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer], xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED], xref:RM:data_types:quantity_package.adoc#_proportion_kind_enumeration[PROPORTION_KIND], xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]
 
 2+h|*Constants*
 
@@ -97,10 +97,10 @@ other: `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORT
 a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
 |*equal* __alias__ "=", "==" ( +
-other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|Reference equality for reference types, value equality for value types. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
 
 .Parameters +
 [horizontal]
@@ -133,7 +133,7 @@ __Pre_comparable__: `is_strictly_comparable_to (other)` +
 __Post_result__: `Result = magnitude < other.magnitude` [1..1]
 a|True if this Proportion is less than  `_other_`. Only valid if `_is_strictly_comparable_to()_` is True.
 
-|*less_than_or_equal* __alias__ "<=", "≤" ( +
+|*less_than_or_equal* __alias__ "\<=", "≤" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +

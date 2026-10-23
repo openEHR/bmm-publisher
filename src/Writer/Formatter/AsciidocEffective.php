@@ -219,21 +219,37 @@ readonly class AsciidocEffective extends AsciidocDefinition
 
 
     /**
+     * Collect a feature from the class and all its ancestors, deepest ancestor first, so a
+     * redefinition overwrites what it redefines.
+     *
+     * Each class is visited once: an ancestor reached again through a second inheritance path
+     * (e.g. Any, below both DV_AMOUNT and Iso8601_duration) would otherwise put its original
+     * features back over the redefinitions collected from the first path.
+     *
      * @param array<mixed> $data
+     * @param array<string, true> $visited
      */
-    public function aggregate(string $feature, AbstractBmmClass $class, array &$data, BmmSchema $schema): void
+    public function aggregate(string $feature, AbstractBmmClass $class, array &$data, BmmSchema $schema, array &$visited = []): void
     {
+        if (isset($visited[$class->getName()])) {
+            return;
+        }
+        $visited[$class->getName()] = true;
         if (property_exists($class, 'ancestors')) {
             foreach ($class->ancestors as $ancestorName) {
                 $ancestor = $this->resolveClass($schema, $ancestorName);
                 if ($ancestor) {
-                    $this->aggregate($feature, $ancestor, $data, $schema);
+                    $this->aggregate($feature, $ancestor, $data, $schema, $visited);
                 }
             }
         }
         if (property_exists($class, $feature)) {
             if ($feature === 'ancestors') {
-                $data = array_merge($data, (array)$class->$feature);
+                foreach ((array) $class->$feature as $ancestorName) {
+                    if (!in_array($ancestorName, $data, true)) {
+                        $data[] = $ancestorName;
+                    }
+                }
                 return;
             }
             if ($class->$feature instanceof Collection) {

@@ -1,6 +1,7 @@
 @startuml
 
 class BMM_SIGNATURE {
+  + {static} base_name : String = "Signature" {readOnly}
   + argument_types : BMM_TUPLE_TYPE [0..1]
   + result_type : BMM_TYPE [0..1]
   + type_base_name() : String [1]

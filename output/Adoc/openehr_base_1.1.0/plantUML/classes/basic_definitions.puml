@@ -1,6 +1,11 @@
 @startuml
 
 class BASIC_DEFINITIONS {
+  + {static} CR : Character = '\015' {readOnly}
+  + {static} LF : Character = '\012' {readOnly}
+  + {static} Any_type : String = "Any" {readOnly}
+  + {static} Regex_any_pattern : String = ".*" {readOnly}
+  + {static} Default_encoding : String = "UTF-8" {readOnly}
 }
 
 

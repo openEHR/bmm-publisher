@@ -1,9 +1,9 @@
 @startuml
 
-class FUNCTION <ARGS, RESULT> {
+class FUNCTION <ARGS: TUPLE, RESULT: Any> {
 }
 
-class ROUTINE <ARGS> #whitesmoke;line:gray;line.dotted;text:gray {
+class ROUTINE <ARGS: TUPLE> #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
 ROUTINE <|-- FUNCTION

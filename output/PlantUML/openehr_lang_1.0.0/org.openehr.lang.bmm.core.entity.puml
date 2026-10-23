@@ -107,6 +107,7 @@ class BMM_PARAMETER_TYPE {
 }
 
 class BMM_TUPLE_TYPE {
+  + {static} base_name : String = "Tuple" {readOnly}
   + item_types : Hash<String,BMM_TYPE> [1]
   + type_base_name() : String [1]
   + is_primitive() : Boolean [1]
@@ -133,6 +134,7 @@ class BMM_INDEXED_CONTAINER_TYPE {
 }
 
 class BMM_SIGNATURE {
+  + {static} base_name : String = "Signature" {readOnly}
   + argument_types : BMM_TUPLE_TYPE [0..1]
   + result_type : BMM_TYPE [0..1]
   + type_base_name() : String [1]

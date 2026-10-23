@@ -159,4 +159,68 @@ final class PlantUmlTest extends TestCase
         self::assertSame('String', $this->formatter->formatType('String'));
         self::assertSame('Integer', $this->formatter->formatType('Integer'));
     }
+
+    #[Test]
+    public function classDiagramDeclaresASharedAncestorOnce(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_rm_1.2.0');
+        $collection->load('openehr_base_1.3.0');
+        $rmSchema = iterator_to_array($collection, false)[0];
+        // DV_DATE reaches Ordered through DV_ORDERED and through Iso8601_date -> Iso8601_type -> Temporal
+        $class = $rmSchema->classDefinitions->get('DV_DATE');
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new PlantUml($collection))->format($class, 'org.openehr.rm.data_types', $rmSchema);
+
+        self::assertSame(1, substr_count($output, 'abstract class Ordered '));
+        $arrows = array_values(array_filter(explode("\n", $output), static fn (string $line): bool => str_contains($line, ' <|-- ')));
+        self::assertSame(array_values(array_unique($arrows)), $arrows);
+        self::assertContains('Ordered <|-- DV_ORDERED', $arrows);
+        self::assertContains('Ordered <|-- Temporal', $arrows);
+    }
+
+    #[Test]
+    public function classDiagramListsConstants(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+        $class = $schema->classDefinitions->get('Time_Definitions');
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new PlantUml($collection))->format($class, 'org.openehr.base.foundation_types', $schema);
+
+        self::assertStringContainsString("  + {static} Seconds_in_minute : Integer = 60 {readOnly}\n", $output);
+    }
+
+    #[Test]
+    public function classDiagramListsAConstantWithoutValueWithoutAnEqualsSign(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_lang_1.1.0');
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+        $class = $schema->classDefinitions->get('BMM_DEFINITIONS'); // Bmm_internal_version has no value
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new PlantUml($collection))->format($class, 'org.openehr.lang.bmm', $schema);
+
+        self::assertStringContainsString("  + {static} Bmm_internal_version : String {readOnly}\n", $output);
+    }
+
+    #[Test]
+    public function classDiagramShowsTheConstraintOfAGenericParameter(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_rm_1.2.0');
+        $collection->load('openehr_base_1.3.0');
+        $rmSchema = iterator_to_array($collection, false)[0];
+        $class = $rmSchema->classDefinitions->get('DV_INTERVAL'); // T: conforms_to_type DV_ORDERED
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new PlantUml($collection))->format($class, 'org.openehr.rm.data_types', $rmSchema);
+
+        self::assertStringContainsString('class DV_INTERVAL <T: DV_ORDERED> {', $output);
+    }
 }

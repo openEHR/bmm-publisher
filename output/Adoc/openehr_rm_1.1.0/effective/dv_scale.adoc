@@ -127,7 +127,7 @@ other: `xref:RM:data_types:quantity_package.adoc#_dv_scale_class[DV_SCALE][1]` +
 __Pre_comparable__: `is_strictly_comparable_to (other)` [1..1]
 a|True if this Scale value is less than `_other_`.
 
-|*less_than_or_equal* __alias__ "<=", "≤" ( +
+|*less_than_or_equal* __alias__ "\<=", "≤" ( +
 other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
 ): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
  +

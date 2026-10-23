@@ -315,8 +315,9 @@ readonly class AsciidocDefinition
         $maxOccurs = 1;
         $type = $this->formatType($constant->type, $prefix, $schema);
         $card = $minOccurs . '..' . $maxOccurs;
-        $value = $constant->value !== null ? $this->formatText((string) $constant->value) : '';
-        $signature = '*' . $constant->name . '*: `' . $type . '{nbsp}={nbsp}' . $value . '`';
+        // A constant whose schema gives no value (e.g. BMM_DEFINITIONS.Bmm_internal_version) is shown without "= ".
+        $value = $constant->value !== null ? '{nbsp}={nbsp}' . $this->formatText((string) $constant->value) : '';
+        $signature = '*' . $constant->name . '*: `' . $type . $value . '`';
         return [$card, $signature];
     }
 
@@ -341,7 +342,8 @@ readonly class AsciidocDefinition
         }
         $card = $minOccurs . '..' . $maxOccurs;
         $default = '';
-        if (isset($property->default)) {
+        // An empty default carries no value (a UML-to-BMM migration leftover, e.g. RESOURCE_DESCRIPTION.parent_resource).
+        if (isset($property->default) && $property->default !== '') {
             $default = is_bool($property->default) ? ($property->default ? 'true' : 'false') : $property->default;
             $default = " +\n" . '`{default{nbsp}={nbsp}' . $default . '}`';
         }
@@ -382,7 +384,7 @@ readonly class AsciidocDefinition
         }
         $aliases = '';
         if ($function->aliases) {
-            $aliases = '__alias__ "' . implode('", "', $function->aliases) . '" ';
+            $aliases = '__alias__ "' . implode('", "', array_map($this->formatText(...), $function->aliases)) . '" ';
         }
         // A function whose schema gives no result type is shown without one, as in the legacy tables.
         $signature = '*' . $function->name . '* ' . $aliases . '(' . $args . ')' . ($type !== '' ? ': `' . $type . '`' : '');
@@ -496,7 +498,8 @@ readonly class AsciidocDefinition
 
             if ($this->legacyFormat) {
                 $prefixXref = $this->formatXref($prefix);
-                if (str_contains($xref, $prefixXref)) {
+                // Same page means the same module, not a module whose name starts the same (LANG:bmm vs LANG:bmm_persistence).
+                if ($xref === $prefixXref || str_starts_with($xref, $prefixXref . ':')) {
                     // type is on the same spec page, an example format is '<<_boolean_class,Boolean>>'
                     return '<<_' . strtolower($name) . '_' . $classType . ',' . $type . '>>';
                 }
@@ -539,7 +542,8 @@ readonly class AsciidocDefinition
         if ($packageQname === '') {
             $this->allSchemas->reportUnresolvedType($type, $schema->getSchemaId());
         }
-        return 'link:/classes/' . $type . '[' . $type . '] ' . $packageQname;
+        // No trailing space: inside a `...` code span it would keep the span from closing.
+        return 'link:/classes/' . $type . '[' . $type . ']' . ($packageQname !== '' ? ' ' . $packageQname : '');
     }
 
     /**

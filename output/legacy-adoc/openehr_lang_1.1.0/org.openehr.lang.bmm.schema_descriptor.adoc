@@ -16,7 +16,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*p_schema*: `<<_p_bmm_schema_class,P_BMM_SCHEMA>>`
+|*p_schema*: `link:/releases/LANG/{lang_release}/bmm_persistence.html#_p_bmm_schema_class[P_BMM_SCHEMA^]`
 a|Persistent form of model.
 
 h|*0..1*

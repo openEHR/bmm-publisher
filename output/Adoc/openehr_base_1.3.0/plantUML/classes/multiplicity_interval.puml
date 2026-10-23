@@ -1,16 +1,18 @@
 @startuml
 
 class Multiplicity_interval {
+  + {static} Multiplicity_range_marker : String = ".." {readOnly}
+  + {static} Multiplicity_unbounded_marker : Character = '*' {readOnly}
   + is_open() : Boolean [1]
   + is_optional() : Boolean [1]
   + is_mandatory() : Boolean [1]
   + is_prohibited() : Boolean [1]
 }
 
-class Proper_interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
+class Proper_interval <T: Ordered> #whitesmoke;line:gray;line.dotted;text:gray {
 }
 
-abstract class Interval <T> #whitesmoke;line:gray;line.dotted;text:gray {
+abstract class Interval <T: Ordered> #whitesmoke;line:gray;line.dotted;text:gray {
   + lower : T [0..1]
   + upper : T [0..1]
   + lower_unbounded : Boolean [1]

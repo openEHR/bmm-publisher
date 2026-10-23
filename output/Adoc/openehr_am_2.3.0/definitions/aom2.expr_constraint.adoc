@@ -7,7 +7,7 @@ h|*Description*
 2+a|Expression tree leaf item representing a constraint on a primitive type, expressed in the form of a concrete subtype of C_PRIMITIVE_OBJECT.
 
 h|*Inherit*
-2+|`link:/classes/EXPR_LEAF[EXPR_LEAF] `
+2+|`link:/classes/EXPR_LEAF[EXPR_LEAF]`
 
 h|*Attributes*
 ^h|*Signature*

@@ -4,7 +4,7 @@
 
 2+a|Expression tree leaf item representing a constraint on an archetype identifier.
 
-2+|Inherits: link:/classes/EXPR_LEAF[EXPR_LEAF] , xref:AM:AOM2:rules_package.adoc#_expr_constraint_class[EXPR_CONSTRAINT]
+2+|Inherits: link:/classes/EXPR_LEAF[EXPR_LEAF], xref:AM:AOM2:rules_package.adoc#_expr_constraint_class[EXPR_CONSTRAINT]
 
 2+h|*Attributes*
 

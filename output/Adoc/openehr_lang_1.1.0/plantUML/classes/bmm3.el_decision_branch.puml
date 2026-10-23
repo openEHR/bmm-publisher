@@ -1,6 +1,6 @@
 @startuml
 
-abstract class EL_DECISION_BRANCH <T> {
+abstract class EL_DECISION_BRANCH <T: EL_TERMINAL> {
   + result : T [1]
 }
 
