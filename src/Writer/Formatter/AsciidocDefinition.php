@@ -451,9 +451,15 @@ readonly class AsciidocDefinition
             $this->allSchemas->reportUnresolvedType($type, $schema->getSchemaId());
             return '';
         }
-        // Link text keeps the spelling of the reference; lookup and anchor use the defined name.
-        $name = $schema->getClassPackageQName($type) !== null ? $type : ($this->allSchemas->canonicalTypeName($type) ?? $type);
-        $packageQname = $schema->getClassPackageQName($name) ?? $this->allSchemas->getClassPackageQName($name) ?? '';
+        // Link text keeps the spelling of the reference; lookup and anchor use the defined name,
+        // matched case-insensitively or by alias only when no schema defines the reference as spelled.
+        $name = $type;
+        $packageQname = $schema->getClassPackageQName($type) ?? $this->allSchemas->getClassPackageQName($type);
+        if ($packageQname === null) {
+            $name = $this->allSchemas->canonicalTypeName($type) ?? $type;
+            $packageQname = $schema->getClassPackageQName($name) ?? $this->allSchemas->getClassPackageQName($name);
+        }
+        $packageQname ??= '';
         $m = [];
         $xref = $this->formatXref($packageQname, $m);
         if ($xref) {

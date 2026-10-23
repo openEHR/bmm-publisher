@@ -138,6 +138,62 @@ final class BmmSchemaCollectionTest extends TestCase
     }
 
     #[Test]
+    public function canonicalTypeNameMatchesCaseInsensitively(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_base_1.0.4');
+
+        self::assertSame('Iso8601_date', $collection->canonicalTypeName('ISO8601_DATE'));
+        self::assertNull($collection->canonicalTypeName('NotARealBmmClassName'));
+    }
+
+    #[Test]
+    public function canonicalTypeNameResolvesByteToOctet(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_base_1.0.4');
+
+        self::assertSame('Octet', $collection->canonicalTypeName('Byte'));
+    }
+
+    #[Test]
+    public function canonicalTypeNamePrefersAnExactDefinitionOverACaseVariant(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_am_1.4.0'); // defines CARDINALITY, loaded first
+        $collection->load('openehr_base_1.3.0'); // defines Cardinality
+
+        self::assertSame('Cardinality', $collection->canonicalTypeName('Cardinality'));
+        self::assertSame('CARDINALITY', $collection->canonicalTypeName('CARDINALITY'));
+    }
+
+    #[Test]
+    public function canonicalTypeNameSeesASchemaLoadedAfterALookup(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_term_3.0.0');
+        self::assertNull($collection->canonicalTypeName('ISO8601_DATE'));
+
+        $collection->load('openehr_base_1.0.4');
+
+        self::assertSame('Iso8601_date', $collection->canonicalTypeName('ISO8601_DATE'));
+    }
+
+    #[Test]
+    public function lookupsSeeASchemaLoadedAfterAMiss(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_term_3.0.0');
+        self::assertNull($collection->getClass('UUID'));
+        self::assertNull($collection->getClassPackageQName('UUID'));
+
+        $collection->load('openehr_base_1.0.4');
+
+        self::assertNotNull($collection->getClass('UUID'));
+        self::assertNotNull($collection->getClassPackageQName('UUID'));
+    }
+
+    #[Test]
     public function loadMultipleSchemasIncreasesCountAndResolvesClassAcrossFirst(): void
     {
         $collection = new BmmSchemaCollection();

@@ -250,7 +250,7 @@ final class AsciidocDefinitionTest extends TestCase
 
         $output = (new AsciidocDefinition($collection))->format($class, 'org.openehr.lang', $langSchema);
 
-        self::assertStringContainsString('|*signature* ()', $output);
+        self::assertStringContainsString("|*signature* ()\n", $output);
         self::assertStringNotContainsString('link:/classes/[]', $output);
         self::assertStringNotContainsString('(): ``', $output);
     }
@@ -278,5 +278,29 @@ final class AsciidocDefinitionTest extends TestCase
 
         self::assertStringStartsWith('xref:BASE:', $output);
         self::assertStringEndsWith('#_octet_class[Byte]', $output);
+    }
+
+    #[Test]
+    public function formatTypeLinksByteToTheOctetAnchorInLegacyFormat(): void
+    {
+        $output = (new AsciidocDefinition($this->collection, true))->formatType('Byte', 'org.openehr.term', $this->termSchema);
+
+        self::assertStringStartsWith('link:/releases/BASE/', $output);
+        self::assertStringEndsWith('.html#_octet_class[Byte^]', $output);
+    }
+
+    #[Test]
+    public function formatTypePrefersAnExactMatchInAnotherSchemaOverACaseVariant(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_am_1.4.0'); // defines CARDINALITY, loaded first as in `adoc all`
+        $collection->load('openehr_am_2.4.0'); // C_ATTRIBUTE.cardinality is a Cardinality
+        $collection->load('openehr_base_1.3.0'); // defines Cardinality
+        $am2Schema = iterator_to_array($collection, false)[1];
+
+        $output = (new AsciidocDefinition($collection))->formatType('Cardinality', 'org.openehr.am.aom2', $am2Schema);
+
+        self::assertStringStartsWith('xref:BASE:', $output);
+        self::assertStringEndsWith('#_cardinality_class[Cardinality]', $output);
     }
 }

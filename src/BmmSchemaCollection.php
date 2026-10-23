@@ -37,7 +37,7 @@ class BmmSchemaCollection implements \IteratorAggregate
      * Type names some BMMs use for a type another schema defines under a different name:
      * RM 1.0.2 / 1.0.3 write `Byte` for the BASE `Octet` primitive.
      */
-    private const TYPE_ALIASES = ['byte' => 'octet'];
+    private const array TYPE_ALIASES = ['byte' => 'octet'];
 
     public function __construct(?LoggerInterface $logger = null)
     {
@@ -90,17 +90,24 @@ class BmmSchemaCollection implements \IteratorAggregate
             'revision' => $schema->schemaRevision,
         ]);
         $this->schemas->add($schema);
+        // Lookups cached before this load, misses included, may now resolve differently.
+        $this->classCache = [];
+        $this->qnameCache = [];
         $this->typeNames = null;
     }
 
     /**
      * Name under which a loaded schema defines a referenced type, or null if none does.
      *
-     * Matches case-insensitively (RM 1.0.3 references `ISO8601_DATE`, BASE defines
-     * `Iso8601_date`), then through {@see self::TYPE_ALIASES}.
+     * A schema that defines the name as spelled wins. Otherwise it matches case-insensitively
+     * (RM 1.0.3 references `ISO8601_DATE`, BASE defines `Iso8601_date`), then through
+     * {@see self::TYPE_ALIASES}.
      */
     public function canonicalTypeName(string $typeName): ?string
     {
+        if ($this->getClass($typeName) !== null) {
+            return $typeName;
+        }
         if ($this->typeNames === null) {
             $this->typeNames = [];
             /** @var BmmSchema $schema */
@@ -113,7 +120,11 @@ class BmmSchemaCollection implements \IteratorAggregate
             }
         }
         $lower = strtolower($typeName);
-        return $this->typeNames[$lower] ?? $this->typeNames[self::TYPE_ALIASES[$lower] ?? ''] ?? null;
+        if (isset($this->typeNames[$lower])) {
+            return $this->typeNames[$lower];
+        }
+        $alias = self::TYPE_ALIASES[$lower] ?? null;
+        return $alias !== null ? $this->typeNames[$alias] ?? null : null;
     }
 
     /**
