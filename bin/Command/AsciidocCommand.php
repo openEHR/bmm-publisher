@@ -39,6 +39,12 @@ class AsciidocCommand extends Command
             $output->writeln('<error>Please specify which BMM schema(s) to read. See --help for usage.</error>');
             return Command::INVALID;
         }
+        // An existing but empty directory is valid (no class has an example); a missing one is a typo
+        // or an unmounted path, which would otherwise publish every class without its Example tab.
+        if ($examplesDir !== null && !is_dir($examplesDir)) {
+            $output->writeln(\sprintf('<error>Examples directory %s not found.</error>', $examplesDir));
+            return Command::INVALID;
+        }
 
         $toRead = $input === ['all'] ? BmmSchemaCollection::availableSchemas() : $input;
 
@@ -57,9 +63,6 @@ class AsciidocCommand extends Command
             // Dependencies are loaded for cross-reference resolution only.
             foreach ($dependency as $schema) {
                 $this->loadInput($collection, $schema);
-            }
-            if ($examplesDir !== null && !is_dir($examplesDir)) {
-                $logger->warning('Examples directory {dir} not found; no Example tabs written.', ['dir' => $examplesDir]);
             }
             (new Asciidoc($collection, $exportSchemaIds, $examplesDir))();
 

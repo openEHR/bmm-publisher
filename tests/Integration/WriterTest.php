@@ -111,9 +111,13 @@ final class WriterTest extends TestCase
     #[Test]
     public function asciidocAddsExampleTabOnlyForClassesWithAnExamplePartial(): void
     {
+        $classesDir = $this->tempOutput . '/Adoc/openehr_term_3.0.0/classes/';
         (new Asciidoc($this->collection))();
-        $tabFiles = self::findFiles($this->tempOutput . '/Adoc/openehr_term_3.0.0/classes/*.adoc');
+        $tabFiles = self::findFiles($classesDir . '*.adoc');
         self::assertGreaterThan(1, \count($tabFiles));
+        foreach ($tabFiles as $tabFile) {
+            self::assertStringNotContainsString('Example::', (string) file_get_contents($tabFile), basename($tabFile));
+        }
         $withExample = basename($tabFiles[0]);
         $withoutExample = basename($tabFiles[1]);
 
@@ -123,12 +127,25 @@ final class WriterTest extends TestCase
 
         (new Asciidoc($this->collection, [], $examplesDir))();
 
-        $classesDir = $this->tempOutput . '/Adoc/openehr_term_3.0.0/classes/';
         self::assertStringContainsString(
-            'include::ROOT:partial$examples/' . $withExample . '[]',
+            self::tabsInOrder($withExample, true),
             (string) file_get_contents($classesDir . $withExample),
         );
-        self::assertStringNotContainsString('Example::', (string) file_get_contents($classesDir . $withoutExample));
+        $withoutExampleContent = (string) file_get_contents($classesDir . $withoutExample);
+        self::assertStringContainsString(self::tabsInOrder($withoutExample, false), $withoutExampleContent);
+        self::assertStringNotContainsString('Example::', $withoutExampleContent);
+    }
+
+    /**
+     * The Definition, Effective, optional Example, BMM and UML tabs of a class tabs partial, in order.
+     */
+    private static function tabsInOrder(string $filename, bool $withExample): string
+    {
+        return "Definition::\n+\ninclude::ROOT:partial\$definitions/{$filename}[]\n\n"
+            . "Effective::\n+\ninclude::ROOT:partial\$effective/{$filename}[]\n\n"
+            . ($withExample ? "Example::\n+\n--\ninclude::ROOT:partial\$examples/{$filename}[]\n--\n\n" : '')
+            . "BMM::\n+\ninclude::ROOT:partial\$BMMs/{$filename}[]\n\n"
+            . "UML::\n";
     }
 
     #[Test]

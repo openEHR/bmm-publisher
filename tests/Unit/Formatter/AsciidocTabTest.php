@@ -7,6 +7,7 @@ namespace Tests\Unit\Formatter;
 use Cadasto\OpenEHR\BMM\Model\BmmClass;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocTab;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -33,12 +34,28 @@ final class AsciidocTabTest extends TestCase
         self::assertStringNotContainsString('examples/', $output);
     }
 
-    #[Test]
-    public function formatAddsExampleTabBetweenEffectiveAndBmm(): void
+    /** @return array<string, array{bool, string}> */
+    public static function exampleTabCases(): array
     {
-        $output = (new AsciidocTab())->format($this->class, 'terminology_id.adoc', true);
+        return [
+            'without example' => [false, ''],
+            'with example' => [true, "Example::\n+\n--\ninclude::ROOT:partial\$examples/terminology_id.adoc[]\n--\n\n"],
+        ];
+    }
 
-        self::assertStringContainsString("Example::\n+\n--\ninclude::ROOT:partial\$examples/terminology_id.adoc[]\n--\n\nBMM::", $output);
-        self::assertLessThan(strpos($output, 'Example::'), strpos($output, 'Effective::'));
+    #[Test]
+    #[DataProvider('exampleTabCases')]
+    public function formatPutsTheExampleTabBetweenEffectiveAndBmm(bool $withExample, string $exampleTab): void
+    {
+        $output = (new AsciidocTab())->format($this->class, 'terminology_id.adoc', $withExample);
+
+        self::assertStringContainsString(
+            "Definition::\n+\ninclude::ROOT:partial\$definitions/terminology_id.adoc[]\n\n"
+            . "Effective::\n+\ninclude::ROOT:partial\$effective/terminology_id.adoc[]\n\n"
+            . $exampleTab
+            . "BMM::\n+\ninclude::ROOT:partial\$BMMs/terminology_id.adoc[]\n\n"
+            . "UML::\n+\nimage::ROOT:uml/classes/terminology_id.svg[]\n",
+            $output,
+        );
     }
 }

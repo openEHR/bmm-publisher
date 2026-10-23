@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **`asciidoc --examples-dir <dir>` adds an `Example` tab** to a class whose `<class filename>.adoc` exists in that directory; the tab includes `ROOT:partial$examples/<class filename>.adoc`, so spec repos keep hand-written examples next to the generated partials.
+- **`asciidoc --examples-dir <dir>` adds an `Example` tab** to a class whose `<class filename>.adoc` exists in that directory; the tab includes `ROOT:partial$examples/<class filename>.adoc`.
 
 ## [0.12.0] - 2026-10-08
 

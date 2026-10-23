@@ -30,7 +30,7 @@ Run these inside the container (`make sh`) or through Docker:
 ./bin/bmm-publisher split-json
 ```
 
-Use `-v` for progress output and `-vv` for detailed file-write logging. `asciidoc`, `legacy-adoc` and `plantuml` accept repeatable `-d <schema>` dependencies, which are loaded for cross-references but not exported. Inputs can be schema ids or `.bmm.json` paths.
+Use `-v` for progress output and `-vv` for detailed file-write logging. `asciidoc`, `legacy-adoc` and `plantuml` accept repeatable `-d <schema>` dependencies, which are loaded for cross-references but not exported. `asciidoc --examples-dir <dir>` adds an `Example` tab to each class whose generated partial name, such as `composition.adoc` or `aom2.archetype.adoc`, exists in `<dir>`; a missing `<dir>` exits with code 2. Inputs can be schema ids or `.bmm.json` paths.
 
 ## Composer scripts
 
