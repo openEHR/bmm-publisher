@@ -41,8 +41,12 @@ _Inherited from xref:BASE:base_types:definitions_package.adoc#_openehr_definitio
 |*charset*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_character_sets[openEHR code set character sets]
+
 |*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
 a|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set `languages`.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
 
 2+h|*Invariants*
 

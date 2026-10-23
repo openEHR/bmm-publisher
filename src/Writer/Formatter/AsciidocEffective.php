@@ -141,7 +141,7 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 $rows[] = '';
                 $rows[] = '|' . $signature . ' [' . $card . ']' . $default;
                 $doc = property_exists($property, 'documentation') ? $this->formatText($property->documentation ?? '') : '';
-                $rows[] = 'a|' . $this->withInheritedNote($doc, $inherited);
+                $rows[] = 'a|' . $this->withInheritedNote($doc . $this->formatTerminologyLink($class, $property->getName(), $schema), $inherited);
             }
         }
 

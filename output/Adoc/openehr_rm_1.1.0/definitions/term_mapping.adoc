@@ -27,6 +27,8 @@ h|*0..1*
 |*purpose*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_term_mapping_purpose[openEHR Terminology, term mapping purpose group]
+
 h|*1..1*
 |*target*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
 a|The target term of the mapping.

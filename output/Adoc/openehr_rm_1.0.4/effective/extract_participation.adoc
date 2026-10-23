@@ -14,8 +14,12 @@ a|The time interval during which the participation took place, if it is used in 
 |*function*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
 a|The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_participation_function[openEHR Terminology, participation function group]
+
 |*mode*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
 a|The mode of the performer / activity interaction, e.g. present, by telephone, by email etc.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_participation_mode[openEHR Terminology, participation mode group]
 
 |*performer*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|Uid of demographic entity within Extract who performed this participation.

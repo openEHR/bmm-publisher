@@ -25,6 +25,8 @@ h|*1..1*
 |*math_function*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml[openEHR vocabulary `event math function`]. Default value `640&#124;actual&#124;`, meaning 'actual value'.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_event_math_function[openEHR Terminology, event math function group]
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

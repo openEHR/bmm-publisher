@@ -17,9 +17,13 @@ h|*1..1*
 |*current_state*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|The ISM current state. Coded by openEHR terminology group Instruction states.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_instruction_states[openEHR Terminology, instruction states group]
+
 h|*0..1*
 |*transition*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|The ISM transition which occurred to arrive in the current_state. Coded by openEHR terminology group  Instruction transitions.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_instruction_transitions[openEHR Terminology, instruction transitions group]
 
 h|*0..1*
 |*careflow_step*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`

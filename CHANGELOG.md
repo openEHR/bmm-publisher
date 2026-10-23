@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Coded attributes in the Antora Definition and Effective tables link to their openEHR Terminology group or code set.**
+
 ### Fixed
 
 - **Effective tables no longer break after a closing `----` listing or other delimited block** — the inherited-from note kept the block open and swallowed the rest of the table.

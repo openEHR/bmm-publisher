@@ -11,8 +11,12 @@ Should not be used in place of more permanent relationships between demographic 
 |*function*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
 a|The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_participation_function[openEHR Terminology, participation function group]
+
 |*mode*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
 a|Optional field for recording the 'mode' of the performer / activity interaction, e.g. present, by telephone, by email etc.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_participation_mode[openEHR Terminology, participation mode group]
 
 |*performer*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]` [1..1]
 a|The id and possibly demographic system link of the party participating in the activity.

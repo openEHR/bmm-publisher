@@ -22,6 +22,8 @@ h|*1..1*
 |*change_type*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|Type of change. Coded using the openEHR Terminology  audit change type  group.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_audit_change_type[openEHR Terminology, audit change type group]
+
 h|*0..1*
 |*description*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]`
 a|Reason for committal. This may be used to qualify the value in the `_change_type_` field. For example, if the change affects only the EHR directory, this field might be used to indicate 'Folder "episode 2018-02-16" added' or similar.

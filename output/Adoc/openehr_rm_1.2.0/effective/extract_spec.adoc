@@ -24,6 +24,8 @@ a|Coded term indicating the type of content required, e.g.
 
 Coded by openEHR Terminology group `'extract content type'`.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_extract_content_type[openEHR Terminology, extract content type group]
+
 |*include_multimedia*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|Indicates whether in-line instances of `DV_MULTIMEDIA` in the source data are included or not.
 

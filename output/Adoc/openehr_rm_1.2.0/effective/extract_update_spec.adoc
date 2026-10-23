@@ -23,6 +23,8 @@ a|Set of Event names that will cause sending of update Extracts. Event types inc
 
 Coded by openEHR Terminology group 'extract update trigger event type'.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_extract_update_trigger_event_type[openEHR Terminology, extract update trigger event type group]
+
 |*update_method*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
 a|Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For `_persist_in_server_` Requests only.
 
