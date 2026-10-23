@@ -37,6 +37,8 @@ _Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABL
 |*null_flavour*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
 a|Flavour of null value, e.g. `253&#124;unknown&#124;`, `271&#124;no information&#124;`, `272&#124;masked&#124;`, and `273&#124;not applicable&#124;`.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_null_flavours[openEHR Terminology, null flavours group]
+
 |*value*: `xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]` [0..1]
 a|Property representing leaf value object of `ELEMENT`. In real data, any concrete subtype of `DATA_VALUE` can be used.
 

@@ -23,6 +23,8 @@ _Inherited from xref:RM:common:generic_package.adoc#_party_identified_class[PART
 |*relationship*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
 a|Relationship of subject of this ENTRY to the subject of the record. May be coded. If it is the patient, coded as  self.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_subject_relationship[openEHR Terminology, subject relationship group]
+
 2+h|*Invariants*
 
 2+a|__Basic_validity__: `name /= Void or identifiers /= Void or external_ref /= Void` +

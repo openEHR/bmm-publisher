@@ -101,7 +101,9 @@ _Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_cla
 2+h|*Attributes*
 
 |*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
-a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`. +
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_normal_statuses[openEHR code set normal statuses] +
 _Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 |*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
