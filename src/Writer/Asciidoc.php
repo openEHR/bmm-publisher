@@ -35,10 +35,13 @@ class Asciidoc
      * @param array<int, string> $exportSchemaIds Schema ids to export; an empty list exports every
      *        loaded schema. Schemas loaded for cross-reference resolution only (dependencies) are
      *        omitted from this list so their artefacts are not written.
+     * @param string|null $examplesDir Directory of hand-written example partials; a class whose
+     *        `<filename>.adoc` exists there gets an `Example` tab.
      */
     public function __construct(
         private readonly BmmSchemaCollection $schemas,
         private readonly array $exportSchemaIds = [],
+        private readonly ?string $examplesDir = null,
     ) {
         $this->tab = new AsciidocTab();
         $this->definition = new AsciidocDefinition($schemas);
@@ -100,13 +103,18 @@ class Asciidoc
             $logger->notice('Writing {file} class ...', ['file' => $filename]);
             Filesystem::writeFile($definitionsDir . $filename, $this->definition->format($class, $prefix, $schema), $logger);
             Filesystem::writeFile($effectiveDir . $filename, $this->effective->format($class, $prefix, $schema), $logger);
-            Filesystem::writeFile($tabsDir . $filename, $this->tab->format($class, $filename), $logger);
+            Filesystem::writeFile($tabsDir . $filename, $this->tab->format($class, $filename, $this->hasExample($filename)), $logger);
             Filesystem::writeFile($bmmJsonDir . $filename, $this->bmmJson->format($class), $logger);
             Filesystem::writeFile($plantUmlClassesDir . $pumlFilename, $this->plantUml->format($class, $prefix, $schema), $logger);
         }
         $packageName = $this->packageDiagramName($schema, $namePrefix, $package);
         $logger->notice('Writing {package} package ...', ['package' => $packageName]);
         Filesystem::writeFile($plantUmlPackagesDir . $packageName . '.puml', $this->plantUml->format($package, $packageName, $schema), $logger);
+    }
+
+    private function hasExample(string $filename): bool
+    {
+        return $this->examplesDir !== null && is_file($this->examplesDir . DIRECTORY_SEPARATOR . $filename);
     }
 
     /**

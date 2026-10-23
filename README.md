@@ -37,7 +37,7 @@ docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher asciido
 | `split-json` | | Split the latest BMM JSON of each component into per-type files |
 | `odin` | | Convert BMM JSON schemas to ODIN `.bmm` schema files |
 
-Pass schema names without the `.bmm.json` extension (paths to `.bmm.json` files also work), or `all` to process every schema in the input directory. `asciidoc`, `legacy-adoc` and `plantuml` accept repeatable `-d <schema>` options for dependencies, which are loaded for cross-references but not exported.
+Pass schema names without the `.bmm.json` extension (paths to `.bmm.json` files also work), or `all` to process every schema in the input directory. `asciidoc`, `legacy-adoc` and `plantuml` accept repeatable `-d <schema>` options for dependencies, which are loaded for cross-references but not exported. `asciidoc` also accepts `--examples-dir <dir>`: a class whose generated partial name exists in `<dir>` gets an `Example` tab that includes `ROOT:partial$examples/<that name>`. Name the file like the class partial, such as `composition.adoc`, or `aom2.archetype.adoc` for a prefixed schema, not `COMPOSITION.adoc` or an `org.openehr.…` path. A missing `<dir>` exits with code 2. The tab wraps the example in an open block, so a line holding only `--` closes it early; delimit listings with `----`.
 
 ## Input and output
 

@@ -20,7 +20,9 @@ The `asciidoc` command is a self-contained pipeline (one PHP run, one container 
      The tabs partial under `classes/<name>.adoc` already inlines the UML image macro
      (`image::ROOT:uml/classes/<name>.svg[]`); the `ROOT:` qualifier ensures Antora
      resolves the asset in the ROOT module's `images/` tree regardless of which module
-     includes the partial.
+     includes the partial. With `--examples-dir <dir>`, a class whose `<name>.adoc` exists
+     in `<dir>` also gets an `Example` tab, between Effective and BMM, that includes
+     `ROOT:partial$examples/<name>.adoc`.
   2. `AsciidocCommand` shells out via Symfony Process to the bundled `plantuml -tsvg -nometadata` CLI;
      one batch invocation per call (single warm JVM); SVGs land next to each `.puml`.
   3. The `EmbedSvg` writer validates each `.svg` (fails on `Syntax Error?`), strips MD5 stamps,
