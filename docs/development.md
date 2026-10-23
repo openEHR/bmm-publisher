@@ -25,12 +25,14 @@ Run these inside the container (`make sh`) or through Docker:
 # Export RM 1.2.0; load BASE as a cross-reference dependency only (-d), not exported
 ./bin/bmm-publisher asciidoc openehr_rm_1.2.0 -d openehr_base_1.3.0
 ./bin/bmm-publisher legacy-adoc openehr_rm_1.2.0 -d openehr_base_1.3.0
+# Add an Example tab to each class with a matching partial, such as examples/composition.adoc
+./bin/bmm-publisher asciidoc openehr_rm_1.2.0 -d openehr_base_1.3.0 --examples-dir examples
 ./bin/bmm-publisher plantuml all
 ./bin/bmm-publisher yaml openehr_base_1.3.0
 ./bin/bmm-publisher split-json
 ```
 
-Use `-v` for progress output and `-vv` for detailed file-write logging. `asciidoc`, `legacy-adoc` and `plantuml` accept repeatable `-d <schema>` dependencies, which are loaded for cross-references but not exported. Inputs can be schema ids or `.bmm.json` paths.
+Use `-v` for progress output and `-vv` for detailed file-write logging. `asciidoc`, `legacy-adoc` and `plantuml` accept repeatable `-d <schema>` dependencies, which are loaded for cross-references but not exported. `asciidoc --examples-dir <dir>` adds an `Example` tab to each class whose generated partial name, such as `composition.adoc` or `aom2.archetype.adoc`, exists in `<dir>`; a missing `<dir>` exits with code 2. Inputs can be schema ids or `.bmm.json` paths.
 
 ## Composer scripts
 

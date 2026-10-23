@@ -11,7 +11,10 @@ use Cadasto\OpenEHR\BMM\Model\BmmInterface;
 
 readonly class AsciidocTab
 {
-    public function format(AbstractBmmClass $class, string $classFilename): string
+    /**
+     * @param bool $withExample Add an `Example` tab that includes `ROOT:partial$examples/<classFilename>`.
+     */
+    public function format(AbstractBmmClass $class, string $classFilename, bool $withExample = false): string
     {
         $className = $class->getName();
         $classType = match (get_class($class)) {
@@ -27,6 +30,11 @@ readonly class AsciidocTab
         // module's images/ tree even when the tabs partial is included from a
         // page in another module (foundation_types, base_types, …).
         $locationSvg = 'ROOT:';
+        $exampleTab = $withExample
+            // Open block: an example partial may hold several blocks (prose + source), and a list
+            // continuation attaches only one block to the tab.
+            ? "Example::\n+\n--\ninclude::{$location}examples/{$classFilename}[]\n--\n\n"
+            : '';
 
         return <<<ASCIIDOC
 === {$className} $classType
@@ -41,7 +49,7 @@ Effective::
 +
 include::{$location}effective/{$classFilename}[]
 
-BMM::
+{$exampleTab}BMM::
 +
 include::{$location}BMMs/{$classFilename}[]
 

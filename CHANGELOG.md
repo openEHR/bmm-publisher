@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Coded attributes in the Antora Definition and Effective tables link to their openEHR Terminology group or code set.**
+- **`asciidoc --examples-dir <dir>` adds an `Example` tab** to a class whose `<class filename>.adoc` exists in that directory; the tab includes `ROOT:partial$examples/<class filename>.adoc`.
 
 ## [0.12.0] - 2026-10-08
 
