@@ -194,7 +194,7 @@ final class AsciidocDefinitionTest extends TestCase
         $first = $formatter->formatType('String', 'org.openehr.term', $termSchema);
         $formatter->formatType('String', 'org.openehr.term', $termSchema);
 
-        self::assertSame('link:/classes/String[String] ', $first);
+        self::assertSame('link:/classes/String[String]', $first);
         $warnings = $logger->recordsAt(LogLevel::WARNING);
         self::assertCount(1, $warnings);
         self::assertSame('String', $warnings[0]['context']['type']);
@@ -302,5 +302,68 @@ final class AsciidocDefinitionTest extends TestCase
 
         self::assertStringStartsWith('xref:BASE:', $output);
         self::assertStringEndsWith('#_cardinality_class[Cardinality]', $output);
+    }
+
+    #[Test]
+    public function formatClassEscapesFunctionAliases(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+        $class = $schema->classDefinitions->get('Ordered') ?? $schema->primitiveTypes->get('Ordered');
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new AsciidocDefinition($collection))->format($class, 'org.openehr.base.foundation_types', $schema);
+
+        // Unescaped, Asciidoctor renders "<=" as a double arrow
+        self::assertStringContainsString('__alias__ "\<=", "≤"', $output);
+    }
+
+    #[Test]
+    public function formatClassShowsAConstantWithoutValueWithoutAnEqualsSign(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_lang_1.1.0');
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+        $class = $schema->classDefinitions->get('BMM_DEFINITIONS'); // Bmm_internal_version has no value
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new AsciidocDefinition($collection))->format($class, 'org.openehr.lang.bmm', $schema);
+
+        self::assertMatchesRegularExpression('/^\|\*Bmm_internal_version\*: `[^`]*\[String\]`$/m', $output);
+    }
+
+    #[Test]
+    public function formatClassShowsNoDefaultForAnEmptyDefault(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+        $class = $schema->classDefinitions->get('RESOURCE_DESCRIPTION'); // parent_resource has default ""
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new AsciidocDefinition($collection))->format($class, 'org.openehr.base.resource', $schema);
+
+        self::assertStringContainsString('*parent_resource*', $output);
+        self::assertStringNotContainsString('{default{nbsp}={nbsp}}', $output);
+    }
+
+    #[Test]
+    public function legacyFormatLinksATypeFromAPackageWhoseNameOnlyStartsLikeThisOne(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_lang_1.1.0');
+        $collection->load('openehr_base_1.3.0');
+        $langSchema = iterator_to_array($collection, false)[0];
+        $formatter = new AsciidocDefinition($collection, true);
+
+        // P_BMM_SCHEMA is in org.openehr.lang.bmm_persistence, a different page from org.openehr.lang.bmm
+        $other = $formatter->formatType('P_BMM_SCHEMA', 'org.openehr.lang.bmm', $langSchema);
+        $same = $formatter->formatType('BMM_CLASS', 'org.openehr.lang.bmm', $langSchema);
+
+        self::assertStringStartsWith('link:/releases/LANG/', $other);
+        self::assertStringEndsWith('/bmm_persistence.html#_p_bmm_schema_class[P_BMM_SCHEMA^]', $other);
+        self::assertSame('<<_bmm_class_class,BMM_CLASS>>', $same);
     }
 }
