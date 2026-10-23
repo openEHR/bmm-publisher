@@ -23,7 +23,7 @@ h|*1..1 +
 (redefined)*
 |*upper_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
 `{default{nbsp}={nbsp}false}`
-a|Upper boundary open (i.e. = +infinity).
+a|Upper boundary open (i.e. = {plus}infinity).
 
 h|*1..1 +
 (redefined)*

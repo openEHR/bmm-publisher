@@ -51,7 +51,7 @@ a|For-all (universal) quantifier
 a|Exists quantifier
 
 |op_plus
-a|Arithmetic plus operator (+)
+a|Arithmetic plus operator ({plus})
 
 |op_minus
 a|Arithmetic minus operator (-)

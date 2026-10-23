@@ -2,7 +2,7 @@
 |===
 2+^h|*__DV_AMOUNT (abstract)__*
 
-2+a|Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  `+` and  `-` operators are defined (unlike descendants of `DV_ABSOLUTE_QUANTITY`, such as the date/time types).
+2+a|Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  `{plus}` and  `-` operators are defined (unlike descendants of `DV_ABSOLUTE_QUANTITY`, such as the date/time types).
 
 2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]
 

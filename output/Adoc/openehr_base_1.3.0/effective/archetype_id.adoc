@@ -4,7 +4,7 @@
 
 2+a|Identifier or reference for archetypes. Ideally, these identify globally unique archetypes. When used as a reference, only partial version information is included (major version only), and the namespace is omitted.
 
-Lexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name \{  '-' specialisation }*  '.v' version_id`.
+Lexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' version_id`.
 
 2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]
 

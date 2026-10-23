@@ -13,7 +13,7 @@ a|Namespace to which this identifier belongs in the local system context (and po
 
 * `"local"`
 * `"unknown"`
-* a string matching the standard regex `[a-zA-Z][a-zA-Z0-9_.:\/&?=+-]*`.
+* a string matching the standard regex `[a-zA-Z][a-zA-Z0-9_.:\/&?={plus}-]*`.
 
 Note that the first two are just special values of the regex, and will be matched by it. +
 _Inherited from xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]_
@@ -35,5 +35,5 @@ a|A URI form of the reference, created by concatenating the following:
 
 * scheme, e.g. `ehr:`, derived from `_namespace_`
 * `_id.value_`
-* `/` + `_path_`, where `_path_` is non-empty
+* `/` {plus} `_path_`, where `_path_` is non-empty
 |===
