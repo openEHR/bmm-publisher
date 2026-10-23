@@ -355,6 +355,20 @@ final class WriterTest extends TestCase
     }
 
     #[Test]
+    public function bmmJsonSplitSpecUrlUsesTheTopLevelPackageForADeepPackage(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_lang_1.1.0-bmm3');
+        (new BmmJsonSplit($collection, 'bmm3'))();
+
+        // BMM_ENUMERATION is in bmm3.core.entity.range_constrained, four segments below org.openehr.lang
+        $content = (string) file_get_contents($this->tempOutput . '/BMM-JSON-development-types/LANG-bmm3/BMM_ENUMERATION.bmm.json');
+        $data = json_decode($content, true);
+        self::assertIsArray($data);
+        self::assertStringStartsWith('https://specifications.openehr.org/releases/LANG/development/bmm3.html#', $data['specUrl']);
+    }
+
+    #[Test]
     public function bmmJsonSplitOutputContainsPackageField(): void
     {
         (new BmmJsonSplit($this->collection))();

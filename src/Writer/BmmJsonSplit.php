@@ -75,7 +75,8 @@ class BmmJsonSplit
                     'rm_overlay' => '_the_rm_overlay_package',
                     default => '_' . $parts[0] . '_package',
                 };
-                $page = $parts[2] ?? $parts[1] ?? $parts[0];
+                // The page is the top-level package, the last of the reversed segments at any depth.
+                $page = array_last($parts);
                 $page = match ($page) {
                     'aom14' => 'AOM1.4.html',
                     'aom2' => 'AOM2.html',
