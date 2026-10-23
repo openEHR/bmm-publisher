@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7739fa190cf448f917aac9ef66bcc18f",
+    "content-hash": "ccf55a156d139a9275bbb85ac06bac17",
     "packages": [
         {
             "name": "cadasto/openehr-bmm",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Cadasto/openehr-bmm.git",
-                "reference": "c58a83cb49f9d2673375e66aecaf61c0fc8b45eb"
+                "reference": "bb3667464e2b83f4b65ea09d6de735ed7b9a29da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Cadasto/openehr-bmm/zipball/c58a83cb49f9d2673375e66aecaf61c0fc8b45eb",
-                "reference": "c58a83cb49f9d2673375e66aecaf61c0fc8b45eb",
+                "url": "https://api.github.com/repos/Cadasto/openehr-bmm/zipball/bb3667464e2b83f4b65ea09d6de735ed7b9a29da",
+                "reference": "bb3667464e2b83f4b65ea09d6de735ed7b9a29da",
                 "shasum": ""
             },
             "require": {
@@ -25,10 +25,9 @@
                 "php": "^8.4"
             },
             "require-dev": {
-                "ext-xdebug": "*",
                 "php-parallel-lint/php-parallel-lint": "^1.4",
                 "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^12.5",
+                "phpunit/phpunit": "^13.4",
                 "rector/rector": "^2.4",
                 "roave/security-advisories": "dev-latest",
                 "squizlabs/php_codesniffer": "^4.0"
@@ -50,9 +49,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Cadasto/openehr-bmm/issues",
-                "source": "https://github.com/Cadasto/openehr-bmm/tree/0.3.0"
+                "source": "https://github.com/Cadasto/openehr-bmm/tree/0.4.0"
             },
-            "time": "2026-05-12T21:36:31+00:00"
+            "time": "2026-10-23T22:25:47+00:00"
         },
         {
             "name": "psr/container",
