@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Coded attributes link to their openEHR Terminology group or code set** — in the Antora Definition and Effective tables, each attribute whose invariant names a `Group_id_*` or `Code_set_id_*` (own or inherited) gets a `Terminology:` line with an `xref:` to its section on the TERM `SupportTerminology:terminology.adoc` page, e.g. `EVENT_CONTEXT.setting` → `#_setting`. Three EXTRACT attributes without such an invariant are mapped explicitly, and `Group_id_null_flavour` maps to TERM's `null_flavours`. The legacy layout is unchanged.
+- **Coded attributes in the Antora Definition and Effective tables link to their openEHR Terminology group or code set.**
 
 ## [0.12.0] - 2026-10-08
 

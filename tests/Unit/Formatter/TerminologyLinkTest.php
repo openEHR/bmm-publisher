@@ -46,7 +46,21 @@ final class TerminologyLinkTest extends TestCase
             'second code set on same class' => ['COMPOSITION', 'language', '#_languages[openEHR code set languages]'],
             'invariant on ancestor class' => ['ORIGINAL_VERSION', 'lifecycle_state', '#_version_lifecycle_state['],
             'aliased group id' => ['ELEMENT', 'null_flavour', '#_null_flavours[openEHR Terminology, null flavours group]'],
-            'no invariant, explicit map' => ['EXTRACT_SPEC', 'extract_type', '#_extract_content_type['],
+            'explicit map, extract type' => [
+                'EXTRACT_SPEC',
+                'extract_type',
+                '#_extract_content_type[openEHR Terminology, extract content type group]',
+            ],
+            'explicit map, extract action' => [
+                'EXTRACT_ACTION_REQUEST',
+                'action',
+                '#_extract_action_type[openEHR Terminology, extract action type group]',
+            ],
+            'explicit map, update trigger events' => [
+                'EXTRACT_UPDATE_SPEC',
+                'trigger_events',
+                '#_extract_update_trigger_event_type[openEHR Terminology, extract update trigger event type group]',
+            ],
         ];
     }
 
@@ -57,6 +71,36 @@ final class TerminologyLinkTest extends TestCase
         $formatter = new AsciidocDefinition($this->collection);
 
         $link = $formatter->formatTerminologyLink($this->rmClass($className), $property, $this->rmSchema);
+
+        self::assertStringStartsWith("\n\nTerminology: xref:TERM:SupportTerminology:terminology.adoc", $link);
+        self::assertStringContainsString($expected, $link);
+    }
+
+    /**
+     * @return array<string, array{string, string, string}>
+     */
+    public static function amCodedAttributes(): array
+    {
+        return [
+            'code set via has_concept_id' => ['ARCHETYPE_TERMINOLOGY', 'original_language', '#_languages[openEHR code set languages]'],
+            'invariant on ancestor in another schema' => ['AUTHORED_ARCHETYPE', 'original_language', '#_languages[openEHR code set languages]'],
+        ];
+    }
+
+    #[Test]
+    #[DataProvider('amCodedAttributes')]
+    public function linksAmCodedAttributeToTermSection(string $className, string $property, string $expected): void
+    {
+        // the dependencies `make publish-all` passes, so AUTHORED_RESOURCE resolves from BASE, not from RM
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_am_2.4.0');
+        $collection->load('openehr_lang_1.1.0');
+        $collection->load('openehr_base_1.3.0');
+        $amSchema = iterator_to_array($collection)['openehr_am_2.4.0'];
+        $class = $amSchema->classDefinitions->get($className);
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $link = (new AsciidocDefinition($collection))->formatTerminologyLink($class, $property, $amSchema);
 
         self::assertStringStartsWith("\n\nTerminology: xref:TERM:SupportTerminology:terminology.adoc", $link);
         self::assertStringContainsString($expected, $link);

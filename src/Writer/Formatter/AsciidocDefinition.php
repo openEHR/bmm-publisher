@@ -556,8 +556,12 @@ readonly class AsciidocDefinition
      * @param array<string, true> $visited
      * @return array{0: string, 1: string}|null [kind ('group' or 'code_set'), openEHR id]
      */
-    protected function findTerminologyGroup(AbstractBmmClass $class, string $propertyName, BmmSchema $schema, array &$visited = []): ?array
-    {
+    protected function findTerminologyGroup(
+        AbstractBmmClass $class,
+        string $propertyName,
+        BmmSchema $schema,
+        array &$visited = [],
+    ): ?array {
         $className = $class->getName();
         if (isset($visited[$className])) {
             return null;
@@ -568,13 +572,15 @@ readonly class AsciidocDefinition
             return self::TERMINOLOGY_EXTRA[$className . '.' . $propertyName];
         }
         if ($class instanceof BmmClass) {
+            $prop = preg_quote($propertyName, '/');
+            $groupPattern = '/Group_id_(\w+)\s*,\s*' . $prop . '\b/';
+            $codeSetPattern = '/Code_set_id_(\w+)\s*\)\s*\.\s*has_(?:code|concept_id)\s*\(\s*' . $prop . '\b/';
             foreach ($class->invariants as $expr) {
                 $expr = (string)$expr;
-                $prop = preg_quote($propertyName, '/');
-                if (preg_match('/Group_id_(\w+)\s*,\s*' . $prop . '\b/', $expr, $m)) {
+                if (preg_match($groupPattern, $expr, $m)) {
                     return ['group', self::TERMINOLOGY_ID_ALIASES[$m[1]] ?? $m[1]];
                 }
-                if (preg_match('/Code_set_id_(\w+)\s*\)\s*\.\s*has_(?:code|concept_id)\s*\(\s*' . $prop . '\b/', $expr, $m)) {
+                if (preg_match($codeSetPattern, $expr, $m)) {
                     return ['code_set', self::TERMINOLOGY_ID_ALIASES[$m[1]] ?? $m[1]];
                 }
             }
