@@ -99,7 +99,7 @@ _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM
 
 |*do_recursive_packages* ( +
 action: `xref:BASE:foundation_types:functional.adoc#_procedure_class[PROCEDURE][1]` +
-): `` [1..1]
+) [1..1]
 a|Recursively execute `action', which is a procedure taking a BMM_PACKAGE argument, on all members of packages. +
 _Inherited from xref:LANG:bmm:core_package.adoc#_bmm_package_container_class[BMM_PACKAGE_CONTAINER]_
 

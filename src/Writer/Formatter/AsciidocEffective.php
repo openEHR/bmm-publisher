@@ -70,7 +70,7 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 [$card, $signature, $parameterDocs] = $this->formatFunctionSignature($function, $prefix, $schema);
                 $inherited = $this->formatInheritedNote($ancestorName, $prefix, $enum, $schema);
                 $rows[] = '|' . $signature . ' [' . $card . ']';
-                $rows[] = 'a|' . $this->formatText($function->documentation ?? '') . $inherited;
+                $rows[] = 'a|' . $this->withInheritedNote($this->formatText($function->documentation ?? ''), $inherited);
             }
         }
 
@@ -126,7 +126,7 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 $rows[] = '';
                 $rows[] = '|' . $signature . ' [' . $card . ']';
                 $doc = property_exists($constant, 'documentation') ? $this->formatText($constant->documentation ?? '') : '';
-                $rows[] = 'a|' . $doc . $inherited;
+                $rows[] = 'a|' . $this->withInheritedNote($doc, $inherited);
             }
         }
 
@@ -141,7 +141,7 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 $rows[] = '';
                 $rows[] = '|' . $signature . ' [' . $card . ']' . $default;
                 $doc = property_exists($property, 'documentation') ? $this->formatText($property->documentation ?? '') : '';
-                $rows[] = 'a|' . $doc . $this->formatTerminologyLink($class, $property->getName(), $schema) . $inherited;
+                $rows[] = 'a|' . $this->withInheritedNote($doc . $this->formatTerminologyLink($class, $property->getName(), $schema), $inherited);
             }
         }
 
@@ -156,7 +156,7 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 $abstract = $function->isAbstract ? '_(abstract)_ ' : '';
                 $inherited = $this->formatInheritedNote($ancestorName, $prefix, $class, $schema);
                 $rows[] = '|' . $abstract . $signature . ' [' . $card . ']';
-                $doc = $this->formatText($function->documentation ?? '') . $inherited;
+                $doc = $this->withInheritedNote($this->formatText($function->documentation ?? ''), $inherited);
                 $rows[] = 'a|' . $doc;
                 array_push($rows, ...$this->formatParameterDocRows($parameterDocs));
             }
@@ -209,7 +209,7 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 [$card, $signature, $parameterDocs] = $this->formatFunctionSignature($function, $prefix, $schema);
                 $inherited = $this->formatInheritedNote($ancestorName, $prefix, $class, $schema);
                 $rows[] = '|' . $signature . ' [' . $card . ']';
-                $rows[] = 'a|' . $this->formatText($function->documentation ?? '') . $inherited;
+                $rows[] = 'a|' . $this->withInheritedNote($this->formatText($function->documentation ?? ''), $inherited);
             }
         }
 
@@ -246,6 +246,27 @@ readonly class AsciidocEffective extends AsciidocDefinition
                 }
             }
         }
+    }
+
+    /**
+     * Append an "inherited from" note to a documentation cell.
+     *
+     * The note starts with a hard line break (` +`). When the documentation ends with a
+     * block delimiter (`----` closing a listing, `--` an open block, and so on), that break
+     * would turn the delimiter into `---- +`, leave the block open and swallow the rest of
+     * the table; the note then goes into its own paragraph instead.
+     */
+    public function withInheritedNote(string $doc, string $note): string
+    {
+        if ($note === '') {
+            return $doc;
+        }
+        $doc = rtrim($doc);
+        $lines = explode("\n", $doc);
+        if (preg_match('/^(-{2}|-{4,}|\.{4,}|={4,}|\*{4,}|_{4,}|\+{4,}|\/{4,}|`{3,})$/', array_last($lines)) === 1) {
+            return $doc . "\n\n" . (str_starts_with($note, " +\n") ? substr($note, 3) : $note);
+        }
+        return $doc . $note;
     }
 
     /**

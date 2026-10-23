@@ -2378,7 +2378,8 @@ class_definitions:
         result: !P_BMM_GENERIC_TYPE
           root_type: Hash
           generic_parameters:
-            - 'String,String'
+            - String
+            - String
   BMM_ENUMERATION_STRING:
     name: BMM_ENUMERATION_STRING
     documentation: 'String-based enumeration type.'

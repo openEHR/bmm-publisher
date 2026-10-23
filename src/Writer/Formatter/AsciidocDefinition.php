@@ -384,7 +384,8 @@ readonly class AsciidocDefinition
         if ($function->aliases) {
             $aliases = '__alias__ "' . implode('", "', $function->aliases) . '" ';
         }
-        $signature = '*' . $function->name . '* ' . $aliases . '(' . $args . '): `' . $type . '`';
+        // A function whose schema gives no result type is shown without one, as in the legacy tables.
+        $signature = '*' . $function->name . '* ' . $aliases . '(' . $args . ')' . ($type !== '' ? ': `' . $type . '`' : '');
         if ($function->preConditions) {
             $signature .= " +\n +\n" . implode(" +\n", array_map(function ($key, $value) {
                     return '__' . $key . '__: `' . $this->formatText($value) . '`';
@@ -467,11 +468,24 @@ readonly class AsciidocDefinition
         if (strlen($type) === 1 || in_array(strtolower($type), ['operation', 'void', 'null', 'false', 'true'])) {
             return $type;
         }
-        $packageQname = $schema->getClassPackageQName($type) ?? $this->allSchemas->getClassPackageQName($type) ?? '';
+        if ($type === '') {
+            // The schema declares a type reference without a name; render nothing rather than a dead link.
+            $this->allSchemas->reportUnresolvedType($type, $schema->getSchemaId());
+            return '';
+        }
+        // Link text keeps the spelling of the reference; lookup and anchor use the defined name,
+        // matched case-insensitively or by alias only when no schema defines the reference as spelled.
+        $name = $type;
+        $packageQname = $schema->getClassPackageQName($type) ?? $this->allSchemas->getClassPackageQName($type);
+        if ($packageQname === null) {
+            $name = $this->allSchemas->canonicalTypeName($type) ?? $type;
+            $packageQname = $schema->getClassPackageQName($name) ?? $this->allSchemas->getClassPackageQName($name);
+        }
+        $packageQname ??= '';
         $m = [];
         $xref = $this->formatXref($packageQname, $m);
         if ($xref) {
-            $class = $this->resolveClass($schema, $type);
+            $class = $this->resolveClass($schema, $name);
             if ($class instanceof BmmInterface) {
                 $classType = 'interface';
             } elseif ($class instanceof BmmEnumerationInteger || $class instanceof BmmEnumerationString) {
@@ -484,11 +498,11 @@ readonly class AsciidocDefinition
                 $prefixXref = $this->formatXref($prefix);
                 if (str_contains($xref, $prefixXref)) {
                     // type is on the same spec page, an example format is '<<_boolean_class,Boolean>>'
-                    return '<<_' . strtolower($type) . '_' . $classType . ',' . $type . '>>';
+                    return '<<_' . strtolower($name) . '_' . $classType . ',' . $type . '>>';
                 }
                 // format: 'link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]'
                 $rel = strtolower($m[0]) . '_release';
-                $anchor = strtolower($type) . '_' . $classType;
+                $anchor = strtolower($name) . '_' . $classType;
                 return "link:/releases/{$m[0]}/{{$rel}}/{$m[1]}.html#_{$anchor}[{$type}^]";
             }
 
@@ -520,7 +534,7 @@ readonly class AsciidocDefinition
                 'RM:ehr' => 'RM:ehr:ehr_package',
                 default => $xref . '_package',
             };
-            return 'xref:' . $xref . '.adoc#_' . strtolower($type) . '_' . $classType . '[' . $type . ']';
+            return 'xref:' . $xref . '.adoc#_' . strtolower($name) . '_' . $classType . '[' . $type . ']';
         }
         if ($packageQname === '') {
             $this->allSchemas->reportUnresolvedType($type, $schema->getSchemaId());

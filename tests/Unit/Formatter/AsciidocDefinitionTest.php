@@ -231,4 +231,76 @@ final class AsciidocDefinitionTest extends TestCase
         self::assertCount(1, $warnings);
         self::assertStringContainsString('empty type name', $warnings[0]['message']);
     }
+
+    #[Test]
+    public function formatTypeRendersNothingForAnEmptyTypeReference(): void
+    {
+        self::assertSame('', $this->formatter->formatType('', 'org.openehr.term', $this->termSchema));
+    }
+
+    #[Test]
+    public function formatClassShowsAFunctionWithoutResultTypeWithoutOne(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_lang_1.0.0'); // BMM_ROUTINE.signature has result type ""
+        $collection->load('openehr_base_1.1.0');
+        $langSchema = iterator_to_array($collection, false)[0];
+        $class = $langSchema->classDefinitions->get('BMM_ROUTINE');
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new AsciidocDefinition($collection))->format($class, 'org.openehr.lang', $langSchema);
+
+        self::assertStringContainsString("|*signature* ()\n", $output);
+        self::assertStringNotContainsString('link:/classes/[]', $output);
+        self::assertStringNotContainsString('(): ``', $output);
+    }
+
+    #[Test]
+    public function formatTypeResolvesATypeNameThatDiffersOnlyInCase(): void
+    {
+        $logger = new RecordingLogger();
+        $collection = new BmmSchemaCollection($logger);
+        $collection->load('openehr_term_3.0.0');
+        $collection->load('openehr_base_1.0.4'); // defines Iso8601_date
+        $termSchema = iterator_to_array($collection, false)[0];
+
+        $output = (new AsciidocDefinition($collection))->formatType('ISO8601_DATE', 'org.openehr.term', $termSchema);
+
+        self::assertStringStartsWith('xref:BASE:', $output);
+        self::assertStringEndsWith('#_iso8601_date_class[ISO8601_DATE]', $output);
+        self::assertSame([], $logger->recordsAt(LogLevel::WARNING));
+    }
+
+    #[Test]
+    public function formatTypeResolvesByteToTheBaseOctetPrimitive(): void
+    {
+        $output = $this->formatter->formatType('Byte', 'org.openehr.term', $this->termSchema);
+
+        self::assertStringStartsWith('xref:BASE:', $output);
+        self::assertStringEndsWith('#_octet_class[Byte]', $output);
+    }
+
+    #[Test]
+    public function formatTypeLinksByteToTheOctetAnchorInLegacyFormat(): void
+    {
+        $output = (new AsciidocDefinition($this->collection, true))->formatType('Byte', 'org.openehr.term', $this->termSchema);
+
+        self::assertStringStartsWith('link:/releases/BASE/', $output);
+        self::assertStringEndsWith('.html#_octet_class[Byte^]', $output);
+    }
+
+    #[Test]
+    public function formatTypePrefersAnExactMatchInAnotherSchemaOverACaseVariant(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_am_1.4.0'); // defines CARDINALITY, loaded first as in `adoc all`
+        $collection->load('openehr_am_2.4.0'); // C_ATTRIBUTE.cardinality is a Cardinality
+        $collection->load('openehr_base_1.3.0'); // defines Cardinality
+        $am2Schema = iterator_to_array($collection, false)[1];
+
+        $output = (new AsciidocDefinition($collection))->formatType('Cardinality', 'org.openehr.am.aom2', $am2Schema);
+
+        self::assertStringStartsWith('xref:BASE:', $output);
+        self::assertStringEndsWith('#_cardinality_class[Cardinality]', $output);
+    }
 }

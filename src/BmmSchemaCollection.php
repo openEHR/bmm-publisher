@@ -30,6 +30,15 @@ class BmmSchemaCollection implements \IteratorAggregate
     /** @var array<string, true> type names already reported as unresolved */
     private array $unresolvedTypes = [];
 
+    /** @var array<string, string>|null lower-case type name => name as defined, across all loaded schemas */
+    private ?array $typeNames = null;
+
+    /**
+     * Type names some BMMs use for a type another schema defines under a different name:
+     * RM 1.0.2 / 1.0.3 write `Byte` for the BASE `Octet` primitive.
+     */
+    private const array TYPE_ALIASES = ['byte' => 'octet'];
+
     public function __construct(?LoggerInterface $logger = null)
     {
         $this->schemas = new Collection();
@@ -81,6 +90,41 @@ class BmmSchemaCollection implements \IteratorAggregate
             'revision' => $schema->schemaRevision,
         ]);
         $this->schemas->add($schema);
+        // Lookups cached before this load, misses included, may now resolve differently.
+        $this->classCache = [];
+        $this->qnameCache = [];
+        $this->typeNames = null;
+    }
+
+    /**
+     * Name under which a loaded schema defines a referenced type, or null if none does.
+     *
+     * A schema that defines the name as spelled wins. Otherwise it matches case-insensitively
+     * (RM 1.0.3 references `ISO8601_DATE`, BASE defines `Iso8601_date`), then through
+     * {@see self::TYPE_ALIASES}.
+     */
+    public function canonicalTypeName(string $typeName): ?string
+    {
+        if ($this->getClass($typeName) !== null) {
+            return $typeName;
+        }
+        if ($this->typeNames === null) {
+            $this->typeNames = [];
+            /** @var BmmSchema $schema */
+            foreach ($this->schemas as $schema) {
+                foreach ([$schema->classDefinitions, $schema->primitiveTypes] as $classes) {
+                    foreach (array_keys($classes->getArrayCopy()) as $name) {
+                        $this->typeNames[strtolower((string) $name)] ??= (string) $name;
+                    }
+                }
+            }
+        }
+        $lower = strtolower($typeName);
+        if (isset($this->typeNames[$lower])) {
+            return $this->typeNames[$lower];
+        }
+        $alias = self::TYPE_ALIASES[$lower] ?? null;
+        return $alias !== null ? $this->typeNames[$alias] ?? null : null;
     }
 
     /**
@@ -175,7 +219,7 @@ class BmmSchemaCollection implements \IteratorAggregate
         $this->unresolvedTypes[$typeName] = true;
         if ($typeName === '') {
             $this->logger->warning(
-                'An empty type name (used in {schema}) is rendered as an empty link;'
+                'An empty type name (used in {schema}) is rendered without a type;'
                 . ' the schema declares a type reference without a name.',
                 ['type' => $typeName, 'schema' => $schemaId],
             );
