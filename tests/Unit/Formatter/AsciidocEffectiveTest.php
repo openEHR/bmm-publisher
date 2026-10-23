@@ -7,6 +7,7 @@ namespace Tests\Unit\Formatter;
 use Cadasto\OpenEHR\BMM\Model\BmmClass;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocEffective;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -22,6 +23,42 @@ final class AsciidocEffectiveTest extends TestCase
 
         self::assertStringNotContainsString('---- +', $output);
         self::assertStringEndsWith("----\n\n_Inherited from X_", $output);
+    }
+
+    /**
+     * @return iterable<string, array{string}>
+     */
+    public static function blockDelimiters(): iterable
+    {
+        yield 'listing' => ['----'];
+        yield 'literal' => ['....'];
+        yield 'example' => ['===='];
+        yield 'sidebar' => ['****'];
+        yield 'quote' => ['____'];
+        yield 'passthrough' => ['++++'];
+        yield 'fenced code' => ['```'];
+        yield 'open' => ['--'];
+        yield 'comment' => ['////'];
+        yield 'trailing whitespace' => ["----  \n"];
+    }
+
+    #[Test]
+    #[DataProvider('blockDelimiters')]
+    public function inheritedNoteStartsAParagraphAfterAnyClosingBlockDelimiter(string $delimiter): void
+    {
+        $formatter = new AsciidocEffective(new BmmSchemaCollection());
+
+        $output = $formatter->withInheritedNote("Text:\n\n" . trim($delimiter) . "\ncontent\n" . $delimiter, " +\n_Inherited from X_");
+
+        self::assertStringEndsWith(trim($delimiter) . "\n\n_Inherited from X_", $output);
+    }
+
+    #[Test]
+    public function inheritedNoteAfterADelimiterDropsOnlyTheLineBreakPrefix(): void
+    {
+        $formatter = new AsciidocEffective(new BmmSchemaCollection());
+
+        self::assertSame("----\n\n+ note", $formatter->withInheritedNote('----', " +\n+ note"));
     }
 
     #[Test]
