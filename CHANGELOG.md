@@ -20,6 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`openehr_base_1.0.4`: `BMM_ENUMERATION.name_map` is `Hash<String, String>`** — the two generic parameters were stored as one `"String,String"`, rendered as a dead `link:/classes/String,String`.
 - **An empty type reference renders nothing** instead of an empty `link:/classes/[]` link, and is still reported as a warning.
 - **A function without result type is shown as `*name* ()`**, as in the legacy tables (e.g. `BMM_ROUTINE.signature` in `openehr_lang_1.0.0`).
+- **Effective tables keep a redefined feature when its class has two inheritance paths** — e.g. `DV_DURATION.is_equal` showed `Any`'s version instead of `DV_AMOUNT`'s; the Inherits line no longer repeats `Any`.
+- **Class diagrams draw a shared ancestor once** — `Ordered` appeared twice in the `DV_DATE`, `DV_TIME`, `DV_DATE_TIME` and `DV_DURATION` diagrams, with its members listed twice.
+- **Class diagrams list constants and generic constraints** — e.g. `+ {static} Seconds_in_minute : Integer = 60 {readOnly}` and `DV_INTERVAL <T: DV_ORDERED>`.
+- **The `<=` function alias no longer renders as an arrow (⇐).**
+- **A link to an unresolved type no longer breaks its code formatting** — the trailing space kept the closing backtick from ending the code span.
+- **Legacy tables link to another page whose name starts like the current one** — e.g. `P_BMM_SCHEMA` (`bmm_persistence`) from the `bmm` page, instead of a dead same-page anchor.
+- **An empty default and a constant without value render nothing** instead of `{default = }` and `String = `.
+- **`specUrl` in split JSON points at the top-level page for deep packages** — four LANG `bmm3` types linked to `core.html` instead of `bmm3.html`.
 
 ## [0.12.0] - 2026-10-08
 
