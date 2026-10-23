@@ -21,7 +21,9 @@ a|Time of committal of the item. +
 _Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
 
 |*change_type*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
-a|Type of change. Coded using the openEHR Terminology  audit change type  group. +
+a|Type of change. Coded using the openEHR Terminology  audit change type  group.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_audit_change_type[openEHR Terminology, audit change type group] +
 _Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
 
 |*description*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [0..1]
@@ -43,6 +45,8 @@ a|Items attested, expressed as fully qualified runtime paths to the items in que
 
 |*reason*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
 a|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_attestation_reason[openEHR Terminology, attestation reason group]
 
 |*is_pending*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|True if this attestation is outstanding; False means it has been completed.

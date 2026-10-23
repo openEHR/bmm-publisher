@@ -29,6 +29,8 @@ h|*1..1*
 |*setting*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|The setting in which the clinical session took place. Coded using the openEHR Terminology,  setting  group.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_setting[openEHR Terminology, setting group]
+
 h|*0..1*
 |*other_context*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
 a|Other optional context which will be archetyped.

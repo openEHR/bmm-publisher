@@ -18,6 +18,8 @@ h|*1..1*
 |*original_language*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Original language of the terminology, as set at artefact creation or parsing time; must be a code in the ISO 639-1 2 character language code-set.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
+
 h|*1..1*
 |*concept_code*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Term code defining the meaning of the artefact as a whole, and always used as the id-code on the root node of the artefact. Must be defined in the `_term_definitions_` property.

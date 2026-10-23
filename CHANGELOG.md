@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Coded attributes in the Antora Definition and Effective tables link to their openEHR Terminology group or code set.**
+
 ## [0.12.0] - 2026-10-08
 
 ### Added

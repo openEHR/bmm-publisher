@@ -39,8 +39,12 @@ _Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABL
 |*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
 a|Mandatory indicator of the localised language in which this Entry is written. Coded from openEHR Code Set  languages .
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
+
 |*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
 a|Name of character set in which text values in this Entry are encoded. Coded from openEHR Code Set  character sets.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_character_sets[openEHR code set character sets]
 
 |*other_participations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:generic_package.adoc#_participation_class[PARTICIPATION]>` [0..1]
 a|Other participations at `ENTRY` level.

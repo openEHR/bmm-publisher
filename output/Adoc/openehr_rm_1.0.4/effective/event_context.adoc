@@ -20,6 +20,8 @@ a|The actual location where the session occurred, e.g. 'microbiology lab 2', 'ho
 |*setting*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
 a|The setting in which the clinical session took place. Coded using the openEHR Terminology,  setting  group.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_setting[openEHR Terminology, setting group]
+
 |*other_context*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [0..1]
 a|Other optional context which will be archetyped.
 

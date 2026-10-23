@@ -19,6 +19,8 @@ h|*0..1*
 |*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
 a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_normal_statuses[openEHR code set normal statuses]
+
 h|*0..1*
 |*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]`
 a|Optional normal range.
