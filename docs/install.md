@@ -19,6 +19,12 @@ docker run --rm \
   -v ./my-output:/app/output \
   ghcr.io/openehr/bmm-publisher yaml all
 
+# Add an Example tab from your own example partials, such as ./examples/composition.adoc
+docker run --rm \
+  -v ./examples:/examples \
+  -v ./my-output:/app/output \
+  ghcr.io/openehr/bmm-publisher asciidoc openehr_rm_1.2.0 -d openehr_base_1.3.0 --examples-dir /examples
+
 # List available commands
 docker run --rm ghcr.io/openehr/bmm-publisher list
 ```
@@ -30,6 +36,8 @@ docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher asciido
 ```
 
 The `asciidoc` command runs the whole pipeline in one invocation. It writes the AsciiDoc tables (with the UML image macro already inlined under the UML tab), runs PlantUML to render every class diagram to SVG, and publishes the SVGs under `output/Adoc/<schema>/images/uml/{classes,diagrams}/`.
+
+`--examples-dir` takes a path inside the container, so mount the directory first. A path the container cannot see exits with code 2 and writes nothing.
 
 ## Input and output
 

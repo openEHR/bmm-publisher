@@ -25,6 +25,8 @@ Run these inside the container (`make sh`) or through Docker:
 # Export RM 1.2.0; load BASE as a cross-reference dependency only (-d), not exported
 ./bin/bmm-publisher asciidoc openehr_rm_1.2.0 -d openehr_base_1.3.0
 ./bin/bmm-publisher legacy-adoc openehr_rm_1.2.0 -d openehr_base_1.3.0
+# Add an Example tab to each class with a matching partial, such as examples/composition.adoc
+./bin/bmm-publisher asciidoc openehr_rm_1.2.0 -d openehr_base_1.3.0 --examples-dir examples
 ./bin/bmm-publisher plantuml all
 ./bin/bmm-publisher yaml openehr_base_1.3.0
 ./bin/bmm-publisher split-json
