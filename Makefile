@@ -67,7 +67,6 @@ PUBLISH_RUNS = \
 	&& ./bin/bmm-publisher $(1) openehr_rm_1.0.4 -d openehr_base_1.1.0 \
 	&& ./bin/bmm-publisher $(1) openehr_rm_1.1.0 -d openehr_base_1.2.0 \
 	&& ./bin/bmm-publisher $(1) openehr_rm_1.2.0 -d openehr_base_1.3.0 \
-	&& ./bin/bmm-publisher $(1) openehr_am_1.4.0 -d openehr_base_1.1.0 \
 	&& ./bin/bmm-publisher $(1) openehr_am_2.2.0 -d openehr_base_1.1.0 \
 	&& ./bin/bmm-publisher $(1) openehr_lang_1.0.0 -d openehr_base_1.3.0 \
 	&& ./bin/bmm-publisher $(1) openehr_lang_1.1.0 -d openehr_base_1.3.0 \
@@ -75,8 +74,8 @@ PUBLISH_RUNS = \
 	&& ./bin/bmm-publisher $(1) openehr_base_1.1.0 \
 	&& ./bin/bmm-publisher $(1) openehr_base_1.2.0 \
 	&& ./bin/bmm-publisher $(1) openehr_base_1.3.0 \
-	&& ./bin/bmm-publisher $(1) openehr_term_3.0.0 \
-	&& ./bin/bmm-publisher $(1) openehr_term_3.1.0
+	&& ./bin/bmm-publisher $(1) openehr_term_3.0.0 -d openehr_base_1.3.0 \
+	&& ./bin/bmm-publisher $(1) openehr_term_3.1.0 -d openehr_base_1.3.0
 
 legacy-adoc: ## Generate legacy class-definition tables (docs/UML/classes layout) for all schemas
 	$(DOCKER_COMPOSE) run --rm app sh -c '$(call PUBLISH_RUNS,legacy-adoc)'
