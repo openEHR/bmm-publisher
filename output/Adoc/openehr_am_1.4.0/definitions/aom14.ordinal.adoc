@@ -11,7 +11,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*symbol*: `link:/classes/CODE_PHRASE[CODE_PHRASE]`
+|*symbol*: `xref:BASE:foundation_types:terminology.adoc#_code_phrase_class[CODE_PHRASE]`
 a|Terminology code providing the Ordinal's symbol.
 
 h|*1..1*
