@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*C_ATTRIBUTE_TUPLE*
 
 h|*Description*
-2+a|Object representing a constraint on an atttribute tuple, i.e. a group of attributes that are constrained together. Typically used for representing co-varying constraints like \{units, range} constraints.
+2+a|Object representing a constraint on an atttribute tuple, i.e. a group of attributes that are constrained together. Typically used for representing co-varying constraints like {units, range} constraints.
 
 h|*Inherit*
 2+|`<<_c_second_order_class,C_SECOND_ORDER>>`

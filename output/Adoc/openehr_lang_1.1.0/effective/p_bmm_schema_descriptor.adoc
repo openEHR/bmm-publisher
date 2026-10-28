@@ -39,7 +39,7 @@ a|Schema id, formed from meta_data model_publisher '_' schema_name '_' model_rel
 _Inherited from xref:LANG:bmm:rm_access_package.adoc#_schema_descriptor_class[SCHEMA_DESCRIPTOR]_
 
 |*meta_data*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
-a|Table of \{key, value} pairs of schema meta-data (bmm_version, model_publisher, schema_name, model_release, schema_revision, schema_lifecycle_state, schema_description, schema_path). +
+a|Table of {key, value} pairs of schema meta-data (bmm_version, model_publisher, schema_name, model_release, schema_revision, schema_lifecycle_state, schema_description, schema_path). +
 _Inherited from xref:LANG:bmm:rm_access_package.adoc#_schema_descriptor_class[SCHEMA_DESCRIPTOR]_
 
 |*includes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]

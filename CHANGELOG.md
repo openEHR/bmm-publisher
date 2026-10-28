@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Legacy tables link to another page whose name starts like the current one** — e.g. `P_BMM_SCHEMA` (`bmm_persistence`) from the `bmm` page, instead of a dead same-page anchor.
 - **An empty default and a constant without value render nothing** instead of `{default = }` and `String = `.
 - **`specUrl` in split JSON points at the top-level page for deep packages** — four LANG `bmm3` types linked to `core.html` instead of `bmm3.html`.
+- **Plus signs and braces in documentation text render as written** — `DV_ORDINAL`'s `{neg, trace, +, ++, +++}` lost its plus signs, and `{units, range}` showed a backslash (#37).
 
 ## [0.12.0] - 2026-10-08
 

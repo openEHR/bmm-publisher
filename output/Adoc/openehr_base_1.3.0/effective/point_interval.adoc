@@ -22,7 +22,7 @@ a|Lower boundary open (i.e. = -infinity).
 
 |*upper_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1] +
 `{default{nbsp}={nbsp}false}`
-a|Upper boundary open (i.e. = +infinity).
+a|Upper boundary open (i.e. = {plus}infinity).
 
 |*lower_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1] +
 `{default{nbsp}={nbsp}true}`

@@ -111,6 +111,52 @@ final class AsciidocDefinitionFormatTest extends TestCase
     }
 
     #[Test]
+    public function formatTextEscapesOnlyBracesShapedLikeAnAttributeReference(): void
+    {
+        $f = $this->makeFormatter();
+
+        // Asciidoctor drops the backslash only before an attribute reference, so these must stay unescaped
+        self::assertSame('like {units, range} constrained', $f->formatText('like {units, range} constrained'));
+        self::assertSame('{1..1}', $f->formatText('{1..1}'));
+        self::assertSame('s in {"=", "<"}', $f->formatText('s in {"=", "<"}'));
+        // these would be read as attribute references
+        self::assertSame('schema \{BMM_MODEL} name', $f->formatText('schema {BMM_MODEL} name'));
+        self::assertSame('\{type-name}', $f->formatText('{type-name}'));
+        self::assertSame('\{counter:x} \{set:y:1}', $f->formatText('{counter:x} {set:y:1}'));
+    }
+
+    #[Test]
+    public function formatTextKeepsPlusSignsFromBeingReadAsPassthrough(): void
+    {
+        $f = $this->makeFormatter();
+
+        self::assertSame(
+            '`{neg, trace, {plus}, {plus}{plus}, {plus}{plus}{plus}}`',
+            $f->formatText('`{neg, trace, +, ++, +++}`'),
+        );
+        self::assertSame('timezone `{plus}0000`', $f->formatText('timezone `+0000`'));
+    }
+
+    #[Test]
+    public function formatTextKeepsAHardLineBreakAndAListContinuation(): void
+    {
+        $f = $this->makeFormatter();
+
+        self::assertSame("NOTE: a {plus} b +\nnext", $f->formatText("NOTE: a + b +\nnext"), 'only the line-end " +" is kept');
+        self::assertSame("* item\n+\nmore", $f->formatText("* item\n+\nmore"));
+    }
+
+    #[Test]
+    public function formatTextAlsoEscapesInsideAListingBlock(): void
+    {
+        $f = $this->makeFormatter();
+
+        // Known limitation: a listing is verbatim, so {plus} and \{ would show literally there.
+        // No bundled schema has a '+' or an attribute-shaped brace inside a listing; handle it when one does.
+        self::assertSame("----\na {plus} b \{x}\n----", $f->formatText("----\na + b {x}\n----"));
+    }
+
+    #[Test]
     public function formatXrefReturnsEmptyWhenNoOpenehrMarker(): void
     {
         $f = $this->makeFormatter();

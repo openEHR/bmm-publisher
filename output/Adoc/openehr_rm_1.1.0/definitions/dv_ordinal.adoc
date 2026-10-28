@@ -16,7 +16,7 @@ Note that although the term 'ordinal' in mathematics means natural numbers only,
 *   -3, -2, -1, 0, 1, 2, 3  -- reflex response values 
 *    0, 1, 2                  -- Apgar values 
 
-This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. `{neg, trace, +, ++, +++}` are used for leucocytes, protein, nitrites etc; for non-haemolysed blood `{neg, trace, moderate}`; for haemolysed blood `{small, moderate, large}`.
+This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. `{neg, trace, {plus}, {plus}{plus}, {plus}{plus}{plus}}` are used for leucocytes, protein, nitrites etc; for non-haemolysed blood `{neg, trace, moderate}`; for haemolysed blood `{small, moderate, large}`.
 
 For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use `DV_SCALE`. `DV_SCALE` may also be used in future for representing purely Integer-based scales, however, the `DV_ORDINAL` type should continue to be supported in software implementations in order to accommodate existing data that are instances of this type.
 
@@ -29,7 +29,7 @@ h|*Attributes*
 
 h|*1..1*
 |*symbol*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
-a|Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  `mild`, `moderate`, `severe`, or even the same number series as the values, e.g. 1, 2, 3.
+a|Coded textual representation of this value in the enumeration, which may be strings made from  {plus}  symbols, or other enumerations of terms such as  `mild`, `moderate`, `severe`, or even the same number series as the values, e.g. 1, 2, 3.
 
 h|*1..1*
 |*value*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`

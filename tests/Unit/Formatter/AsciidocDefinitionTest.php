@@ -305,6 +305,21 @@ final class AsciidocDefinitionTest extends TestCase
     }
 
     #[Test]
+    public function formatClassKeepsThePlusSignsOfDvOrdinal(): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load('openehr_rm_1.2.0');
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+        $class = $schema->classDefinitions->get('DV_ORDINAL');
+        self::assertInstanceOf(BmmClass::class, $class);
+
+        $output = (new AsciidocDefinition($collection))->format($class, 'org.openehr.rm.data_types', $schema);
+
+        self::assertStringContainsString('`{neg, trace, {plus}, {plus}{plus}, {plus}{plus}{plus}}`', $output);
+    }
+
+    #[Test]
     public function formatClassEscapesFunctionAliases(): void
     {
         $collection = new BmmSchemaCollection();
