@@ -11,11 +11,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*id*: `link:/classes/String[String]`
+|*id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|The code of this concept.
 
 h|*1..1*
-|*rubric*: `link:/classes/String[String]`
+|*rubric*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|The rubric, i.e. linguistic expression, of this concept, in the language of this terminology instance.
 
 h|*0..1*

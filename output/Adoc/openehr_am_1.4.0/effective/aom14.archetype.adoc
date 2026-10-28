@@ -56,12 +56,6 @@ a|Invariant statements about this object. Statements are expressed in first orde
 
 2+h|*Functions*
 
-|*current_revision* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
- +
-__Post__: `Result = revision_history.most_recent_version` [1..1]
-a|Most recent revision in revision_history if is_controlled else  (uncontrolled) . +
-_Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
-
 |*languages_available* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
 a|Total list of languages available in this resource, derived from original_language and translations. +
 _Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
@@ -119,9 +113,6 @@ a|
 2+a|__Original_language_valid__: `code_set (Code_set_id_languages).has_code (original_language.as_string)` +
 _Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
 
-2+a|__Current_revision_valid__: `(current_revision /= Void and not is_controlled) implies current_revision.is_equal ("(uncontrolled)")` +
-_Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
-
 2+a|__Translations_valid__: `translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))` +
 _Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
 
@@ -130,9 +121,6 @@ translations.has_key (d.language.code_string)))` +
 _Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
 
 2+a|__Languages_available_valid__: `languages_available.has (original_language)` +
-_Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
-
-2+a|__Revision_history_valid__: `is_controlled xor revision_history = Void` +
 _Inherited from xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]_
 
 2+a|__Inv_concept_valid__: `ontology.has_term_code (concept_code)`

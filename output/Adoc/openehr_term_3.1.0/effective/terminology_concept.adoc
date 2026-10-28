@@ -6,10 +6,10 @@
 
 2+h|*Attributes*
 
-|*id*: `link:/classes/String[String]` [1..1]
+|*id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The code of this concept.
 
-|*rubric*: `link:/classes/String[String]` [1..1]
+|*rubric*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The rubric, i.e. linguistic expression, of this concept, in the language of this terminology instance.
 
 |*status*: `xref:TERM:terminology_package.adoc#_terminology_status_enumeration[TERMINOLOGY_STATUS]` [0..1] +

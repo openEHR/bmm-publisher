@@ -11,11 +11,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*name*: `link:/classes/String[String]`
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Name of this code set.
 
 h|*1..1*
-|*openehr_id*: `link:/classes/String[String]`
+|*openehr_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Identifier used for code set in the openEHR Reference Model. The value is inferred from the `_name_` attribute.
 
 Valid values take the form of an xs:NCName value, i.e. cannot contain:
@@ -26,15 +26,15 @@ Valid values take the form of an xs:NCName value, i.e. cannot contain:
 An NCName cannot begin with a number, dot or minus character although these can appear later in the value.
 
 h|*1..1*
-|*issuer*: `link:/classes/String[String]`
+|*issuer*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Name of the issuing organisation.
 
 h|*0..1*
-|*codes*: `link:/classes/List[List]<xref:TERM:terminology_package.adoc#_code_class[CODE]>`
+|*codes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:TERM:terminology_package.adoc#_code_class[CODE]>`
 a|Codes in this code set.
 
 h|*0..1*
-|*external_id*: `link:/classes/String[String]`
+|*external_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
 a|An optional identifier assumed by openEHR to be the identifier of this code set, based on its published name, with spaces replaced by underscores.
 
 Valid values take the form of an xs:NCName value, i.e. cannot contain:
