@@ -99,6 +99,7 @@ publish-all: adoc puml yaml split-json legacy-adoc odin ## Run all publishers
 
 CLASS_MAP ?= ../antora-openehr/resources/global-vars.yml
 
+# Each PUBLISH_RUNS step is its own process, so an attribute missing for several schemas is reported once per schema.
 check-class-map: ## Regenerate the AsciiDoc and warn about class links the site's CLASS_MAP (global-vars.yml) does not resolve
 	@test -f "$(CLASS_MAP)" || { echo "CLASS_MAP=$(CLASS_MAP) not found; pass the site's resources/global-vars.yml"; exit 2; }
 	$(DOCKER_COMPOSE) run --rm -v "$(abspath $(CLASS_MAP))":/class-map.yml:ro app sh -c '$(call PUBLISH_RUNS,adoc --class-map /class-map.yml)'
