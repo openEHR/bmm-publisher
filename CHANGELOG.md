@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.13.0] - 2026-10-31
+
 ### Added
 
 - **Coded attributes in the Antora Definition and Effective tables link to their openEHR Terminology group or code set.**
@@ -34,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Antora tables link classes through the site's `{class_*}` attributes** (`xref:{class_dv_date_time}[DV_DATE_TIME]`) instead of guessing the page, which sent one link in five to a missing or wrong page (#36).
 - **Legacy tables link `composition`, `security`, `aom2` and `beom` classes to their real documents** (`ehr.html`, `AOM2.html`, `BEL.html`) instead of missing ones (#36).
 - **AM 1.4.0 is published against BASE 1.3.0 and TERM against BASE** — their tables no longer show dead `CODE_PHRASE` and `String` links or the wrong inherited members (#38).
+- **The bundled `openehr_term_3.1.0` schema includes BASE 1.3.0, as specifications-TERM does** — it lacked that `includes` entry at the same revision; only its YAML and ODIN output change.
 
 ## [0.12.0] - 2026-10-08
 
@@ -185,7 +188,8 @@ First release: a small command-line tool that turns openEHR BMM JSON into AsciiD
 
 Input is BMM JSON only (not XMI/UML exchange files).
 
-[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.12.0...HEAD
+[Unreleased]: https://github.com/openehr/bmm-publisher/compare/0.13.0...HEAD
+[0.13.0]: https://github.com/openehr/bmm-publisher/compare/0.12.0...0.13.0
 [0.12.0]: https://github.com/openehr/bmm-publisher/compare/0.11.0...0.12.0
 [0.11.0]: https://github.com/openehr/bmm-publisher/compare/0.10.0...0.11.0
 [0.10.0]: https://github.com/openehr/bmm-publisher/compare/0.9.0...0.10.0
