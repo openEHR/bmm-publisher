@@ -12,7 +12,7 @@ h|*Description*
 * Paths with no leading ‘/’ are in the outer part of the archetype, e.g. “archetype_id/value” refers to the String value of the archetype_id attribute of the enclosing archetype.
 
 h|*Inherit*
-2+|`link:/releases/LANG/{lang_release}/beom.html#_expr_value_ref_class[EXPR_VALUE_REF^]`
+2+|`link:/releases/LANG/{lang_release}/BEL.html#_expr_value_ref_class[EXPR_VALUE_REF^]`
 
 h|*Attributes*
 ^h|*Signature*

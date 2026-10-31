@@ -7,7 +7,7 @@ h|*Description*
 2+a|One branch of a Case table, consisting of a value constraint (the match criterion) and a result, of the generic parameter type T.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH]`
+2+|`xref:{class_bmm3_el_decision_branch}[EL_DECISION_BRANCH]`
 
 h|*Attributes*
 ^h|*Signature*

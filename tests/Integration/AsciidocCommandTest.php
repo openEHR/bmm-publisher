@@ -6,6 +6,7 @@ namespace Tests\Integration;
 
 use OpenEHR\BmmPublisher\Console\Command\AsciidocCommand;
 use OpenEHR\BmmPublisher\Helper\OutputDir;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
@@ -85,5 +86,71 @@ final class AsciidocCommandTest extends TestCase
             (string) file_get_contents($classesDir . 'terminology.adoc'),
         );
         self::assertStringNotContainsString('Example::', (string) file_get_contents($classesDir . 'code.adoc'));
+    }
+
+    #[Test]
+    public function missingClassMapIsRejectedBeforeAnythingIsWritten(): void
+    {
+        $tester = new CommandTester(new AsciidocCommand());
+        $exit = $tester->execute([
+            'input' => ['openehr_term_3.0.0'],
+            '--class-map' => $this->tempOutput . DIRECTORY_SEPARATOR . 'no-such-global-vars.yml',
+        ]);
+
+        self::assertSame(Command::INVALID, $exit, $tester->getDisplay());
+        self::assertStringContainsString('no-such-global-vars.yml not found', $tester->getDisplay());
+        self::assertDirectoryDoesNotExist($this->tempOutput . DIRECTORY_SEPARATOR . 'Adoc');
+    }
+
+    /**
+     * @return iterable<string, array{0: string, 1: string}>
+     */
+    public static function unusableClassMaps(): iterable
+    {
+        yield 'a YAML list' => ["- class_code\n- class_code_set\n", 'defines no class_* attributes'];
+        yield 'a scalar' => ["global vars\n", 'is not a YAML mapping'];
+        yield 'another YAML file' => ["site:\n  title: openEHR\n", 'defines no class_* attributes'];
+        yield 'invalid YAML' => ["class_code: \"{page_x}#_code_class\n", 'is not valid YAML'];
+    }
+
+    #[Test]
+    #[DataProvider('unusableClassMaps')]
+    public function unusableClassMapIsRejectedBeforeAnythingIsWritten(string $content, string $message): void
+    {
+        $classMap = $this->tempOutput . DIRECTORY_SEPARATOR . 'class-map.yml';
+        file_put_contents($classMap, $content);
+
+        $tester = new CommandTester(new AsciidocCommand());
+        $exit = $tester->execute(['input' => ['openehr_term_3.0.0'], '--class-map' => $classMap]);
+
+        self::assertSame(Command::INVALID, $exit, $tester->getDisplay());
+        self::assertStringContainsString($message, $tester->getDisplay());
+        self::assertDirectoryDoesNotExist($this->tempOutput . DIRECTORY_SEPARATOR . 'Adoc');
+    }
+
+    #[Test]
+    public function classMapReportsTheClassLinksTheSiteDoesNotResolve(): void
+    {
+        if ((new ExecutableFinder())->find('plantuml') === null) {
+            self::markTestSkipped('The asciidoc command renders diagrams with the plantuml CLI, which is not on PATH.');
+        }
+        $classMap = $this->tempOutput . DIRECTORY_SEPARATOR . 'global-vars.yml';
+        file_put_contents($classMap, <<<'YAML'
+            class_code: "{page_term_support_representation}#_code_class"
+            class_terminology_status: "{page_term_support_representation}#_terminology_status_class"
+            YAML);
+
+        $tester = new CommandTester(new AsciidocCommand());
+        $exit = $tester->execute(['input' => ['openehr_term_3.0.0'], '--class-map' => $classMap]);
+
+        self::assertSame(Command::SUCCESS, $exit, $tester->getDisplay());
+        $display = $tester->getDisplay();
+        self::assertStringContainsString('class_code_set (used in openehr_term_3.0.0) has no entry', $display);
+        self::assertStringContainsString('the class anchor is #_terminology_status_enumeration', $display);
+        self::assertStringNotContainsString('class_code (used in', $display);
+        self::assertStringContainsString(
+            'xref:{class_code}[CODE]',
+            (string) file_get_contents($this->tempOutput . '/Adoc/openehr_term_3.0.0/definitions/code_set.adoc'),
+        );
     }
 }

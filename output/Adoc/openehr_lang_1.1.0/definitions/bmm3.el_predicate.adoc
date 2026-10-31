@@ -7,14 +7,14 @@ h|*Description*
 2+a|Parent type of predicate of any object reference.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_simple_class[EL_SIMPLE]`
+2+|`xref:{class_bmm3_el_simple}[EL_SIMPLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*operand*: `xref:LANG:bmm3:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]`
+|*operand*: `xref:{class_bmm3_el_value_generator}[EL_VALUE_GENERATOR]`
 a|The target instance of this predicate.
 
 h|*Functions*
@@ -23,6 +23,6 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `xref:LANG:bmm3:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]`
+|*eval_type* (): `xref:{class_bmm3_bmm_simple_type}[BMM_SIMPLE_TYPE]`
 a|Return `\{BMM_MODEL}._boolean_type_definition_()`.
 |===

@@ -12,13 +12,13 @@ h|*Functions*
 
 h|*1..1 +
 (abstract)*
-|*eval_type* (): `xref:LANG:bmm3:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+|*eval_type* (): `xref:{class_bmm3_bmm_type}[BMM_TYPE]`
 a|Meta-type of expression entity used in type-checking and evaluation. 
 
 Effected in descendants.
 
 h|*1..1*
-|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())`
 a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`).

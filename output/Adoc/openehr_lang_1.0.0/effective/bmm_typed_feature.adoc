@@ -4,23 +4,23 @@
 
 2+a|A typed entity that is a feature within a context, and which may therefore be Void, i.e. 'nullable'.
 
-2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED]
+2+|Inherits: xref:{class_bmm_typed}[BMM_TYPED]
 
 2+h|*Attributes*
 
-|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
+|*type*: `xref:{class_bmm_type}[BMM_TYPE]` [1..1]
 a|Declared or inferred static type of the entity. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED]_
+_Inherited from xref:{class_bmm_typed}[BMM_TYPED]_
 
-|*is_nullable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1] +
+|*is_nullable*: `xref:{class_boolean}[Boolean]` [0..1] +
 `{default{nbsp}={nbsp}false}`
 a|True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
 
 2+h|*Functions*
 
-|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
 a|True if `_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `'Boolean'`). +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED]_
+_Inherited from xref:{class_bmm_typed}[BMM_TYPED]_
 |===

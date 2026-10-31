@@ -6,12 +6,12 @@
 
 2+h|*Attributes*
 
-|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
+|*type*: `xref:{class_bmm_type}[BMM_TYPE]` [1..1]
 a|Declared or inferred static type of the entity.
 
 2+h|*Functions*
 
-|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
 a|True if `_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `'Boolean'`).

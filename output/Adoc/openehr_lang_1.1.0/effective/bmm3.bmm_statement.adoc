@@ -4,6 +4,6 @@
 
 2+a|Abstract parent of 'statement' types that may be defined to implement BMM Routines.
 
-2+|Inherits: xref:LANG:bmm3:statement_package.adoc#_bmm_statement_item_class[BMM_STATEMENT_ITEM]
+2+|Inherits: xref:{class_bmm3_bmm_statement_item}[BMM_STATEMENT_ITEM]
 
 |===

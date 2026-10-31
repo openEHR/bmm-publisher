@@ -7,17 +7,17 @@ h|*Description*
 2+a|Binary operator expression node.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_operator_class[EL_OPERATOR]`
+2+|`xref:{class_bmm3_el_operator}[EL_OPERATOR]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*left_operand*: `xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]`
+|*left_operand*: `xref:{class_bmm3_el_expression}[EL_EXPRESSION]`
 a|Left operand node.
 
 h|*1..1*
-|*right_operand*: `xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]`
+|*right_operand*: `xref:{class_bmm3_el_expression}[EL_EXPRESSION]`
 a|Right operand node.
 |===

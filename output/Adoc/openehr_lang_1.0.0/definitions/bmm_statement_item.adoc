@@ -7,6 +7,6 @@ h|*Description*
 2+a|Abstract parent of statement types representing a locally defined routine body.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_routine_body_class[BMM_ROUTINE_BODY]`
+2+|`xref:{class_bmm_routine_body}[BMM_ROUTINE_BODY]`
 
 |===

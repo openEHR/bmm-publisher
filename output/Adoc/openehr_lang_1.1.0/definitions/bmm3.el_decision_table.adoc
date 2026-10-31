@@ -7,14 +7,14 @@ h|*Description*
 2+a|Meta-type for decision tables. Generic on the meta-type of the `_result_` attribute of the branches, to allow specialised forms of if/else and case structures to be created.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_terminal_class[EL_TERMINAL]`
+2+|`xref:{class_bmm3_el_terminal}[EL_TERMINAL]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm3:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH]<T>>`
+|*items*: `xref:{class_list}[List]<xref:{class_bmm3_el_decision_branch}[EL_DECISION_BRANCH]<T>>`
 a|Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
 
 h|*1..1*

@@ -7,7 +7,7 @@ h|*Description*
 2+a|A mutable entity whose scope is a routine.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_instantiable_class[BMM_INSTANTIABLE]`, `xref:LANG:bmm:core_package.adoc#_bmm_class_entity_class[BMM_CLASS_ENTITY]`
+2+|`xref:{class_bmm_instantiable}[BMM_INSTANTIABLE]`, `xref:{class_bmm_class_entity}[BMM_CLASS_ENTITY]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,7 +15,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_routine_class[BMM_ROUTINE]`
+|*scope*: `xref:{class_bmm_routine}[BMM_ROUTINE]`
 a|Routine within which variable is defined.
 
 h|*Functions*

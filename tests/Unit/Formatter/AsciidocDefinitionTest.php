@@ -8,7 +8,9 @@ use Cadasto\OpenEHR\BMM\Model\BmmClass;
 use Cadasto\OpenEHR\BMM\Model\BmmEnumerationString;
 use Cadasto\OpenEHR\BMM\Model\BmmSchema;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
+use OpenEHR\BmmPublisher\Writer\Formatter\AntoraClassMap;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocDefinition;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LogLevel;
@@ -266,8 +268,7 @@ final class AsciidocDefinitionTest extends TestCase
 
         $output = (new AsciidocDefinition($collection))->formatType('ISO8601_DATE', 'org.openehr.term', $termSchema);
 
-        self::assertStringStartsWith('xref:BASE:', $output);
-        self::assertStringEndsWith('#_iso8601_date_class[ISO8601_DATE]', $output);
+        self::assertSame('xref:{class_iso8601_date}[ISO8601_DATE]', $output);
         self::assertSame([], $logger->recordsAt(LogLevel::WARNING));
     }
 
@@ -276,8 +277,7 @@ final class AsciidocDefinitionTest extends TestCase
     {
         $output = $this->formatter->formatType('Byte', 'org.openehr.term', $this->termSchema);
 
-        self::assertStringStartsWith('xref:BASE:', $output);
-        self::assertStringEndsWith('#_octet_class[Byte]', $output);
+        self::assertSame('xref:{class_octet}[Byte]', $output);
     }
 
     #[Test]
@@ -300,8 +300,7 @@ final class AsciidocDefinitionTest extends TestCase
 
         $output = (new AsciidocDefinition($collection))->formatType('Cardinality', 'org.openehr.am.aom2', $am2Schema);
 
-        self::assertStringStartsWith('xref:BASE:', $output);
-        self::assertStringEndsWith('#_cardinality_class[Cardinality]', $output);
+        self::assertSame('xref:{class_cardinality}[Cardinality]', $output);
     }
 
     #[Test]
@@ -380,5 +379,110 @@ final class AsciidocDefinitionTest extends TestCase
         self::assertStringStartsWith('link:/releases/LANG/', $other);
         self::assertStringEndsWith('/bmm_persistence.html#_p_bmm_schema_class[P_BMM_SCHEMA^]', $other);
         self::assertSame('<<_bmm_class_class,BMM_CLASS>>', $same);
+    }
+
+    /**
+     * @return iterable<string, array{0: string, 1: string, 2: string}>
+     */
+    public static function parallelModelClasses(): iterable
+    {
+        yield 'AOM 1.4' => ['openehr_am_1.4.0', 'C_OBJECT', 'xref:{class_aom14_c_object}[C_OBJECT]'];
+        yield 'AOM 2' => ['openehr_am_2.4.0', 'C_OBJECT', 'xref:{class_aom2_c_object}[C_OBJECT]'];
+        yield 'BMM 3' => ['openehr_lang_1.1.0-bmm3', 'BMM_CLASS', 'xref:{class_bmm3_bmm_class}[BMM_CLASS]'];
+        yield 'legacy BMM' => ['openehr_lang_1.1.0', 'BMM_CLASS', 'xref:{class_bmm_class}[BMM_CLASS]'];
+    }
+
+    /**
+     * The attribute is named after the class partial, so a model that shares class names with another gets its own.
+     */
+    #[Test]
+    #[DataProvider('parallelModelClasses')]
+    public function formatTypeNamesTheAttributeAfterTheClassPartial(string $schemaId, string $type, string $expected): void
+    {
+        $collection = new BmmSchemaCollection();
+        $collection->load($schemaId);
+        $collection->load('openehr_base_1.3.0');
+        $schema = iterator_to_array($collection, false)[0];
+
+        self::assertSame($expected, (new AsciidocDefinition($collection))->formatType($type, 'org.openehr.base.foundation_types', $schema));
+    }
+
+    #[Test]
+    public function formatTypeChecksTheAttributeAgainstTheSiteClassMap(): void
+    {
+        $logger = new RecordingLogger();
+        $classMap = new AntoraClassMap(['class_string' => '{page_base_primitive_types}#_string_class'], 'global-vars.yml', $logger);
+        $formatter = new AsciidocDefinition($this->collection, false, $classMap);
+
+        $formatter->formatType('String', 'org.openehr.term', $this->termSchema);
+        $formatter->formatType('Boolean', 'org.openehr.term', $this->termSchema);
+
+        $warnings = $logger->recordsAt(LogLevel::WARNING);
+        self::assertCount(1, $warnings);
+        self::assertSame('class_boolean', $warnings[0]['context']['attribute']);
+    }
+
+    /**
+     * @return iterable<string, array{0: list<string>, 1: string, 2: string, 3: string}>
+     */
+    public static function legacyDocumentLinks(): iterable
+    {
+        yield 'composition is in the EHR IM' => [
+            ['openehr_rm_1.2.0', 'openehr_base_1.3.0'], 'CONTENT_ITEM', 'org.openehr.rm.common',
+            'link:/releases/RM/{rm_release}/ehr.html#_content_item_class[CONTENT_ITEM^]',
+        ];
+        yield 'composition from the ehr package is on the same page' => [
+            ['openehr_rm_1.2.0', 'openehr_base_1.3.0'], 'CONTENT_ITEM', 'org.openehr.rm.ehr',
+            '<<_content_item_class,CONTENT_ITEM>>',
+        ];
+        yield 'security is in the EHR IM' => [
+            ['openehr_rm_1.1.0', 'openehr_base_1.2.0'], 'ACCESS_CONTROL_SETTINGS', 'org.openehr.rm.common',
+            'link:/releases/RM/{rm_release}/ehr.html#_access_control_settings_class[ACCESS_CONTROL_SETTINGS^]',
+        ];
+        yield 'AOM2 document name is upper case' => [
+            ['openehr_am_2.4.0', 'openehr_lang_1.1.0', 'openehr_base_1.3.0'], 'C_OBJECT', 'org.openehr.lang.beom',
+            'link:/releases/AM/{am_release}/AOM2.html#_c_object_class[C_OBJECT^]',
+        ];
+        yield 'BEOM is a chapter of BEL' => [
+            ['openehr_am_2.4.0', 'openehr_lang_1.1.0', 'openehr_base_1.3.0'], 'ASSERTION', 'org.openehr.am.aom2',
+            'link:/releases/LANG/{lang_release}/BEL.html#_assertion_class[ASSERTION^]',
+        ];
+        yield 'AOM1.4 document name keeps its case and dot' => [
+            ['openehr_am_1.4.0', 'openehr_base_1.3.0'], 'C_ATTRIBUTE', 'org.openehr.rm.common',
+            'link:/releases/AM/{am_release}/AOM1.4.html#_c_attribute_class[C_ATTRIBUTE^]',
+        ];
+        // The table's own package is renamed too, so its classes stay on the same page.
+        yield 'from inside composition, the EHR IM is the same page' => [
+            ['openehr_rm_1.2.0', 'openehr_base_1.3.0'], 'EVENT_CONTEXT', 'org.openehr.rm.composition',
+            '<<_event_context_class,EVENT_CONTEXT>>',
+        ];
+        yield 'from inside aom2, AOM2 is the same page' => [
+            ['openehr_am_2.4.0', 'openehr_lang_1.1.0', 'openehr_base_1.3.0'], 'C_ATTRIBUTE', 'org.openehr.am.aom2',
+            '<<_c_attribute_class,C_ATTRIBUTE>>',
+        ];
+        yield 'from inside aom14, AOM1.4 is the same page' => [
+            ['openehr_am_1.4.0', 'openehr_base_1.3.0'], 'C_ATTRIBUTE', 'org.openehr.am.aom14',
+            '<<_c_attribute_class,C_ATTRIBUTE>>',
+        ];
+        yield 'from inside beom, BEL is the same page' => [
+            ['openehr_lang_1.1.0', 'openehr_base_1.3.0'], 'EXPR_LEAF', 'org.openehr.lang.beom',
+            '<<_expr_leaf_class,EXPR_LEAF>>',
+        ];
+    }
+
+    /**
+     * @param list<string> $schemaIds
+     */
+    #[Test]
+    #[DataProvider('legacyDocumentLinks')]
+    public function legacyFormatLinksToTheDocumentThatHoldsThePackage(array $schemaIds, string $type, string $prefix, string $expected): void
+    {
+        $collection = new BmmSchemaCollection();
+        foreach ($schemaIds as $schemaId) {
+            $collection->load($schemaId);
+        }
+        $schema = iterator_to_array($collection, false)[0];
+
+        self::assertSame($expected, (new AsciidocDefinition($collection, true))->formatType($type, $prefix, $schema));
     }
 }

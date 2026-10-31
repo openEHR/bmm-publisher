@@ -4,6 +4,6 @@ h|*Class*
 2+^h|*__BMM_TYPE_ELEMENT (abstract)__*
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_classifier_class[BMM_CLASSIFIER]`
+2+|`xref:{class_bmm_classifier}[BMM_CLASSIFIER]`
 
 |===

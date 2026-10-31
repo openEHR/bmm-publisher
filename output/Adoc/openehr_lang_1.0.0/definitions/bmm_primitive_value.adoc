@@ -7,7 +7,7 @@ h|*Description*
 2+a|Meta-type for literals whose concrete type is a primitive type.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_unitary_value_class[BMM_UNITARY_VALUE]`
+2+|`xref:{class_bmm_unitary_value}[BMM_UNITARY_VALUE]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,6 +15,6 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]`
+|*type*: `xref:{class_bmm_simple_type}[BMM_SIMPLE_TYPE]`
 a|Declared or inferred static type of the entity.
 |===

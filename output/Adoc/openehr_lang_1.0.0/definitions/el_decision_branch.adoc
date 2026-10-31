@@ -8,6 +8,6 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*result*: `xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]`
+|*result*: `xref:{class_el_expression}[EL_EXPRESSION]`
 a|Result expression of conditional, if its `_condition_` evaluates to True.
 |===

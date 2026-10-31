@@ -7,13 +7,13 @@ h|*Description*
 2+a|Meta-type for static value properties computed once by a function invocation.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:core_package.adoc#_bmm_static_class[BMM_STATIC]`
+2+|`xref:{class_bmm3_bmm_static}[BMM_STATIC]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*generator*: `xref:LANG:bmm3:core_package.adoc#_bmm_routine_definition_class[BMM_ROUTINE_DEFINITION]`
+|*generator*: `xref:{class_bmm3_bmm_routine_definition}[BMM_ROUTINE_DEFINITION]`
 a|Generator of the value of this static property.
 |===

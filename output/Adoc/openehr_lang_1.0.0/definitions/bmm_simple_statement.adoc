@@ -7,6 +7,6 @@ h|*Description*
 2+a|Simple statement, i.e. statement with one logical element - a single expression, procedure call etc.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:statement_package.adoc#_bmm_statement_class[BMM_STATEMENT]`
+2+|`xref:{class_bmm_statement}[BMM_STATEMENT]`
 
 |===

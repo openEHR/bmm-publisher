@@ -12,6 +12,6 @@ h|*Description*
 * a function call.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_simple_class[EL_SIMPLE]`
+2+|`xref:{class_el_simple}[EL_SIMPLE]`
 
 |===

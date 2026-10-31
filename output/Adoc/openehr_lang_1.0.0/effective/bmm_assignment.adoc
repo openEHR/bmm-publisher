@@ -4,13 +4,13 @@
 
 2+a|Statement type representing an assignment from a value-generating source to a writable entity, i.e. a variable reference or property.
 
-2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_routine_body_class[BMM_ROUTINE_BODY], xref:LANG:bmm:statement_package.adoc#_bmm_statement_item_class[BMM_STATEMENT_ITEM], xref:LANG:bmm:statement_package.adoc#_bmm_statement_class[BMM_STATEMENT], xref:LANG:bmm:statement_package.adoc#_bmm_simple_statement_class[BMM_SIMPLE_STATEMENT]
+2+|Inherits: xref:{class_bmm_routine_body}[BMM_ROUTINE_BODY], xref:{class_bmm_statement_item}[BMM_STATEMENT_ITEM], xref:{class_bmm_statement}[BMM_STATEMENT], xref:{class_bmm_simple_statement}[BMM_SIMPLE_STATEMENT]
 
 2+h|*Attributes*
 
-|*target*: `xref:LANG:bmm:expression_package.adoc#_el_instantiable_ref_class[EL_INSTANTIABLE_REF]` [1..1]
+|*target*: `xref:{class_el_instantiable_ref}[EL_INSTANTIABLE_REF]` [1..1]
 a|The target variable on the notional left-hand side of this assignment.
 
-|*source*: `xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]` [1..1]
+|*source*: `xref:{class_el_expression}[EL_EXPRESSION]` [1..1]
 a|Source right hand side) of the assignment.
 |===

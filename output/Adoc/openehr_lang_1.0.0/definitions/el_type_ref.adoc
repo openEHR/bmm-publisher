@@ -9,14 +9,14 @@ h|*Description*
 May be used as a value, or as the qualifier for a function or constant access.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_instance_ref_class[EL_INSTANCE_REF]`
+2+|`xref:{class_el_instance_ref}[EL_INSTANCE_REF]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+|*type*: `xref:{class_bmm_type}[BMM_TYPE]`
 a|Type, directly from the name of the reference, e.g. `\{SOME_TYPE}`.
 
 h|*Functions*
@@ -25,7 +25,7 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+|*eval_type* (): `xref:{class_bmm_type}[BMM_TYPE]`
 a|Return `_type_`.
 
 h|*Invariants*

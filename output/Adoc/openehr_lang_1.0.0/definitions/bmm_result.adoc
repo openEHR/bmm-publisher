@@ -7,7 +7,7 @@ h|*Description*
 2+a|Automatically declared variable representing result instance of a Function call.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_variable_class[BMM_VARIABLE]`
+2+|`xref:{class_bmm_variable}[BMM_VARIABLE]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,7 +15,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+|*name*: `xref:{class_string}[String]` +
 `{default{nbsp}={nbsp}"Result"}`
 a|Name of this model element.
 |===

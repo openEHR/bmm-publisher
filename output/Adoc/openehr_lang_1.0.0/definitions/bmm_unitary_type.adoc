@@ -7,7 +7,7 @@ h|*Description*
 2+a|Parent of meta-types that may be used as the type of any instantiated object that is not a container object.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+2+|`xref:{class_bmm_type}[BMM_TYPE]`
 
 h|*Functions*
 ^h|*Signature*
@@ -15,6 +15,6 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*unitary_type* (): `xref:LANG:bmm:core_package.adoc#_bmm_unitary_type_class[BMM_UNITARY_TYPE]`
+|*unitary_type* (): `xref:{class_bmm_unitary_type}[BMM_UNITARY_TYPE]`
 a|Result = self.
 |===

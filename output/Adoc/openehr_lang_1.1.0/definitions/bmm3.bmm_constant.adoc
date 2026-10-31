@@ -7,14 +7,14 @@ h|*Description*
 2+a|An immutable, static value-returning element scoped to a class. The `_value_` is the result of the evaluation of the `_generator_`, which may be as simple as a literal value, or may be any expression, including a function call.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:core_package.adoc#_bmm_static_class[BMM_STATIC]`
+2+|`xref:{class_bmm3_bmm_static}[BMM_STATIC]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*generator*: `xref:LANG:bmm3:core_package.adoc#_bmm_literal_value_class[BMM_LITERAL_VALUE]`
+|*generator*: `xref:{class_bmm3_bmm_literal_value}[BMM_LITERAL_VALUE]`
 a|Literal value of the constant.
 
 h|*Invariants*

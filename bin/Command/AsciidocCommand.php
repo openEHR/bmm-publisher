@@ -7,6 +7,7 @@ namespace OpenEHR\BmmPublisher\Console\Command;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\Asciidoc;
 use OpenEHR\BmmPublisher\Writer\EmbedSvg;
+use OpenEHR\BmmPublisher\Writer\Formatter\AntoraClassMap;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Attribute\Option;
@@ -34,6 +35,8 @@ class AsciidocCommand extends Command
         array $dependency = [],
         #[Option(description: 'Directory of example partials; a class with <class filename>.adoc there gets an Example tab.')]
         ?string $examplesDir = null,
+        #[Option(description: "The site's global-vars.yml; warn about each class_* attribute the tables link through that it does not resolve.")]
+        ?string $classMap = null,
     ): int {
         if (empty($input)) {
             $output->writeln('<error>Please specify which BMM schema(s) to read. See --help for usage.</error>');
@@ -45,11 +48,22 @@ class AsciidocCommand extends Command
             $output->writeln(\sprintf('<error>Examples directory %s not found.</error>', $examplesDir));
             return Command::INVALID;
         }
+        if ($classMap !== null && !is_file($classMap)) {
+            $output->writeln(\sprintf('<error>Class map %s not found.</error>', $classMap));
+            return Command::INVALID;
+        }
+        $logger = new ConsoleLogger($output);
+        // A file that is not a map of class_* attributes is a wrong argument, like a missing one.
+        try {
+            $siteClassMap = $classMap !== null ? AntoraClassMap::fromFile($classMap, $logger) : null;
+        } catch (\RuntimeException $e) {
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            return Command::INVALID;
+        }
 
         $toRead = $input === ['all'] ? BmmSchemaCollection::availableSchemas() : $input;
 
         try {
-            $logger = new ConsoleLogger($output);
             $collection = new BmmSchemaCollection($logger);
             // Load the schemas to export first, then capture their ids so dependencies stay unexported.
             foreach ($toRead as $schema) {
@@ -64,7 +78,7 @@ class AsciidocCommand extends Command
             foreach ($dependency as $schema) {
                 $this->loadInput($collection, $schema);
             }
-            (new Asciidoc($collection, $exportSchemaIds, $examplesDir))();
+            (new Asciidoc($collection, $exportSchemaIds, $examplesDir, $siteClassMap))();
 
             $this->renderDiagrams($exportSchemaIds, $output);
             (new EmbedSvg($exportSchemaIds, $logger))();

@@ -7,13 +7,13 @@ h|*Description*
 2+a|Persistent form of `BMM_PROPER_TYPE`.
 
 h|*Inherit*
-2+|`xref:LANG:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]`
+2+|`xref:{class_p_bmm_type}[P_BMM_TYPE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*value_constraint*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*value_constraint*: `xref:{class_string}[String]`
 a|
 |===

@@ -7,7 +7,7 @@ h|*Description*
 2+a|String-based enumeration type.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_enumeration_class[BMM_ENUMERATION]`
+2+|`xref:{class_bmm_enumeration}[BMM_ENUMERATION]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,7 +15,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*underlying_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+|*underlying_type_name*: `xref:{class_string}[String]` +
 `{default{nbsp}={nbsp}"STRING"}`
 a|Name of type any concrete BMM_ENUMERATION_* sub-type is based on. Redefined to "STRING".
 |===

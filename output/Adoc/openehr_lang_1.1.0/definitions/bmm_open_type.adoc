@@ -7,14 +7,14 @@ h|*Description*
 2+a|Open type reference to a single type parameter, i.e. typically 'T', 'V', 'K' etc. The parameter must be in the type declaration of the owning BMM_CLASS.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+2+|`xref:{class_bmm_type}[BMM_TYPE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*generic_constraint*: `xref:LANG:bmm:core_package.adoc#_bmm_generic_parameter_class[BMM_GENERIC_PARAMETER]`
+|*generic_constraint*: `xref:{class_bmm_generic_parameter}[BMM_GENERIC_PARAMETER]`
 a|The generic constraint, which will be 'Any' if nothing set in original model.
 
 h|*Functions*
@@ -22,6 +22,6 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*conformance_type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*conformance_type_name* (): `xref:{class_string}[String]`
 a|Return generic_constraint.conformance_type_name.
 |===

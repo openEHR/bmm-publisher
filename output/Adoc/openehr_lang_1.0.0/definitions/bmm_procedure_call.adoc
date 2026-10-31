@@ -7,7 +7,7 @@ h|*Description*
 2+a|A call made on a closed procedure agent.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_agent_call_class[EL_AGENT_CALL]`, `xref:LANG:bmm:statement_package.adoc#_bmm_simple_statement_class[BMM_SIMPLE_STATEMENT]`
+2+|`xref:{class_el_agent_call}[EL_AGENT_CALL]`, `xref:{class_bmm_simple_statement}[BMM_SIMPLE_STATEMENT]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,6 +15,6 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*agent*: `xref:LANG:bmm:expression_package.adoc#_el_procedure_agent_class[EL_PROCEDURE_AGENT]`
+|*agent*: `xref:{class_el_procedure_agent}[EL_PROCEDURE_AGENT]`
 a|The procedure agent being called.
 |===

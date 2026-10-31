@@ -7,30 +7,30 @@ h|*Description*
 2+a|Descriptor for a BMM schema. Contains a meta-data table of attributes obtained from a mini-ODIN parse of the schema file.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]`
+2+|`xref:{class_bmm_definitions}[BMM_DEFINITIONS]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*p_schema*: `xref:LANG:bmm_persistence_package.adoc#_p_bmm_schema_class[P_BMM_SCHEMA]`
+|*p_schema*: `xref:{class_p_bmm_schema}[P_BMM_SCHEMA]`
 a|Persistent form of model.
 
 h|*0..1*
-|*schema*: `xref:LANG:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL]`
+|*schema*: `xref:{class_bmm_model}[BMM_MODEL]`
 a|Computable form of model.
 
 h|*1..1*
-|*schema_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*schema_id*: `xref:{class_string}[String]`
 a|Schema id, formed from meta_data model_publisher '_' schema_name '_' model_release, e.g. openehr_rm_1.0.3.
 
 h|*1..1*
-|*meta_data*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*meta_data*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_string}[String]>`
 a|Table of {key, value} pairs of schema meta-data (bmm_version, model_publisher, schema_name, model_release, schema_revision, schema_lifecycle_state, schema_description, schema_path).
 
 h|*0..1*
-|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*includes*: `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Schema_ids of schemas included by this schema.
 
 h|*Functions*
@@ -38,11 +38,11 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_top_level* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_top_level* (): `xref:{class_boolean}[Boolean]`
 a|True if this is a top-level schema, i.e. not included by some other schema.
 
 h|*1..1*
-|*is_bmm_compatible* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_bmm_compatible* (): `xref:{class_boolean}[Boolean]`
 a|True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.
 
 h|*1..1*
@@ -55,7 +55,7 @@ a|Validate entire schema.
 
 h|*1..1*
 |*validate_includes* ( +
-all_schemas_list: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` +
+all_schemas_list: `xref:{class_list}[List]<xref:{class_string}[String]>` +
 ): `void`
 a|Validate includes list for this schema, to see if each mentioned schema exists in read schemas.
 

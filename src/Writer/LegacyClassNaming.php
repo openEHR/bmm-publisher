@@ -68,14 +68,14 @@ final class LegacyClassNaming
      * colliding on names such as `bmm_class` or `bmm_model`. Returns '' when no
      * namespacing applies (the common case: a single model generation per schema).
      *
-     * @param string $packagePrefix The value returned by {@see self::packagePrefix()},
-     *        e.g. `org.openehr.am.aom2` or `org.openehr.lang.bmm3`.
+     * @param string $packageQname A name holding `org.openehr.<component>.<top package>`: the value
+     *        returned by {@see self::packagePrefix()}, e.g. `org.openehr.am.aom2`, or a class's
+     *        package qualified name, e.g. `openehr_am_2.4.0.org.openehr.am.aom2.constraint_model`.
      */
-    public static function filenamePrefix(BmmSchema $schema, string $packagePrefix): string
+    public static function filenamePrefix(string $packageQname): string
     {
-        $parts = explode('.', $packagePrefix);
-        $topPackage = end($parts);
-        return ($schema->schemaName === 'am' || $topPackage === 'bmm3')
+        [$component, $topPackage] = array_pad(explode('.', explode('org.openehr.', $packageQname, 2)[1] ?? ''), 2, '');
+        return ($component === 'am' || $topPackage === 'bmm3')
             ? $topPackage . '.'
             : '';
     }

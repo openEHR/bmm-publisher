@@ -25,6 +25,7 @@ use Cadasto\OpenEHR\BMM\Model\BmmSingleFunctionParameterOpen;
 use Cadasto\OpenEHR\BMM\Model\BmmSingleProperty;
 use Cadasto\OpenEHR\BMM\Model\BmmSinglePropertyOpen;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
+use OpenEHR\BmmPublisher\Writer\LegacyClassNaming;
 
 readonly class AsciidocDefinition
 {
@@ -55,9 +56,21 @@ readonly class AsciidocDefinition
         'EXTRACT_UPDATE_SPEC.trigger_events' => ['group', 'extract_update_trigger_event_type'],
     ];
 
+    /**
+     * Legacy documents not named after their top-level package. Key: COMPONENT:package, value: document.
+     */
+    public const array LEGACY_DOCUMENTS = [
+        'AM:aom14' => 'AOM1.4',
+        'AM:aom2' => 'AOM2',
+        'LANG:beom' => 'BEL',
+        'RM:composition' => 'ehr',
+        'RM:security' => 'ehr',
+    ];
+
     public function __construct(
         protected BmmSchemaCollection $allSchemas,
         protected bool $legacyFormat = false,
+        protected ?AntoraClassMap $classMap = null,
     ) {
     }
 
@@ -464,6 +477,16 @@ readonly class AsciidocDefinition
         return implode(':', array_filter($results));
     }
 
+    /**
+     * Site attribute holding the xref target of a class: `class_` and the name of the class's
+     * partial with dots as underscores, e.g. `class_dv_date_time` or `class_aom14_c_object`,
+     * so the classes of parallel models (AOM 1.4 and AOM 2, BMM and BMM 3) do not share one.
+     */
+    public static function classAttribute(string $packageQname, string $className): string
+    {
+        return 'class_' . str_replace('.', '_', LegacyClassNaming::filenamePrefix($packageQname)) . strtolower($className);
+    }
+
     public function formatType(string $type, string $prefix, BmmSchema $schema): string
     {
         if (strlen($type) === 1 || in_array(strtolower($type), ['operation', 'void', 'null', 'false', 'true'])) {
@@ -495,48 +518,26 @@ readonly class AsciidocDefinition
                 $classType = 'class';
             }
 
+            $anchor = '_' . strtolower($name) . '_' . $classType;
+
             if ($this->legacyFormat) {
-                $prefixXref = $this->formatXref($prefix);
-                // Same page means the same module, not a module whose name starts the same (LANG:bmm vs LANG:bmm_persistence).
-                if ($xref === $prefixXref || str_starts_with($xref, $prefixXref . ':')) {
+                $p = ['', ''];
+                $this->formatXref($prefix, $p);
+                $document = self::LEGACY_DOCUMENTS[$m[0] . ':' . $m[1]] ?? $m[1];
+                // Same page means the same document, not a module whose name starts the same (LANG:bmm vs LANG:bmm_persistence).
+                if ($m[0] === $p[0] && $document === (self::LEGACY_DOCUMENTS[$p[0] . ':' . $p[1]] ?? $p[1])) {
                     // type is on the same spec page, an example format is '<<_boolean_class,Boolean>>'
-                    return '<<_' . strtolower($name) . '_' . $classType . ',' . $type . '>>';
+                    return '<<' . $anchor . ',' . $type . '>>';
                 }
                 // format: 'link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]'
                 $rel = strtolower($m[0]) . '_release';
-                $anchor = strtolower($name) . '_' . $classType;
-                return "link:/releases/{$m[0]}/{{$rel}}/{$m[1]}.html#_{$anchor}[{$type}^]";
+                return "link:/releases/{$m[0]}/{{$rel}}/{$document}.html#{$anchor}[{$type}^]";
             }
 
-            // format: 'xref:BASE:foundation_types:overview.adoc#_boolean_class[Boolean]'
-            $xref = match ($xref) {
-                'BASE:foundation_types' => 'BASE:foundation_types:overview',
-                'BASE:foundation_types:time' => 'BASE:foundation_types:time_types',
-                'BASE:foundation_types:structures',
-                'BASE:foundation_types:structure',
-                'BASE:foundation_types:structure_package' => 'BASE:foundation_types:structure_types',
-                'BASE:foundation_types:interval' => 'BASE:foundation_types:interval',
-                'BASE:foundation_types:primitive_types' => 'BASE:foundation_types:primitive_types',
-                'BASE:foundation_types:functional' => 'BASE:foundation_types:functional',
-                'BASE:foundation_types:terminology' => 'BASE:foundation_types:terminology',
-                'BASE:resource' => 'BASE:resource:resource_package',
-                'AM:aom14:archetype' => 'AM:AOM1.4:archetype_package',
-                'AM:aom14:openehr_archetype_profile' => 'AM:AOM1.4:domain_extension',
-                'AM:aom2:archetype' => 'AM:AOM2:archetype_package',
-                'AM:aom2:constraint_model' => 'AM:AOM2:constraint_model-class_definitions',
-                'AM:aom2:definitions' => 'AM:AOM2:model_overview',
-                'AM:aom2:terminology' => 'AM:AOM2:terminology_package',
-                'AM:aom2:rm_overlay', 'AM:aom2:profile' => 'AM:AOM2:rm_adaptation',
-                'AM:aom2:rules' => 'AM:AOM2:rules_package',
-                'RM:ehr_extract:sync_extract' => 'RM:ehr_extract:synchronisation_package',
-                'RM:composition' => 'RM:ehr:composition_package',
-                'RM:composition:content' => 'RM:ehr:content_package',
-                'RM:demographic' => 'RM:demographic:demographic_package',
-                'RM:data_structures' => 'RM:data_structures:item_structure_package',
-                'RM:ehr' => 'RM:ehr:ehr_package',
-                default => $xref . '_package',
-            };
-            return 'xref:' . $xref . '.adoc#_' . strtolower($name) . '_' . $classType . '[' . $type . ']';
+            // format: 'xref:{class_boolean}[Boolean]'; the site maps the attribute to the page that includes the class
+            $attribute = self::classAttribute($packageQname, $name);
+            $this->classMap?->check($attribute, $anchor, $schema->getSchemaId());
+            return 'xref:{' . $attribute . '}[' . $type . ']';
         }
         if ($packageQname === '') {
             $this->allSchemas->reportUnresolvedType($type, $schema->getSchemaId());

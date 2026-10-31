@@ -7,17 +7,17 @@ h|*Description*
 2+a|Persistent form of a function parameter whose type is a container type such as `List<T>`.
 
 h|*Inherit*
-2+|`xref:LANG:bmm_persistence_package.adoc#_p_bmm_function_parameter_class[P_BMM_FUNCTION_PARAMETER]`
+2+|`xref:{class_p_bmm_function_parameter}[P_BMM_FUNCTION_PARAMETER]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*type_def*: `xref:LANG:bmm_persistence_package.adoc#_p_bmm_container_type_class[P_BMM_CONTAINER_TYPE]`
+|*type_def*: `xref:{class_p_bmm_container_type}[P_BMM_CONTAINER_TYPE]`
 a|Type definition of this parameter. Persisted attribute.
 
 h|*0..1*
-|*cardinality*: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]<xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]>`
+|*cardinality*: `xref:{class_interval}[Interval]<xref:{class_integer}[Integer]>`
 a|Cardinality of this parameter, if a container type. Persisted attribute.
 |===

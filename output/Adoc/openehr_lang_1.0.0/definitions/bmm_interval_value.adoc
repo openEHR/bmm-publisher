@@ -7,6 +7,6 @@ h|*Description*
 2+a|Meta-type for literal intervals of type `Interval<Ordered>`.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_literal_value_class[BMM_LITERAL_VALUE]`
+2+|`xref:{class_bmm_literal_value}[BMM_LITERAL_VALUE]`
 
 |===

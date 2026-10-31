@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Coded attributes in the Antora Definition and Effective tables link to their openEHR Terminology group or code set.**
+- **`asciidoc --class-map <global-vars.yml>` warns about class links the site cannot resolve**: attributes the map has no entry for, or whose entry points at another anchor.
 - **`asciidoc --examples-dir <dir>` adds an `Example` tab** to a class whose `<class filename>.adoc` exists in that directory; the tab includes `ROOT:partial$examples/<class filename>.adoc`.
 
 ### Fixed
@@ -30,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **An empty default and a constant without value render nothing** instead of `{default = }` and `String = `.
 - **`specUrl` in split JSON points at the top-level page for deep packages** — four LANG `bmm3` types linked to `core.html` instead of `bmm3.html`.
 - **Plus signs and braces in documentation text render as written** — `DV_ORDINAL`'s `{neg, trace, +, ++, +++}` lost its plus signs, and `{units, range}` showed a backslash (#37).
+- **Antora tables link classes through the site's `{class_*}` attributes** (`xref:{class_dv_date_time}[DV_DATE_TIME]`) instead of guessing the page, which sent one link in five to a missing or wrong page (#36).
+- **Legacy tables link `composition`, `security`, `aom2` and `beom` classes to their real documents** (`ehr.html`, `AOM2.html`, `BEL.html`) instead of missing ones (#36).
 - **AM 1.4.0 is published against BASE 1.3.0 and TERM against BASE** — their tables no longer show dead `CODE_PHRASE` and `String` links or the wrong inherited members (#38).
 
 ## [0.12.0] - 2026-10-08

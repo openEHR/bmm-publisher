@@ -37,7 +37,7 @@ docker run --rm -v ./my-output:/app/output ghcr.io/openehr/bmm-publisher asciido
 
 The `asciidoc` command runs the whole pipeline in one invocation. It writes the AsciiDoc tables (with the UML image macro already inlined under the UML tab), runs PlantUML to render every class diagram to SVG, and publishes the SVGs under `output/Adoc/<schema>/images/uml/{classes,diagrams}/`.
 
-`--examples-dir` takes a path inside the container, so mount the directory first. A path the container cannot see exits with code 2 and writes nothing.
+`--examples-dir` and `--class-map` take a path inside the container, so mount the directory or file first. A path the container cannot see exits with code 2 and writes nothing.
 
 ## Input and output
 

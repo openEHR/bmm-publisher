@@ -4,15 +4,15 @@
 
 2+a|Conditional structure used in condition chain expressions. Evaluated by evaluating its `_condition_`, which is a Boolean-returning expression, and if this returns True, the result is the evaluation result of `_expression_`.
 
-2+|Inherits: xref:LANG:bmm:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH]
+2+|Inherits: xref:{class_el_decision_branch}[EL_DECISION_BRANCH]
 
 2+h|*Attributes*
 
-|*result*: `xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]` [1..1]
+|*result*: `xref:{class_el_expression}[EL_EXPRESSION]` [1..1]
 a|Result expression of conditional, if its `_condition_` evaluates to True. +
-_Inherited from xref:LANG:bmm:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH]_
+_Inherited from xref:{class_el_decision_branch}[EL_DECISION_BRANCH]_
 
-|*condition*: `xref:LANG:bmm:expression_package.adoc#_el_simple_class[EL_SIMPLE]` [1..1]
+|*condition*: `xref:{class_el_simple}[EL_SIMPLE]` [1..1]
 a|Gate expression that acts as the condition under which the target `_expression_` is returned.
 
 2+h|*Invariants*

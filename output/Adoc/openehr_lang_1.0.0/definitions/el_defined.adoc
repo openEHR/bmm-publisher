@@ -9,6 +9,6 @@ h|*Description*
 NOTE: probably to be removed.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_predicate_class[EL_PREDICATE]`
+2+|`xref:{class_el_predicate}[EL_PREDICATE]`
 
 |===

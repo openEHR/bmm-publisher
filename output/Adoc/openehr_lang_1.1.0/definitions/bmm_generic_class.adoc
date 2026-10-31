@@ -7,14 +7,14 @@ h|*Description*
 2+a|Definition of a generic class in an object model.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+2+|`xref:{class_bmm_class}[BMM_CLASS]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*generic_parameters*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm:core_package.adoc#_bmm_generic_parameter_class[BMM_GENERIC_PARAMETER]>`
+|*generic_parameters*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_bmm_generic_parameter}[BMM_GENERIC_PARAMETER]>`
 a|List of generic parameter definitions, keyed by name of generic parameter; these are defined either directly on this class or by the addition of an ancestor class which is generic.
 
 h|*Functions*
@@ -23,16 +23,16 @@ h|*Functions*
 
 h|*0..1 +
 (redefined)*
-|*suppliers* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*suppliers* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Add suppliers from generic parameters.
 
 h|*1..1 +
 (redefined)*
-|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*type_signature* (): `xref:{class_string}[String]`
 a|Signature form of the type, which for generics includes generic parameter constrainer types e.g. Interval<T:Ordered>.
 
 h|*1..1 +
 (redefined)*
-|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*type_name* (): `xref:{class_string}[String]`
 a|Formal string form of the type as per UML.
 |===
