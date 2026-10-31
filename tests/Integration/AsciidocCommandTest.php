@@ -6,6 +6,7 @@ namespace Tests\Integration;
 
 use OpenEHR\BmmPublisher\Console\Command\AsciidocCommand;
 use OpenEHR\BmmPublisher\Helper\OutputDir;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
@@ -98,6 +99,32 @@ final class AsciidocCommandTest extends TestCase
 
         self::assertSame(Command::INVALID, $exit, $tester->getDisplay());
         self::assertStringContainsString('no-such-global-vars.yml not found', $tester->getDisplay());
+        self::assertDirectoryDoesNotExist($this->tempOutput . DIRECTORY_SEPARATOR . 'Adoc');
+    }
+
+    /**
+     * @return iterable<string, array{0: string, 1: string}>
+     */
+    public static function unusableClassMaps(): iterable
+    {
+        yield 'a YAML list' => ["- class_code\n- class_code_set\n", 'defines no class_* attributes'];
+        yield 'a scalar' => ["global vars\n", 'is not a YAML mapping'];
+        yield 'another YAML file' => ["site:\n  title: openEHR\n", 'defines no class_* attributes'];
+        yield 'invalid YAML' => ["class_code: \"{page_x}#_code_class\n", 'is not valid YAML'];
+    }
+
+    #[Test]
+    #[DataProvider('unusableClassMaps')]
+    public function unusableClassMapIsRejectedBeforeAnythingIsWritten(string $content, string $message): void
+    {
+        $classMap = $this->tempOutput . DIRECTORY_SEPARATOR . 'class-map.yml';
+        file_put_contents($classMap, $content);
+
+        $tester = new CommandTester(new AsciidocCommand());
+        $exit = $tester->execute(['input' => ['openehr_term_3.0.0'], '--class-map' => $classMap]);
+
+        self::assertSame(Command::INVALID, $exit, $tester->getDisplay());
+        self::assertStringContainsString($message, $tester->getDisplay());
         self::assertDirectoryDoesNotExist($this->tempOutput . DIRECTORY_SEPARATOR . 'Adoc');
     }
 

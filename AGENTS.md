@@ -68,7 +68,7 @@ Coding standards and quality checks are defined by the config files in `tests/` 
 | `split-json` | | Split the latest BMM JSON of each component into per-type files |
 | `odin` | | Convert BMM JSON schemas to ODIN `.bmm` schema files, one file per input |
 
-Commands take schema id(s) (without the `.bmm.json` extension) or `.bmm.json` path(s), or `all` to process every schema in `resources/`. `asciidoc`, `legacy-adoc`, and `plantuml` also accept repeatable **`-d <schema>`** dependencies, which are loaded for cross-reference resolution but **not** exported. `asciidoc` also accepts **`--examples-dir <dir>`**: a class whose generated partial name (`composition.adoc`, `aom2.archetype.adoc`) exists in `<dir>` gets an `Example` tab; a missing `<dir>` exits with code 2. `asciidoc --class-map <global-vars.yml>` warns about each `class_*` attribute the tables link through that the site's map does not resolve.
+Commands take schema id(s) (without the `.bmm.json` extension) or `.bmm.json` path(s), or `all` to process every schema in `resources/`. `asciidoc`, `legacy-adoc`, and `plantuml` also accept repeatable **`-d <schema>`** dependencies, which are loaded for cross-reference resolution but **not** exported. `asciidoc` also accepts **`--examples-dir <dir>`**: a class whose generated partial name (`composition.adoc`, `aom2.archetype.adoc`) exists in `<dir>` gets an `Example` tab; a missing `<dir>` exits with code 2. `asciidoc --class-map <global-vars.yml>` warns about each `class_*` attribute the tables link through that the site's map does not resolve; a missing or unusable file exits with code 2.
 
 ## Architecture
 

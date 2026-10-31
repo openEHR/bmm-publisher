@@ -8,6 +8,7 @@ use OpenEHR\BmmPublisher\Writer\Formatter\AntoraClassMap;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LogLevel;
+use RuntimeException;
 use Tests\Unit\Support\RecordingLogger;
 
 final class AntoraClassMapTest extends TestCase
@@ -104,5 +105,20 @@ final class AntoraClassMapTest extends TestCase
         $warnings = $this->logger->recordsAt(LogLevel::WARNING);
         self::assertCount(1, $warnings);
         self::assertSame('page_rm_ehr', $warnings[0]['context']['attribute']);
+    }
+
+    #[Test]
+    public function fromFileRejectsAFileWithoutClassAttributes(): void
+    {
+        $path = tempnam(sys_get_temp_dir(), 'global-vars');
+        self::assertIsString($path);
+        file_put_contents($path, "page_rm_ehr: \"RM:ehr:ehr_package.adoc\"\n");
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('defines no class_* attributes');
+        try {
+            AntoraClassMap::fromFile($path, $this->logger);
+        } finally {
+            unlink($path);
+        }
     }
 }

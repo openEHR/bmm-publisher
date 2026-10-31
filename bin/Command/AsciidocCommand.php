@@ -52,11 +52,18 @@ class AsciidocCommand extends Command
             $output->writeln(\sprintf('<error>Class map %s not found.</error>', $classMap));
             return Command::INVALID;
         }
+        $logger = new ConsoleLogger($output);
+        // A file that is not a map of class_* attributes is a wrong argument, like a missing one.
+        try {
+            $siteClassMap = $classMap !== null ? AntoraClassMap::fromFile($classMap, $logger) : null;
+        } catch (\RuntimeException $e) {
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            return Command::INVALID;
+        }
 
         $toRead = $input === ['all'] ? BmmSchemaCollection::availableSchemas() : $input;
 
         try {
-            $logger = new ConsoleLogger($output);
             $collection = new BmmSchemaCollection($logger);
             // Load the schemas to export first, then capture their ids so dependencies stay unexported.
             foreach ($toRead as $schema) {
@@ -71,7 +78,6 @@ class AsciidocCommand extends Command
             foreach ($dependency as $schema) {
                 $this->loadInput($collection, $schema);
             }
-            $siteClassMap = $classMap !== null ? AntoraClassMap::fromFile($classMap, $logger) : null;
             (new Asciidoc($collection, $exportSchemaIds, $examplesDir, $siteClassMap))();
 
             $this->renderDiagrams($exportSchemaIds, $output);

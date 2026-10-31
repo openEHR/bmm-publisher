@@ -6,6 +6,7 @@ namespace OpenEHR\BmmPublisher\Writer\Formatter;
 
 use Psr\Log\LoggerInterface;
 use RuntimeException;
+use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -30,7 +31,11 @@ final class AntoraClassMap
 
     public static function fromFile(string $path, LoggerInterface $logger): self
     {
-        $data = Yaml::parseFile($path);
+        try {
+            $data = Yaml::parseFile($path);
+        } catch (ParseException $e) {
+            throw new RuntimeException(\sprintf('Class map %s is not valid YAML: %s', $path, $e->getMessage()), 0, $e);
+        }
         if (!\is_array($data)) {
             throw new RuntimeException(\sprintf('Class map %s is not a YAML mapping.', $path));
         }
@@ -39,6 +44,10 @@ final class AntoraClassMap
             if (\is_string($name) && str_starts_with($name, 'class_') && \is_string($value)) {
                 $attributes[$name] = $value;
             }
+        }
+        // A list, or another YAML file passed by mistake, would report every class link as missing.
+        if ($attributes === []) {
+            throw new RuntimeException(\sprintf('Class map %s defines no class_* attributes.', $path));
         }
         return new self($attributes, $path, $logger);
     }
