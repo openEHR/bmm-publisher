@@ -447,6 +447,27 @@ final class AsciidocDefinitionTest extends TestCase
             ['openehr_am_2.4.0', 'openehr_lang_1.1.0', 'openehr_base_1.3.0'], 'ASSERTION', 'org.openehr.am.aom2',
             'link:/releases/LANG/{lang_release}/BEL.html#_assertion_class[ASSERTION^]',
         ];
+        yield 'AOM1.4 document name keeps its case and dot' => [
+            ['openehr_am_1.4.0', 'openehr_base_1.3.0'], 'C_ATTRIBUTE', 'org.openehr.rm.common',
+            'link:/releases/AM/{am_release}/AOM1.4.html#_c_attribute_class[C_ATTRIBUTE^]',
+        ];
+        // The table's own package is renamed too, so its classes stay on the same page.
+        yield 'from inside composition, the EHR IM is the same page' => [
+            ['openehr_rm_1.2.0', 'openehr_base_1.3.0'], 'EVENT_CONTEXT', 'org.openehr.rm.composition',
+            '<<_event_context_class,EVENT_CONTEXT>>',
+        ];
+        yield 'from inside aom2, AOM2 is the same page' => [
+            ['openehr_am_2.4.0', 'openehr_lang_1.1.0', 'openehr_base_1.3.0'], 'C_ATTRIBUTE', 'org.openehr.am.aom2',
+            '<<_c_attribute_class,C_ATTRIBUTE>>',
+        ];
+        yield 'from inside aom14, AOM1.4 is the same page' => [
+            ['openehr_am_1.4.0', 'openehr_base_1.3.0'], 'C_ATTRIBUTE', 'org.openehr.am.aom14',
+            '<<_c_attribute_class,C_ATTRIBUTE>>',
+        ];
+        yield 'from inside beom, BEL is the same page' => [
+            ['openehr_lang_1.1.0', 'openehr_base_1.3.0'], 'EXPR_LEAF', 'org.openehr.lang.beom',
+            '<<_expr_leaf_class,EXPR_LEAF>>',
+        ];
     }
 
     /**
