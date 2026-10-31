@@ -7,6 +7,7 @@ namespace OpenEHR\BmmPublisher\Console\Command;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Writer\Asciidoc;
 use OpenEHR\BmmPublisher\Writer\EmbedSvg;
+use OpenEHR\BmmPublisher\Writer\Formatter\AntoraClassMap;
 use Symfony\Component\Console\Attribute\Argument;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Attribute\Option;
@@ -34,6 +35,8 @@ class AsciidocCommand extends Command
         array $dependency = [],
         #[Option(description: 'Directory of example partials; a class with <class filename>.adoc there gets an Example tab.')]
         ?string $examplesDir = null,
+        #[Option(description: "The site's global-vars.yml; warn about each class_* attribute the tables link through that it does not resolve.")]
+        ?string $classMap = null,
     ): int {
         if (empty($input)) {
             $output->writeln('<error>Please specify which BMM schema(s) to read. See --help for usage.</error>');
@@ -43,6 +46,10 @@ class AsciidocCommand extends Command
         // or an unmounted path, which would otherwise publish every class without its Example tab.
         if ($examplesDir !== null && !is_dir($examplesDir)) {
             $output->writeln(\sprintf('<error>Examples directory %s not found.</error>', $examplesDir));
+            return Command::INVALID;
+        }
+        if ($classMap !== null && !is_file($classMap)) {
+            $output->writeln(\sprintf('<error>Class map %s not found.</error>', $classMap));
             return Command::INVALID;
         }
 
@@ -64,7 +71,8 @@ class AsciidocCommand extends Command
             foreach ($dependency as $schema) {
                 $this->loadInput($collection, $schema);
             }
-            (new Asciidoc($collection, $exportSchemaIds, $examplesDir))();
+            $siteClassMap = $classMap !== null ? AntoraClassMap::fromFile($classMap, $logger) : null;
+            (new Asciidoc($collection, $exportSchemaIds, $examplesDir, $siteClassMap))();
 
             $this->renderDiagrams($exportSchemaIds, $output);
             (new EmbedSvg($exportSchemaIds, $logger))();

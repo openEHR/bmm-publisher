@@ -10,6 +10,7 @@ use Cadasto\OpenEHR\BMM\Model\BmmSchema;
 use OpenEHR\BmmPublisher\BmmSchemaCollection;
 use OpenEHR\BmmPublisher\Helper\Filesystem;
 use OpenEHR\BmmPublisher\Helper\OutputDir;
+use OpenEHR\BmmPublisher\Writer\Formatter\AntoraClassMap;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocBmmJson;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocDefinition;
 use OpenEHR\BmmPublisher\Writer\Formatter\AsciidocEffective;
@@ -37,15 +38,17 @@ class Asciidoc
      *        omitted from this list so their artefacts are not written.
      * @param string|null $examplesDir Directory of hand-written example partials; a class whose
      *        `<filename>.adoc` exists there gets an `Example` tab.
+     * @param AntoraClassMap|null $classMap The site's class attributes; class links it cannot resolve are reported.
      */
     public function __construct(
         private readonly BmmSchemaCollection $schemas,
         private readonly array $exportSchemaIds = [],
         private readonly ?string $examplesDir = null,
+        ?AntoraClassMap $classMap = null,
     ) {
         $this->tab = new AsciidocTab();
-        $this->definition = new AsciidocDefinition($schemas);
-        $this->effective = new AsciidocEffective($schemas);
+        $this->definition = new AsciidocDefinition($schemas, false, $classMap);
+        $this->effective = new AsciidocEffective($schemas, false, $classMap);
         $this->bmmJson = new AsciidocBmmJson();
         $this->plantUml = new PlantUmlFormatter($schemas);
     }
@@ -76,7 +79,7 @@ class Asciidoc
             return;
         }
         $prefix = LegacyClassNaming::packagePrefix($schema, $namePrefix, $package);
-        $pkg = LegacyClassNaming::filenamePrefix($schema, $prefix);
+        $pkg = LegacyClassNaming::filenamePrefix($prefix);
         $schemaDir = self::outputDir() . $schema->getSchemaId();
         $this->pruneNamespaceOnce($schema->getSchemaId(), $pkg, $schemaDir);
 
@@ -151,7 +154,7 @@ class Asciidoc
                 if ($other !== $schema || $package->classes === []) {
                     return;
                 }
-                $filenamePrefix = LegacyClassNaming::filenamePrefix($schema, LegacyClassNaming::packagePrefix($schema, $namePrefix, $package));
+                $filenamePrefix = LegacyClassNaming::filenamePrefix(LegacyClassNaming::packagePrefix($schema, $namePrefix, $package));
                 $parentPrefix = $prefix . str_replace($prefix, '', $namePrefix);
                 $shortName = $component . $filenamePrefix . rtrim(str_replace($parentPrefix, '', $package->name), '.');
                 $pathsByShortName[$shortName][] = LegacyClassNaming::packagePath($schema, $namePrefix, $package);

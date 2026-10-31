@@ -86,4 +86,44 @@ final class AsciidocCommandTest extends TestCase
         );
         self::assertStringNotContainsString('Example::', (string) file_get_contents($classesDir . 'code.adoc'));
     }
+
+    #[Test]
+    public function missingClassMapIsRejectedBeforeAnythingIsWritten(): void
+    {
+        $tester = new CommandTester(new AsciidocCommand());
+        $exit = $tester->execute([
+            'input' => ['openehr_term_3.0.0'],
+            '--class-map' => $this->tempOutput . DIRECTORY_SEPARATOR . 'no-such-global-vars.yml',
+        ]);
+
+        self::assertSame(Command::INVALID, $exit, $tester->getDisplay());
+        self::assertStringContainsString('no-such-global-vars.yml not found', $tester->getDisplay());
+        self::assertDirectoryDoesNotExist($this->tempOutput . DIRECTORY_SEPARATOR . 'Adoc');
+    }
+
+    #[Test]
+    public function classMapReportsTheClassLinksTheSiteDoesNotResolve(): void
+    {
+        if ((new ExecutableFinder())->find('plantuml') === null) {
+            self::markTestSkipped('The asciidoc command renders diagrams with the plantuml CLI, which is not on PATH.');
+        }
+        $classMap = $this->tempOutput . DIRECTORY_SEPARATOR . 'global-vars.yml';
+        file_put_contents($classMap, <<<'YAML'
+            class_code: "{page_term_support_representation}#_code_class"
+            class_terminology_status: "{page_term_support_representation}#_terminology_status_class"
+            YAML);
+
+        $tester = new CommandTester(new AsciidocCommand());
+        $exit = $tester->execute(['input' => ['openehr_term_3.0.0'], '--class-map' => $classMap]);
+
+        self::assertSame(Command::SUCCESS, $exit, $tester->getDisplay());
+        $display = $tester->getDisplay();
+        self::assertStringContainsString('class_code_set (used in openehr_term_3.0.0) has no entry', $display);
+        self::assertStringContainsString('the class anchor is #_terminology_status_enumeration', $display);
+        self::assertStringNotContainsString('class_code (used in', $display);
+        self::assertStringContainsString(
+            'xref:{class_code}[CODE]',
+            (string) file_get_contents($this->tempOutput . '/Adoc/openehr_term_3.0.0/definitions/code_set.adoc'),
+        );
+    }
 }
