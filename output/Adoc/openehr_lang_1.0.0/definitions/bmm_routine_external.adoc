@@ -7,17 +7,17 @@ h|*Description*
 2+a|External routine placeholder, containing sufficient meta-data to enable a routine in an external library to be called.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_routine_body_class[BMM_ROUTINE_BODY]`
+2+|`xref:{class_bmm_routine_body}[BMM_ROUTINE_BODY]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*meta_data*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*meta_data*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_string}[String]>`
 a|External call general meta-data, including target routine name, type mapping etc.
 
 h|*0..1*
-|*argument_mapping*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*argument_mapping*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_string}[String]>`
 a|Optional argument-mapping meta-data.
 |===

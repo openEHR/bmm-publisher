@@ -9,18 +9,18 @@ h|*Description*
 At the meta-model level, may be understood as an initialisation of an existing meta-model instance.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:statement_package.adoc#_bmm_simple_statement_class[BMM_SIMPLE_STATEMENT]`
+2+|`xref:{class_bmm3_bmm_simple_statement}[BMM_SIMPLE_STATEMENT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*target*: `xref:LANG:bmm3:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]`
+|*target*: `xref:{class_bmm3_el_value_generator}[EL_VALUE_GENERATOR]`
 a|The target variable on the notional left-hand side of this assignment.
 
 h|*1..1*
-|*source*: `xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]`
+|*source*: `xref:{class_bmm3_el_expression}[EL_EXPRESSION]`
 a|Source right hand side) of the assignment.
 
 h|*Invariants*

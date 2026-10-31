@@ -7,6 +7,6 @@ h|*Description*
 2+a|Simple expression type that may be used in other simple expressions.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_expression_class[EL_EXPRESSION]`
+2+|`xref:{class_el_expression}[EL_EXPRESSION]`
 
 |===

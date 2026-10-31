@@ -11,10 +11,10 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*symbol*: `xref:BASE:foundation_types:terminology.adoc#_code_phrase_class[CODE_PHRASE]`
+|*symbol*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Terminology code providing the Ordinal's symbol.
 
 h|*1..1*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*value*: `xref:{class_integer}[Integer]`
 a|Ordinal value.
 |===

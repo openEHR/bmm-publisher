@@ -7,14 +7,14 @@ h|*Description*
 2+a|Type reference to a single type i.e. not generic or container type.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+2+|`xref:{class_bmm_type}[BMM_TYPE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*base_class*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+|*base_class*: `xref:{class_bmm_class}[BMM_CLASS]`
 a|The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
 
 h|*Functions*
@@ -23,6 +23,6 @@ h|*Functions*
 
 h|*1..1 +
 (redefined)*
-|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*type_name* (): `xref:{class_string}[String]`
 a|Return base_class.type_name.
 |===

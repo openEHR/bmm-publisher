@@ -7,30 +7,30 @@ h|*Description*
 2+a|A feature defining a routine, scoped to a class.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_class_feature_class[BMM_CLASS_FEATURE]`
+2+|`xref:{class_bmm_class_feature}[BMM_CLASS_FEATURE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*parameters*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_parameter_class[BMM_PARAMETER]>`
+|*parameters*: `xref:{class_list}[List]<xref:{class_bmm_parameter}[BMM_PARAMETER]>`
 a|Formal parameters of the routine.
 
 h|*0..1*
-|*locals*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_local_class[BMM_LOCAL]>`
+|*locals*: `xref:{class_list}[List]<xref:{class_bmm_local}[BMM_LOCAL]>`
 a|Local variables of the routine.
 
 h|*0..1*
-|*pre_conditions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:statement_package.adoc#_bmm_assertion_class[BMM_ASSERTION]>`
+|*pre_conditions*: `xref:{class_list}[List]<xref:{class_bmm_assertion}[BMM_ASSERTION]>`
 a|
 
 h|*0..1*
-|*post_conditions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:statement_package.adoc#_bmm_assertion_class[BMM_ASSERTION]>`
+|*post_conditions*: `xref:{class_list}[List]<xref:{class_bmm_assertion}[BMM_ASSERTION]>`
 a|
 
 h|*0..1*
-|*body*: `xref:LANG:bmm:core_package.adoc#_bmm_routine_body_class[BMM_ROUTINE_BODY]`
+|*body*: `xref:{class_bmm_routine_body}[BMM_ROUTINE_BODY]`
 a|Body of a routine, i.e. executable program.
 
 h|*Functions*
@@ -38,7 +38,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*arity* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*arity* (): `xref:{class_integer}[Integer]`
 a|Return number of arguments of this routine.
 
 h|*1..1 +

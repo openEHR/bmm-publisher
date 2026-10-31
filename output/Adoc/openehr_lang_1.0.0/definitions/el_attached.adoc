@@ -7,6 +7,6 @@ h|*Description*
 2+a|A predicate on any object reference (including function call) that returns True if the reference is attached, i.e. non-Void.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_predicate_class[EL_PREDICATE]`
+2+|`xref:{class_el_predicate}[EL_PREDICATE]`
 
 |===

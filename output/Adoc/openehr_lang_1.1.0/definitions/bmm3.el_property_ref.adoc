@@ -7,19 +7,19 @@ h|*Description*
 2+a|Reference to a writable property.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_feature_ref_class[EL_FEATURE_REF]`
+2+|`xref:{class_bmm3_el_feature_ref}[EL_FEATURE_REF]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*definition*: `xref:LANG:bmm3:core_package.adoc#_bmm_property_class[BMM_PROPERTY]`
+|*definition*: `xref:{class_bmm3_bmm_property}[BMM_PROPERTY]`
 a|Property definition (within class).
 
 h|*1..1 +
 (redefined)*
-|*is_writable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_writable*: `xref:{class_boolean}[Boolean]` +
 `{default{nbsp}={nbsp}true}`
 a|Defined to return True.
 
@@ -29,6 +29,6 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `xref:LANG:bmm3:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+|*eval_type* (): `xref:{class_bmm3_bmm_type}[BMM_TYPE]`
 a|Type definition (i.e. BMM meta-type definition object) of the constant, property or variable, inferred by inspection of the current scoping instance. Return `_definition.type_`.
 |===

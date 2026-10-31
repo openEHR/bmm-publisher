@@ -7,46 +7,46 @@ h|*Description*
 2+a|Definition of a class in an object model. A class is type that may be open or closed in terms of other types mentioned within.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_classifier_class[BMM_CLASSIFIER]`
+2+|`xref:{class_bmm_classifier}[BMM_CLASSIFIER]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*name*: `xref:{class_string}[String]`
 a|Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic.
 
 h|*0..1*
-|*ancestors*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]>`
+|*ancestors*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_bmm_class}[BMM_CLASS]>`
 a|List of immediate inheritance parents.
 
 h|*1..1*
-|*package*: `xref:LANG:bmm:core_package.adoc#_bmm_package_class[BMM_PACKAGE]`
+|*package*: `xref:{class_bmm_package}[BMM_PACKAGE]`
 a|Package this class belongs to.
 
 h|*0..1*
-|*properties*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:LANG:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]>`
+|*properties*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_bmm_property}[BMM_PROPERTY]>`
 a|List of attributes defined in this class.
 
 h|*1..1*
-|*source_schema_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*source_schema_id*: `xref:{class_string}[String]`
 a|Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing.
 
 h|*0..1*
-|*immediate_descendants*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*immediate_descendants*: `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|List of immediate inheritance descendants.
 
 h|*1..1*
-|*is_abstract*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_abstract*: `xref:{class_boolean}[Boolean]`
 a|True if this class is abstract in its model.
 
 h|*1..1*
-|*is_primitive_type*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_primitive_type*: `xref:{class_boolean}[Boolean]`
 a|True if this class is designated a primitive type within the overall type system of the schema.
 
 h|*1..1*
-|*is_override*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_override*: `xref:{class_boolean}[Boolean]`
 a|True if this definition overrides a class of the same name in an included schema.
 
 h|*Functions*
@@ -54,44 +54,44 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*0..1*
-|*all_ancestors* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*all_ancestors* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|List of all inheritance parent class names, recursively.
 
 h|*0..1*
-|*all_descendants* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*all_descendants* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Compute all descendants by following immediate_descendants.
 
 h|*0..1*
-|*suppliers* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*suppliers* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. This list includes primitive types.
 
 h|*0..1*
-|*suppliers_non_primitive* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*suppliers_non_primitive* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Same as `suppliers' minus primitive types, as defined in input schema.
 
 h|*0..1*
-|*supplier_closure* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*supplier_closure* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|List of names of all classes in full supplier closure, including concrete generic parameters. This list includes primitive types.
 
 h|*1..1 +
 (redefined)*
-|*base_class* (): `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+|*base_class* (): `xref:{class_bmm_class}[BMM_CLASS]`
 a|Main design class for this type, from which properties etc can be extracted.
 
 h|*1..1*
-|*package_path* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*package_path* (): `xref:{class_string}[String]`
 a|Fully qualified package name, of form: 'package.package'.
 
 h|*1..1*
-|*class_path* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*class_path* (): `xref:{class_string}[String]`
 a|Fully qualified class name, of form: 'package.package.CLASS' with package path in lower-case and class in original case.
 
 h|*0..1*
-|*flat_properties* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]>`
+|*flat_properties* (): `xref:{class_list}[List]<xref:{class_bmm_property}[BMM_PROPERTY]>`
 a|List of all properties due to current and ancestor classes, keyed by property name.
 
 h|*1..1 +
 (redefined)*
-|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*type_name* (): `xref:{class_string}[String]`
 a|Formal string form of the type as per UML.
 |===

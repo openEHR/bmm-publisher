@@ -6,9 +6,9 @@
 
 2+h|*Attributes*
 
-|*symbol*: `xref:BASE:foundation_types:terminology.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+|*symbol*: `xref:{class_code_phrase}[CODE_PHRASE]` [1..1]
 a|Terminology code providing the Ordinal's symbol.
 
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+|*value*: `xref:{class_integer}[Integer]` [1..1]
 a|Ordinal value.
 |===

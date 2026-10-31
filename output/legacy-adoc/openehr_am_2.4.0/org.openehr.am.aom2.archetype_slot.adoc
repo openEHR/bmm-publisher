@@ -16,11 +16,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*includes*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/LANG/{lang_release}/beom.html#_assertion_class[ASSERTION^]>`
+|*includes*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/LANG/{lang_release}/BEL.html#_assertion_class[ASSERTION^]>`
 a|List of constraints defining other archetypes that could be included at this point. Represented as an `ASSERTION` containing an expression of the form  `EXPR_ARCHETYPE_REF matches EXPR_ARCHETYPE_ID_CONSTRAINT`.
 
 h|*0..1*
-|*excludes*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/LANG/{lang_release}/beom.html#_assertion_class[ASSERTION^]>`
+|*excludes*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/LANG/{lang_release}/BEL.html#_assertion_class[ASSERTION^]>`
 a|List of constraints defining other archetypes that cannot be included at this point. Represented as an `ASSERTION` containing an expression of the form  `EXPR_ARCHETYPE_REF matches EXPR_ARCHETYPE_ID_CONSTRAINT`.
 
 h|*1..1*

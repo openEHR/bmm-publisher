@@ -7,13 +7,13 @@ h|*Description*
 2+a|A routine parameter variable.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_variable_class[BMM_VARIABLE]`
+2+|`xref:{class_bmm_variable}[BMM_VARIABLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*direction*: `xref:LANG:bmm:core_package.adoc#_bmm_parameter_direction_enumeration[BMM_PARAMETER_DIRECTION]`
+|*direction*: `xref:{class_bmm_parameter_direction}[BMM_PARAMETER_DIRECTION]`
 a|Optional read/write direction of the parameter. If none-supplied, the parameter is treated as `in`, i.e. readable.
 |===

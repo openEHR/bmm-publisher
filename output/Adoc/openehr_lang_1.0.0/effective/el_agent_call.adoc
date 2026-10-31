@@ -6,7 +6,7 @@
 
 2+h|*Attributes*
 
-|*agent*: `xref:LANG:bmm:expression_package.adoc#_el_agent_class[EL_AGENT]` [1..1]
+|*agent*: `xref:{class_el_agent}[EL_AGENT]` [1..1]
 a|The agent being called.
 
 2+h|*Invariants*

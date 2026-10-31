@@ -7,13 +7,13 @@ h|*Description*
 2+a|Persistent form of a single-valued function parameter, i.e. one whose type is a simple class reference.
 
 h|*Inherit*
-2+|`xref:LANG:bmm_persistence_package.adoc#_p_bmm_function_parameter_class[P_BMM_FUNCTION_PARAMETER]`
+2+|`xref:{class_p_bmm_function_parameter}[P_BMM_FUNCTION_PARAMETER]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*type*: `xref:{class_string}[String]`
 a|Type name of this parameter, as a simple class name. Persisted attribute.
 |===

@@ -7,6 +7,6 @@ h|*Description*
 2+a|Simple terminal i.e. logically atomic expression element.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_terminal_class[EL_TERMINAL]`
+2+|`xref:{class_bmm3_el_terminal}[EL_TERMINAL]`
 
 |===

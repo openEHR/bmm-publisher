@@ -4,7 +4,7 @@ h|*Class*
 2+^h|*EL_CASE*
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH]`
+2+|`xref:{class_el_decision_branch}[EL_DECISION_BRANCH]`
 
 h|*Attributes*
 ^h|*Signature*

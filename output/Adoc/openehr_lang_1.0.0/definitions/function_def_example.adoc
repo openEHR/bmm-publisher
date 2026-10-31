@@ -9,19 +9,19 @@ h|*Description*
     func (v: Numeric): Numeric
 
 h|*Inherit*
-2+|`xref:LANG:obsolete-elom:extension_package.adoc#_function_def_external_class[FUNCTION_DEF_EXTERNAL]`
+2+|`xref:{class_function_def_external}[FUNCTION_DEF_EXTERNAL]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*identifier*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+|*identifier*: `xref:{class_string}[String]` +
 `{default{nbsp}={nbsp}"funny"}`
 a|
 
 h|*1..1 +
 (redefined)*
-|*evaluation_agent*: `xref:BASE:foundation_types:functional.adoc#_function_class[FUNCTION]<>`
+|*evaluation_agent*: `xref:{class_function}[FUNCTION]<>`
 a|
 |===

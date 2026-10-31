@@ -7,7 +7,7 @@ h|*Description*
 2+a|String-based enumeration meta-type.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:core_package.adoc#_bmm_enumeration_class[BMM_ENUMERATION]`
+2+|`xref:{class_bmm3_bmm_enumeration}[BMM_ENUMERATION]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,6 +15,6 @@ h|*Attributes*
 
 h|*0..1 +
 (redefined)*
-|*item_values*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm3:core_package.adoc#_bmm_string_value_class[BMM_STRING_VALUE]>`
+|*item_values*: `xref:{class_list}[List]<xref:{class_bmm3_bmm_string_value}[BMM_STRING_VALUE]>`
 a|Optional list of specific values. Must be 1:1 with `_item_names_` list.
 |===

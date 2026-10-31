@@ -11,7 +11,7 @@ Evaluated by iterating through `_items_` and for each one, evaluating its `_cond
 If no member of `_items_` has a True-returning `_condition_`, the evaluation result is the result of evaluating the `_else_` expression.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_decision_table_class[EL_DECISION_TABLE]`
+2+|`xref:{class_bmm3_el_decision_table}[EL_DECISION_TABLE]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -19,6 +19,6 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm3:expression_package.adoc#_el_conditional_expression_class[EL_CONDITIONAL_EXPRESSION]<T>>`
+|*items*: `xref:{class_list}[List]<xref:{class_bmm3_el_conditional_expression}[EL_CONDITIONAL_EXPRESSION]<T>>`
 a|Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
 |===

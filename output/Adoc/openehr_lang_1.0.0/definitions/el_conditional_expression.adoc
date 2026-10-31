@@ -7,14 +7,14 @@ h|*Description*
 2+a|Conditional structure used in condition chain expressions. Evaluated by evaluating its `_condition_`, which is a Boolean-returning expression, and if this returns True, the result is the evaluation result of `_expression_`.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_decision_branch_class[EL_DECISION_BRANCH]`
+2+|`xref:{class_el_decision_branch}[EL_DECISION_BRANCH]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*condition*: `xref:LANG:bmm:expression_package.adoc#_el_simple_class[EL_SIMPLE]`
+|*condition*: `xref:{class_el_simple}[EL_SIMPLE]`
 a|Gate expression that acts as the condition under which the target `_expression_` is returned.
 
 h|*Invariants*

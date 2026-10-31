@@ -7,17 +7,17 @@ h|*Description*
 2+a|Persistent form of a BMM function (routine) parameter; abstract parent of the concrete persisted parameter kinds.
 
 h|*Inherit*
-2+|`xref:LANG:bmm_persistence_package.adoc#_p_bmm_model_element_class[P_BMM_MODEL_ELEMENT]`
+2+|`xref:{class_p_bmm_model_element}[P_BMM_MODEL_ELEMENT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*name*: `xref:{class_string}[String]`
 a|Name of this parameter within its function signature. Persisted attribute.
 
 h|*0..1*
-|*is_nullable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_nullable*: `xref:{class_boolean}[Boolean]`
 a|True if this parameter is allowed to be Void (null) in a call. Persisted attribute.
 |===

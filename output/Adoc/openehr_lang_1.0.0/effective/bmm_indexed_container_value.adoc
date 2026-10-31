@@ -4,30 +4,30 @@
 
 2+a|Meta-type for literals whose concrete type is an indexed container, i.e. Hash table, Map etc.
 
-2+|Inherits: xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED], xref:LANG:bmm:core_package.adoc#_bmm_literal_value_class[BMM_LITERAL_VALUE], xref:LANG:bmm:core_package.adoc#_bmm_container_value_class[BMM_CONTAINER_VALUE]
+2+|Inherits: xref:{class_bmm_typed}[BMM_TYPED], xref:{class_bmm_literal_value}[BMM_LITERAL_VALUE], xref:{class_bmm_container_value}[BMM_CONTAINER_VALUE]
 
 2+h|*Attributes*
 
-|*type*: `xref:LANG:bmm:core_package.adoc#_bmm_indexed_container_type_class[BMM_INDEXED_CONTAINER_TYPE]` [1..1]
+|*type*: `xref:{class_bmm_indexed_container_type}[BMM_INDEXED_CONTAINER_TYPE]` [1..1]
 a|Declared or inferred static type of the entity.
 
-|*value_literal*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+|*value_literal*: `xref:{class_string}[String]` [1..1]
 a|A serial representation of the value. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_literal_value_class[BMM_LITERAL_VALUE]_
+_Inherited from xref:{class_bmm_literal_value}[BMM_LITERAL_VALUE]_
 
-|*value*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [0..1]
+|*value*: `xref:{class_any}[Any]` [0..1]
 a|A native representation of the value, possibly derived by deserialising `_value_literal_`. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_literal_value_class[BMM_LITERAL_VALUE]_
+_Inherited from xref:{class_bmm_literal_value}[BMM_LITERAL_VALUE]_
 
-|*syntax*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+|*syntax*: `xref:{class_string}[String]` [0..1]
 a|Optional specification of formalism of the `_value_literal_` attribute for complex values. Value may be any of `json &#124; yawl &#124; xml &#124; odin &#124; rdf` or another value agreed by the user community. If not set, `json` is assumed. +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_literal_value_class[BMM_LITERAL_VALUE]_
+_Inherited from xref:{class_bmm_literal_value}[BMM_LITERAL_VALUE]_
 
 2+h|*Functions*
 
-|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
 a|True if `_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `'Boolean'`). +
-_Inherited from xref:LANG:bmm:core_package.adoc#_bmm_typed_class[BMM_TYPED]_
+_Inherited from xref:{class_bmm_typed}[BMM_TYPED]_
 |===

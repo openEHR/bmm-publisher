@@ -7,7 +7,7 @@ h|*Description*
 2+a|A formal element with signature of the form: `name ({arg:TArg}*)`. A procedure is a computed (rather than data) element, generally assumed to be state-changing.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_routine_class[BMM_ROUTINE]`
+2+|`xref:{class_bmm_routine}[BMM_ROUTINE]`
 
 
 h|*Invariants*

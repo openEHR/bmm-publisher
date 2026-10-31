@@ -7,7 +7,7 @@ h|*Description*
 2+a|A class entity having a signature and a class as its scope.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_class_entity_class[BMM_CLASS_ENTITY]`
+2+|`xref:{class_bmm_class_entity}[BMM_CLASS_ENTITY]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,18 +15,18 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*scope*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+|*scope*: `xref:{class_bmm_class}[BMM_CLASS]`
 a|Class within which a referenceable element is known.
 
 h|*0..1*
-|*visibility*: `xref:LANG:bmm:core_package.adoc#_bmm_visibility_class[BMM_VISIBILITY]`
+|*visibility*: `xref:{class_bmm_visibility}[BMM_VISIBILITY]`
 a|Visibility of this item to client entities.
 
 h|*0..1*
-|*feature_extensions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:core_package.adoc#_bmm_feature_extension_class[BMM_FEATURE_EXTENSION]>`
+|*feature_extensions*: `xref:{class_list}[List]<xref:{class_bmm_feature_extension}[BMM_FEATURE_EXTENSION]>`
 a|Extensions to feature-level meta-types.
 
 h|*1..1*
-|*group*: `xref:LANG:bmm:core_package.adoc#_bmm_feature_group_class[BMM_FEATURE_GROUP]`
+|*group*: `xref:{class_bmm_feature_group}[BMM_FEATURE_GROUP]`
 a|Group containing this feature.
 |===

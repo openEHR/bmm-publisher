@@ -7,7 +7,7 @@ h|*Description*
 2+a|Rules meta-type representing the primitive type Date.
 
 h|*Inherit*
-2+|`xref:LANG:obsolete-elom:types_package.adoc#_el_type_def_class[EL_TYPE_DEF]`
+2+|`xref:{class_el_type_def}[EL_TYPE_DEF]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,12 +15,12 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+|*type_name*: `xref:{class_string}[String]` +
 `{default{nbsp}={nbsp}"Date"}`
 a|
 
 h|*1..1 +
 (redefined)*
-|*type_anchor*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
+|*type_anchor*: `xref:{class_any}[Any]`
 a|
 |===

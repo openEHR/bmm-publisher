@@ -7,18 +7,18 @@ h|*Description*
 2+a|A formal element having a name, type and a type-based signature.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]`
+2+|`xref:{class_bmm3_bmm_model_element}[BMM_MODEL_ELEMENT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*type*: `xref:LANG:bmm3:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+|*type*: `xref:{class_bmm3_bmm_type}[BMM_TYPE]`
 a|Declared or inferred static type of the entity.
 
 h|*0..1*
-|*is_nullable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_nullable*: `xref:{class_boolean}[Boolean]` +
 `{default{nbsp}={nbsp}false}`
 a|True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
 
@@ -28,7 +28,7 @@ h|*Functions*
 
 h|*1..1 +
 (abstract)*
-|*signature* (): `xref:LANG:bmm3:core_package.adoc#_bmm_signature_class[BMM_SIGNATURE]`
+|*signature* (): `xref:{class_bmm3_bmm_signature}[BMM_SIGNATURE]`
 a|Formal signature of this element, in the form:
 
 `name [arg1_name: T_arg1, ...][:T_value]`
@@ -36,7 +36,7 @@ a|Formal signature of this element, in the form:
 Specific implementations in descendants.
 
 h|*1..1*
-|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = type().equal( \{BMM_MODEL}.boolean_type_definition())`
 a|True if `_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `'Boolean'`).

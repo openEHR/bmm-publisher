@@ -7,13 +7,13 @@ h|*Description*
 2+a|Multi-branch conditional statement structure
 
 h|*Inherit*
-2+|`xref:LANG:bmm:statement_package.adoc#_bmm_statement_class[BMM_STATEMENT]`
+2+|`xref:{class_bmm_statement}[BMM_STATEMENT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm:statement_package.adoc#_bmm_conditional_action_class[BMM_CONDITIONAL_ACTION]>`
+|*items*: `xref:{class_list}[List]<xref:{class_bmm_conditional_action}[BMM_CONDITIONAL_ACTION]>`
 a|Decision branches.
 |===

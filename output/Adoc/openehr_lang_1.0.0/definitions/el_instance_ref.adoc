@@ -7,6 +7,6 @@ h|*Description*
 2+a|A reference to an instance of any kind.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_terminal_class[EL_TERMINAL]`
+2+|`xref:{class_el_terminal}[EL_TERMINAL]`
 
 |===

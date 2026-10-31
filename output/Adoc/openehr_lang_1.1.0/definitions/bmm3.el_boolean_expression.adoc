@@ -7,7 +7,7 @@ h|*Description*
 2+a|Boolean-returning expression.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_constrained_class[EL_CONSTRAINED]`
+2+|`xref:{class_bmm3_el_constrained}[EL_CONSTRAINED]`
 
 
 h|*Invariants*

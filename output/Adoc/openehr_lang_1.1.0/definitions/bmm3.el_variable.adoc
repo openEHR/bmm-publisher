@@ -7,6 +7,6 @@ h|*Description*
 2+a|Abstract meta-type of any kind of symbolic variable.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_value_generator_class[EL_VALUE_GENERATOR]`
+2+|`xref:{class_bmm3_el_value_generator}[EL_VALUE_GENERATOR]`
 
 |===

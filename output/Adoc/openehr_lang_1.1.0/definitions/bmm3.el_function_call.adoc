@@ -7,7 +7,7 @@ h|*Description*
 2+a|A call made on a closed function agent, returning a result. Equivalent to an 'application' of a function in Lambda calculus.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_feature_ref_class[EL_FEATURE_REF]`, `xref:LANG:bmm3:expression_package.adoc#_el_agent_call_class[EL_AGENT_CALL]`
+2+|`xref:{class_bmm3_el_feature_ref}[EL_FEATURE_REF]`, `xref:{class_bmm3_el_agent_call}[EL_AGENT_CALL]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,12 +15,12 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*agent*: `xref:LANG:bmm3:expression_package.adoc#_el_function_agent_class[EL_FUNCTION_AGENT]`
+|*agent*: `xref:{class_bmm3_el_function_agent}[EL_FUNCTION_AGENT]`
 a|The function agent being called.
 
 h|*1..1 +
 (redefined)*
-|*is_writable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_writable*: `xref:{class_boolean}[Boolean]` +
 `{default{nbsp}={nbsp}false}`
 a|Defined to return False.
 
@@ -30,12 +30,12 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*eval_type* (): `xref:LANG:bmm3:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+|*eval_type* (): `xref:{class_bmm3_bmm_type}[BMM_TYPE]`
 a|Return `_agent.definition.type_`.
 
 h|*1..1 +
 (redefined)*
-|*reference* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*reference* (): `xref:{class_string}[String]`
 a|Generated full reference name, consisting of any scoping elements, function name and routine parameters enclosed in parentheses.
 
 h|*Invariants*

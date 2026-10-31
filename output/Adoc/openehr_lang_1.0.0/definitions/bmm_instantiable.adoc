@@ -7,6 +7,6 @@ h|*Description*
 2+a|Meta-type representing instantiable features, i.e. features that are created as value objects.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_typed_feature_class[BMM_TYPED_FEATURE]`
+2+|`xref:{class_bmm_typed_feature}[BMM_TYPED_FEATURE]`
 
 |===

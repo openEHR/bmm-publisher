@@ -7,13 +7,13 @@ h|*Description*
 2+a|Persistent form of a function parameter whose type is a generic type such as `Interval<Time>`.
 
 h|*Inherit*
-2+|`xref:LANG:bmm_persistence_package.adoc#_p_bmm_function_parameter_class[P_BMM_FUNCTION_PARAMETER]`
+2+|`xref:{class_p_bmm_function_parameter}[P_BMM_FUNCTION_PARAMETER]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*type_def*: `xref:LANG:bmm_persistence_package.adoc#_p_bmm_generic_type_class[P_BMM_GENERIC_TYPE]`
+|*type_def*: `xref:{class_p_bmm_generic_type}[P_BMM_GENERIC_TYPE]`
 a|Type definition of this parameter. Persisted attribute.
 |===

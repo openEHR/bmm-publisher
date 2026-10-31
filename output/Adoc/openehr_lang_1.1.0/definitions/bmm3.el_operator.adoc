@@ -7,22 +7,22 @@ h|*Description*
 2+a|Abstract parent of operator types.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]`
+2+|`xref:{class_bmm3_el_expression}[EL_EXPRESSION]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*precedence_overridden*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*precedence_overridden*: `xref:{class_boolean}[Boolean]`
 a|True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
 
 h|*0..1*
-|*symbol*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*symbol*: `xref:{class_string}[String]`
 a|The symbol actually used in the expression, or intended to be used for serialisation. Must be a member of `OPERATOR_DEF._symbols_`.
 
 h|*1..1*
-|*call*: `xref:LANG:bmm3:expression_package.adoc#_el_function_call_class[EL_FUNCTION_CALL]`
+|*call*: `xref:{class_bmm3_el_function_call}[EL_FUNCTION_CALL]`
 a|Function call equivalent to this operator expression, inferred by matching operator against functions defined in interface of principal operand.
 
 h|*Functions*
@@ -30,11 +30,11 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*operator_definition* (): `xref:LANG:bmm3:core_package.adoc#_bmm_operator_class[BMM_OPERATOR]`
+|*operator_definition* (): `xref:{class_bmm3_bmm_operator}[BMM_OPERATOR]`
 a|Operator definition derived from `_definition.operator_definition()_`.
 
 h|*1..1*
-|*equivalent_call* (): `xref:LANG:bmm3:expression_package.adoc#_el_function_call_class[EL_FUNCTION_CALL]`
+|*equivalent_call* (): `xref:{class_bmm3_el_function_call}[EL_FUNCTION_CALL]`
 a|Function call equivalent to this operator.
 
 h|*Invariants*

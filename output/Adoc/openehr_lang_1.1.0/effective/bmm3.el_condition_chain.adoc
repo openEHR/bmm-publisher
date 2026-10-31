@@ -8,28 +8,28 @@ Evaluated by iterating through `_items_` and for each one, evaluating its `_cond
 
 If no member of `_items_` has a True-returning `_condition_`, the evaluation result is the result of evaluating the `_else_` expression.
 
-2+|Inherits: xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION], xref:LANG:bmm3:expression_package.adoc#_el_terminal_class[EL_TERMINAL], xref:LANG:bmm3:expression_package.adoc#_el_decision_table_class[EL_DECISION_TABLE]
+2+|Inherits: xref:{class_bmm3_el_expression}[EL_EXPRESSION], xref:{class_bmm3_el_terminal}[EL_TERMINAL], xref:{class_bmm3_el_decision_table}[EL_DECISION_TABLE]
 
 2+h|*Attributes*
 
-|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:LANG:bmm3:expression_package.adoc#_el_conditional_expression_class[EL_CONDITIONAL_EXPRESSION]<T>>` [1..1]
+|*items*: `xref:{class_list}[List]<xref:{class_bmm3_el_conditional_expression}[EL_CONDITIONAL_EXPRESSION]<T>>` [1..1]
 a|Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
 
 |*else*: `T` [1..1]
 a|Result expression of conditional, if its `_condition_` evaluates to True. +
-_Inherited from xref:LANG:bmm3:expression_package.adoc#_el_decision_table_class[EL_DECISION_TABLE]_
+_Inherited from xref:{class_bmm3_el_decision_table}[EL_DECISION_TABLE]_
 
 2+h|*Functions*
 
-|_(abstract)_ *eval_type* (): `xref:LANG:bmm3:core_package.adoc#_bmm_type_class[BMM_TYPE]` [1..1]
+|_(abstract)_ *eval_type* (): `xref:{class_bmm3_bmm_type}[BMM_TYPE]` [1..1]
 a|Meta-type of expression entity used in type-checking and evaluation. 
 
 Effected in descendants. +
-_Inherited from xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
+_Inherited from xref:{class_bmm3_el_expression}[EL_EXPRESSION]_
 
-|*is_boolean* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_boolean* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = eval_type().equal( \{BMM_MODEL}.boolean_type_definition())` [1..1]
 a|True if `_eval_type_` is notionally Boolean (i.e. a `BMM_SIMPLE_TYPE` with `_type_name()_` = `Boolean`). +
-_Inherited from xref:LANG:bmm3:expression_package.adoc#_el_expression_class[EL_EXPRESSION]_
+_Inherited from xref:{class_bmm3_el_expression}[EL_EXPRESSION]_
 |===

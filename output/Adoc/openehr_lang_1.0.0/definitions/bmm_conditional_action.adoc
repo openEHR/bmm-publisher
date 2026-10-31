@@ -11,10 +11,10 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*condition*: `xref:LANG:bmm:expression_package.adoc#_el_boolean_expression_class[EL_BOOLEAN_EXPRESSION]`
+|*condition*: `xref:{class_el_boolean_expression}[EL_BOOLEAN_EXPRESSION]`
 a|The gate condition for the target statement.
 
 h|*1..1*
-|*statement*: `xref:LANG:bmm:statement_package.adoc#_bmm_statement_item_class[BMM_STATEMENT_ITEM]`
+|*statement*: `xref:{class_bmm_statement_item}[BMM_STATEMENT_ITEM]`
 a|Target statement.
 |===

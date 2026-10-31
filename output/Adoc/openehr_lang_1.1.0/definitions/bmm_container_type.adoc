@@ -7,18 +7,18 @@ h|*Description*
 2+a|Type reference that specifies containers with one generic parameter.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+2+|`xref:{class_bmm_type}[BMM_TYPE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*container_type*: `xref:LANG:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+|*container_type*: `xref:{class_bmm_class}[BMM_CLASS]`
 a|The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
 
 h|*1..1*
-|*base_type*: `xref:LANG:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]`
+|*base_type*: `xref:{class_bmm_type}[BMM_TYPE]`
 a|The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
 
 h|*Functions*
@@ -27,6 +27,6 @@ h|*Functions*
 
 h|*1..1 +
 (redefined)*
-|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*type_name* (): `xref:{class_string}[String]`
 a|Return full type name, e.g. 'List<ELEMENT>'.
 |===

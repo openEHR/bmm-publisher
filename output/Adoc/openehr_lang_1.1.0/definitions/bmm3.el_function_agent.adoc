@@ -7,7 +7,7 @@ h|*Description*
 2+a|An agent whose signature is of a function, i.e. has a result type.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_agent_class[EL_AGENT]`
+2+|`xref:{class_bmm3_el_agent}[EL_AGENT]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,7 +15,7 @@ h|*Attributes*
 
 h|*0..1 +
 (redefined)*
-|*definition*: `xref:LANG:bmm3:core_package.adoc#_bmm_function_class[BMM_FUNCTION]`
+|*definition*: `xref:{class_bmm3_bmm_function}[BMM_FUNCTION]`
 a|Reference to definition of a routine for which this is a direct call instance, if one exists.
 
 h|*Functions*
@@ -24,7 +24,7 @@ h|*Functions*
 
 h|*1..1 +
 (redefined)*
-|*eval_type* (): `xref:LANG:bmm3:core_package.adoc#_bmm_function_type_class[BMM_FUNCTION_TYPE]` +
+|*eval_type* (): `xref:{class_bmm3_bmm_function_type}[BMM_FUNCTION_TYPE]` +
  +
 __Post_result__: `Result = definition.signature`
 a|Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.

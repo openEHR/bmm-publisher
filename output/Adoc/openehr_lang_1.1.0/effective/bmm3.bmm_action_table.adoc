@@ -4,10 +4,10 @@
 
 2+a|Multi-branch conditional statement structure
 
-2+|Inherits: xref:LANG:bmm3:statement_package.adoc#_bmm_statement_item_class[BMM_STATEMENT_ITEM], xref:LANG:bmm3:statement_package.adoc#_bmm_statement_class[BMM_STATEMENT]
+2+|Inherits: xref:{class_bmm3_bmm_statement_item}[BMM_STATEMENT_ITEM], xref:{class_bmm3_bmm_statement}[BMM_STATEMENT]
 
 2+h|*Attributes*
 
-|*decision_table*: `xref:LANG:bmm3:statement_package.adoc#_bmm_action_decision_table_class[BMM_ACTION_DECISION_TABLE]` [1..1]
+|*decision_table*: `xref:{class_bmm3_bmm_action_decision_table}[BMM_ACTION_DECISION_TABLE]` [1..1]
 a|A specialised decision table whose outputs can only be procedure agents. In execution, the matched agent will be invoked.
 |===

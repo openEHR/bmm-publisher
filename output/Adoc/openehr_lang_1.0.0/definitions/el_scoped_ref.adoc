@@ -7,13 +7,13 @@ h|*Description*
 2+a|A reference that is scoped by a containing entity and requires a context qualifier if it is not the currently scoping entity.
 
 h|*Inherit*
-2+|`xref:LANG:bmm:expression_package.adoc#_el_instance_ref_class[EL_INSTANCE_REF]`
+2+|`xref:{class_el_instance_ref}[EL_INSTANCE_REF]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*scope*: `xref:LANG:bmm:expression_package.adoc#_el_instance_ref_class[EL_INSTANCE_REF]`
+|*scope*: `xref:{class_el_instance_ref}[EL_INSTANCE_REF]`
 a|Reference to an owning object for this terminal element, if it is not the current scope.
 |===

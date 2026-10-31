@@ -7,18 +7,18 @@ h|*Description*
 2+a|Meta-type representing a value-generating simple expression.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:expression_package.adoc#_el_simple_class[EL_SIMPLE]`
+2+|`xref:{class_bmm3_el_simple}[EL_SIMPLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_writable*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_writable*: `xref:{class_boolean}[Boolean]`
 a|
 
 h|*1..1*
-|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*name*: `xref:{class_string}[String]`
 a|Name used to represent the reference or other entity.
 
 h|*Functions*
@@ -26,6 +26,6 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*reference* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*reference* (): `xref:{class_string}[String]`
 a|Generated full reference name, based on constituent parts of the entity. Default version outputs `_name_` field.
 |===

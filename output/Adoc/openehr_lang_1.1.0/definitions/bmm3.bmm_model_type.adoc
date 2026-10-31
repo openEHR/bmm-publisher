@@ -7,18 +7,18 @@ h|*Description*
 2+a|A type that is defined by a class (or classes) in the model.
 
 h|*Inherit*
-2+|`xref:LANG:bmm3:core_package.adoc#_bmm_effective_type_class[BMM_EFFECTIVE_TYPE]`
+2+|`xref:{class_bmm3_bmm_effective_type}[BMM_EFFECTIVE_TYPE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*value_constraint*: `xref:LANG:bmm3:core_package.adoc#_bmm_value_set_spec_class[BMM_VALUE_SET_SPEC]`
+|*value_constraint*: `xref:{class_bmm3_bmm_value_set_spec}[BMM_VALUE_SET_SPEC]`
 a|
 
 h|*1..1*
-|*base_class*: `xref:LANG:bmm3:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+|*base_class*: `xref:{class_bmm3_bmm_class}[BMM_CLASS]`
 a|Base class of this type.
 
 h|*Functions*
@@ -27,12 +27,12 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*type_base_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*type_base_name* (): `xref:{class_string}[String]`
 a|Result = `_base_class.name_`.
 
 h|*1..1 +
 (effected)*
-|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_primitive* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_validity__: `Result = base_class.is_primitive`
 a|Result = `_base_class.is_primitive_`.
